@@ -34,6 +34,14 @@
         @click="handleRemoteSupportClick"
       />
     </div>
+
+    <!-- 전체 메뉴 모달 -->
+    <GlobalMenuModal
+      v-model:visible="globalMenuOpen"
+      :menu-items="menuItems"
+      @menu-select="handleMenuSelect"
+      @favorite-toggle="handleFavoriteToggle"
+    />
   </header>
 </template>
 
@@ -44,10 +52,15 @@ import CompanyLogo from './CompanyLogo.vue';
 import UserInfoDropdown from './UserInfoDropdown.vue';
 import ContactListButton from './ContactListButton.vue';
 import RemoteSupportButton from './RemoteSupportButton.vue';
+import GlobalMenuModal from './modals/GlobalMenuModal.vue';
 import type { HeaderProps, HeaderEvents } from '@/types/header';
+import type { MenuItem } from '@/types/menu';
 import { DEFAULT_COMPANY_NAME, DEFAULT_REMOTE_SUPPORT_URL, DEFAULT_USER, DEFAULT_CONTACTS } from '@/constants/header';
 
-interface Props extends HeaderProps {}
+interface Props extends HeaderProps {
+  /** 메뉴 아이템 목록 */
+  menuItems?: MenuItem[]
+}
 
 const props = withDefaults(defineProps<Props>(), {
   fixed: true,
@@ -56,7 +69,8 @@ const props = withDefaults(defineProps<Props>(), {
   logoSize: 'md',
   currentUser: () => DEFAULT_USER,
   contacts: () => DEFAULT_CONTACTS,
-  remoteSupportUrl: DEFAULT_REMOTE_SUPPORT_URL
+  remoteSupportUrl: DEFAULT_REMOTE_SUPPORT_URL,
+  menuItems: () => []
 });
 
 const emit = defineEmits<HeaderEvents>();
@@ -90,6 +104,14 @@ const handleContactClose = () => {
 
 const handleRemoteSupportClick = (url: string) => {
   emit('remote-support-click', url);
+};
+
+const handleMenuSelect = (menu: MenuItem) => {
+  emit('menu-select', menu);
+};
+
+const handleFavoriteToggle = (menuId: string) => {
+  emit('favorite-toggle', menuId);
 };
 </script>
 

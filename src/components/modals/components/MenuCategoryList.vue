@@ -595,17 +595,26 @@ onMounted(() => {
 
 // 고대비 모드 지원
 @media (prefers-contrast: high) {
-  .category-item--all,
-  :deep(.p-listbox-item) {
+  .category-item--all {
     border: 1px solid var(--surface-2);
     margin-bottom: 1px;
     
-    &--selected,
-    &.p-highlight {
+    &--selected {
       border-color: var(--primary);
       outline: 2px solid var(--primary);
       outline-offset: -2px;
     }
+  }
+  
+  :deep(.p-listbox-item) {
+    border: 1px solid var(--surface-2);
+    margin-bottom: 1px;
+  }
+  
+  :deep(.p-listbox-item.p-highlight) {
+    border-color: var(--primary);
+    outline: 2px solid var(--primary);
+    outline-offset: -2px;
   }
   
   .category-count {

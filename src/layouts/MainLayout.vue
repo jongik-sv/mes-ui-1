@@ -62,8 +62,15 @@
       <slot name="toolbar">
         <!-- 기본 툴바 컨텐츠 -->
         <div class="toolbar-placeholder">
-          <div class="toolbar-icon" v-for="i in 6" :key="i">
-            <div class="icon-placeholder">{{ i }}</div>
+          <div class="toolbar-icon" v-for="(item, i) in toolbarItems" :key="i">
+            <div class="toolbar-card">
+              <div class="card-front">
+                <i :class="item.icon"></i>
+              </div>
+              <div class="card-back">
+                <span class="card-text">{{ item.text }}</span>
+              </div>
+            </div>
           </div>
         </div>
       </slot>
@@ -154,6 +161,20 @@ const { breakpoint } = useBreakpoint({
 
 // ========== Template Refs ==========
 const mainContentRef = ref<HTMLElement>()
+
+// ========== Data ==========
+
+/**
+ * 툴바 아이템 목록
+ */
+const toolbarItems = ref([
+  { icon: 'pi pi-home', text: '홈' },
+  { icon: 'pi pi-cog', text: '설정' },
+  { icon: 'pi pi-chart-bar', text: '분석' },
+  { icon: 'pi pi-users', text: '사용자' },
+  { icon: 'pi pi-bell', text: '알림' },
+  { icon: 'pi pi-question-circle', text: '도움말' }
+])
 
 // ========== Methods ==========
 
@@ -343,27 +364,59 @@ onUnmounted(() => {
 }
 
 .toolbar-icon {
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  perspective: 1000px; /* 3D 효과를 위한 perspective */
+}
+
+.toolbar-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  border-radius: var(--radius-md);
+}
+
+.toolbar-icon:hover .toolbar-card {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
   border-radius: var(--radius-md);
+  backface-visibility: hidden;
+}
+
+.card-front {
   background: var(--surface-1);
   color: var(--text-secondary);
-  cursor: pointer;
-  transition: all var(--transition-colors);
+  z-index: 2;
 }
 
-.toolbar-icon:hover {
+.card-back {
   background: var(--surface-2);
   color: var(--text-primary);
-  transform: rotate(90deg);
+  transform: rotateY(180deg);
+  z-index: 1;
 }
 
-.icon-placeholder {
-  font-size: var(--text-sm);
+.card-front i {
+  font-size: var(--text-lg);
+}
+
+.card-text {
+  font-size: var(--text-xs);
   font-weight: var(--font-medium);
+  text-align: center;
+  line-height: 1.2;
+  padding: var(--padding-xs);
 }
 
 /* ========== Sidebar (Mobile) ========== */
@@ -520,6 +573,10 @@ onUnmounted(() => {
   height: 40px;
 }
 
+.layout-tablet .card-text {
+  font-size: 10px;
+}
+
 /* 모바일 (768px 이하) */
 .layout-mobile {
   grid-template-areas: 
@@ -576,8 +633,19 @@ onUnmounted(() => {
   .layout-toolbar,
   .layout-sidebar,
   .menu-icon span,
-  .toolbar-icon {
+  .toolbar-card {
     transition: none;
+  }
+  
+  /* 모션 감소 선호 시 플립 효과 비활성화 */
+  .toolbar-icon:hover .toolbar-card {
+    transform: none;
+  }
+  
+  /* 대신 색상 변화로 호버 표시 */
+  .toolbar-icon:hover .card-front {
+    background: var(--surface-2);
+    color: var(--text-primary);
   }
 }
 
@@ -589,7 +657,16 @@ onUnmounted(() => {
     border-width: 2px;
   }
   
-  .toolbar-icon,
+  .card-front,
+  .card-back {
+    border: 2px solid var(--border-primary);
+  }
+  
+  .card-back {
+    background: var(--primary);
+    color: var(--text-inverse);
+  }
+  
   .nav-item {
     border: 1px solid var(--border-primary);
   }

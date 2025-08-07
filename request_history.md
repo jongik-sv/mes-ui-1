@@ -33,3 +33,7 @@ Task details:
 </task>
 
 ------
+
+.kiro/specs/mes-ui-framework/tasks.md 파일을 보고 '3.1 메인 레이아웃 컴포넌트 생성'을 구현해. basic_rules를 잘 따르도록 해.
+
+------

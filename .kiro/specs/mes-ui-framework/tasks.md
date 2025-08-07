@@ -9,6 +9,7 @@
 - [x] 1. 프로젝트 기반 구조 설정 및 개발 환경 구축
 
 
+
   - Vue.js 3 + Vite + TypeScript 프로젝트 초기화
   - PrimeVue, Pinia, Vue Router 등 핵심 라이브러리 설치 및 설정
   - ESLint, Prettier, Vitest 개발 도구 설정

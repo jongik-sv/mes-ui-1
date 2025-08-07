@@ -112,6 +112,30 @@ export const useLayoutStore = defineStore('layout', () => {
       }
     }
 
+    // 모바일에서 데스크톱/태블릿으로 변경시 저장된 툴바 상태 복원
+    if (previousBreakpoint === 'mobile' && (bp === 'desktop' || bp === 'tablet')) {
+      // localStorage에서 저장된 툴바 상태 복원
+      try {
+        const savedToolbarState = localStorage.getItem(STORAGE_KEYS.toolbarCollapsed)
+        if (savedToolbarState !== null) {
+          const parsed = JSON.parse(savedToolbarState)
+          if (typeof parsed === 'boolean') {
+            toolbarCollapsed.value = parsed
+          } else {
+            // 기본값: 데스크톱/태블릿에서는 툴바 표시
+            toolbarCollapsed.value = false
+          }
+        } else {
+          // 저장된 상태가 없으면 기본값으로 설정
+          toolbarCollapsed.value = false
+        }
+      } catch (error) {
+        console.warn('Failed to restore toolbar state:', error)
+        // 오류 시 기본값으로 설정
+        toolbarCollapsed.value = false
+      }
+    }
+
     // 데스크톱으로 변경시 사이드바 자동 닫기
     if (bp === 'desktop' && sidebarOpen.value) {
       toggleSidebar()
@@ -160,10 +184,13 @@ export const useLayoutStore = defineStore('layout', () => {
     if (typeof localStorage === 'undefined') return
 
     try {
-      localStorage.setItem(
-        STORAGE_KEYS.toolbarCollapsed, 
-        JSON.stringify(toolbarCollapsed.value)
-      )
+      // 모바일이 아닐 때만 툴바 상태 저장 (모바일에서는 항상 숨겨지므로)
+      if (breakpoint.value !== 'mobile') {
+        localStorage.setItem(
+          STORAGE_KEYS.toolbarCollapsed, 
+          JSON.stringify(toolbarCollapsed.value)
+        )
+      }
       localStorage.setItem(
         STORAGE_KEYS.breakpoint,
         breakpoint.value

@@ -6,6 +6,7 @@
         :menu-items="menuItems"
         @menu-select="handleMenuSelect"
         @favorite-toggle="handleFavoriteToggle"
+        @menu-tree-toggle="handleMenuTreeToggle"
         @global-menu-click="handleGlobalMenuClick"
         @user-settings="handleUserSettings"
         @user-messages="handleUserMessages"
@@ -151,6 +152,11 @@ const handleMenuSelect = (menu: MenuItem) => {
 const handleFavoriteToggle = (menuId: string) => {
   console.log('Toggle favorite:', menuId)
   // 즐겨찾기 토글 로직
+}
+
+const handleMenuTreeToggle = (isOpen: boolean) => {
+  console.log('Menu tree toggled:', isOpen)
+  // 메뉴트리 토글 로직 - 사이드 네비게이션 토글
 }
 
 const handleGlobalMenuClick = () => {

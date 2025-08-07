@@ -4,6 +4,18 @@
     :class="{ 'mes-header--fixed': fixed, 'mes-header--shadow': shadow }"
   >
     <div class="header-left">
+      <button
+        class="menu-tree-toggle-btn"
+        @click="handleMenuTreeToggle"
+        :aria-label="menuTreeOpen ? '메뉴트리 닫기' : '메뉴트리 열기'"
+        :aria-expanded="menuTreeOpen"
+      >
+        <span class="hamburger-icon" :class="{ 'active': menuTreeOpen }">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
       <GlobalMenuButton
         :is-open="globalMenuOpen"
         @click="handleGlobalMenuClick"
@@ -78,6 +90,12 @@ const props = withDefaults(defineProps<Props>(), {
 const emit = defineEmits<HeaderEvents>();
 
 const globalMenuOpen = ref(false);
+const menuTreeOpen = ref(false);
+
+const handleMenuTreeToggle = () => {
+  menuTreeOpen.value = !menuTreeOpen.value;
+  emit('menu-tree-toggle', menuTreeOpen.value);
+};
 
 const handleGlobalMenuClick = () => {
   globalMenuOpen.value = !globalMenuOpen.value;
@@ -143,6 +161,7 @@ const handleFavoriteToggle = (menuId: string) => {
     align-items: center;
     justify-content: flex-start;
     padding-left: var(--space-4);
+    gap: var(--space-2);
   }
   
   .header-center {
@@ -157,6 +176,57 @@ const handleFavoriteToggle = (menuId: string) => {
     justify-content: flex-end;
     gap: var(--space-2);
     padding-right: var(--space-4);
+  }
+  
+  .menu-tree-toggle-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: var(--border-radius-md);
+    transition: background-color var(--transition-normal);
+    
+    &:hover {
+      background: var(--bg-tertiary);
+    }
+    
+    &:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+  }
+  
+  .hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 24px;
+    height: 18px;
+    
+    span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text-primary);
+      border-radius: 1px;
+      transition: all var(--transition-normal);
+    }
+    
+    &.active {
+      span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+      }
+      
+      span:nth-child(2) {
+        opacity: 0;
+      }
+      
+      span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+    }
   }
   
   @media (max-width: 768px) {

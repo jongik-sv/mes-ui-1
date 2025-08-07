@@ -212,8 +212,9 @@ describe('useResponsiveLayout', () => {
 
   describe('이벤트 리스너 관리', () => {
     it('컴포넌트 마운트 시 resize 이벤트 리스너가 등록된다', () => {
-      // When: useResponsiveLayout 호출
-      useResponsiveLayout();
+      // When: 컴포넌트 마운트
+      const TestComponent = createTestComponent(1200, 900);
+      mount(TestComponent);
 
       // Then: resize 이벤트 리스너 등록
       expect(mockAddEventListener).toHaveBeenCalledWith('resize', expect.any(Function));
@@ -225,13 +226,24 @@ describe('useResponsiveLayout', () => {
   describe('화면 크기 변경 반응', () => {
     it('화면 크기 변경 시 브레이크포인트가 업데이트된다', async () => {
       // Given: 초기 데스크톱 크기
-      window.innerWidth = 1440;
-      const { currentBreakpoint } = useResponsiveLayout();
+      const TestComponent = createTestComponent(1200, 900);
+      const wrapper = mount(TestComponent);
+      const { currentBreakpoint } = wrapper.vm.responsive;
       expect(currentBreakpoint.value).toBe('desktop');
 
-      // When: 모바일 크기로 변경
+      // When: 모바일 크기로 변경하고 실제 이벤트 핸들러 호출
       window.innerWidth = 375;
-      window.dispatchEvent(new Event('resize'));
+      window.innerHeight = 667;
+      
+      // 실제 등록된 이벤트 핸들러를 찾아서 호출
+      const resizeHandler = mockAddEventListener.mock.calls.find(
+        call => call[0] === 'resize'
+      )?.[1];
+      
+      if (resizeHandler) {
+        resizeHandler();
+      }
+      
       await nextTick();
 
       // Then: 브레이크포인트가 모바일로 변경

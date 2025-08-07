@@ -62,12 +62,12 @@ export interface UseBreakpointReturn {
   /**
    * 현재 화면 너비
    */
-  width: Readonly<Ref<number>>
+  width: ComputedRef<number>
   
   /**
    * 현재 화면 높이
    */
-  height: Readonly<Ref<number>>
+  height: ComputedRef<number>
   
   /**
    * 수동 업데이트 함수
@@ -263,8 +263,8 @@ export function useBreakpoint(options: UseBreakpointOptions = {}): UseBreakpoint
     isMobile,
     isTablet,
     isDesktop,
-    width: readonly(width),
-    height: readonly(height),
+    width: computed(() => width.value),
+    height: computed(() => height.value),
     update,
     cleanup
   }

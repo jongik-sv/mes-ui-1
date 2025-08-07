@@ -1,0 +1,149 @@
+<template>
+  <header 
+    class="mes-header"
+    role="banner"
+    :class="{ 'mes-header--fixed': fixed, 'mes-header--shadow': shadow }"
+  >
+    <div class="header-left">
+      <GlobalMenuButton
+        :is-open="globalMenuOpen"
+        @click="handleGlobalMenuClick"
+      />
+      <CompanyLogo 
+        :company-name="companyName"
+        :logo-url="logoUrl"
+        :size="logoSize"
+      />
+    </div>
+    
+    <div class="header-right">
+      <UserInfoDropdown
+        v-if="currentUser"
+        :user="currentUser"
+        @settings="handleUserSettings"
+        @messages="handleUserMessages"
+        @logout="handleUserLogout"
+      />
+      <ContactListButton
+        :contacts="contacts"
+        @open="handleContactOpen"
+        @close="handleContactClose"
+      />
+      <RemoteSupportButton
+        :url="remoteSupportUrl"
+        @click="handleRemoteSupportClick"
+      />
+    </div>
+  </header>
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue';
+import GlobalMenuButton from './GlobalMenuButton.vue';
+import CompanyLogo from './CompanyLogo.vue';
+import UserInfoDropdown from './UserInfoDropdown.vue';
+import ContactListButton from './ContactListButton.vue';
+import RemoteSupportButton from './RemoteSupportButton.vue';
+import type { HeaderProps, HeaderEvents } from '@/types/header';
+import { DEFAULT_COMPANY_NAME, DEFAULT_REMOTE_SUPPORT_URL, DEFAULT_USER, DEFAULT_CONTACTS } from '@/constants/header';
+
+interface Props extends HeaderProps {}
+
+const props = withDefaults(defineProps<Props>(), {
+  fixed: true,
+  shadow: true,
+  companyName: DEFAULT_COMPANY_NAME,
+  logoSize: 'md',
+  currentUser: () => DEFAULT_USER,
+  contacts: () => DEFAULT_CONTACTS,
+  remoteSupportUrl: DEFAULT_REMOTE_SUPPORT_URL
+});
+
+const emit = defineEmits<HeaderEvents>();
+
+const globalMenuOpen = ref(false);
+
+const handleGlobalMenuClick = () => {
+  globalMenuOpen.value = !globalMenuOpen.value;
+  emit('global-menu-click');
+};
+
+const handleUserSettings = () => {
+  emit('user-settings');
+};
+
+const handleUserMessages = () => {
+  emit('user-messages');
+};
+
+const handleUserLogout = () => {
+  emit('user-logout');
+};
+
+const handleContactOpen = () => {
+  emit('contact-open');
+};
+
+const handleContactClose = () => {
+  emit('contact-close');
+};
+
+const handleRemoteSupportClick = (url: string) => {
+  emit('remote-support-click', url);
+};
+</script>
+
+<style lang="scss" scoped>
+.mes-header {
+  height: 60px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-6);
+  z-index: 1000;
+  
+  &--fixed {
+    position: sticky;
+    top: 0;
+  }
+  
+  &--shadow {
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  
+  @media (max-width: 768px) {
+    height: 56px;
+    padding: 0 var(--space-4);
+    
+    .header-left {
+      gap: var(--space-3);
+    }
+    
+    .header-right {
+      gap: var(--space-1);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0 var(--space-3);
+    
+    .header-right {
+      gap: var(--space-1);
+    }
+  }
+}
+</style>

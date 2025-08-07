@@ -69,3 +69,7 @@ Task details:
 또 다른 TypeScript 오류가 발생했다. useTheme.test.ts에서 callback이 'never' 타입으로 추론되는 문제를 해결해줘.
 
 ------
+
+.kiro/specs/mes-ui-framework/tasks.md 에서 '4.2 전체 메뉴 아이콘 및 모달 시스템 구현' task를 구현해줘. Basic Rules를 잘 따라줘.
+
+------

@@ -45,3 +45,23 @@ Sass @import deprecated 경고를 해결해줘. @use와 @forward로 마이그레
 TypeScript 오류들을 해결해줘.
 
 ------
+
+TypeScript 오류가 다시 나타났다. IDE에서 보이는 오류들을 해결해줘.
+
+------
+
+Implement the task from the markdown document at .kiro/specs/mes-ui-framework/tasks.md:
+        
+<task title="3.2 반응형 레이아웃 동작 구현">
+
+Status: not started
+
+Task details:
+- 데스크톱/태블릿/모바일 화면별 레이아웃 변경 로직
+- 툴바 햄버거 메뉴 전환 기능
+- 메뉴 트리 오버레이/전체화면 모드 구현
+- _요구사항: 2.2, 8.3_
+
+</task>
+
+------

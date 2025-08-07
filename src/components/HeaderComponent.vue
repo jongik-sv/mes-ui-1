@@ -126,7 +126,7 @@ const handleFavoriteToggle = (menuId: string) => {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  padding: 0 var(--space-6);
+  padding: 0;
   z-index: 1000;
   
   &--fixed {
@@ -142,6 +142,7 @@ const handleFavoriteToggle = (menuId: string) => {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    padding-left: var(--space-4);
   }
   
   .header-center {
@@ -155,22 +156,30 @@ const handleFavoriteToggle = (menuId: string) => {
     align-items: center;
     justify-content: flex-end;
     gap: var(--space-2);
+    padding-right: var(--space-4);
   }
   
   @media (max-width: 768px) {
     height: 56px;
-    padding: 0 var(--space-4);
+    
+    .header-left {
+      padding-left: var(--space-3);
+    }
     
     .header-right {
       gap: var(--space-1);
+      padding-right: var(--space-3);
     }
   }
   
   @media (max-width: 480px) {
-    padding: 0 var(--space-3);
+    .header-left {
+      padding-left: var(--space-2);
+    }
     
     .header-right {
       gap: var(--space-1);
+      padding-right: var(--space-2);
     }
   }
 }

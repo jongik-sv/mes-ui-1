@@ -374,13 +374,14 @@ onUnmounted(() => {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.6s;
+  transition: transform 0.2s ease-out; /* leave 시 빠르게 */
   transform-style: preserve-3d;
   border-radius: var(--radius-md);
 }
 
 .toolbar-icon:hover .toolbar-card {
   transform: rotateY(180deg);
+  transition: transform 0.4s ease-in; /* hover 시 조금 더 부드럽게 */
 }
 
 .card-front, .card-back {

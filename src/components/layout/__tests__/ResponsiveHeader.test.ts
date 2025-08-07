@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
 import { createPinia } from 'pinia';
+import { computed, ref } from 'vue';
 import ResponsiveHeader from '../ResponsiveHeader.vue';
 import { useResponsiveLayout } from '@/composables/useResponsiveLayout';
 
@@ -54,16 +55,14 @@ describe('ResponsiveHeader', () => {
     beforeEach(() => {
       const mockUseResponsiveLayout = vi.mocked(useResponsiveLayout);
       mockUseResponsiveLayout.mockReturnValue({
-        screenSize: { value: { width: 1440, height: 900 } },
-        currentBreakpoint: { value: 'desktop' },
-        layoutState: { 
-          value: { 
-            toolbarVisible: true, 
-            menuTreeMode: 'sidebar', 
-            headerCompact: false 
-          } 
-        },
-        mobileMenuOpen: { value: false },
+        screenSize: computed(() => ({ width: 1440, height: 900 })),
+        currentBreakpoint: computed(() => 'desktop'),
+        layoutState: computed(() => ({ 
+          toolbarVisible: true, 
+          menuTreeMode: 'sidebar' as const, 
+          headerCompact: false 
+        })),
+        mobileMenuOpen: ref(false),
         toggleMobileMenu: vi.fn(),
         closeMobileMenu: vi.fn()
       });
@@ -147,17 +146,16 @@ describe('ResponsiveHeader', () => {
 
   describe('모바일 레이아웃', () => {
     beforeEach(() => {
-      vi.mocked(useResponsiveLayout).mockReturnValue({
-        screenSize: { value: { width: 375, height: 667 } },
-        currentBreakpoint: { value: 'mobile' },
-        layoutState: { 
-          value: { 
-            toolbarVisible: false, 
-            menuTreeMode: 'fullscreen', 
-            headerCompact: true 
-          } 
-        },
-        mobileMenuOpen: { value: false },
+      const mockUseResponsiveLayout = vi.mocked(useResponsiveLayout);
+      mockUseResponsiveLayout.mockReturnValue({
+        screenSize: computed(() => ({ width: 375, height: 667 })),
+        currentBreakpoint: computed(() => 'mobile'),
+        layoutState: computed(() => ({ 
+          toolbarVisible: false, 
+          menuTreeMode: 'fullscreen' as const, 
+          headerCompact: true 
+        })),
+        mobileMenuOpen: ref(false),
         toggleMobileMenu: vi.fn(),
         closeMobileMenu: vi.fn()
       });
@@ -211,16 +209,15 @@ describe('ResponsiveHeader', () => {
 
     beforeEach(() => {
       mockToggleMobileMenu = vi.fn();
-      vi.mocked(useResponsiveLayout).mockReturnValue({
-        screenSize: { value: { width: 375, height: 667 } },
-        currentBreakpoint: { value: 'mobile' },
-        layoutState: { 
-          value: { 
-            toolbarVisible: false, 
-            menuTreeMode: 'fullscreen', 
-            headerCompact: true 
-          } 
-        },
+      const mockUseResponsiveLayout = vi.mocked(useResponsiveLayout);
+      mockUseResponsiveLayout.mockReturnValue({
+        screenSize: computed(() => ({ width: 375, height: 667 })),
+        currentBreakpoint: computed(() => 'mobile'),
+        layoutState: computed(() => ({ 
+          toolbarVisible: false, 
+          menuTreeMode: 'fullscreen' as const, 
+          headerCompact: true 
+        })),
         mobileMenuOpen: { value: false },
         toggleMobileMenu: mockToggleMobileMenu,
         closeMobileMenu: vi.fn()
@@ -243,17 +240,16 @@ describe('ResponsiveHeader', () => {
 
   describe('접근성', () => {
     beforeEach(() => {
-      vi.mocked(useResponsiveLayout).mockReturnValue({
-        screenSize: { value: { width: 375, height: 667 } },
-        currentBreakpoint: { value: 'mobile' },
-        layoutState: { 
-          value: { 
-            toolbarVisible: false, 
-            menuTreeMode: 'fullscreen', 
-            headerCompact: true 
-          } 
-        },
-        mobileMenuOpen: { value: false },
+      const mockUseResponsiveLayout = vi.mocked(useResponsiveLayout);
+      mockUseResponsiveLayout.mockReturnValue({
+        screenSize: computed(() => ({ width: 375, height: 667 })),
+        currentBreakpoint: computed(() => 'mobile'),
+        layoutState: computed(() => ({ 
+          toolbarVisible: false, 
+          menuTreeMode: 'fullscreen' as const, 
+          headerCompact: true 
+        })),
+        mobileMenuOpen: ref(false),
         toggleMobileMenu: vi.fn(),
         closeMobileMenu: vi.fn()
       });
@@ -296,17 +292,16 @@ describe('ResponsiveHeader', () => {
   describe('스타일링', () => {
     it('헤더가 기본 높이를 가진다', () => {
       // Given: 데스크톱 레이아웃
-      vi.mocked(useResponsiveLayout).mockReturnValue({
-        screenSize: { value: { width: 1440, height: 900 } },
-        currentBreakpoint: { value: 'desktop' },
-        layoutState: { 
-          value: { 
-            toolbarVisible: true, 
-            menuTreeMode: 'sidebar', 
-            headerCompact: false 
-          } 
-        },
-        mobileMenuOpen: { value: false },
+      const mockUseResponsiveLayout = vi.mocked(useResponsiveLayout);
+      mockUseResponsiveLayout.mockReturnValue({
+        screenSize: computed(() => ({ width: 1440, height: 900 })),
+        currentBreakpoint: computed(() => 'desktop'),
+        layoutState: computed(() => ({ 
+          toolbarVisible: true, 
+          menuTreeMode: 'sidebar' as const, 
+          headerCompact: false 
+        })),
+        mobileMenuOpen: ref(false),
         toggleMobileMenu: vi.fn(),
         closeMobileMenu: vi.fn()
       });
@@ -322,17 +317,16 @@ describe('ResponsiveHeader', () => {
 
     it('컴팩트 모드에서 적절한 클래스가 적용된다', () => {
       // Given: 모바일 레이아웃
-      vi.mocked(useResponsiveLayout).mockReturnValue({
-        screenSize: { value: { width: 375, height: 667 } },
-        currentBreakpoint: { value: 'mobile' },
-        layoutState: { 
-          value: { 
-            toolbarVisible: false, 
-            menuTreeMode: 'fullscreen', 
-            headerCompact: true 
-          } 
-        },
-        mobileMenuOpen: { value: false },
+      const mockUseResponsiveLayout = vi.mocked(useResponsiveLayout);
+      mockUseResponsiveLayout.mockReturnValue({
+        screenSize: computed(() => ({ width: 375, height: 667 })),
+        currentBreakpoint: computed(() => 'mobile'),
+        layoutState: computed(() => ({ 
+          toolbarVisible: false, 
+          menuTreeMode: 'fullscreen' as const, 
+          headerCompact: true 
+        })),
+        mobileMenuOpen: ref(false),
         toggleMobileMenu: vi.fn(),
         closeMobileMenu: vi.fn()
       });

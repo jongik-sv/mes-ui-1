@@ -2,14 +2,14 @@
   <header 
     class="mes-header"
     :class="{
-      'header-compact': layoutState.headerCompact
+      'header-compact': layoutState.value.headerCompact
     }"
     role="banner"
   >
     <div class="header-left">
       <!-- 모바일/태블릿: 햄버거 메뉴 -->
       <Button
-        v-if="!layoutState.toolbarVisible"
+        v-if="!layoutState.value.toolbarVisible"
         icon="pi pi-bars"
         text
         rounded
@@ -37,10 +37,10 @@
     
     <div class="header-right">
       <!-- 사용자 정보 (반응형 조정) -->
-      <UserInfoMenu :compact="layoutState.headerCompact" />
+      <UserInfoMenu :compact="layoutState.value.headerCompact" />
       
       <!-- 연락처 (태블릿 이상에서만 표시) -->
-      <ContactList v-if="currentBreakpoint !== 'mobile'" />
+      <ContactList v-if="currentBreakpoint.value !== 'mobile'" />
       
       <!-- 원격 지원 -->
       <RemoteSupport />
@@ -49,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+
 import { useResponsiveLayout } from '@/composables/useResponsiveLayout';
 import Button from 'primevue/button';
 import UserInfoMenu from './UserInfoMenu.vue';

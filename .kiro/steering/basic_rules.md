@@ -5,8 +5,8 @@
 2. 단계가 끝날 때 마다 커밋해줘.
 3. TDD 방법론으로 진행해줘.
 4. 각 task 개발 단계가 시작될때 해당 단계에 대한 설계를 먼저 하고 시작해. 
- - 설계 참고 문서는 기본적으로 ./kiro/specs/mes-ui-framework/design.md 파일이고 추가로 ./docs/ui-requirements.md, theme-guide.md 파일이야.
- - 파일 생성 위치는 './docs' 폴더에 각 Phase 이름으로 저장해줘.  
+ - 설계 참고 문서는 기본적으로 ./kiro/specs/mes-ui-framework/design.md 파일이고 추가로 ./docs/basic design/ui-requirements.md, theme-guide.md 파일이야.
+ - 파일 생성 위치는 './docs/detail design/' 폴더에 각 Phase 이름으로 저장해줘.  
  - 그리고 이전 단계의 컨셉과 다른지 체크를 해. 
  - 컨셉이 다르면 멈추고 나에게 설명을 하고 결정을 기다려.
 5. 개발이 끝난 코드는 리팩토링을 수행해

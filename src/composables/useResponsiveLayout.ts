@@ -1,4 +1,4 @@
-import { ref, computed, onMounted, onUnmounted, readonly } from 'vue';
+import { ref, computed, onMounted, onUnmounted, readonly, type ComputedRef, type Ref } from 'vue';
 
 export type Breakpoint = 'mobile' | 'tablet' | 'desktop' | 'large';
 export type MenuTreeMode = 'sidebar' | 'overlay' | 'fullscreen';
@@ -14,7 +14,16 @@ export interface LayoutState {
   headerCompact: boolean;
 }
 
-export function useResponsiveLayout() {
+export interface UseResponsiveLayoutReturn {
+  screenSize: ComputedRef<ScreenSize>;
+  currentBreakpoint: ComputedRef<Breakpoint>;
+  layoutState: ComputedRef<LayoutState>;
+  mobileMenuOpen: Ref<boolean>;
+  toggleMobileMenu: () => void;
+  closeMobileMenu: () => void;
+}
+
+export function useResponsiveLayout(): UseResponsiveLayoutReturn {
   // 상태
   const screenSize = ref<ScreenSize>({ width: 0, height: 0 });
   const mobileMenuOpen = ref(false);
@@ -64,7 +73,7 @@ export function useResponsiveLayout() {
   });
   
   return {
-    screenSize: readonly(screenSize),
+    screenSize: computed(() => screenSize.value),
     currentBreakpoint,
     layoutState,
     mobileMenuOpen,

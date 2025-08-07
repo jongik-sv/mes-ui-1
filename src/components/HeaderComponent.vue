@@ -1,7 +1,6 @@
 <template>
-  <header 
+  <div 
     class="mes-header"
-    role="banner"
     :class="{ 'mes-header--fixed': fixed, 'mes-header--shadow': shadow }"
   >
     <div class="header-left">
@@ -9,6 +8,9 @@
         :is-open="globalMenuOpen"
         @click="handleGlobalMenuClick"
       />
+    </div>
+    
+    <div class="header-center">
       <CompanyLogo 
         :company-name="companyName"
         :logo-url="logoUrl"
@@ -42,7 +44,7 @@
       @menu-select="handleMenuSelect"
       @favorite-toggle="handleFavoriteToggle"
     />
-  </header>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -118,11 +120,12 @@ const handleFavoriteToggle = (menuId: string) => {
 <style lang="scss" scoped>
 .mes-header {
   height: 60px;
+  width: 100%;
   background: var(--bg-secondary);
   border-bottom: 1px solid var(--surface-2);
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   padding: 0 var(--space-6);
   z-index: 1000;
   
@@ -138,22 +141,25 @@ const handleFavoriteToggle = (menuId: string) => {
   .header-left {
     display: flex;
     align-items: center;
-    gap: var(--space-4);
+    justify-content: flex-start;
+  }
+  
+  .header-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .header-right {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     gap: var(--space-2);
   }
   
   @media (max-width: 768px) {
     height: 56px;
     padding: 0 var(--space-4);
-    
-    .header-left {
-      gap: var(--space-3);
-    }
     
     .header-right {
       gap: var(--space-1);

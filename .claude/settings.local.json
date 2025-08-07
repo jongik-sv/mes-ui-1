@@ -1,0 +1,10 @@
+{
+  "enabledMcpjsonServers": [
+    "fetch",
+    "supabase",
+    "sequential-thinking",
+    "Context7",
+    "pyhub.mcptools",
+    "primevue"
+  ]
+}

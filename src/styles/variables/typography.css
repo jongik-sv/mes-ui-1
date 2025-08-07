@@ -1,0 +1,356 @@
+/**
+ * 타이포그래피 변수 정의
+ * MES UI 프레임워크의 모든 폰트 관련 스타일을 CSS 커스텀 프로퍼티로 정의
+ */
+
+:root {
+  /* Font Families */
+  --font-sans: 'Pretendard Variable', 'Pretendard', 
+               'Noto Sans KR', 'Malgun Gothic', 
+               -apple-system, BlinkMacSystemFont, 
+               'Segoe UI', 'Roboto', 'Helvetica Neue', 
+               Arial, sans-serif, 'Apple Color Emoji', 
+               'Segoe UI Emoji', 'Segoe UI Symbol';
+  
+  --font-mono: 'JetBrains Mono', 'Fira Code', 
+               'SF Mono', 'Monaco', 'Inconsolata', 
+               'Roboto Mono', 'Source Code Pro', 
+               'Consolas', 'Liberation Mono', 
+               'Courier New', monospace;
+  
+  --font-barcode: 'Libre Barcode 39', 'Code 39', 
+                  'Courier New', monospace;
+  
+  /* Font Sizes */
+  --text-xs: 0.75rem;     /* 12px - 캡션, 라벨 */
+  --text-sm: 0.875rem;    /* 14px - 작은 텍스트 */
+  --text-base: 1rem;      /* 16px - 기본 텍스트 */
+  --text-lg: 1.125rem;    /* 18px - 강조 텍스트 */
+  --text-xl: 1.25rem;     /* 20px - 소제목 */
+  --text-2xl: 1.5rem;     /* 24px - 제목 */
+  --text-3xl: 1.875rem;   /* 30px - 큰 제목 */
+  --text-4xl: 2.25rem;    /* 36px - 메인 제목 */
+  --text-5xl: 3rem;       /* 48px - 대형 제목 */
+  --text-6xl: 3.75rem;    /* 60px - 초대형 제목 */
+  
+  /* Line Heights */
+  --leading-none: 1;        /* 타이트한 제목용 */
+  --leading-tight: 1.25;    /* 제목용 */
+  --leading-snug: 1.375;    /* 부제목용 */
+  --leading-normal: 1.5;    /* 본문용 */
+  --leading-relaxed: 1.625; /* 긴 텍스트용 */
+  --leading-loose: 2;       /* 여유로운 텍스트용 */
+  
+  /* Font Weights */
+  --font-thin: 100;
+  --font-extralight: 200;
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+  --font-black: 900;
+  
+  /* Letter Spacing */
+  --tracking-tighter: -0.05em;
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.1em;
+}
+
+/* 타이포그래피 유틸리티 클래스 */
+
+/* Font Size Classes */
+.text-xs { 
+  font-size: var(--text-xs); 
+  line-height: var(--leading-normal);
+}
+
+.text-sm { 
+  font-size: var(--text-sm); 
+  line-height: var(--leading-normal);
+}
+
+.text-base { 
+  font-size: var(--text-base); 
+  line-height: var(--leading-normal);
+}
+
+.text-lg { 
+  font-size: var(--text-lg); 
+  line-height: var(--leading-normal);
+}
+
+.text-xl { 
+  font-size: var(--text-xl); 
+  line-height: var(--leading-tight);
+}
+
+.text-2xl { 
+  font-size: var(--text-2xl); 
+  line-height: var(--leading-tight);
+}
+
+.text-3xl { 
+  font-size: var(--text-3xl); 
+  line-height: var(--leading-tight);
+}
+
+.text-4xl { 
+  font-size: var(--text-4xl); 
+  line-height: var(--leading-none);
+}
+
+.text-5xl { 
+  font-size: var(--text-5xl); 
+  line-height: var(--leading-none);
+}
+
+.text-6xl { 
+  font-size: var(--text-6xl); 
+  line-height: var(--leading-none);
+}
+
+/* Font Family Classes */
+.font-sans { font-family: var(--font-sans); }
+.font-mono { font-family: var(--font-mono); }
+.font-barcode { font-family: var(--font-barcode); }
+
+/* Font Weight Classes */
+.font-thin { font-weight: var(--font-thin); }
+.font-extralight { font-weight: var(--font-extralight); }
+.font-light { font-weight: var(--font-light); }
+.font-normal { font-weight: var(--font-normal); }
+.font-medium { font-weight: var(--font-medium); }
+.font-semibold { font-weight: var(--font-semibold); }
+.font-bold { font-weight: var(--font-bold); }
+.font-extrabold { font-weight: var(--font-extrabold); }
+.font-black { font-weight: var(--font-black); }
+
+/* Line Height Classes */
+.leading-none { line-height: var(--leading-none); }
+.leading-tight { line-height: var(--leading-tight); }
+.leading-snug { line-height: var(--leading-snug); }
+.leading-normal { line-height: var(--leading-normal); }
+.leading-relaxed { line-height: var(--leading-relaxed); }
+.leading-loose { line-height: var(--leading-loose); }
+
+/* Letter Spacing Classes */
+.tracking-tighter { letter-spacing: var(--tracking-tighter); }
+.tracking-tight { letter-spacing: var(--tracking-tight); }
+.tracking-normal { letter-spacing: var(--tracking-normal); }
+.tracking-wide { letter-spacing: var(--tracking-wide); }
+.tracking-wider { letter-spacing: var(--tracking-wider); }
+.tracking-widest { letter-spacing: var(--tracking-widest); }
+
+/* 텍스트 정렬 */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-justify { text-align: justify; }
+
+/* 텍스트 변환 */
+.uppercase { text-transform: uppercase; }
+.lowercase { text-transform: lowercase; }
+.capitalize { text-transform: capitalize; }
+.normal-case { text-transform: none; }
+
+/* 텍스트 장식 */
+.underline { text-decoration: underline; }
+.line-through { text-decoration: line-through; }
+.no-underline { text-decoration: none; }
+
+/* 텍스트 오버플로우 */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-ellipsis {
+  text-overflow: ellipsis;
+}
+
+.text-clip {
+  text-overflow: clip;
+}
+
+/* 화이트스페이스 */
+.whitespace-normal { white-space: normal; }
+.whitespace-nowrap { white-space: nowrap; }
+.whitespace-pre { white-space: pre; }
+.whitespace-pre-line { white-space: pre-line; }
+.whitespace-pre-wrap { white-space: pre-wrap; }
+
+/* 워드 브레이크 */
+.break-normal {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.break-words {
+  overflow-wrap: break-word;
+}
+
+.break-all {
+  word-break: break-all;
+}
+
+/* MES 특화 타이포그래피 클래스 */
+
+/* 제목 스타일 */
+.heading-1 {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-tight);
+  color: var(--text-primary);
+}
+
+.heading-2 {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-tight);
+  color: var(--text-primary);
+}
+
+.heading-3 {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-snug);
+  color: var(--text-primary);
+}
+
+.heading-4 {
+  font-size: var(--text-xl);
+  font-weight: var(--font-medium);
+  line-height: var(--leading-snug);
+  color: var(--text-primary);
+}
+
+.heading-5 {
+  font-size: var(--text-lg);
+  font-weight: var(--font-medium);
+  line-height: var(--leading-normal);
+  color: var(--text-primary);
+}
+
+.heading-6 {
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  line-height: var(--leading-normal);
+  color: var(--text-primary);
+}
+
+/* 본문 스타일 */
+.body-large {
+  font-size: var(--text-lg);
+  font-weight: var(--font-normal);
+  line-height: var(--leading-relaxed);
+  color: var(--text-primary);
+}
+
+.body-medium {
+  font-size: var(--text-base);
+  font-weight: var(--font-normal);
+  line-height: var(--leading-normal);
+  color: var(--text-primary);
+}
+
+.body-small {
+  font-size: var(--text-sm);
+  font-weight: var(--font-normal);
+  line-height: var(--leading-normal);
+  color: var(--text-secondary);
+}
+
+/* 캡션 및 라벨 */
+.caption {
+  font-size: var(--text-xs);
+  font-weight: var(--font-normal);
+  line-height: var(--leading-normal);
+  color: var(--text-muted);
+}
+
+.label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  line-height: var(--leading-normal);
+  color: var(--text-secondary);
+}
+
+/* 코드 및 데이터 표시 */
+.code {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--font-normal);
+  background-color: var(--bg-tertiary);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  color: var(--text-primary);
+}
+
+.data-display {
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  color: var(--text-primary);
+  letter-spacing: var(--tracking-wide);
+}
+
+/* 바코드 텍스트 */
+.barcode-text {
+  font-family: var(--font-barcode);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-normal);
+  letter-spacing: var(--tracking-wider);
+  color: var(--text-primary);
+}
+
+/* 링크 스타일 */
+.link {
+  color: var(--primary);
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color var(--transition-normal);
+}
+
+.link:hover {
+  color: var(--primary-hover);
+}
+
+.link:focus {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* 반응형 타이포그래피 */
+@media (max-width: 768px) {
+  .heading-1 { font-size: var(--text-3xl); }
+  .heading-2 { font-size: var(--text-2xl); }
+  .heading-3 { font-size: var(--text-xl); }
+  .heading-4 { font-size: var(--text-lg); }
+  .heading-5 { font-size: var(--text-base); }
+  .heading-6 { font-size: var(--text-sm); }
+}
+
+/* 접근성 개선 */
+@media (prefers-reduced-motion: reduce) {
+  .link {
+    transition: none;
+  }
+}
+
+/* 고대비 모드 */
+@media (prefers-contrast: high) {
+  .code {
+    border: 1px solid var(--border-primary);
+  }
+  
+  .link {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+}

@@ -1,0 +1,228 @@
+/**
+ * 색상 변수 정의
+ * MES UI 프레임워크의 모든 색상을 CSS 커스텀 프로퍼티로 정의
+ */
+
+:root {
+  /* 기본 색상 팔레트 (테마 독립적) */
+  
+  /* Blue Scale */
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-200: #bfdbfe;
+  --blue-300: #93c5fd;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-800: #1e40af;
+  --blue-900: #1e3a8a;
+  
+  /* Slate Scale */
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+  
+  /* Green Scale */
+  --green-50: #ecfdf5;
+  --green-100: #d1fae5;
+  --green-200: #a7f3d0;
+  --green-300: #6ee7b7;
+  --green-400: #34d399;
+  --green-500: #10b981;
+  --green-600: #059669;
+  --green-700: #047857;
+  --green-800: #065f46;
+  --green-900: #064e3b;
+  
+  /* Amber Scale */
+  --amber-50: #fffbeb;
+  --amber-100: #fef3c7;
+  --amber-200: #fde68a;
+  --amber-300: #fcd34d;
+  --amber-400: #fbbf24;
+  --amber-500: #f59e0b;
+  --amber-600: #d97706;
+  --amber-700: #b45309;
+  --amber-800: #92400e;
+  --amber-900: #78350f;
+  
+  /* Red Scale */
+  --red-50: #fef2f2;
+  --red-100: #fee2e2;
+  --red-200: #fecaca;
+  --red-300: #fca5a5;
+  --red-400: #f87171;
+  --red-500: #ef4444;
+  --red-600: #dc2626;
+  --red-700: #b91c1c;
+  --red-800: #991b1b;
+  --red-900: #7f1d1d;
+  
+  /* Cyan Scale */
+  --cyan-50: #ecfeff;
+  --cyan-100: #cffafe;
+  --cyan-200: #a5f3fc;
+  --cyan-300: #67e8f9;
+  --cyan-400: #22d3ee;
+  --cyan-500: #06b6d4;
+  --cyan-600: #0891b2;
+  --cyan-700: #0e7490;
+  --cyan-800: #155e75;
+  --cyan-900: #164e63;
+}
+
+/* 다크 테마 색상 변수 */
+:root[data-theme="dark"] {
+  /* Background Colors */
+  --bg-primary: var(--slate-900);      /* #0f172a - 메인 배경 */
+  --bg-secondary: var(--slate-800);    /* #1e293b - 카드/패널 배경 */
+  --bg-tertiary: var(--slate-700);     /* #334155 - 호버/활성 상태 */
+  
+  /* Surface Colors */
+  --surface-1: var(--slate-600);       /* #475569 - 입력 필드, 버튼 */
+  --surface-2: var(--slate-500);       /* #64748b - 테두리, 구분선 */
+  --surface-3: var(--slate-400);       /* #94a3b8 - 비활성 요소 */
+  
+  /* Text Colors */
+  --text-primary: var(--slate-50);     /* #f8fafc - 주요 텍스트 */
+  --text-secondary: var(--slate-200);  /* #e2e8f0 - 보조 텍스트 */
+  --text-tertiary: var(--slate-300);   /* #cbd5e1 - 캡션, 라벨 */
+  --text-muted: var(--slate-400);      /* #94a3b8 - 비활성, 플레이스홀더 */
+  --text-inverse: var(--slate-900);    /* #0f172a - 역방향 텍스트 */
+  
+  /* Brand Colors */
+  --primary: var(--blue-500);          /* #3b82f6 - 메인 브랜드 색상 */
+  --primary-hover: var(--blue-600);    /* #2563eb - 호버 상태 */
+  --primary-light: var(--blue-300);    /* #93c5fd - 연한 톤 */
+  --primary-dark: var(--blue-700);     /* #1d4ed8 - 진한 톤 */
+  
+  --secondary: var(--slate-500);       /* #64748b - 보조 브랜드 */
+  --secondary-hover: var(--slate-600); /* #475569 - 보조 브랜드 호버 */
+  --accent: var(--amber-500);          /* #f59e0b - 강조색 */
+  
+  /* Status Colors */
+  --success: var(--green-500);         /* #10b981 - 성공 */
+  --success-light: var(--green-400);   /* #34d399 - 성공 연한 톤 */
+  --warning: var(--amber-500);         /* #f59e0b - 경고 */
+  --warning-light: var(--amber-400);   /* #fbbf24 - 경고 연한 톤 */
+  --error: var(--red-500);             /* #ef4444 - 에러 */
+  --error-light: var(--red-400);       /* #f87171 - 에러 연한 톤 */
+  --info: var(--cyan-500);             /* #06b6d4 - 정보 */
+  --info-light: var(--cyan-400);       /* #22d3ee - 정보 연한 톤 */
+  
+  /* Interactive States */
+  --hover-overlay: rgba(255, 255, 255, 0.05);
+  --active-overlay: rgba(255, 255, 255, 0.1);
+  --focus-ring: rgba(59, 130, 246, 0.5);
+  
+  /* Border Colors */
+  --border-primary: var(--slate-700);
+  --border-secondary: var(--slate-600);
+  --border-muted: var(--slate-800);
+}
+
+/* 라이트 테마 색상 변수 */
+:root[data-theme="light"] {
+  /* Background Colors */
+  --bg-primary: #ffffff;               /* 메인 배경 */
+  --bg-secondary: var(--slate-50);     /* #f8fafc - 카드/패널 배경 */
+  --bg-tertiary: var(--slate-100);     /* #f1f5f9 - 호버/활성 상태 */
+  
+  /* Surface Colors */
+  --surface-1: var(--slate-200);       /* #e2e8f0 - 입력 필드, 버튼 */
+  --surface-2: var(--slate-300);       /* #cbd5e1 - 테두리, 구분선 */
+  --surface-3: var(--slate-400);       /* #94a3b8 - 비활성 요소 */
+  
+  /* Text Colors */
+  --text-primary: var(--slate-900);    /* #0f172a - 주요 텍스트 */
+  --text-secondary: var(--slate-700);  /* #334155 - 보조 텍스트 */
+  --text-tertiary: var(--slate-600);   /* #475569 - 캡션, 라벨 */
+  --text-muted: var(--slate-500);      /* #64748b - 비활성, 플레이스홀더 */
+  --text-inverse: #ffffff;             /* 역방향 텍스트 */
+  
+  /* Brand Colors */
+  --primary: var(--blue-500);          /* #3b82f6 - 메인 브랜드 색상 */
+  --primary-hover: var(--blue-600);    /* #2563eb - 호버 상태 */
+  --primary-light: var(--blue-300);    /* #93c5fd - 연한 톤 */
+  --primary-dark: var(--blue-700);     /* #1d4ed8 - 진한 톤 */
+  
+  --secondary: var(--slate-500);       /* #64748b - 보조 브랜드 */
+  --secondary-hover: var(--slate-600); /* #475569 - 보조 브랜드 호버 */
+  --accent: var(--amber-500);          /* #f59e0b - 강조색 */
+  
+  /* Status Colors */
+  --success: var(--green-500);         /* #10b981 - 성공 */
+  --success-light: var(--green-400);   /* #34d399 - 성공 연한 톤 */
+  --warning: var(--amber-500);         /* #f59e0b - 경고 */
+  --warning-light: var(--amber-400);   /* #fbbf24 - 경고 연한 톤 */
+  --error: var(--red-500);             /* #ef4444 - 에러 */
+  --error-light: var(--red-400);       /* #f87171 - 에러 연한 톤 */
+  --info: var(--cyan-500);             /* #06b6d4 - 정보 */
+  --info-light: var(--cyan-400);       /* #22d3ee - 정보 연한 톤 */
+  
+  /* Interactive States */
+  --hover-overlay: rgba(0, 0, 0, 0.05);
+  --active-overlay: rgba(0, 0, 0, 0.1);
+  --focus-ring: rgba(59, 130, 246, 0.5);
+  
+  /* Border Colors */
+  --border-primary: var(--slate-300);
+  --border-secondary: var(--slate-200);
+  --border-muted: var(--slate-100);
+}
+
+/* 고대비 모드 지원 */
+@media (prefers-contrast: high) {
+  :root[data-theme="dark"] {
+    --text-primary: #ffffff;
+    --bg-primary: #000000;
+    --primary: #66ccff;
+    --border-primary: #ffffff;
+  }
+  
+  :root[data-theme="light"] {
+    --text-primary: #000000;
+    --bg-primary: #ffffff;
+    --primary: #0066cc;
+    --border-primary: #000000;
+  }
+}
+
+/* 색상 유틸리티 클래스 */
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-tertiary { color: var(--text-tertiary); }
+.text-muted { color: var(--text-muted); }
+.text-inverse { color: var(--text-inverse); }
+
+.bg-primary { background-color: var(--bg-primary); }
+.bg-secondary { background-color: var(--bg-secondary); }
+.bg-tertiary { background-color: var(--bg-tertiary); }
+
+.border-primary { border-color: var(--border-primary); }
+.border-secondary { border-color: var(--border-secondary); }
+.border-muted { border-color: var(--border-muted); }
+
+/* 브랜드 색상 유틸리티 */
+.text-brand-primary { color: var(--primary); }
+.bg-brand-primary { background-color: var(--primary); }
+.border-brand-primary { border-color: var(--primary); }
+
+/* 상태 색상 유틸리티 */
+.text-success { color: var(--success); }
+.text-warning { color: var(--warning); }
+.text-error { color: var(--error); }
+.text-info { color: var(--info); }
+
+.bg-success { background-color: var(--success); }
+.bg-warning { background-color: var(--warning); }
+.bg-error { background-color: var(--error); }
+.bg-info { background-color: var(--info); }

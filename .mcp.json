@@ -59,16 +59,16 @@
       "disabled": false,
       "autoApprove": []
     },
-    "primereact": {
+    "primevue": {
       "command": "cmd",
       "args": [
         "/c",
         "npx",
         "-y",
         "sitemcp@latest",
-        "https://primereact.org",
+        "https://primevue.org",
         "-m",
-        "/docs/**"
+        "/**"
       ]
     }
   }

@@ -58,7 +58,7 @@
 
 <script setup lang="ts">
 import { useResponsiveLayout } from '@/composables/useResponsiveLayout';
-import { useToolbar } from '@/composables/useToolbar';
+import { useToolbar, type ToolbarIcon } from '@/composables/useToolbar';
 import Sidebar from 'primevue/sidebar';
 import ToolbarIcon from './ToolbarIcon.vue';
 import MenuTree from './MenuTree.vue';
@@ -78,7 +78,7 @@ const {
 } = useToolbar();
 
 // 모바일에서 아이콘 클릭 시 메뉴 트리 표시
-const handleMobileIconClick = (icon: any) => {
+const handleMobileIconClick = (icon: ToolbarIcon) => {
   handleIconClick(icon);
   // 모바일에서는 메뉴를 닫지 않고 트리를 표시
 };
@@ -86,7 +86,8 @@ const handleMobileIconClick = (icon: any) => {
 const handleMenuSelect = (menu: any) => {
   // 메뉴 선택 시 모바일 메뉴 닫기
   closeMobileMenu();
-  // TODO: 탭 생성 로직
+  // TODO: 탭 생성 로직 구현
+  console.log('메뉴 선택:', menu);
 };
 </script>
 

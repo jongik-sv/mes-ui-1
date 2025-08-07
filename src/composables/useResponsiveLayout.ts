@@ -1,5 +1,23 @@
 import { ref, computed, onMounted, onUnmounted, readonly, type ComputedRef, type Ref } from 'vue';
 
+// 디바운스 유틸리티 함수
+function debounce<T extends (...args: any[]) => void>(
+  func: T,
+  wait: number
+): (...args: Parameters<T>) => void {
+  let timeout: ReturnType<typeof setTimeout>;
+  
+  return function executedFunction(...args: Parameters<T>) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
 export type Breakpoint = 'mobile' | 'tablet' | 'desktop' | 'large';
 export type MenuTreeMode = 'sidebar' | 'overlay' | 'fullscreen';
 
@@ -62,14 +80,17 @@ export function useResponsiveLayout(): UseResponsiveLayoutReturn {
     mobileMenuOpen.value = false;
   };
   
+  // 디바운스된 리사이즈 핸들러
+  const debouncedUpdateScreenSize = debounce(updateScreenSize, 150);
+  
   // 이벤트 리스너 등록
   onMounted(() => {
     updateScreenSize();
-    window.addEventListener('resize', updateScreenSize);
+    window.addEventListener('resize', debouncedUpdateScreenSize);
   });
   
   onUnmounted(() => {
-    window.removeEventListener('resize', updateScreenSize);
+    window.removeEventListener('resize', debouncedUpdateScreenSize);
   });
   
   return {

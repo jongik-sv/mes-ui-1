@@ -1,0 +1,112 @@
+// 반응형 레이아웃 스타일
+
+// 브레이크포인트 변수
+$mobile-max: 768px;
+$tablet-min: 769px;
+$tablet-max: 1024px;
+$desktop-min: 1025px;
+$large-min: 1440px;
+
+// 믹스인 정의
+@mixin mobile {
+  @media (max-width: $mobile-max) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $tablet-min) and (max-width: $tablet-max) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media (min-width: $tablet-min) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop-min) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media (min-width: $large-min) {
+    @content;
+  }
+}
+
+// 터치 디바이스 감지
+@mixin touch {
+  @media (hover: none) and (pointer: coarse) {
+    @content;
+  }
+}
+
+// 호버 지원 디바이스
+@mixin hover {
+  @media (hover: hover) and (pointer: fine) {
+    @content;
+  }
+}
+
+// 레이아웃 CSS 변수
+:root {
+  // 기본 레이아웃 크기
+  --header-height: 60px;
+  --toolbar-width: 80px;
+  --menu-tree-width: 280px;
+  --tab-height: 45px;
+  
+  // 반응형 조정
+  @include mobile {
+    --header-height: 56px;
+    --toolbar-width: 0px;
+    --menu-tree-width: 100vw;
+    --tab-height: 48px;
+  }
+  
+  @include tablet {
+    --toolbar-width: 0px;
+    --menu-tree-width: 320px;
+  }
+}
+
+// 공통 반응형 클래스
+.touch-friendly {
+  min-width: 44px;
+  min-height: 44px;
+  
+  @include touch {
+    min-width: 48px;
+    min-height: 48px;
+  }
+}
+
+.desktop-only {
+  @include mobile {
+    display: none !important;
+  }
+  
+  @include tablet {
+    display: none !important;
+  }
+}
+
+.mobile-only {
+  @include desktop {
+    display: none !important;
+  }
+  
+  @include large {
+    display: none !important;
+  }
+}
+
+.tablet-up {
+  @include mobile {
+    display: none !important;
+  }
+}

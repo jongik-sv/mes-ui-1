@@ -49,7 +49,7 @@
 import { ref } from 'vue';
 import GlobalMenuButton from './GlobalMenuButton.vue';
 import CompanyLogo from './CompanyLogo.vue';
-import UserInfoDropdown from './UserInfoDropdown.vue';
+import UserInfoDropdown from './header/UserInfoMenu.vue';
 import ContactListButton from './ContactListButton.vue';
 import RemoteSupportButton from './RemoteSupportButton.vue';
 import GlobalMenuModal from './modals/GlobalMenuModal.vue';

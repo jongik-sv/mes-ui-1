@@ -3,7 +3,7 @@
     class="main-layout"
     :class="layoutClasses"
     role="application"
-    :aria-label="$t?.('app.title') || 'MES UI Framework'"
+    aria-label="MES UI Framework"
   >
     <!-- 건너뛰기 링크 (접근성) -->
     <a 

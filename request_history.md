@@ -41,3 +41,7 @@ Task details:
 Sass @import deprecated 경고를 해결해줘. @use와 @forward로 마이그레이션 해야 한다.
 
 ------
+
+TypeScript 오류들을 해결해줘.
+
+------

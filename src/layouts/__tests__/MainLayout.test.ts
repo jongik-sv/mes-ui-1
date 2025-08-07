@@ -3,7 +3,7 @@ import { mount, VueWrapper } from '@vue/test-utils'
 import { createPinia, setActivePinia } from 'pinia'
 import { nextTick } from 'vue'
 import MainLayout from '../MainLayout.vue'
-import { useLayoutStore } from '@/stores/layoutStore'
+import { useLayoutStore } from '@stores/layoutStore'
 
 // Mock window 객체
 Object.defineProperty(window, 'matchMedia', {
@@ -170,9 +170,9 @@ describe('MainLayout', () => {
   it('키보드 단축키가 정상 동작한다', async () => {
     wrapper = mount(MainLayout, {
       global: {
-        plugins: [pinia],
-        attachTo: document.body
-      }
+        plugins: [pinia]
+      },
+      attachTo: document.body
     })
 
     const layoutStore = useLayoutStore()

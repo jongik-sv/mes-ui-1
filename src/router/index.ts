@@ -4,19 +4,18 @@ import type { RouteRecordRaw } from 'vue-router'
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    name: 'Home',
-    component: () => import('@views/HomeView.vue'),
+    name: 'MES',
+    component: () => import('@views/MESView.vue'),
     meta: {
       title: 'MES UI Framework'
     }
   },
   {
-    path: '/mes',
-    name: 'MES',
-    component: () => import('@views/MESView.vue'),
+    path: '/demo',
+    name: 'Demo', 
+    component: () => import('@views/HomeView.vue'),
     meta: {
-      title: 'MES 시스템',
-      requiresAuth: true
+      title: 'MES UI Framework Demo'
     }
   },
   {

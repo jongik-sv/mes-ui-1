@@ -275,7 +275,7 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 var(--padding-lg);
+  padding: 0;
 }
 
 .header-placeholder {

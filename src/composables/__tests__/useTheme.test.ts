@@ -209,7 +209,7 @@ describe('useTheme', () => {
       
       // 시스템 테마가 다크로 변경됨을 시뮬레이션
       if (mediaQueryCallback) {
-        const callback = mediaQueryCallback
+        const callback = mediaQueryCallback as (e: MediaQueryListEvent) => void
         callback({ matches: true } as MediaQueryListEvent)
         await nextTick()
         

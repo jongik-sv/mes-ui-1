@@ -65,3 +65,7 @@ Task details:
 </task>
 
 ------
+
+또 다른 TypeScript 오류가 발생했다. useTheme.test.ts에서 callback이 'never' 타입으로 추론되는 문제를 해결해줘.
+
+------

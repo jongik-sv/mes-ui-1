@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 import type { User, UserPreferences, UserMenuState, LoginCredentials } from '@/types/user';
 import { userApi } from '@/api/userApi';
-import { router } from '@/router';
+import router from '@/router';
 
 export const useUserStore = defineStore('user', () => {
   // State

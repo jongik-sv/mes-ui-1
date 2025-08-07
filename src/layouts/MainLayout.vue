@@ -374,7 +374,7 @@ onUnmounted(() => {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.2s ease-out; /* leave 시 빠르게 */
+  transition: transform 0.1s ease-out; /* leave 시 매우 빠르게 */
   transform-style: preserve-3d;
   border-radius: var(--radius-md);
 }

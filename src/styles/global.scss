@@ -1,6 +1,5 @@
-// MES UI Framework - Global Styles
-@import 'variables';
-@import 'mixins';
+// MES UI Framework - Global Styles  
+@use 'mixins' as *;
 
 // 기본 리셋 및 전역 스타일
 * {

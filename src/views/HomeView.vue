@@ -52,6 +52,7 @@
 </script>
 
 <style lang="scss" scoped>
+  @use '@styles/mixins' as *;
   .home-view {
     padding: var(--space-8);
     max-width: 1200px;

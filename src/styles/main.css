@@ -6,6 +6,15 @@
 /* CSS 변수 시스템 */
 @import './variables/index.css';
 
+/* 폰트 시스템 */
+@import './fonts.css';
+
+/* 타이포그래피 시스템 */
+@import './typography.css';
+
+/* 아이콘 시스템 */
+@import './icons.css';
+
 /* 테마 전환 애니메이션 */
 .theme-transitioning {
   transition: var(--transition-theme-change);

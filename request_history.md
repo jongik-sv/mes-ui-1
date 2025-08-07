@@ -17,3 +17,19 @@ design.md 파일에 ./docs/ui-requirements.md, ./docs/theme-guide.md 파일의 �
 행했는지 tasks.md에 표시 해줘.
 
 ------
+
+Implement the task from the markdown document at .kiro/specs/mes-ui-framework/tasks.md:
+        
+<task title="2.2 타이포그래피 및 아이콘 시스템 구현">
+
+Status: not started
+
+Task details:
+- Pretendard 폰트 및 JetBrains Mono 폰트 적용
+- 폰트 크기 체계 및 라인 높이 설정
+- Lucide React 아이콘 라이브러리 통합 및 MES 특화 아이콘 매핑
+- _요구사항: 10.2, 10.3_
+
+</task>
+
+------

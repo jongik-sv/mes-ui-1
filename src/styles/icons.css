@@ -1,0 +1,206 @@
+/* 아이콘 시스템 CSS 변수 */
+:root {
+  /* Icon Sizes */
+  --icon-xs: 0.75rem;    /* 12px - 인라인 아이콘 */
+  --icon-sm: 1rem;       /* 16px - 버튼 내 아이콘 */
+  --icon-md: 1.25rem;    /* 20px - 일반 아이콘 */
+  --icon-lg: 1.5rem;     /* 24px - 기본 크기 */
+  --icon-xl: 2rem;       /* 32px - 큰 아이콘 */
+  --icon-2xl: 2.5rem;    /* 40px - 툴바 아이콘 */
+}
+
+/* 기본 아이콘 스타일 */
+.mes-icon {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  stroke: currentColor;
+  fill: none;
+}
+
+/* 아이콘 크기별 스타일 */
+.mes-icon--xs {
+  width: var(--icon-xs);
+  height: var(--icon-xs);
+}
+
+.mes-icon--sm {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+}
+
+.mes-icon--md {
+  width: var(--icon-md);
+  height: var(--icon-md);
+}
+
+.mes-icon--lg {
+  width: var(--icon-lg);
+  height: var(--icon-lg);
+}
+
+.mes-icon--xl {
+  width: var(--icon-xl);
+  height: var(--icon-xl);
+}
+
+.mes-icon--2xl {
+  width: var(--icon-2xl);
+  height: var(--icon-2xl);
+}
+
+/* 아이콘 상태별 스타일 */
+.mes-icon--primary {
+  color: var(--primary);
+}
+
+.mes-icon--secondary {
+  color: var(--secondary);
+}
+
+.mes-icon--success {
+  color: var(--success);
+}
+
+.mes-icon--warning {
+  color: var(--warning);
+}
+
+.mes-icon--error {
+  color: var(--error);
+}
+
+.mes-icon--info {
+  color: var(--info);
+}
+
+.mes-icon--muted {
+  color: var(--text-muted);
+}
+
+/* 인터랙티브 아이콘 스타일 */
+.mes-icon--interactive {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mes-icon--interactive:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+.mes-icon--interactive:active {
+  transform: scale(0.95);
+}
+
+/* 회전 애니메이션 (툴바용) */
+.mes-icon--rotating {
+  transition: transform 0.3s ease;
+}
+
+.mes-icon--rotating:hover {
+  transform: rotate(90deg);
+}
+
+/* 스피닝 애니메이션 (로딩용) */
+.mes-icon--spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 펄스 애니메이션 (알림용) */
+.mes-icon--pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* 아이콘과 텍스트 조합 스타일 */
+.mes-icon-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mes-icon-text--vertical {
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* 버튼 내 아이콘 스타일 */
+.mes-button .mes-icon {
+  margin-right: 0.5rem;
+}
+
+.mes-button .mes-icon:last-child {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+.mes-button--icon-only .mes-icon {
+  margin: 0;
+}
+
+/* 입력 필드 내 아이콘 스타일 */
+.mes-input-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.mes-input-icon--left {
+  left: 0.75rem;
+}
+
+.mes-input-icon--right {
+  right: 0.75rem;
+}
+
+/* 툴팁과 함께 사용되는 아이콘 */
+.mes-icon--with-tooltip {
+  cursor: help;
+}
+
+/* 접근성을 위한 스타일 */
+.mes-icon[aria-hidden="true"] {
+  pointer-events: none;
+}
+
+/* 고대비 모드 지원 */
+@media (prefers-contrast: high) {
+  .mes-icon--muted {
+    color: var(--text-secondary);
+  }
+}
+
+/* 모션 감소 선호 지원 */
+@media (prefers-reduced-motion: reduce) {
+  .mes-icon--rotating,
+  .mes-icon--spinning,
+  .mes-icon--pulse {
+    animation: none;
+    transition: none;
+  }
+  
+  .mes-icon--interactive:hover {
+    transform: none;
+  }
+}

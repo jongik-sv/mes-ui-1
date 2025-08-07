@@ -18,6 +18,14 @@ const routes: RouteRecordRaw[] = [
       title: 'MES 시스템',
       requiresAuth: true
     }
+  },
+  {
+    path: '/typography-demo',
+    name: 'TypographyDemo',
+    component: () => import('@views/TypographyDemo.vue'),
+    meta: {
+      title: '타이포그래피 및 아이콘 데모'
+    }
   }
 ]
 

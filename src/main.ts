@@ -4,8 +4,12 @@ import PrimeVue from 'primevue/config'
 import router from './router'
 import App from './App.vue'
 
+// MES UI 컴포넌트
+import MesIcon from './components/ui/MesIcon.vue'
+
 // 전역 스타일 import
 import './styles/global.scss'
+import './styles/main.css'
 import 'primevue/resources/themes/aura-dark-blue/theme.css'
 import 'primevue/resources/primevue.min.css'
 import 'primeicons/primeicons.css'
@@ -28,5 +32,8 @@ app.use(PrimeVue, {
     }
   }
 })
+
+// MES UI 컴포넌트 전역 등록
+app.component('MesIcon', MesIcon)
 
 app.mount('#app')

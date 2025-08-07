@@ -1,0 +1,107 @@
+/* Pretendard 폰트 정의 */
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/pretendard/Pretendard-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/pretendard/Pretendard-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/pretendard/Pretendard-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/pretendard/Pretendard-Bold.woff2') format('woff2');
+}
+
+/* JetBrains Mono 폰트 정의 */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono/JetBrainsMono-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono/JetBrainsMono-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono/JetBrainsMono-Bold.woff2') format('woff2');
+}
+
+/* Libre Barcode 39 폰트 정의 */
+@font-face {
+  font-family: 'Libre Barcode 39';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/barcode/LibreBarcode39-Regular.woff2') format('woff2');
+}
+
+/* 폰트 패밀리 CSS 변수 정의 */
+:root {
+  /* Sans-serif (UI 기본) */
+  --font-sans: 'Pretendard', 'Noto Sans KR', 'Malgun Gothic', 
+               -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  
+  /* Monospace (코드, 데이터) */
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', 
+               'SF Mono', Monaco, monospace;
+  
+  /* Barcode (바코드 전용) */
+  --font-barcode: 'Libre Barcode 39', 'Code 39', monospace;
+  
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+}
+
+/* 기본 폰트 적용 */
+body {
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-normal);
+}
+
+/* 코드 및 데이터 요소에 모노스페이스 폰트 적용 */
+code,
+pre,
+kbd,
+samp,
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* 바코드 요소에 바코드 폰트 적용 */
+.font-barcode {
+  font-family: var(--font-barcode);
+  letter-spacing: 0;
+}

@@ -67,6 +67,14 @@
   --gap-md: var(--space-4);
   --gap-lg: var(--space-6);
   
+  /* Icon Sizes */
+  --icon-xs: 0.75rem;    /* 12px - 인라인 아이콘 */
+  --icon-sm: 1rem;       /* 16px - 버튼 내 아이콘 */
+  --icon-md: 1.25rem;    /* 20px - 일반 아이콘 */
+  --icon-lg: 1.5rem;     /* 24px - 기본 크기 */
+  --icon-xl: 2rem;       /* 32px - 큰 아이콘 */
+  --icon-2xl: 2.5rem;    /* 40px - 툴바 아이콘 */
+  
   /* Component Sizes */
   --header-height: 60px;
   --toolbar-width: 70px;

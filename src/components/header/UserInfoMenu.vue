@@ -141,8 +141,9 @@ const closeMenu = () => {
   userStore.closeUserMenu();
 };
 
-const getInitial = (name?: string) => {
-  return name ? name.charAt(0).toUpperCase() : '?';
+const getInitial = (name?: string): string => {
+  if (!name || name.trim().length === 0) return '?';
+  return name.trim().charAt(0).toUpperCase();
 };
 
 const openUserSettings = () => {
@@ -160,24 +161,28 @@ const handleLogout = async () => {
   closeMenu();
 };
 
-// 외부 클릭 감지
+// Event handlers
 const handleClickOutside = (event: Event) => {
-  if (menuContainer.value && !menuContainer.value.contains(event.target as Node)) {
+  const target = event.target as Node;
+  if (menuContainer.value && 
+      target && 
+      !menuContainer.value.contains(target) && 
+      menuState.value.isOpen) {
     closeMenu();
   }
 };
 
-// 키보드 네비게이션
 const handleKeyDown = (event: KeyboardEvent) => {
   if (event.key === 'Escape' && menuState.value.isOpen) {
+    event.preventDefault();
     closeMenu();
   }
 };
 
-// Lifecycle
+// Lifecycle hooks
 onMounted(() => {
-  document.addEventListener('click', handleClickOutside);
-  document.addEventListener('keydown', handleKeyDown);
+  document.addEventListener('click', handleClickOutside, { passive: true });
+  document.addEventListener('keydown', handleKeyDown, { passive: false });
 });
 
 onUnmounted(() => {
@@ -204,7 +209,7 @@ onUnmounted(() => {
   cursor: pointer;
   transition: all var(--transition-normal);
   
-  &:hover {
+  &:hover:not(.menu-open) {
     background: var(--bg-tertiary);
     border-color: var(--surface-2);
   }
@@ -212,6 +217,7 @@ onUnmounted(() => {
   &.menu-open {
     background: var(--bg-tertiary);
     border-color: var(--primary);
+    box-shadow: 0 0 0 1px var(--primary-alpha-20);
   }
   
   &:focus {

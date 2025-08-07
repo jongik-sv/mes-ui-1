@@ -74,18 +74,6 @@ Task details:
 
 ------
 
-Implement the task from the markdown document at .kiro/specs/mes-ui-framework/tasks.md:
-        
-<task title="4.3 사용자 정보 드롭다운 메뉴 구현">
-
-Status: not started
-
-Task details:
-- 아바타 + 소속명 + 사용자명 표시 컴포넌트
-- 드롭다운 메뉴 (사용자 설정, 메시지함, 로그아웃) 구현
-- 사용자 상태 관리 Pinia 스토어 작성
-- _요구사항: 3.4_
-
-</task>
+.kiro/specs/mes-ui-framework/tasks.md 에서 '4.3 사용자 정보 드롭다운 메뉴 구현' task를 구현해줘. Basic Rules를 잘 따라줘.
 
 ------

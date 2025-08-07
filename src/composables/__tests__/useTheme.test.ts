@@ -209,7 +209,8 @@ describe('useTheme', () => {
       
       // 시스템 테마가 다크로 변경됨을 시뮬레이션
       if (mediaQueryCallback) {
-        mediaQueryCallback({ matches: true } as MediaQueryListEvent)
+        const callback = mediaQueryCallback
+        callback({ matches: true } as MediaQueryListEvent)
         await nextTick()
         
         expect(currentTheme.value).toBe('dark')

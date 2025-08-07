@@ -1,0 +1,76 @@
+{
+  "sessionTokenLimit": 32000,
+  "mcpServers": {
+    "fetch": {
+      "command": "uvx",
+      "args": [
+          "mcp-server-fetch"
+      ],
+      "env": {},
+      "disabled": false,
+      "autoApprove": []
+    },
+    "supabase": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@supabase/mcp-server-supabase@latest",
+        "--read-only",
+        "--project-ref=bifocdkfviqeonfmfwvs"
+      ],
+      "env": {
+        "SUPABASE_ACCESS_TOKEN": "sbp_b6dc12f28750977c5a939f8ccc0dc6a34f49ec5d"
+      },
+      "disabled": false,
+      "autoApprove": []
+    },
+    "sequential-thinking": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
+      "disabled": false,
+      "autoApprove": [
+        "sequentialthinking"
+      ]
+    },
+    "Context7": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@upstash/context7-mcp@latest"
+      ],
+      "disabled": false,
+      "autoApprove": []
+    },
+    "pyhub.mcptools": {
+      "command": "C:\\mcptools\\pyhub.mcptools\\pyhub.mcptools.exe",
+      "args": [
+        "run",
+        "stdio"
+      ],
+      "env": {},
+      "disabled": false,
+      "autoApprove": []
+    },
+    "primereact": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "sitemcp@latest",
+        "https://primereact.org",
+        "-m",
+        "/docs/**"
+      ]
+    }
+  }
+}

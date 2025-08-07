@@ -5,14 +5,17 @@ import ResponsiveToolbar from '../ResponsiveToolbar.vue';
 import { useResponsiveLayout } from '@/composables/useResponsiveLayout';
 
 // Mock PrimeVue components
-vi.mock('primevue/drawer', () => ({
+vi.mock('primevue/sidebar', () => ({
   default: {
-    name: 'Drawer',
-    props: ['visible', 'position', 'modal', 'dismissableMask'],
+    name: 'Sidebar',
+    props: ['visible', 'position', 'modal', 'dismissable'],
     emits: ['update:visible', 'hide'],
     template: `
-      <div v-if="visible" class="p-drawer" :class="'p-drawer-' + position">
-        <div class="p-drawer-content">
+      <div v-if="visible" class="p-sidebar" :class="'p-sidebar-' + position">
+        <div class="p-sidebar-header">
+          <slot name="header" />
+        </div>
+        <div class="p-sidebar-content">
           <slot />
         </div>
       </div>
@@ -157,8 +160,8 @@ describe('ResponsiveToolbar', () => {
         global: { plugins: [pinia] }
       });
 
-      // Then: 드로어 표시, 고정 툴바 숨김
-      expect(wrapper.find('.p-drawer').exists()).toBe(true);
+      // Then: 사이드바 표시, 고정 툴바 숨김
+      expect(wrapper.find('.p-sidebar').exists()).toBe(true);
       expect(wrapper.find('.toolbar-sidebar').exists()).toBe(false);
     });
 
@@ -211,12 +214,12 @@ describe('ResponsiveToolbar', () => {
         global: { plugins: [pinia] }
       });
 
-      // Then: 드로어 숨김
-      expect(wrapper.find('.p-drawer').exists()).toBe(false);
+      // Then: 사이드바 숨김
+      expect(wrapper.find('.p-sidebar').exists()).toBe(false);
     });
   });
 
-  describe('드로어 인터랙션', () => {
+  describe('사이드바 인터랙션', () => {
     let mockCloseMobileMenu: ReturnType<typeof vi.fn>;
 
     beforeEach(() => {
@@ -238,15 +241,15 @@ describe('ResponsiveToolbar', () => {
       });
     });
 
-    it('드로어 닫기 시 closeMobileMenu가 호출된다', async () => {
+    it('사이드바 닫기 시 closeMobileMenu가 호출된다', async () => {
       // Given: 컴포넌트 마운트
       const wrapper = mount(ResponsiveToolbar, {
         global: { plugins: [pinia] }
       });
 
-      // When: 드로어 hide 이벤트 발생
-      const drawer = wrapper.findComponent({ name: 'Drawer' });
-      await drawer.vm.$emit('hide');
+      // When: 사이드바 hide 이벤트 발생
+      const sidebar = wrapper.findComponent({ name: 'Sidebar' });
+      await sidebar.vm.$emit('hide');
 
       // Then: closeMobileMenu 호출
       expect(mockCloseMobileMenu).toHaveBeenCalledOnce();
@@ -284,7 +287,7 @@ describe('ResponsiveToolbar', () => {
       expect(toolbar.attributes('aria-label')).toBe('주요 메뉴');
     });
 
-    it('드로어에 적절한 헤더가 설정된다', () => {
+    it('사이드바에 적절한 헤더가 설정된다', () => {
       // Given: 모바일 레이아웃으로 변경
       const mockUseResponsiveLayout = vi.mocked(useResponsiveLayout);
       mockUseResponsiveLayout.mockReturnValue({
@@ -307,7 +310,7 @@ describe('ResponsiveToolbar', () => {
         global: { plugins: [pinia] }
       });
 
-      // Then: 드로어 헤더 확인
+      // Then: 사이드바 헤더 확인
       expect(wrapper.text()).toContain('메뉴');
     });
   });
@@ -340,7 +343,7 @@ describe('ResponsiveToolbar', () => {
       expect(wrapper.find('.toolbar-sidebar').exists()).toBe(true);
     });
 
-    it('모바일 드로어가 올바른 속성을 가진다', () => {
+    it('모바일 사이드바가 올바른 속성을 가진다', () => {
       // Given: 모바일 레이아웃
       const mockUseResponsiveLayout = vi.mocked(useResponsiveLayout);
       mockUseResponsiveLayout.mockReturnValue({
@@ -363,11 +366,11 @@ describe('ResponsiveToolbar', () => {
         global: { plugins: [pinia] }
       });
 
-      // Then: 드로어가 올바른 속성을 가짐
-      const drawer = wrapper.findComponent({ name: 'Drawer' });
-      expect(drawer.props('position')).toBe('left');
-      expect(drawer.props('modal')).toBe(true);
-      expect(drawer.props('dismissableMask')).toBe(true);
+      // Then: 사이드바가 올바른 속성을 가짐
+      const sidebar = wrapper.findComponent({ name: 'Sidebar' });
+      expect(sidebar.props('position')).toBe('left');
+      expect(sidebar.props('modal')).toBe(true);
+      expect(sidebar.props('dismissable')).toBe(true);
     });
   });
 });

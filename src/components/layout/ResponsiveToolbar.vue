@@ -112,7 +112,7 @@ const handleMenuSelect = (menu: any) => {
 }
 
 .mobile-toolbar-drawer {
-  :deep(.p-drawer-content) {
+  :deep(.p-sidebar-content) {
     width: 280px;
   }
 }
@@ -138,7 +138,7 @@ const handleMenuSelect = (menu: any) => {
 }
 
 @media (max-width: 768px) {
-  .mobile-toolbar-drawer :deep(.p-drawer-content) {
+  .mobile-toolbar-drawer :deep(.p-sidebar-content) {
     width: 100vw;
   }
 }

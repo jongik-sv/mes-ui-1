@@ -355,82 +355,80 @@ const handleFavoriteToggle = (nodeKey: string) => {
               color: var(--text-muted);
             }
           }
-        }
-      }
-    }
-      
-        // 메뉴 항목들 (4개씩 그리드)
-        .menu-items-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 1px;
-          padding: 2px;
-          background: var(--bg-primary);
           
-          .menu-item {
-            position: relative;
-            padding: 6px 8px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            font-size: 14px;
-            font-family: az_ea_font, "Segoe UI", wf_segoe-ui_normal, "Segoe WP", Tahoma, Arial, sans-serif;
-            color: var(--text-primary);
-            min-height: 35px;
-            max-width: 400px;
-            padding-left: 35px;
-            display: flex;
-            align-items: center;
-            -webkit-align-items: center;
-            float: left;
+          // 메뉴 항목들 (4개씩 그리드)
+          .menu-items-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            padding: 2px;
+            background: var(--bg-primary);
             
-            &:hover {
-              background: var(--bg-tertiary);
-              border-radius: var(--border-radius-sm);
-            }
-            
-            .menu-text {
-              flex: 1;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-              line-height: 1.2;
-            }
-            
-            .favorite-star {
-              color: #ccc;
-              font-size: 14px;
-              margin-left: 4px;
+            .menu-item {
+              position: relative;
+              padding: 6px 8px;
+              background: transparent;
+              border: none;
               cursor: pointer;
-              transition: var(--transition-normal);
-              flex-shrink: 0;
+              font-size: 14px;
+              font-family: az_ea_font, "Segoe UI", wf_segoe-ui_normal, "Segoe WP", Tahoma, Arial, sans-serif;
+              color: var(--text-primary);
+              min-height: 35px;
+              max-width: 400px;
+              padding-left: 35px;
+              display: flex;
+              align-items: center;
+              -webkit-align-items: center;
+              float: left;
               
               &:hover {
-                color: #ffd700;
-                transform: scale(1.1);
+                background: var(--bg-tertiary);
+                border-radius: var(--border-radius-sm);
               }
               
-              &.active {
-                color: #ffd700;
+              .menu-text {
+                flex: 1;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                line-height: 1.2;
+              }
+              
+              .favorite-star {
+                color: #ccc;
+                font-size: 14px;
+                margin-left: 4px;
+                cursor: pointer;
+                transition: var(--transition-normal);
+                flex-shrink: 0;
                 
                 &:hover {
-                  color: #ffed4e;
+                  color: #ffd700;
+                  transform: scale(1.1);
+                }
+                
+                &.active {
+                  color: #ffd700;
+                  
+                  &:hover {
+                    color: #ffed4e;
+                  }
                 }
               }
             }
-          }
-          
-          // 반응형 그리드
-          @media (max-width: 1200px) {
-            grid-template-columns: repeat(3, 1fr);
-          }
-          
-          @media (max-width: 900px) {
-            grid-template-columns: repeat(2, 1fr);
-          }
-          
-          @media (max-width: 600px) {
-            grid-template-columns: 1fr;
+            
+            // 반응형 그리드
+            @media (max-width: 1200px) {
+              grid-template-columns: repeat(3, 1fr);
+            }
+            
+            @media (max-width: 900px) {
+              grid-template-columns: repeat(2, 1fr);
+            }
+            
+            @media (max-width: 600px) {
+              grid-template-columns: 1fr;
+            }
           }
         }
       }

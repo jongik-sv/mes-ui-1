@@ -99,4 +99,7 @@ Task details:
 ------메뉴아이템 스타일에  
    max-width: 400px;min-height: 35px;padding-left: 35px;align-items: center;-webkit-align-items: center;float: left; 스타일 추가해줘.
 
+------각 메뉴 뒤에
+ 즐겨찾기가 됐는지 나타내는 별모양의 아이콘이 안보인다. 넣어줘.
+
 ------

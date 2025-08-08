@@ -46,11 +46,12 @@
             >
               <span class="menu-text">{{ menuItem.text }}</span>
               <span 
-                v-if="isFavorite(menuItem.id)"
                 class="favorite-star"
+                :class="{ 'active': isFavorite(menuItem.id) }"
                 @click.stop="handleFavoriteToggle(menuItem.id)"
+                title="즐겨찾기"
               >
-                ★
+                {{ isFavorite(menuItem.id) ? '★' : '☆' }}
               </span>
             </div>
           </div>
@@ -314,13 +315,24 @@ const handleFavoriteToggle = (nodeKey: string) => {
           }
           
           .favorite-star {
-            color: #ffd700;
-            font-size: 10px;
-            margin-left: 2px;
+            color: #ccc;
+            font-size: 14px;
+            margin-left: 4px;
             cursor: pointer;
+            transition: var(--transition-normal);
+            flex-shrink: 0;
             
             &:hover {
-              color: #ffed4e;
+              color: #ffd700;
+              transform: scale(1.1);
+            }
+            
+            &.active {
+              color: #ffd700;
+              
+              &:hover {
+                color: #ffed4e;
+              }
             }
           }
         }

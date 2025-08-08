@@ -246,21 +246,23 @@ const handleFavoriteToggle = (nodeKey: string) => {
       .menu-group-header {
         display: flex;
         align-items: center;
-        gap: 4px;
-        padding: 2px 4px;
+        gap: 6px;
+        padding: 6px 8px;
         cursor: pointer;
         background: var(--bg-secondary);
-        border: 1px solid var(--surface-2);
-        font-size: 12px;
-        font-weight: 500;
+        border: none;
+        font-size: 14px;
+        font-weight: 600;
         color: var(--text-primary);
+        margin-bottom: 2px;
+        border-radius: var(--border-radius-sm);
         
         &:hover {
           background: var(--bg-tertiary);
         }
         
         .expand-icon {
-          font-size: 10px;
+          font-size: 12px;
           color: var(--text-secondary);
         }
         
@@ -269,7 +271,7 @@ const handleFavoriteToggle = (nodeKey: string) => {
         }
         
         .group-count {
-          font-size: 10px;
+          font-size: 12px;
           color: var(--text-muted);
         }
       }
@@ -284,19 +286,19 @@ const handleFavoriteToggle = (nodeKey: string) => {
         
         .menu-item {
           position: relative;
-          padding: 2px 4px;
-          background: var(--bg-secondary);
-          border: 1px solid var(--surface-2);
+          padding: 6px 8px;
+          background: transparent;
+          border: none;
           cursor: pointer;
-          font-size: 11px;
+          font-size: 14px;
           color: var(--text-primary);
-          min-height: 20px;
+          min-height: 28px;
           display: flex;
           align-items: center;
           
           &:hover {
             background: var(--bg-tertiary);
-            border-color: var(--primary);
+            border-radius: var(--border-radius-sm);
           }
           
           .menu-text {

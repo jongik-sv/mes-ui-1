@@ -1,16 +1,6 @@
 <template>
-  <Dialog
-    v-model:visible="isVisible"
-    modal
-    :closable="true"
-    :draggable="false"
-    :resizable="false"
-    :maximizable="false"
-    :dismissableMask="false"
-    :style="{ width: '80vw', height: '80vh' }"
-    class="global-menu-modal"
-    @hide="closeModal"
-  >
+  <Dialog v-model:visible="isVisible" modal :closable="true" :draggable="false" :resizable="false" :maximizable="false"
+    :dismissableMask="false" :style="{ width: '80vw', height: '80vh' }" class="global-menu-modal" @hide="closeModal">
     <template #header>
       <h2 class="modal-title" style="margin:10px">전체 메뉴</h2>
     </template>
@@ -19,71 +9,38 @@
       <!-- 검색 및 토글 영역 -->
       <div class="modal-header-section">
         <div class="search-section">
-          <InputText
-            v-model="searchQuery"
-            placeholder="검색할 화면명을 입력하세요"
-            class="search-input"
-            @input="handleSearch"
-          />
-          <Button
-            v-if="searchQuery"
-            icon="pi pi-times"
-            text
-            rounded
-            size="small"
-            class="search-clear-button"
-            @click="clearSearch"
-            title="검색조건 초기화"
-          />
+          <InputText v-model="searchQuery" placeholder="검색할 화면명을 입력하세요" class="search-input" @input="handleSearch" />
+          <Button v-if="searchQuery" icon="pi pi-times" text rounded size="small" class="search-clear-button"
+            @click="clearSearch" title="검색조건 초기화" />
         </div>
         <div class="toggle-section">
           <div class="toggle-group">
             <label class="toggle-item">
               <span class="toggle-label">전체 보기</span>
-              <ToggleButton
-                v-model="showAllMenus"
-                onLabel=""
-                offLabel=""
-                class="toggle-switch"
-                @change="handleToggleChange"
-              />
+              <ToggleButton v-model="showAllMenus" onLabel="" offLabel="" class="toggle-switch"
+                @change="handleToggleChange" />
             </label>
             <label class="toggle-item">
               <span class="toggle-label">항목찾기</span>
-              <ToggleButton
-                v-model="showColumnSearch"
-                onLabel=""
-                offLabel=""
-                class="toggle-switch"
-                @change="handleToggleChange"
-              />
+              <ToggleButton v-model="showColumnSearch" onLabel="" offLabel="" class="toggle-switch"
+                @change="handleToggleChange" />
             </label>
             <label class="toggle-item">
               <span class="toggle-label">즐겨찾기</span>
-              <ToggleButton
-                v-model="showFavorites"
-                onLabel=""
-                offLabel=""
-                class="toggle-switch"
-                @change="handleToggleChange"
-              />
+              <ToggleButton v-model="showFavorites" onLabel="" offLabel="" class="toggle-switch"
+                @change="handleToggleChange" />
             </label>
           </div>
         </div>
       </div>
 
       <!-- 메인 콘텐츠 영역 (좌측 카테고리 + 우측 트리) -->
-      <div class="modal-body" >
+      <div class="modal-body">
         <!-- 좌측 카테고리 사이드바 -->
         <div class="category-sidebar">
           <div class="category-list">
-            <button
-              v-for="category in categories"
-              :key="category.id"
-              class="category-button"
-              :class="{ active: selectedCategory === category.id }"
-              @click="handleCategorySelect(category.id)"
-            >
+            <button v-for="category in categories" :key="category.id" class="category-button"
+              :class="{ active: selectedCategory === category.id }" @click="handleCategorySelect(category.id)">
               {{ category.name }}
             </button>
           </div>
@@ -103,19 +60,10 @@
               <div class="empty-title">일치하는 검색 결과가 존재하지 않습니다</div>
             </div>
           </div>
-          <MenuTree
-            v-else
-            :items="filteredMenuItems"
-            :search-query="searchQuery"
-            :search-mode="searchMode"
-            :expanded-nodes="expandedNodes"
-            :favorites="favorites"
-            :loading="isLoading"
-            @node-expand="handleNodeExpand"
-            @node-collapse="handleNodeCollapse"
-            @toggle-favorite="handleToggleFavorite"
-            @menu-select="handleMenuSelect"
-          />
+          <MenuTree v-else :items="filteredMenuItems" :search-query="searchQuery" :search-mode="searchMode"
+            :expanded-nodes="expandedNodes" :favorites="favorites" :loading="isLoading" @node-expand="handleNodeExpand"
+            @node-collapse="handleNodeCollapse" @toggle-favorite="handleToggleFavorite"
+            @menu-select="handleMenuSelect" />
         </div>
       </div>
     </div>
@@ -123,7 +71,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import Dialog from 'primevue/dialog'
 import InputText from 'primevue/inputtext'
 import Button from 'primevue/button'
@@ -201,7 +149,7 @@ interface AllMenuJsonItem {
 
 const convertAllMenuJsonToMenuItem = (jsonData: Record<string, AllMenuJsonItem>): MenuItem[] => {
   const result: MenuItem[] = []
-  
+
   Object.values(jsonData).forEach(item => {
     const menuItem: MenuItem = {
       id: item.id,
@@ -217,14 +165,14 @@ const convertAllMenuJsonToMenuItem = (jsonData: Record<string, AllMenuJsonItem>)
         bookmarked: item.userdata.bookmarked
       } : undefined
     }
-    
+
     if (item.items && item.items.length > 0) {
       menuItem.items = convertSubItems(item.items, 2, item.id)
     }
-    
+
     result.push(menuItem)
   })
-  
+
   return result.sort((a, b) => {
     const aSeq = jsonData[a.id]?.seq || 0
     const bSeq = jsonData[b.id]?.seq || 0
@@ -248,11 +196,11 @@ const convertSubItems = (items: AllMenuJsonItem[], level: number, categoryCode: 
         bookmarked: item.userdata.bookmarked
       } : undefined
     }
-    
+
     if (item.items && item.items.length > 0) {
       menuItem.items = convertSubItems(item.items, level + 1, categoryCode)
     }
-    
+
     return menuItem
   })
 }
@@ -288,6 +236,13 @@ watch(isVisible, (newValue) => {
   if (newValue !== props.visible) {
     emit('update:visible', newValue)
   }
+  
+  // 모달이 열릴 때마다 높이 강제 설정
+  if (newValue) {
+    setTimeout(() => {
+      forceDialogHeight()
+    }, 100)
+  }
 })
 
 // 카테고리 목록 (JSP 구조 기반)
@@ -298,22 +253,22 @@ const categories = computed<MenuCategory[]>(() => {
 // 필터링된 메뉴 아이템 (allmenu.json 데이터 사용)
 const filteredMenuItems = computed<MenuItem[]>(() => {
   let filtered = [...allMenuData.value]
-  
+
   // 카테고리 필터 (전체메뉴가 아닌 경우)
   if (selectedCategory.value !== 'all') {
     filtered = filterByCategory(filtered, selectedCategory.value)
   }
-  
+
   // 권한 필터 (전체보기가 꺼져있는 경우)
   if (!showAllMenus.value) {
     filtered = filterByAuth(filtered)
   }
-  
+
   // 즐겨찾기 필터
   if (showFavorites.value) {
     filtered = filterByFavorites(filtered)
   }
-  
+
   // 검색 필터
   if (searchQuery.value.trim()) {
     if (searchMode.value === 'column') {
@@ -322,7 +277,7 @@ const filteredMenuItems = computed<MenuItem[]>(() => {
       filtered = filterByTextSearch(filtered, searchQuery.value.trim())
     }
   }
-  
+
   return filtered
 })
 
@@ -333,40 +288,40 @@ const filterByCategory = (items: MenuItem[], categoryCode: string): MenuItem[] =
 
 const filterByAuth = (items: MenuItem[]): MenuItem[] => {
   const filtered: MenuItem[] = []
-  
+
   const processItems = (items: MenuItem[]): MenuItem[] => {
     return items.filter(item => {
       if (!item.isAuth) return false
-      
+
       if (item.items && item.items.length > 0) {
         const filteredChildren = processItems(item.items)
         return filteredChildren.length > 0
       }
-      
+
       return true
     }).map(item => ({
       ...item,
       items: item.items ? processItems(item.items) : undefined
     }))
   }
-  
+
   return processItems(items)
 }
 
 const filterByFavorites = (items: MenuItem[]): MenuItem[] => {
   const filtered: MenuItem[] = []
-  
+
   const processItems = (items: MenuItem[]): MenuItem[] => {
     const result: MenuItem[] = []
-    
+
     items.forEach(item => {
       const isFavorite = item.bookmarked || favorites.value.has(item.id)
       let filteredChildren: MenuItem[] = []
-      
+
       if (item.items && item.items.length > 0) {
         filteredChildren = processItems(item.items)
       }
-      
+
       if (isFavorite || filteredChildren.length > 0) {
         result.push({
           ...item,
@@ -374,28 +329,28 @@ const filterByFavorites = (items: MenuItem[]): MenuItem[] => {
         })
       }
     })
-    
+
     return result
   }
-  
+
   return processItems(items)
 }
 
 const filterByTextSearch = (items: MenuItem[], query: string): MenuItem[] => {
   const keyword = query.toUpperCase().replace(/ /g, '')
-  
+
   const processItems = (items: MenuItem[]): MenuItem[] => {
     const result: MenuItem[] = []
-    
+
     items.forEach(item => {
       const matchesText = item.text.toUpperCase().replace(/ /g, '').includes(keyword)
       const matchesId = item.id.toUpperCase().replace(/ /g, '').includes(keyword)
       let filteredChildren: MenuItem[] = []
-      
+
       if (item.items && item.items.length > 0) {
         filteredChildren = processItems(item.items)
       }
-      
+
       if (matchesText || matchesId || filteredChildren.length > 0) {
         result.push({
           ...item,
@@ -403,26 +358,26 @@ const filterByTextSearch = (items: MenuItem[], query: string): MenuItem[] => {
         })
       }
     })
-    
+
     return result
   }
-  
+
   return processItems(items)
 }
 
 const filterByColumnSearch = (items: MenuItem[], query: string): MenuItem[] => {
   const keyword = query.toUpperCase().replace(/ /g, '')
-  
+
   const processItems = (items: MenuItem[]): MenuItem[] => {
     const result: MenuItem[] = []
-    
+
     items.forEach(item => {
       let matchesColumn = false
-      
+
       // 컬럼 정보가 있는 경우 컬럼 검색 수행
       if (item.column) {
         const { form, grid } = item.column
-        
+
         if (form?.id && form.id.some(id => id.toUpperCase().replace(/ /g, '').includes(keyword))) {
           matchesColumn = true
         }
@@ -436,12 +391,12 @@ const filterByColumnSearch = (items: MenuItem[], query: string): MenuItem[] => {
           matchesColumn = true
         }
       }
-      
+
       let filteredChildren: MenuItem[] = []
       if (item.items && item.items.length > 0) {
         filteredChildren = processItems(item.items)
       }
-      
+
       if (matchesColumn || filteredChildren.length > 0) {
         result.push({
           ...item,
@@ -449,10 +404,10 @@ const filterByColumnSearch = (items: MenuItem[], query: string): MenuItem[] => {
         })
       }
     })
-    
+
     return result
   }
-  
+
   return processItems(items)
 }
 
@@ -487,7 +442,7 @@ const handleToggleFavorite = (menuId: string) => {
   } else {
     favorites.value.add(menuId)
   }
-  
+
   emit('favorite-toggle', menuId)
 }
 
@@ -511,14 +466,58 @@ const handleKeydown = (event: KeyboardEvent) => {
 // 컴포넌트 마운트/언마운트 시 이벤트 리스너 관리
 onMounted(() => {
   document.addEventListener('keydown', handleKeydown)
-  
+
   // 초기 즐겨찾기 데이터 로드 (localStorage에서)
   loadFavorites()
+  
+  // PrimeVue Dialog 높이 강제 설정
+  forceDialogHeight()
 })
+
+// PrimeVue Dialog 높이 강제 설정 함수
+const forceDialogHeight = () => {
+  // 다음 틱에서 실행하여 DOM이 완전히 렌더링된 후 적용
+  nextTick(() => {
+    const applyStyles = () => {
+      // 모든 가능한 셀렉터로 p-dialog-content 찾기
+      const selectors = [
+        '.global-menu-modal .p-dialog-content',
+        '.p-dialog.global-menu-modal .p-dialog-content',
+        '.p-component.global-menu-modal .p-dialog-content',
+        'div[class*="global-menu-modal"] .p-dialog-content',
+        '.p-dialog-content'
+      ]
+      
+      let dialogContent: HTMLElement | null = null
+      
+      for (const selector of selectors) {
+        dialogContent = document.querySelector(selector) as HTMLElement
+        if (dialogContent) break
+      }
+      
+      if (dialogContent) {
+        // 강제로 스타일 적용
+        dialogContent.style.setProperty('height', '100%', 'important')
+        dialogContent.style.setProperty('display', 'flex', 'important')
+        dialogContent.style.setProperty('flex-direction', 'column', 'important')
+        dialogContent.style.setProperty('flex', '1', 'important')
+        dialogContent.style.setProperty('min-height', '0', 'important')
+        
+        console.log('Dialog content height forced to 100%:', dialogContent)
+      } else {
+        console.warn('Dialog content not found, retrying...')
+        // 0.5초 후 재시도
+        setTimeout(applyStyles, 500)
+      }
+    }
+    
+    applyStyles()
+  })
+}
 
 onUnmounted(() => {
   document.removeEventListener('keydown', handleKeydown)
-  
+
   // 즐겨찾기 데이터 저장
   saveFavorites()
 })
@@ -562,7 +561,30 @@ defineExpose({
 </script>
 
 <style lang="scss" scoped>
+// 전역 스타일로 PrimeVue Dialog 강제 설정
+:global(.global-menu-modal .p-dialog-content) {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
+  min-height: 0 !important;
+}
 
+:global(.global-menu-modal .p-dialog) {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 80vh !important;
+}
+
+// 추가적인 전역 스타일로 모든 가능한 클래스 타겟팅
+:global(.p-dialog.global-menu-modal .p-dialog-content),
+:global(.p-component.global-menu-modal .p-dialog-content),
+:global(div.global-menu-modal .p-dialog-content) {
+  height: 100% !important;
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
 .global-menu-modal {
   :deep(.p-dialog) {
     width: 80vw !important;
@@ -581,7 +603,7 @@ defineExpose({
     transform: none !important;
     resize: none !important;
     overflow: hidden !important;
-    
+
     // JavaScript 크기 조정 방지
     transition: none !important;
     animation: none !important;
@@ -602,7 +624,7 @@ defineExpose({
   :deep(.p-dialog-header) {
     flex-shrink: 0 !important;
     margin: 10px;
-    
+
     .modal-title {
       font-size: calc(var(--text-xl) + 1px);
       padding: calc(var(--space-2) * 1.5);
@@ -628,7 +650,7 @@ defineExpose({
   :deep(.p-dialog-mask) {
     background: rgba(15, 23, 42, 0.8);
     backdrop-filter: blur(4px);
-    
+
     // 마스크 내부의 모든 dialog 요소 크기 고정
     .p-dialog {
       width: 80vw !important;

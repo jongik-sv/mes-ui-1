@@ -575,6 +575,7 @@ defineExpose({
     top: 10vh !important;
     left: 10vw !important;
     transform: none !important;
+    resize: none !important;
   }
 
   :deep(.p-dialog-mask) {

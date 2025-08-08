@@ -1,63 +1,57 @@
 <template>
   <div class="menu-tree-wrapper">
     <!-- 빈 상태 -->
-    <div v-if="!props.items.length" class="empty-tree" data-testid="empty-tree">
+    <div v-if="!props.items.length" class="empty-tree">
       <i class="pi pi-search empty-icon"></i>
       <h3 class="empty-title">메뉴가 없습니다</h3>
-      <p class="empty-description">
-        {{ getEmptyMessage() }}
-      </p>
+      <p class="empty-description">{{ getEmptyMessage() }}</p>
     </div>
 
-    <!-- 메뉴 그리드 -->
-    <div v-else class="menu-grid-container">
+    <!-- 메뉴 리스트 -->
+    <div v-else class="menu-list-container">
       <div 
         v-for="category in props.items" 
         :key="category.id"
         class="category-section"
       >
-        <h3 class="category-title">{{ category.text }}</h3>
-        
+        <!-- 카테고리별로 메뉴 그룹들 표시 -->
         <div 
           v-for="menuGroup in category.items" 
           :key="menuGroup.id"
           class="menu-group"
         >
-          <h4 class="menu-group-title">{{ menuGroup.text }}</h4>
+          <!-- 메뉴 그룹 헤더 (접기/펼치기) -->
+          <div 
+            class="menu-group-header"
+            @click="toggleGroup(menuGroup.id)"
+          >
+            <i 
+              :class="isGroupExpanded(menuGroup.id) ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+              class="expand-icon"
+            />
+            <span class="group-title">{{ menuGroup.text }}</span>
+            <span class="group-count">({{ menuGroup.items?.length || 0 }})</span>
+          </div>
           
-          <!-- 마지막 메뉴 항목들을 4개씩 그리드로 배치 -->
-          <div class="menu-items-grid">
+          <!-- 메뉴 항목들 (4개씩 그리드) -->
+          <div 
+            v-if="isGroupExpanded(menuGroup.id) && menuGroup.items"
+            class="menu-items-grid"
+          >
             <div
               v-for="menuItem in menuGroup.items"
               :key="menuItem.id"
-              class="menu-item-card"
+              class="menu-item"
               @click="handleMenuClick(menuItem)"
             >
-              <div class="menu-item-content">
-                <i 
-                  v-if="menuItem.icon" 
-                  :class="menuItem.icon"
-                  class="menu-item-icon"
-                />
-                <i 
-                  v-else
-                  class="pi pi-file menu-item-icon"
-                />
-                
-                <span class="menu-item-text">{{ menuItem.text }}</span>
-                
-                <!-- 즐겨찾기 버튼 -->
-                <Button
-                  :icon="isFavorite(menuItem.id) ? 'pi pi-star-fill' : 'pi pi-star'"
-                  text
-                  rounded
-                  size="small"
-                  class="favorite-button"
-                  :class="{ 'favorite-button--active': isFavorite(menuItem.id) }"
-                  @click.stop="handleFavoriteToggle(menuItem.id)"
-                  :title="isFavorite(menuItem.id) ? '즐겨찾기 제거' : '즐겨찾기 추가'"
-                />
-              </div>
+              <span class="menu-text">{{ menuItem.text }}</span>
+              <span 
+                v-if="isFavorite(menuItem.id)"
+                class="favorite-star"
+                @click.stop="handleFavoriteToggle(menuItem.id)"
+              >
+                ★
+              </span>
             </div>
           </div>
         </div>
@@ -70,15 +64,6 @@
         <i class="pi pi-spin pi-spinner loading-icon"></i>
         <span class="loading-text">메뉴를 불러오는 중...</span>
       </div>
-    </div>
-
-    <!-- 스크린 리더용 안내 -->
-    <div 
-      aria-live="polite" 
-      aria-atomic="true" 
-      class="sr-only"
-    >
-      {{ screenReaderAnnouncement }}
     </div>
   </div>
 </template>
@@ -137,42 +122,34 @@ const props = withDefaults(defineProps<Props>(), {
 const emit = defineEmits<Emits>()
 
 // 내부 상태
-const screenReaderAnnouncement = ref('')
-const selectionKeys = ref<Record<string, boolean>>({})
+const expandedGroups = ref<Set<string>>(new Set())
 
-// PrimeVue Tree용 확장 키 객체
-const expandedKeys = computed(() => {
-  const keys: Record<string, boolean> = {}
-  props.expandedNodes.forEach(nodeId => {
-    keys[nodeId] = true
-  })
-  return keys
-})
-
-// MenuItem을 TreeNode로 변환
-const treeNodes = computed<TreeNode[]>(() => {
-  return convertMenuItemsToTreeNodes(props.items)
-})
-
-const convertMenuItemsToTreeNodes = (items: MenuItem[]): TreeNode[] => {
-  return items.map(item => {
-    const node: TreeNode = {
-      key: item.id,
-      label: item.text,
-      level: item.level,
-      leaf: !item.hasItems || !item.items || item.items.length === 0,
-      icon: item.icon,
-      url: item.url,
-      data: item
-    }
-    
-    if (item.items && item.items.length > 0) {
-      node.children = convertMenuItemsToTreeNodes(item.items)
-    }
-    
-    return node
-  })
+// 그룹 확장/축소 상태 확인
+const isGroupExpanded = (groupId: string): boolean => {
+  return expandedGroups.value.has(groupId)
 }
+
+// 그룹 토글
+const toggleGroup = (groupId: string) => {
+  if (expandedGroups.value.has(groupId)) {
+    expandedGroups.value.delete(groupId)
+    emit('node-collapse', groupId)
+  } else {
+    expandedGroups.value.add(groupId)
+    emit('node-expand', groupId)
+  }
+}
+
+// 컴포넌트 마운트 시 모든 그룹을 기본적으로 확장 상태로 설정
+onMounted(() => {
+  props.items.forEach(category => {
+    if (category.items) {
+      category.items.forEach(group => {
+        expandedGroups.value.add(group.id)
+      })
+    }
+  })
+})
 
 // 빈 상태 메시지
 const getEmptyMessage = (): string => {
@@ -202,21 +179,6 @@ const highlightSearchText = (text: string) => {
 }
 
 // 이벤트 핸들러
-const handleNodeExpand = (node: TreeNode) => {
-  emit('node-expand', node.key)
-}
-
-const handleNodeCollapse = (node: TreeNode) => {
-  emit('node-collapse', node.key)
-}
-
-const handleNodeSelect = (node: TreeNode) => {
-  if (node.leaf && node.data) {
-    emit('menu-select', node.data)
-    screenReaderAnnouncement.value = `${node.label} 메뉴가 선택되었습니다`
-  }
-}
-
 const handleMenuClick = (menuItem: MenuItem) => {
   if (menuItem.url) {
     emit('menu-select', menuItem)
@@ -225,47 +187,6 @@ const handleMenuClick = (menuItem: MenuItem) => {
 
 const handleFavoriteToggle = (nodeKey: string) => {
   emit('toggle-favorite', nodeKey)
-  
-  // 메뉴 제목 찾기
-  const findNodeLabel = (nodes: TreeNode[], key: string): string | null => {
-    for (const node of nodes) {
-      if (node.key === key) {
-        return node.label
-      }
-      if (node.children) {
-        const found = findNodeLabel(node.children, key)
-        if (found) return found
-      }
-    }
-    return null
-  }
-  
-  const nodeLabel = findNodeLabel(treeNodes.value, nodeKey)
-  if (nodeLabel) {
-    const action = props.favorites.has(nodeKey) ? '제거' : '추가'
-    screenReaderAnnouncement.value = `${nodeLabel}이(가) 즐겨찾기에서 ${action}되었습니다`
-  }
-}
-
-// 컴포넌트 마운트 시 초기화
-onMounted(() => {
-  // 초기 안내 메시지
-  if (props.items.length > 0) {
-    const menuCount = countTotalMenus(props.items)
-    screenReaderAnnouncement.value = `총 ${menuCount}개의 메뉴가 있습니다`
-  }
-})
-
-// 총 메뉴 개수 계산 (재귀)
-const countTotalMenus = (items: MenuItem[]): number => {
-  let count = 0
-  items.forEach(item => {
-    count++
-    if (item.items) {
-      count += countTotalMenus(item.items)
-    }
-  })
-  return count
 }
 </script>
 
@@ -311,118 +232,89 @@ const countTotalMenus = (items: MenuItem[]): number => {
   }
 }
 
-// 메뉴 그리드 컨테이너
-.menu-grid-container {
+// 메뉴 리스트 컨테이너 (이미지와 동일한 구조)
+.menu-list-container {
   height: 100%;
   overflow-y: auto;
-  padding: var(--space-1);
+  padding: 4px;
   
   .category-section {
-    margin-bottom: var(--space-2);
-    
-    .category-title {
-      font-size: var(--text-lg);
-      font-weight: 600;
-      color: var(--text-primary);
-      margin: 0 0 var(--space-1) 0;
-      padding: var(--space-1) var(--space-2);
-      background: var(--bg-secondary);
-      border-radius: var(--border-radius-sm);
-    }
-    
     .menu-group {
-      margin-bottom: var(--space-1);
+      margin-bottom: 2px;
       
-      .menu-group-title {
-        font-size: var(--text-base);
+      // 메뉴 그룹 헤더 (접기/펼치기)
+      .menu-group-header {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 2px 4px;
+        cursor: pointer;
+        background: var(--bg-secondary);
+        border: 1px solid var(--surface-2);
+        font-size: 12px;
         font-weight: 500;
-        color: var(--text-secondary);
-        margin: 0 0 var(--space-1) 0;
-        padding: var(--space-1) var(--space-2);
-        background: var(--bg-tertiary);
-        border-radius: var(--border-radius-sm);
+        color: var(--text-primary);
+        
+        &:hover {
+          background: var(--bg-tertiary);
+        }
+        
+        .expand-icon {
+          font-size: 10px;
+          color: var(--text-secondary);
+        }
+        
+        .group-title {
+          flex: 1;
+        }
+        
+        .group-count {
+          font-size: 10px;
+          color: var(--text-muted);
+        }
       }
       
+      // 메뉴 항목들 (4개씩 그리드)
       .menu-items-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 2px; // 최대한 좁은 간격
-        padding: var(--space-1);
+        gap: 1px;
+        padding: 2px;
+        background: var(--bg-primary);
         
-        .menu-item-card {
+        .menu-item {
+          position: relative;
+          padding: 2px 4px;
           background: var(--bg-secondary);
           border: 1px solid var(--surface-2);
-          border-radius: var(--border-radius-sm);
           cursor: pointer;
-          transition: var(--transition-normal);
-          min-height: 60px;
+          font-size: 11px;
+          color: var(--text-primary);
+          min-height: 20px;
+          display: flex;
+          align-items: center;
           
           &:hover {
             background: var(--bg-tertiary);
             border-color: var(--primary);
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-sm);
           }
           
-          .menu-item-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: var(--space-1);
-            height: 100%;
-            position: relative;
+          .menu-text {
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            line-height: 1.2;
+          }
+          
+          .favorite-star {
+            color: #ffd700;
+            font-size: 10px;
+            margin-left: 2px;
+            cursor: pointer;
             
-            .menu-item-icon {
-              font-size: var(--text-sm);
-              color: var(--text-secondary);
-              margin-bottom: 2px;
-            }
-            
-            .menu-item-text {
-              font-size: var(--text-xs);
-              color: var(--text-primary);
-              text-align: center;
-              line-height: 1.2;
-              word-break: keep-all;
-              overflow-wrap: break-word;
-              display: -webkit-box;
-              -webkit-line-clamp: 2;
-              -webkit-box-orient: vertical;
-              overflow: hidden;
-            }
-            
-            .favorite-button {
-              position: absolute;
-              top: 2px;
-              right: 2px;
-              opacity: 0;
-              transition: var(--transition-normal);
-              
-              :deep(.p-button) {
-                width: 16px;
-                height: 16px;
-                min-width: 16px;
-                padding: 0;
-                
-                .p-button-icon {
-                  font-size: 10px;
-                }
-              }
-              
-              &--active {
-                opacity: 1;
-                color: var(--warning);
-              }
-              
-              &:hover {
-                opacity: 1;
-                color: var(--warning);
-              }
-            }
-            
-            &:hover .favorite-button {
-              opacity: 1;
+            &:hover {
+              color: #ffed4e;
             }
           }
         }

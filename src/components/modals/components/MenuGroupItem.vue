@@ -10,28 +10,6 @@
       :data-testid="`menu-item-${item.id}`"
       @click="handleItemClick"
     >
-      <!-- 들여쓰기 -->
-      <div class="indent" :style="{ width: `${level * 16}px` }"></div>
-
-      <!-- 확장/축소 아이콘 (자식이 있는 경우) -->
-      <div class="expand-toggle" v-if="hasChildren">
-        <i 
-          class="expand-icon"
-          :class="{ expanded: isExpanded }"
-          aria-hidden="true"
-        >
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="9,18 15,12 9,6"></polyline>
-          </svg>
-        </i>
-      </div>
-      <div class="expand-placeholder" v-else></div>
-
-      <!-- 메뉴 아이콘 -->
-      <div class="menu-icon" v-if="item.icon">
-        <i :class="item.icon"></i>
-      </div>
-
       <!-- 메뉴 제목 -->
       <div class="menu-title" :title="item.title">
         <span class="title-text" v-html="highlightedTitle"></span>
@@ -53,22 +31,7 @@
       </button>
     </div>
 
-    <!-- 자식 메뉴 아이템들 -->
-    <div 
-      v-if="hasChildren && isExpanded"
-      class="children-container"
-    >
-      <MenuGroupItem
-        v-for="child in item.children"
-        :key="child.id"
-        :item="child"
-        :search-query="searchQuery"
-        :favorites="favorites"
-        :level="level + 1"
-        @menu-select="handleMenuSelect"
-        @favorite-toggle="handleFavoriteToggle"
-      />
-    </div>
+
   </div>
 </template>
 
@@ -156,43 +119,38 @@ const handleFavoriteToggle = () => {
 .menu-group-item {
   .menu-item {
     display: flex;
-    align-items: center;
-    padding: var(--space-2) var(--space-4);
+    flex-direction: column;
+    justify-content: space-between;
+    padding: var(--space-3);
     cursor: pointer;
     transition: var(--transition-normal);
-    border-radius: var(--border-radius-sm);
-    margin: 1px var(--space-2);
-    min-height: 36px;
+    border-radius: var(--border-radius-md);
+    background: var(--bg-primary);
+    border: 1px solid var(--surface-2);
+    min-height: 80px;
+    position: relative;
 
     &:hover {
       background: var(--bg-tertiary);
+      border-color: var(--primary-200);
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-1px);
     }
 
     &.is-leaf:hover {
       background: var(--primary-50);
       color: var(--primary-700);
+      border-color: var(--primary-300);
     }
 
     &:focus {
       outline: 2px solid var(--primary);
-      outline-offset: -2px;
+      outline-offset: 2px;
     }
 
-    // 레벨별 스타일링
-    &.level-0 {
-      font-weight: 500;
-    }
-
-    &.level-1 {
-      font-size: var(--text-sm);
-    }
-
-    &.level-2,
-    &.level-3,
-    &.level-4 {
-      font-size: var(--text-sm);
-      color: var(--text-secondary);
-    }
+    // 레벨별 스타일링 제거 (단순한 카드 형태)
+    font-size: var(--text-sm);
+    font-weight: 500;
   }
 
   .indent {
@@ -246,6 +204,10 @@ const handleFavoriteToggle = () => {
 
   .menu-title {
     flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     min-width: 0;
     
     .title-text {
@@ -253,6 +215,7 @@ const handleFavoriteToggle = () => {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      line-height: 1.4;
     }
 
     :deep(.search-highlight) {
@@ -265,8 +228,11 @@ const handleFavoriteToggle = () => {
   }
 
   .favorite-btn {
-    width: 24px;
-    height: 24px;
+    position: absolute;
+    top: var(--space-2);
+    right: var(--space-2);
+    width: 20px;
+    height: 20px;
     border: none;
     background: transparent;
     cursor: pointer;
@@ -275,15 +241,20 @@ const handleFavoriteToggle = () => {
     align-items: center;
     justify-content: center;
     transition: var(--transition-normal);
-    margin-left: var(--space-2);
+    opacity: 0.7;
 
     &:hover {
       background: var(--bg-tertiary);
+      opacity: 1;
     }
 
     &:focus {
       outline: 2px solid var(--primary);
       outline-offset: 2px;
+    }
+
+    &.active {
+      opacity: 1;
     }
 
     .favorite-icon {
@@ -299,8 +270,8 @@ const handleFavoriteToggle = () => {
       }
 
       svg {
-        width: 14px;
-        height: 14px;
+        width: 12px;
+        height: 12px;
         fill: none;
       }
     }

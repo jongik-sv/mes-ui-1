@@ -365,19 +365,19 @@ defineExpose({
 <style lang="scss" scoped>
 .global-menu-modal {
   :deep(.p-dialog) {
-    width: 90vw !important;
-    height: 90vh !important;
+    width: 80vw !important;
+    height: 80vh !important;
     max-width: none !important;
     max-height: none !important;
-    min-width: 90vw !important;
-    min-height: 90vh !important;
+    min-width: 80vw !important;
+    min-height: 80vh !important;
     background: var(--bg-primary);
     border: 1px solid var(--surface-2);
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-xl);
     position: fixed !important;
-    top: 5vh !important;
-    left: 5vw !important;
+    top: 10vh !important;
+    left: 10vw !important;
     transform: none !important;
   }
 
@@ -401,7 +401,7 @@ defineExpose({
 
   :deep(.p-dialog-content) {
     padding: 0;
-    height: calc(90vh - 80px); // 헤더 높이를 제외한 높이
+    height: calc(80vh - 80px); // 헤더 높이를 제외한 높이
   }
 
   .modal-content {
@@ -517,12 +517,12 @@ defineExpose({
   // 반응형 처리
   @media (max-width: 768px) {
     :deep(.p-dialog) {
-      width: 95vw !important;
-      height: 95vh !important;
-      min-width: 95vw !important;
-      min-height: 95vh !important;
-      top: 2.5vh !important;
-      left: 2.5vw !important;
+      width: 90vw !important;
+      height: 90vh !important;
+      min-width: 90vw !important;
+      min-height: 90vh !important;
+      top: 5vh !important;
+      left: 5vw !important;
     }
 
     .modal-header-section {

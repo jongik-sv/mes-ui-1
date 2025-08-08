@@ -624,6 +624,20 @@
   }
 }
 
+/* PrimeVue 컴포넌트 전역 수정 */
+/* ToggleSwitch 핸들 위치 보정 - 전역 CSS 리셋과의 충돌 해결 */
+.p-toggleswitch-handle {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  left: 2px !important;
+  transition: all 0.3s ease !important;
+}
+
+.p-toggleswitch.p-toggleswitch-checked .p-toggleswitch-handle {
+  left: calc(100% - 1.25rem - 2px) !important;
+}
+
 /* 인쇄 스타일 */
 @media print {
   .mes-modal,

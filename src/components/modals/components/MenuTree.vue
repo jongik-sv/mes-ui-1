@@ -331,6 +331,7 @@ const handleFavoriteToggle = (nodeKey: string) => {
             cursor: pointer;
             // background: var(--bg-secondary);
             border: none;
+            border-top: 1px dashed var(--border-color, #ddd);
             font-size: 14px;
             font-weight: 600;
             font-family: az_ea_font, "Segoe UI", wf_segoe-ui_normal, "Segoe WP", Tahoma, Arial, sans-serif;

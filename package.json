@@ -16,11 +16,11 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@primevue/themes": "^4.0.0",
     "lucide-vue-next": "^0.536.0",
     "pinia": "^2.1.0",
-    "primeflex": "^3.3.0",
-    "primeicons": "^6.0.0",
-    "primevue": "^3.46.0",
+    "primeflex": "^4.0.0",
+    "primevue": "^4.0.0",
     "vue": "^3.4.0",
     "vue-router": "^4.2.0"
   },

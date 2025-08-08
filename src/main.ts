@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import PrimeVue from 'primevue/config'
+import Aura from '@primevue/themes/aura'
 import router from './router'
 import App from './App.vue'
 
@@ -10,8 +11,6 @@ import MesIcon from './components/ui/MesIcon.vue'
 // 전역 스타일 import
 import './styles/global.scss'
 import './styles/main.css'
-import 'primevue/resources/themes/aura-dark-blue/theme.css'
-import 'primevue/resources/primevue.min.css'
 import 'primeicons/primeicons.css'
 import 'primeflex/primeflex.css'
 
@@ -26,9 +25,13 @@ app.use(router)
 // PrimeVue UI 라이브러리
 app.use(PrimeVue, {
   theme: {
-    preset: 'aura',
+    preset: Aura,
     options: {
-      darkModeSelector: '[data-theme="dark"]'
+      darkModeSelector: '[data-theme="dark"]',
+      cssLayer: {
+        name: 'primevue',
+        order: 'tailwind-base, primevue, tailwind-utilities'
+      }
     }
   }
 })

@@ -130,3 +130,40 @@ nents/modals/GlobalMenuModal.vue에서 왜 전체 메뉴창이 100% 높이가 �
 답하지만 그렇게 해도 처리는 안된다. 좀더 찾아봐야 될것 같아.
 
 ------
+
+toggleswitch의 핸들의 모양이 이상해서 .p-toggleswitch-handle의 값을 직접 top:50%에서 20%로 바꾸니 비슷하게 나왔는데, 이것을 근본적으로 어떻게 해야 정상이 되게끔 수정 할 수 있어?
+
+답변: PrimeVue ToggleSwitch는 기본적으로 정상 작동해야 하는 컴포넌트입니다. 문제의 원인은 우리의 커스텀 CSS 변수 시스템과 PrimeVue Aura 테마의 변수명이 달라서 발생했습니다. 
+
+해결 방법:
+1. 불필요한 커스텀 toggleswitch.scss 파일 제거
+2. GlobalMenuModal에서 최소한의 핸들 위치 수정만 적용:
+   ```scss
+   :deep(.p-toggleswitch-handle) {
+     top: 50%;
+     transform: translateY(-50%);
+   }
+   ```
+
+이제 `top: 20%` 같은 임시방편 대신 정확한 수직 중앙 정렬(`transform: translateY(-50%)`)이 적용됩니다.
+
+추가 답변: 원래는 매번 이런 수정이 필요하면 안 됩니다. 문제는 전역 CSS 리셋(`* { margin: 0; padding: 0; }`)이 PrimeVue 컴포넌트와 충돌하기 때문입니다.
+
+**전역 해결책**: `src/styles/main.css`에 추가하여 모든 ToggleSwitch에 자동 적용:
+```css
+.p-toggleswitch-handle {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  left: 2px !important;
+  transition: all 0.3s ease !important;
+}
+
+.p-toggleswitch.p-toggleswitch-checked .p-toggleswitch-handle {
+  left: calc(100% - 1.25rem - 2px) !important;
+}
+```
+
+이제 프로젝트 전체에서 ToggleSwitch를 사용할 때마다 별도 수정 없이 정상 작동합니다.
+
+------

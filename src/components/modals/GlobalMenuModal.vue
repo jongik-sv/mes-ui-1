@@ -17,17 +17,17 @@
           <div class="toggle-group">
             <label class="toggle-item">
               <span class="toggle-label">전체 보기</span>
-              <ToggleButton v-model="showAllMenus" onLabel="" offLabel="" class="toggle-switch"
+              <ToggleSwitch v-model="showAllMenus"
                 @change="handleToggleChange" />
             </label>
             <label class="toggle-item">
               <span class="toggle-label">항목찾기</span>
-              <ToggleButton v-model="showColumnSearch" onLabel="" offLabel="" class="toggle-switch"
+              <ToggleSwitch v-model="showColumnSearch"
                 @change="handleToggleChange" />
             </label>
             <label class="toggle-item">
               <span class="toggle-label">즐겨찾기</span>
-              <ToggleButton v-model="showFavorites" onLabel="" offLabel="" class="toggle-switch"
+              <ToggleSwitch v-model="showFavorites" class="toggle-switch"
                 @change="handleToggleChange" />
             </label>
           </div>
@@ -75,7 +75,7 @@ import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import Dialog from 'primevue/dialog'
 import InputText from 'primevue/inputtext'
 import Button from 'primevue/button'
-import ToggleButton from 'primevue/togglebutton'
+import ToggleSwitch from 'primevue/toggleswitch';
 import MenuTree from './components/MenuTree.vue'
 import type { MenuItem, MenuCategory } from '@/types/menu'
 
@@ -594,7 +594,8 @@ defineExpose({
     max-height: 80vh !important;
     min-width: 80vw !important;
     min-height: 80vh !important;
-    background: var(--bg-primary);
+    background: var(--bg-primary) !important;
+    background-color: #0f172a !important; /* 다크 테마 강제 적용 */
     border: none;
     border-radius: 0;
     box-shadow: none;
@@ -625,6 +626,7 @@ defineExpose({
   :deep(.p-dialog-header) {
     flex-shrink: 0 !important;
     margin: 10px;
+    background: initial !important;
 
     .modal-title {
       font-size: calc(var(--text-xl) + 1px);
@@ -639,6 +641,8 @@ defineExpose({
     height: 100% !important;
     max-height: 100% !important;
     min-height: 100% !important;
+    background: var(--bg-primary) !important;
+    background-color: #0f172a !important; /* 다크 테마 강제 적용 */
   }
 
   // 모든 자식 요소들의 크기 제한
@@ -679,7 +683,8 @@ defineExpose({
     display: flex;
     flex-direction: column;
     height: 100%;
-    background: var(--bg-primary);
+    background: var(--bg-primary) !important;
+    background-color: #0f172a !important; /* 다크 테마 강제 적용 */
     flex: 1;
     min-height: 0;
   }
@@ -689,7 +694,8 @@ defineExpose({
     grid-template-columns: 1fr auto;
     gap: var(--space-4);
     padding: var(--space-4) var(--space-6);
-    background: var(--bg-secondary);
+    background: var(--bg-secondary) !important;
+    background-color: #1e293b !important; /* 다크 테마 강제 적용 */
     border-bottom: 1px solid var(--surface-2);
     align-items: center;
 
@@ -698,8 +704,10 @@ defineExpose({
       min-width: 0;
 
       .search-input {
-        width: 100%;
-        padding-right: 2.5rem;
+        width: 300px;
+        max-width: 100%;
+        padding: 0.5rem 2.5rem 0.5rem 0.75rem;
+        font-size: 0.875rem;
       }
 
       .search-clear-button {
@@ -729,14 +737,6 @@ defineExpose({
             font-size: var(--text-sm);
             color: var(--text-secondary);
             white-space: nowrap;
-          }
-
-          .toggle-switch {
-            :deep(.p-togglebutton) {
-              width: 3rem;
-              height: 1.5rem;
-              border-radius: 0.75rem;
-            }
           }
         }
       }
@@ -807,7 +807,8 @@ defineExpose({
 
     // 좌측 카테고리 사이드바
     .category-sidebar {
-      background: var(--bg-secondary);
+      background: var(--bg-secondary) !important;
+      background-color: #1e293b !important; /* 다크 테마 강제 적용 */
       border-right: 1px solid var(--surface-2);
       overflow-y: auto;
 
@@ -848,7 +849,8 @@ defineExpose({
 
     // 우측 메뉴 트리 영역
     .menu-tree-area {
-      background: var(--bg-primary);
+      background: var(--bg-primary) !important;
+      background-color: #0f172a !important; /* 다크 테마 강제 적용 */
       overflow-y: auto;
       padding: var(--space-4);
 

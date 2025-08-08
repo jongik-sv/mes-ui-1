@@ -396,8 +396,8 @@ const handleFavoriteToggle = (nodeKey: string) => {
               
               .favorite-star {
                 color: #ccc;
-                font-size: 14px;
-                margin-left: 4px;
+                font-size: 18px;
+                margin-left: 6px;
                 cursor: pointer;
                 transition: var(--transition-normal);
                 flex-shrink: 0;

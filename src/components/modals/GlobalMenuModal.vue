@@ -30,19 +30,33 @@
         </div>
       </div>
 
+      <!-- 카테고리 탭 영역 -->
+      <div class="category-tabs-section" v-if="categories.length > 1">
+        <div class="category-tabs">
+          <button
+            class="category-tab"
+            :class="{ active: selectedCategory === null }"
+            @click="handleCategorySelect(null)"
+          >
+            전체
+          </button>
+          <button
+            v-for="category in categories"
+            :key="category.id"
+            class="category-tab"
+            :class="{ active: selectedCategory === category.id }"
+            @click="handleCategorySelect(category.id)"
+          >
+            {{ category.name }}
+            <span class="category-count">({{ category.count }})</span>
+          </button>
+        </div>
+      </div>
+
       <!-- 메인 콘텐츠 영역 -->
       <div class="modal-body">
-        <!-- 좌측 카테고리 목록 -->
-        <div class="category-section">
-          <MenuCategoryList
-            :categories="categories"
-            :selected-category="selectedCategory"
-            @category-select="handleCategorySelect"
-          />
-        </div>
-
-        <!-- 우측 메뉴 트리 -->
-        <div class="menu-tree-section">
+        <!-- 메뉴 그룹 그리드 -->
+        <div class="menu-groups-grid">
           <MenuTree
             :items="filteredMenuItems"
             :search-query="searchQuery"
@@ -351,14 +365,20 @@ defineExpose({
 <style lang="scss" scoped>
 .global-menu-modal {
   :deep(.p-dialog) {
-    width: 90vw;
-    height: 90vh;
-    max-width: 1200px;
-    max-height: 800px;
+    width: 90vw !important;
+    height: 90vh !important;
+    max-width: none !important;
+    max-height: none !important;
+    min-width: 90vw !important;
+    min-height: 90vh !important;
     background: var(--bg-primary);
     border: 1px solid var(--surface-2);
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-xl);
+    position: fixed !important;
+    top: 5vh !important;
+    left: 5vw !important;
+    transform: none !important;
   }
 
   :deep(.p-dialog-mask) {
@@ -409,32 +429,100 @@ defineExpose({
     }
   }
 
+  // 카테고리 탭 영역
+  .category-tabs-section {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--surface-2);
+    padding: var(--space-2) var(--space-6);
+
+    .category-tabs {
+      display: flex;
+      gap: var(--space-1);
+      overflow-x: auto;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      .category-tab {
+        display: flex;
+        align-items: center;
+        gap: var(--space-1);
+        padding: var(--space-2) var(--space-4);
+        background: transparent;
+        border: 1px solid var(--surface-2);
+        border-radius: var(--border-radius-md);
+        color: var(--text-secondary);
+        font-size: var(--text-sm);
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition-normal);
+        white-space: nowrap;
+        min-width: fit-content;
+
+        &:hover {
+          background: var(--bg-tertiary);
+          color: var(--text-primary);
+        }
+
+        &.active {
+          background: var(--primary);
+          color: white;
+          border-color: var(--primary);
+        }
+
+        .category-count {
+          font-size: var(--text-xs);
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+
   .modal-body {
-    display: grid;
-    grid-template-columns: 300px 1fr;
     flex: 1;
     min-height: 0;
     background: var(--bg-primary);
+    overflow: hidden;
 
-    .category-section {
-      border-right: 1px solid var(--surface-2);
-      background: var(--bg-secondary);
-      overflow-y: auto;
-    }
-
-    .menu-tree-section {
-      background: var(--bg-primary);
+    .menu-groups-grid {
+      height: 100%;
       overflow-y: auto;
       padding: var(--space-4);
+
+      // 스크롤바 스타일링
+      scrollbar-width: thin;
+      scrollbar-color: var(--surface-3) transparent;
+
+      &::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: var(--surface-3);
+        border-radius: 4px;
+
+        &:hover {
+          background: var(--surface-2);
+        }
+      }
     }
   }
 
   // 반응형 처리
   @media (max-width: 768px) {
     :deep(.p-dialog) {
-      width: 95vw;
-      height: 95vh;
-      margin: 2.5vh 2.5vw;
+      width: 95vw !important;
+      height: 95vh !important;
+      min-width: 95vw !important;
+      min-height: 95vh !important;
+      top: 2.5vh !important;
+      left: 2.5vw !important;
     }
 
     .modal-header-section {

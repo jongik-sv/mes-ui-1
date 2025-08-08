@@ -14,20 +14,24 @@
       </p>
     </div>
 
-    <!-- 메뉴 그룹들 -->
-    <div v-else class="menu-groups" data-testid="menu-groups">
-      <MenuGroup
+    <!-- 메뉴 그룹들 (그리드 레이아웃) -->
+    <div v-else class="menu-groups-grid" data-testid="menu-groups">
+      <div
         v-for="group in menuGroups"
         :key="group.id"
-        :title="group.title"
-        :items="group.items"
-        :expanded="expandedGroups.has(group.id)"
-        :search-query="searchQuery"
-        :favorites="favorites"
-        @toggle="handleGroupToggle(group.id)"
-        @menu-select="handleMenuSelect"
-        @favorite-toggle="handleFavoriteToggle"
-      />
+        class="menu-group-card"
+      >
+        <MenuGroup
+          :title="group.title"
+          :items="group.items"
+          :expanded="expandedGroups.has(group.id)"
+          :search-query="searchQuery"
+          :favorites="favorites"
+          @toggle="handleGroupToggle(group.id)"
+          @menu-select="handleMenuSelect"
+          @favorite-toggle="handleFavoriteToggle"
+        />
+      </div>
     </div>
 
     <!-- 로딩 오버레이 -->
@@ -301,30 +305,83 @@ watch(() => props.expandedNodes, (newExpandedNodes) => {
   }
 }
 
-// 메뉴 그룹들
-.menu-groups {
-  flex: 1;
-  overflow-y: auto;
-  background: transparent;
+// 메뉴 그룹들 (그리드 레이아웃)
+.menu-groups-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+  padding: var(--space-4);
+  align-items: start;
   
-  // 스크롤바 스타일링
-  scrollbar-width: thin;
-  scrollbar-color: var(--surface-3) transparent;
-  
-  &::-webkit-scrollbar {
-    width: 8px;
+  // 반응형 컬럼 수 조정
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
   }
   
-  &::-webkit-scrollbar-track {
-    background: transparent;
+  @media (min-width: 1600px) {
+    grid-template-columns: repeat(5, 1fr);
   }
   
-  &::-webkit-scrollbar-thumb {
-    background: var(--surface-3);
-    border-radius: 4px;
+  @media (min-width: 2000px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    padding: var(--space-3);
+  }
+  
+  .menu-group-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--surface-2);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    height: fit-content;
+    min-height: 200px;
+    max-height: 600px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-normal);
     
     &:hover {
-      background: var(--surface-2);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-200);
+    }
+    
+    // 그룹 내부 스크롤 처리
+    :deep(.group-content) {
+      max-height: 500px;
+      overflow-y: auto;
+      
+      // 스크롤바 스타일링
+      scrollbar-width: thin;
+      scrollbar-color: var(--surface-3) transparent;
+      
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+      
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      
+      &::-webkit-scrollbar-thumb {
+        background: var(--surface-3);
+        border-radius: 3px;
+        
+        &:hover {
+          background: var(--surface-2);
+        }
+      }
+    }
+    
+    // 그룹 헤더 고정
+    :deep(.group-header) {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: var(--bg-tertiary);
+      border-bottom: 1px solid var(--surface-2);
     }
   }
 }

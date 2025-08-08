@@ -1,7 +1,7 @@
 <template>
   <div class="menu-tree-wrapper">
     <!-- 빈 상태 -->
-    <div v-if="!treeNodes.length" class="empty-tree" data-testid="empty-tree">
+    <div v-if="!props.items.length" class="empty-tree" data-testid="empty-tree">
       <i class="pi pi-search empty-icon"></i>
       <h3 class="empty-title">메뉴가 없습니다</h3>
       <p class="empty-description">
@@ -9,66 +9,60 @@
       </p>
     </div>
 
-    <!-- 트리 메뉴 -->
-    <Tree
-      v-else
-      :value="treeNodes"
-      :expandedKeys="expandedKeys"
-      :selectionKeys="selectionKeys"
-      selectionMode="single"
-      class="menu-tree"
-      @node-expand="handleNodeExpand"
-      @node-collapse="handleNodeCollapse"
-      @node-select="handleNodeSelect"
-    >
-      <template #default="{ node }">
-        <div class="tree-node-content">
-          <!-- 메뉴 아이콘 -->
-          <i 
-            v-if="node.icon" 
-            :class="node.icon"
-            class="node-icon"
-          />
-          <i 
-            v-else-if="node.level === 1"
-            class="pi pi-folder node-icon"
-          />
-          <i 
-            v-else-if="node.level === 2"
-            class="pi pi-folder-open node-icon"
-          />
-          <i 
-            v-else
-            class="pi pi-file node-icon"
-          />
+    <!-- 메뉴 그리드 -->
+    <div v-else class="menu-grid-container">
+      <div 
+        v-for="category in props.items" 
+        :key="category.id"
+        class="category-section"
+      >
+        <h3 class="category-title">{{ category.text }}</h3>
+        
+        <div 
+          v-for="menuGroup in category.items" 
+          :key="menuGroup.id"
+          class="menu-group"
+        >
+          <h4 class="menu-group-title">{{ menuGroup.text }}</h4>
           
-          <!-- 메뉴 텍스트 -->
-          <span 
-            class="node-label"
-            :class="{ 
-              'node-label--leaf': node.leaf,
-              'node-label--has-url': node.url
-            }"
-            @click="handleMenuClick(node)"
-          >
-            {{ highlightSearchText(node.label) }}
-          </span>
-          
-          <!-- 즐겨찾기 버튼 -->
-          <Button
-            v-if="node.leaf"
-            :icon="isFavorite(node.key) ? 'pi pi-star-fill' : 'pi pi-star'"
-            text
-            rounded
-            size="small"
-            class="favorite-button"
-            :class="{ 'favorite-button--active': isFavorite(node.key) }"
-            @click.stop="handleFavoriteToggle(node.key)"
-            :title="isFavorite(node.key) ? '즐겨찾기 제거' : '즐겨찾기 추가'"
-          />
+          <!-- 마지막 메뉴 항목들을 4개씩 그리드로 배치 -->
+          <div class="menu-items-grid">
+            <div
+              v-for="menuItem in menuGroup.items"
+              :key="menuItem.id"
+              class="menu-item-card"
+              @click="handleMenuClick(menuItem)"
+            >
+              <div class="menu-item-content">
+                <i 
+                  v-if="menuItem.icon" 
+                  :class="menuItem.icon"
+                  class="menu-item-icon"
+                />
+                <i 
+                  v-else
+                  class="pi pi-file menu-item-icon"
+                />
+                
+                <span class="menu-item-text">{{ menuItem.text }}</span>
+                
+                <!-- 즐겨찾기 버튼 -->
+                <Button
+                  :icon="isFavorite(menuItem.id) ? 'pi pi-star-fill' : 'pi pi-star'"
+                  text
+                  rounded
+                  size="small"
+                  class="favorite-button"
+                  :class="{ 'favorite-button--active': isFavorite(menuItem.id) }"
+                  @click.stop="handleFavoriteToggle(menuItem.id)"
+                  :title="isFavorite(menuItem.id) ? '즐겨찾기 제거' : '즐겨찾기 추가'"
+                />
+              </div>
+            </div>
+          </div>
         </div>
-      </template>
-    </Tree>
+      </div>
+    </div>
 
     <!-- 로딩 오버레이 -->
     <div v-if="loading" class="loading-overlay">
@@ -223,9 +217,9 @@ const handleNodeSelect = (node: TreeNode) => {
   }
 }
 
-const handleMenuClick = (node: TreeNode) => {
-  if (node.leaf && node.data) {
-    emit('menu-select', node.data)
+const handleMenuClick = (menuItem: MenuItem) => {
+  if (menuItem.url) {
+    emit('menu-select', menuItem)
   }
 }
 
@@ -317,127 +311,170 @@ const countTotalMenus = (items: MenuItem[]): number => {
   }
 }
 
-// 메뉴 트리 스타일링
-.menu-tree {
+// 메뉴 그리드 컨테이너
+.menu-grid-container {
   height: 100%;
+  overflow-y: auto;
+  padding: var(--space-1);
   
-  :deep(.p-tree) {
-    background: transparent;
-    border: none;
-    padding: 0;
-  }
-  
-  :deep(.p-treenode) {
-    .p-treenode-content {
-      padding: var(--space-2) var(--space-3);
-      border-radius: var(--border-radius-md);
-      transition: var(--transition-normal);
-      
-      &:hover {
-        background: var(--bg-tertiary);
-      }
-      
-      &.p-highlight {
-        background: var(--primary-50);
-        color: var(--primary-700);
-      }
-    }
+  .category-section {
+    margin-bottom: var(--space-2);
     
-    .p-treenode-children {
-      padding-left: var(--space-4);
-      border-left: 1px solid var(--surface-2);
-      margin-left: var(--space-3);
-    }
-  }
-  
-  :deep(.p-tree-toggler) {
-    width: 1.5rem;
-    height: 1.5rem;
-    color: var(--text-secondary);
-    
-    &:hover {
-      background: var(--bg-tertiary);
+    .category-title {
+      font-size: var(--text-lg);
+      font-weight: 600;
       color: var(--text-primary);
+      margin: 0 0 var(--space-1) 0;
+      padding: var(--space-1) var(--space-2);
+      background: var(--bg-secondary);
+      border-radius: var(--border-radius-sm);
+    }
+    
+    .menu-group {
+      margin-bottom: var(--space-1);
+      
+      .menu-group-title {
+        font-size: var(--text-base);
+        font-weight: 500;
+        color: var(--text-secondary);
+        margin: 0 0 var(--space-1) 0;
+        padding: var(--space-1) var(--space-2);
+        background: var(--bg-tertiary);
+        border-radius: var(--border-radius-sm);
+      }
+      
+      .menu-items-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2px; // 최대한 좁은 간격
+        padding: var(--space-1);
+        
+        .menu-item-card {
+          background: var(--bg-secondary);
+          border: 1px solid var(--surface-2);
+          border-radius: var(--border-radius-sm);
+          cursor: pointer;
+          transition: var(--transition-normal);
+          min-height: 60px;
+          
+          &:hover {
+            background: var(--bg-tertiary);
+            border-color: var(--primary);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+          }
+          
+          .menu-item-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-1);
+            height: 100%;
+            position: relative;
+            
+            .menu-item-icon {
+              font-size: var(--text-sm);
+              color: var(--text-secondary);
+              margin-bottom: 2px;
+            }
+            
+            .menu-item-text {
+              font-size: var(--text-xs);
+              color: var(--text-primary);
+              text-align: center;
+              line-height: 1.2;
+              word-break: keep-all;
+              overflow-wrap: break-word;
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+            }
+            
+            .favorite-button {
+              position: absolute;
+              top: 2px;
+              right: 2px;
+              opacity: 0;
+              transition: var(--transition-normal);
+              
+              :deep(.p-button) {
+                width: 16px;
+                height: 16px;
+                min-width: 16px;
+                padding: 0;
+                
+                .p-button-icon {
+                  font-size: 10px;
+                }
+              }
+              
+              &--active {
+                opacity: 1;
+                color: var(--warning);
+              }
+              
+              &:hover {
+                opacity: 1;
+                color: var(--warning);
+              }
+            }
+            
+            &:hover .favorite-button {
+              opacity: 1;
+            }
+          }
+        }
+        
+        // 반응형 그리드
+        @media (max-width: 1200px) {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        
+        @media (max-width: 900px) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        
+        @media (max-width: 600px) {
+          grid-template-columns: 1fr;
+        }
+      }
     }
   }
 }
 
-// 트리 노드 콘텐츠
-.tree-node-content {
+// 빈 상태 스타일
+.empty-tree {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: var(--space-2);
-  width: 100%;
-  min-width: 0;
+  justify-content: center;
+  padding: var(--space-8) var(--space-4);
+  text-align: center;
+  flex: 1;
+  min-height: 200px;
   
-  .node-icon {
-    color: var(--text-secondary);
-    font-size: var(--text-base);
-    flex-shrink: 0;
-    
-    &.default-icon {
-      opacity: 0.7;
-    }
-  }
-  
-  .node-label {
-    flex: 1;
-    color: var(--text-primary);
-    font-weight: 500;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    min-width: 0;
-    
-    &--leaf {
-      font-weight: 400;
-    }
-    
-    &--has-url {
-      cursor: pointer;
-      
-      &:hover {
-        color: var(--primary);
-        text-decoration: underline;
-      }
-    }
-    
-    // 검색 하이라이팅
-    :deep(.search-highlight) {
-      background: var(--warning);
-      color: var(--bg-primary);
-      padding: 1px 3px;
-      border-radius: 3px;
-      font-weight: 600;
-    }
-  }
-  
-  .favorite-button {
-    opacity: 0;
-    transition: var(--transition-normal);
+  .empty-icon {
+    font-size: 4rem;
     color: var(--text-muted);
-    flex-shrink: 0;
-    
-    &--active {
-      opacity: 1;
-      color: var(--warning);
-    }
-    
-    &:hover {
-      background: var(--bg-tertiary);
-      color: var(--warning);
-    }
+    margin-bottom: var(--space-6);
+    opacity: 0.5;
   }
   
-  .external-icon {
+  .empty-title {
+    color: var(--text-secondary);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+  }
+  
+  .empty-description {
     color: var(--text-muted);
     font-size: var(--text-sm);
-    flex-shrink: 0;
-  }
-  
-  // 호버 시 즐겨찾기 버튼 표시
-  &:hover .favorite-button {
-    opacity: 1;
+    max-width: 300px;
+    line-height: 1.5;
+    margin: 0;
   }
 }
 

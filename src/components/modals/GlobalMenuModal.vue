@@ -236,7 +236,7 @@ watch(isVisible, (newValue) => {
   if (newValue !== props.visible) {
     emit('update:visible', newValue)
   }
-  
+
   // 모달이 열릴 때마다 높이 강제 설정
   if (newValue) {
     setTimeout(() => {
@@ -469,7 +469,7 @@ onMounted(() => {
 
   // 초기 즐겨찾기 데이터 로드 (localStorage에서)
   loadFavorites()
-  
+
   // PrimeVue Dialog 높이 강제 설정
   forceDialogHeight()
 })
@@ -487,14 +487,14 @@ const forceDialogHeight = () => {
         'div[class*="global-menu-modal"] .p-dialog-content',
         '.p-dialog-content'
       ]
-      
+
       let dialogContent: HTMLElement | null = null
-      
+
       for (const selector of selectors) {
         dialogContent = document.querySelector(selector) as HTMLElement
         if (dialogContent) break
       }
-      
+
       if (dialogContent) {
         // 강제로 스타일 적용
         dialogContent.style.setProperty('height', '100%', 'important')
@@ -502,7 +502,7 @@ const forceDialogHeight = () => {
         dialogContent.style.setProperty('flex-direction', 'column', 'important')
         dialogContent.style.setProperty('flex', '1', 'important')
         dialogContent.style.setProperty('min-height', '0', 'important')
-        
+
         console.log('Dialog content height forced to 100%:', dialogContent)
       } else {
         console.warn('Dialog content not found, retrying...')
@@ -510,7 +510,7 @@ const forceDialogHeight = () => {
         setTimeout(applyStyles, 500)
       }
     }
-    
+
     applyStyles()
   })
 }
@@ -585,6 +585,7 @@ defineExpose({
   display: flex !important;
   flex-direction: column !important;
 }
+
 .global-menu-modal {
   :deep(.p-dialog) {
     width: 80vw !important;

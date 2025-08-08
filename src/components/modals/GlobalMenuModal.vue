@@ -12,7 +12,7 @@
     @hide="closeModal"
   >
     <template #header>
-      <h2 class="modal-title">모든 서비스</h2>
+      <h2 class="modal-title">전체 메뉴</h2>
     </template>
 
     <div class="modal-content">
@@ -600,15 +600,20 @@ defineExpose({
   // PrimeVue Dialog의 내부 요소들도 크기 고정
   :deep(.p-dialog-header) {
     flex-shrink: 0 !important;
+    
+    .modal-title {
+      font-size: calc(var(--text-xl) + 1px);
+      padding: calc(var(--space-2) * 1.5);
+    }
   }
 
   :deep(.p-dialog-content) {
     flex: 1 !important;
     overflow: hidden !important;
     padding: 0 !important;
-    height: calc(80vh - 80px) !important;
-    max-height: calc(80vh - 80px) !important;
-    min-height: calc(80vh - 80px) !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    min-height: 100% !important;
   }
 
   // 모든 자식 요소들의 크기 제한
@@ -772,6 +777,7 @@ defineExpose({
     background: var(--bg-primary);
     overflow: hidden;
     height: 100%;
+    width: 100%;
 
     // 좌측 카테고리 사이드바
     .category-sidebar {

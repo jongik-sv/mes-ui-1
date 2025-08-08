@@ -105,4 +105,7 @@ Task details:
 ------f
 ont-family: az_ea_font, "Segoe UI", wf_segoe-ui_normal, "Segoe WP", Tahoma, Arial, sans-serif; 이 폰트를 적용할 수 있나? 이거 보기 좋은데
 
+------모든 
+서비스라는 이름을 전체 메뉴로 바꿔주고 전체 메뉴의 타이틀이 글자에 비해 너무 좁다 1.5배 더 키워야겠어.  그리고 modal-body 부분이 모달부분 전체를 다 채우도록 해줘. 전체 메뉴의 글자를 1만큼 더 크게 해줘.
+
 ------

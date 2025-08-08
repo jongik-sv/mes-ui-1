@@ -254,6 +254,7 @@ const handleFavoriteToggle = (nodeKey: string) => {
         border: none;
         font-size: 14px;
         font-weight: 600;
+        font-family: az_ea_font, "Segoe UI", wf_segoe-ui_normal, "Segoe WP", Tahoma, Arial, sans-serif;
         color: var(--text-primary);
         margin-bottom: 2px;
         border-radius: var(--border-radius-sm);
@@ -292,6 +293,7 @@ const handleFavoriteToggle = (nodeKey: string) => {
           border: none;
           cursor: pointer;
           font-size: 14px;
+          font-family: az_ea_font, "Segoe UI", wf_segoe-ui_normal, "Segoe WP", Tahoma, Arial, sans-serif;
           color: var(--text-primary);
           min-height: 35px;
           max-width: 400px;

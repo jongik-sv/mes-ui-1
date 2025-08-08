@@ -102,4 +102,7 @@ Task details:
 ------각 메뉴 뒤에
  즐겨찾기가 됐는지 나타내는 별모양의 아이콘이 안보인다. 넣어줘.
 
+------f
+ont-family: az_ea_font, "Segoe UI", wf_segoe-ui_normal, "Segoe WP", Tahoma, Arial, sans-serif; 이 폰트를 적용할 수 있나? 이거 보기 좋은데
+
 ------

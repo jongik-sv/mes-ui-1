@@ -1,21 +1,19 @@
 <template>
   <MainLayout>
     <template #header>
-      <div class="mes-header">
-        <div class="header-left">
-          <button class="menu-toggle-btn">
-            <span class="menu-icon">
-              <span></span>
-              <span></span>
-              <span></span>
-            </span>
-          </button>
-          <div class="company-logo">DONGKUK CM</div>
-        </div>
-        <div class="header-right">
-          <div class="user-info">관리자 (admin)</div>
-        </div>
-      </div>
+      <HeaderComponent
+        :menu-items="menuItems"
+        @menu-select="handleMenuSelect"
+        @favorite-toggle="handleFavoriteToggle"
+        @menu-tree-toggle="handleMenuTreeToggle"
+        @global-menu-click="handleGlobalMenuClick"
+        @user-settings="handleUserSettings"
+        @user-messages="handleUserMessages"
+        @user-logout="handleUserLogout"
+        @contact-open="handleContactOpen"
+        @contact-close="handleContactClose"
+        @remote-support-click="handleRemoteSupportClick"
+      />
     </template>
     
     <template #toolbar>
@@ -73,9 +71,62 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import MainLayout from '@/layouts/MainLayout.vue'
+import HeaderComponent from '@/components/HeaderComponent.vue'
+import { sampleMenuData } from '@/data/sampleMenuData'
+import type { MenuItem } from '@/types/menu'
 
-// MES 메인 뷰 컴포넌트 - MainLayout 사용
+// 메뉴 데이터
+const menuItems = ref<MenuItem[]>(sampleMenuData)
+
+// 이벤트 핸들러들
+const handleMenuSelect = (menu: MenuItem) => {
+  console.log('메뉴 선택:', menu)
+  // TODO: 탭 시스템과 연동하여 새 탭 생성
+}
+
+const handleFavoriteToggle = (menuId: string) => {
+  console.log('즐겨찾기 토글:', menuId)
+  // TODO: 즐겨찾기 상태 저장/로드
+}
+
+const handleMenuTreeToggle = (isOpen: boolean) => {
+  console.log('메뉴트리 토글:', isOpen)
+  // TODO: 메뉴트리 표시/숨김 처리
+}
+
+const handleGlobalMenuClick = () => {
+  console.log('전체메뉴 클릭')
+}
+
+const handleUserSettings = () => {
+  console.log('사용자 설정')
+  // TODO: 사용자 설정 모달 열기
+}
+
+const handleUserMessages = () => {
+  console.log('메시지함')
+  // TODO: 메시지함 모달 열기
+}
+
+const handleUserLogout = () => {
+  console.log('로그아웃')
+  // TODO: 로그아웃 처리
+}
+
+const handleContactOpen = () => {
+  console.log('연락처 열기')
+}
+
+const handleContactClose = () => {
+  console.log('연락처 닫기')
+}
+
+const handleRemoteSupportClick = (url: string) => {
+  console.log('원격지원 클릭:', url)
+  window.open(url, '_blank')
+}
 </script>
 
 <style lang="scss" scoped>

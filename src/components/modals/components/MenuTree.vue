@@ -1,84 +1,43 @@
 <template>
   <div class="menu-tree-wrapper">
     <!-- 빈 상태 -->
-    <div v-if="!treeNodes.length" class="empty-tree" data-testid="empty-tree">
-      <i class="pi pi-sitemap empty-icon" />
+    <div v-if="!menuGroups.length" class="empty-tree" data-testid="empty-tree">
+      <i class="empty-icon">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+          <path d="M3 3v18h18V3H3zm16 16H5V5h14v14z"/>
+          <path d="M8 8h8M8 12h8M8 16h5"/>
+        </svg>
+      </i>
       <h3 class="empty-title">메뉴가 없습니다</h3>
       <p class="empty-description">
         {{ getEmptyMessage() }}
       </p>
     </div>
 
-    <!-- 메뉴 트리 -->
-    <Tree
-      v-else
-      v-model:expanded-keys="internalExpandedKeys"
-      :value="treeNodes"
-      selection-mode="single"
-      class="menu-tree"
-      data-testid="menu-tree"
-      @node-select="handleNodeSelect"
-    >
-      <template #default="{ node }">
-        <div class="tree-node-content">
-          <!-- 메뉴 아이콘 -->
-          <i 
-            v-if="node.icon" 
-            :class="node.icon" 
-            class="node-icon"
-          />
-          <i 
-            v-else-if="node.leaf" 
-            class="pi pi-file node-icon default-icon"
-          />
-          <i 
-            v-else 
-            class="pi pi-folder node-icon default-icon"
-          />
-
-          <!-- 메뉴 제목 -->
-          <span 
-            :class="[
-              'node-label',
-              {
-                'node-label--leaf': node.leaf,
-                'node-label--has-url': node.url
-              }
-            ]"
-            v-html="highlightSearchQuery(node.label)"
-          />
-
-          <!-- 즐겨찾기 버튼 -->
-          <Button
-            :icon="node.favorite ? 'pi pi-star-fill' : 'pi pi-star'"
-            text
-            rounded
-            size="small"
-            :class="[
-              'favorite-button',
-              {
-                'favorite-button--active': node.favorite
-              }
-            ]"
-            :aria-label="node.favorite ? '즐겨찾기 해제' : '즐겨찾기 추가'"
-            :data-testid="`favorite-${node.key}`"
-            @click.stop="toggleFavorite(node)"
-          />
-
-          <!-- 외부 링크 표시 -->
-          <i 
-            v-if="node.url && isExternalUrl(node.url)" 
-            class="pi pi-external-link external-icon"
-            aria-label="외부 링크"
-          />
-        </div>
-      </template>
-    </Tree>
+    <!-- 메뉴 그룹들 -->
+    <div v-else class="menu-groups" data-testid="menu-groups">
+      <MenuGroup
+        v-for="group in menuGroups"
+        :key="group.id"
+        :title="group.title"
+        :items="group.items"
+        :expanded="expandedGroups.has(group.id)"
+        :search-query="searchQuery"
+        :favorites="favorites"
+        @toggle="handleGroupToggle(group.id)"
+        @menu-select="handleMenuSelect"
+        @favorite-toggle="handleFavoriteToggle"
+      />
+    </div>
 
     <!-- 로딩 오버레이 -->
     <div v-if="loading" class="loading-overlay">
       <div class="loading-spinner">
-        <i class="pi pi-spin pi-spinner" />
+        <i class="loading-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12a9 9 0 11-6.219-8.56"/>
+          </svg>
+        </i>
         <span class="loading-text">메뉴를 불러오는 중...</span>
       </div>
     </div>
@@ -96,9 +55,14 @@
 
 <script setup lang="ts">
 import { ref, computed, watch, onMounted } from 'vue'
-import Tree from 'primevue/tree'
-import Button from 'primevue/button'
-import type { MenuItem, MenuTreeNode, ViewMode } from '@/types/menu'
+import MenuGroup from './MenuGroup.vue'
+import type { MenuItem, ViewMode } from '@/types/menu'
+
+interface MenuGroupData {
+  id: string
+  title: string
+  items: MenuItem[]
+}
 
 interface Props {
   /** 메뉴 아이템 목록 */
@@ -143,71 +107,57 @@ const props = withDefaults(defineProps<Props>(), {
 const emit = defineEmits<Emits>()
 
 // 내부 상태
-const internalExpandedKeys = ref<Record<string, boolean>>({})
+const expandedGroups = ref<Set<string>>(new Set())
 const screenReaderAnnouncement = ref('')
 
-// Props 변경 감지
-watch(() => props.expandedNodes, (newExpandedNodes) => {
-  const keys: Record<string, boolean> = {}
-  newExpandedNodes.forEach(key => {
-    keys[key] = true
-  })
-  internalExpandedKeys.value = keys
-}, { immediate: true })
-
-// 확장된 키 변경 감지
-watch(internalExpandedKeys, (newKeys) => {
-  const expandedSet = new Set<string>()
-  Object.keys(newKeys).forEach(key => {
-    if (newKeys[key]) {
-      expandedSet.add(key)
-    }
-  })
+// 메뉴를 그룹별로 분류
+const menuGroups = computed<MenuGroupData[]>(() => {
+  const groupMap = new Map<string, MenuItem[]>()
   
-  // 새로 확장된 노드와 축소된 노드 찾기
-  const previousExpanded = props.expandedNodes
-  const newExpanded = expandedSet
-  
-  newExpanded.forEach(key => {
-    if (!previousExpanded.has(key)) {
-      emit('node-expand', key)
-    }
-  })
-  
-  previousExpanded.forEach(key => {
-    if (!newExpanded.has(key)) {
-      emit('node-collapse', key)
-    }
-  })
-}, { deep: true })
-
-// MenuItem을 MenuTreeNode로 변환
-const convertToTreeNode = (item: MenuItem, depth = 0): MenuTreeNode => {
-  const node: MenuTreeNode = {
-    key: item.id,
-    label: item.title,
-    leaf: !item.children || item.children.length === 0,
-    icon: item.icon,
-    data: item,
-    favorite: props.favorites.has(item.id),
-    url: item.url,
-    category: item.category,
-    selectable: !!item.url // URL이 있는 경우에만 선택 가능
+  // 카테고리별로 메뉴 분류
+  const processItems = (items: MenuItem[]) => {
+    items.forEach(item => {
+      const category = item.category || 'default'
+      if (!groupMap.has(category)) {
+        groupMap.set(category, [])
+      }
+      groupMap.get(category)!.push(item)
+    })
   }
-
-  // 최대 깊이 제한
-  if (depth < props.maxDepth && item.children && item.children.length > 0) {
-    node.children = item.children.map(child => convertToTreeNode(child, depth + 1))
-    node.leaf = false
-  }
-
-  return node
-}
-
-// 트리 노드 계산
-const treeNodes = computed<MenuTreeNode[]>(() => {
-  return props.items.map(item => convertToTreeNode(item))
+  
+  processItems(props.items)
+  
+  // 그룹 데이터 생성
+  const groups: MenuGroupData[] = []
+  groupMap.forEach((items, categoryId) => {
+    const groupTitle = getCategoryTitle(categoryId)
+    groups.push({
+      id: categoryId,
+      title: groupTitle,
+      items: items
+    })
+  })
+  
+  // 그룹 정렬 (제목 기준)
+  return groups.sort((a, b) => a.title.localeCompare(b.title))
 })
+
+// 카테고리 ID를 한글 제목으로 변환
+const getCategoryTitle = (categoryId: string): string => {
+  const categoryTitles: Record<string, string> = {
+    'production': '생산관리',
+    'quality': '품질관리',
+    'material': '자재관리',
+    'sales': '영업관리',
+    'hr': '인사관리',
+    'finance': '재무관리',
+    'maintenance': '설비관리',
+    'planning': '생산계획',
+    'inventory': '재고관리',
+    'default': '기타'
+  }
+  return categoryTitles[categoryId] || categoryId
+}
 
 // 빈 상태 메시지
 const getEmptyMessage = (): string => {
@@ -226,83 +176,67 @@ const getEmptyMessage = (): string => {
   return '표시할 메뉴가 없습니다'
 }
 
-// 검색어 하이라이팅
-const highlightSearchQuery = (text: string): string => {
-  if (!props.highlightSearch || !props.searchQuery.trim()) {
-    return text
-  }
-  
-  const query = props.searchQuery.trim()
-  const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi')
-  
-  return text.replace(regex, '<mark class="search-highlight">$1</mark>')
-}
-
-// 정규식 특수문자 이스케이프
-const escapeRegExp = (string: string): string => {
-  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-}
-
-// 외부 URL 확인
-const isExternalUrl = (url: string): boolean => {
-  try {
-    const parsed = new URL(url)
-    return parsed.protocol === 'http:' || parsed.protocol === 'https:'
-  } catch {
-    return false
-  }
-}
-
 // 이벤트 핸들러
-const handleNodeSelect = (node: MenuTreeNode) => {
-  if (node.data && node.selectable && node.url) {
-    emit('menu-select', node.data)
-    
-    // 스크린 리더 안내
-    screenReaderAnnouncement.value = `${node.label} 메뉴가 선택되었습니다`
+const handleGroupToggle = (groupId: string) => {
+  if (expandedGroups.value.has(groupId)) {
+    expandedGroups.value.delete(groupId)
+    emit('node-collapse', groupId)
+  } else {
+    expandedGroups.value.add(groupId)
+    emit('node-expand', groupId)
+  }
+  
+  // 스크린 리더 안내
+  const group = menuGroups.value.find(g => g.id === groupId)
+  if (group) {
+    const action = expandedGroups.value.has(groupId) ? '확장' : '축소'
+    screenReaderAnnouncement.value = `${group.title} 그룹이 ${action}되었습니다`
   }
 }
 
-const toggleFavorite = (node: MenuTreeNode) => {
-  if (node.key) {
-    emit('toggle-favorite', node.key)
-    
-    // 즐겨찾기 상태 업데이트
-    node.favorite = !node.favorite
-    
-    // 스크린 리더 안내
-    const action = node.favorite ? '추가' : '제거'
-    screenReaderAnnouncement.value = `${node.label}이(가) 즐겨찾기에서 ${action}되었습니다`
-  }
+const handleMenuSelect = (menu: MenuItem) => {
+  emit('menu-select', menu)
+  
+  // 스크린 리더 안내
+  screenReaderAnnouncement.value = `${menu.title} 메뉴가 선택되었습니다`
 }
 
-// 키보드 이벤트 처리
-const handleKeydown = (event: KeyboardEvent, node: MenuTreeNode) => {
-  switch (event.key) {
-    case 'Enter':
-    case ' ':
-      event.preventDefault()
-      if (node.selectable && node.url) {
-        handleNodeSelect(node)
+const handleFavoriteToggle = (menuId: string) => {
+  emit('toggle-favorite', menuId)
+  
+  // 메뉴 제목 찾기
+  const findMenuTitle = (items: MenuItem[], id: string): string | null => {
+    for (const item of items) {
+      if (item.id === id) {
+        return item.title
       }
-      break
-      
-    case 'f':
-    case 'F':
-      if (event.ctrlKey || event.metaKey) {
-        event.preventDefault()
-        toggleFavorite(node)
+      if (item.children) {
+        const found = findMenuTitle(item.children, id)
+        if (found) return found
       }
-      break
+    }
+    return null
+  }
+  
+  const menuTitle = findMenuTitle(props.items, menuId)
+  if (menuTitle) {
+    const action = props.favorites.has(menuId) ? '제거' : '추가'
+    screenReaderAnnouncement.value = `${menuTitle}이(가) 즐겨찾기에서 ${action}되었습니다`
   }
 }
 
-// 컴포넌트 마운트 시
+// 컴포넌트 마운트 시 초기화
 onMounted(() => {
+  // 모든 그룹을 기본적으로 확장 상태로 설정
+  menuGroups.value.forEach(group => {
+    expandedGroups.value.add(group.id)
+  })
+  
   // 초기 안내 메시지
   if (props.items.length > 0) {
     const menuCount = countTotalMenus(props.items)
-    screenReaderAnnouncement.value = `${menuCount}개의 메뉴가 있습니다`
+    const groupCount = menuGroups.value.length
+    screenReaderAnnouncement.value = `${groupCount}개 그룹에 총 ${menuCount}개의 메뉴가 있습니다`
   }
 })
 
@@ -317,6 +251,12 @@ const countTotalMenus = (items: MenuItem[]): number => {
   })
   return count
 }
+
+// Props 변경 감지
+watch(() => props.expandedNodes, (newExpandedNodes) => {
+  // 외부에서 전달된 확장 상태를 내부 상태에 반영
+  expandedGroups.value = new Set(newExpandedNodes)
+}, { immediate: true })
 </script>
 
 <style lang="scss" scoped>
@@ -361,103 +301,30 @@ const countTotalMenus = (items: MenuItem[]): number => {
   }
 }
 
-// 메뉴 트리
-.menu-tree {
+// 메뉴 그룹들
+.menu-groups {
   flex: 1;
+  overflow-y: auto;
   background: transparent;
-  border: none;
   
-  :deep(.p-tree-container) {
+  // 스크롤바 스타일링
+  scrollbar-width: thin;
+  scrollbar-color: var(--surface-3) transparent;
+  
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  &::-webkit-scrollbar-track {
     background: transparent;
-    border: none;
-    padding: var(--space-2);
   }
   
-  :deep(.p-treenode) {
-    .p-treenode-content {
-      padding: var(--space-2) var(--space-3);
-      border-radius: var(--border-radius-md);
-      transition: var(--transition-normal);
-      margin-bottom: var(--space-1);
-      
-      &:hover {
-        background: var(--bg-tertiary);
-      }
-      
-      &.p-treenode-selectable {
-        cursor: pointer;
-      }
-      
-      &.p-highlight {
-        background: var(--primary);
-        color: white;
-        
-        .node-icon,
-        .favorite-button,
-        .external-icon {
-          color: white;
-        }
-        
-        .favorite-button:hover {
-          background: rgba(255, 255, 255, 0.1);
-        }
-      }
-      
-      &:focus-visible {
-        outline: 2px solid var(--primary);
-        outline-offset: 2px;
-      }
-    }
+  &::-webkit-scrollbar-thumb {
+    background: var(--surface-3);
+    border-radius: 4px;
     
-    .p-tree-toggler {
-      color: var(--text-secondary);
-      margin-right: var(--space-2);
-      
-      &:hover {
-        color: var(--text-primary);
-        background: var(--bg-tertiary);
-      }
-      
-      &:focus-visible {
-        outline: 2px solid var(--primary);
-        outline-offset: 2px;
-      }
-    }
-  }
-  
-  // 중첩 레벨별 스타일링
-  :deep(.p-treenode-children) {
-    .p-treenode {
-      margin-left: var(--space-4);
-      position: relative;
-      
-      &::before {
-        content: '';
-        position: absolute;
-        left: calc(-1 * var(--space-4) + var(--space-2));
-        top: 0;
-        bottom: 0;
-        width: 1px;
-        background: var(--surface-2);
-      }
-      
-      .p-treenode-content {
-        position: relative;
-        
-        &::before {
-          content: '';
-          position: absolute;
-          left: calc(-1 * var(--space-4) + var(--space-2));
-          top: 50%;
-          width: var(--space-3);
-          height: 1px;
-          background: var(--surface-2);
-        }
-      }
-      
-      &:last-child::before {
-        height: 50%;
-      }
+    &:hover {
+      background: var(--surface-2);
     }
   }
 }

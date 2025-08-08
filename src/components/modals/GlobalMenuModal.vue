@@ -600,6 +600,7 @@ defineExpose({
   // PrimeVue Dialog의 내부 요소들도 크기 고정
   :deep(.p-dialog-header) {
     flex-shrink: 0 !important;
+    margin: 10px;
     
     .modal-title {
       font-size: calc(var(--text-xl) + 1px);

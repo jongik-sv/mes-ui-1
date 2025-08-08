@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<queryMap desc="IRiS 그룹웨어 메일 전송"> 
+	 <query id="email.send.procedure" desc="10" isNamed="true">
+		 <![CDATA[ 
+{CALL /*+ email.send.procedure - 메일 전송 프로시져 */ M90APUSER.PROC_M90_SEND_EMAIL_INIT_PASS(
+			:fromEmail,
+			:toEmails,
+			null,
+			:subject,
+			:content,
+			:systemCode,
+			:createdBy
+		)}
+		 ]]> 
+	 </query>
+</queryMap>

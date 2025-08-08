@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<queryMap desc="favorites"> 
+	 <query id="favorites_insert" desc="favorites_insert" fetchSize="10" isNamed="true">
+		 <![CDATA[ 
+INSERT INTO TB_USER_BOOKMARK (MENU_ID, USER_ID, SEQ, WORK_LOCATION )
+VALUES( :MENU_ID,
+        :USER_ID,
+        CASE WHEN :SEQ IS NULL THEN 
+             (SELECT NVL(MAX(SEQ), 0) + 10
+                FROM TB_USER_BOOKMARK
+               WHERE USER_ID = :USER_ID)
+             ELSE TO_NUMBER(:SEQ)
+        END,
+        :WORK_LOCATION 
+       )
+		 ]]> 
+	 </query>
+	 <query id="favorites_delete" desc="favorites_delete" fetchSize="10" isNamed="true">
+		 <![CDATA[ 
+DELETE FROM TB_USER_BOOKMARK
+WHERE USER_ID = :USER_ID
+		 ]]> 
+	 </query>
+	 <query id="favorites_select" desc="favorites_select" fetchSize="10" isNamed="false">
+		 <![CDATA[ 
+SELECT 
+PROGRAM_ID
+,PROGRAM_KEY
+,PROGRAM_NAME
+,PROGRAM_URL
+,PARAMETER
+,CONNECTION_TYPE
+,PERMIT_EVENT
+,PAGE_ID
+,SERVICE_NAME
+,BUTTON_FLAG
+,HOST_URL
+,MAK.SEQ AS SEQ
+,OPEN_TYPE
+FROM TB_PROGRAM  PRO, TB_USER_BOOKMARK MAK
+where  PRO.PROGRAM_ID = MAK.MENU_ID
+AND  USER_ID = ?
+ORDER BY SEQ
+		 ]]> 
+	 </query>
+	 <query id="favorites_afterDrag_select" desc="favorites_afterDrag_select" fetchSize="10" isNamed="true">
+		 <![CDATA[ 
+SELECT	/* 즐겨찾기 메뉴 SEQ 일치 여부 확인	favorites-query.favorites_afterDrag_select	김주현 */ 
+				nvl(SEQ, :S_VAL) SEQ
+			FROM M90APUSER.TB_USER_BOOKMARK
+			WHERE	USER_ID	= :USER_ID
+				AND	MENU_ID	= :MENU_ID
+				AND	nvl(SEQ, :S_VAL)		= :S_VAL
+		 ]]> 
+	 </query>
+	 <query id="favorites_afterDrag_selectResult" desc="favorites_afterDrag_selectResult" fetchSize="10" isNamed="true">
+		 <![CDATA[ 
+SELECT 
+				USER_ID
+				, MENU_ID
+				, SEQ
+				, CASE
+					WHEN SEQ = :S_VAL THEN TO_NUMBER(:E_VAL)
+					ELSE (
+						CASE
+							WHEN :S_VAL < :E_VAL THEN SEQ - 10
+							WHEN :S_VAL > :E_VAL THEN SEQ + 10
+						END
+					)
+				END TO_SEQ
+			FROM M90APUSER.TB_USER_BOOKMARK
+			WHERE	USER_ID = :USER_ID
+				AND	SEQ BETWEEN LEAST(:S_VAL, :E_VAL) AND GREATEST(:S_VAL, :E_VAL)
+			ORDER BY SEQ
+		 ]]> 
+	 </query>
+	 <query id="favorites_afterDrag_update" desc="favorites_afterDrag_update" fetchSize="10" isNamed="true">
+		 <![CDATA[ 
+UPDATE M90APUSER.TB_USER_BOOKMARK
+   SET SEQ =  :E_VAL + CASE WHEN TO_NUMBER(:S_VAL) > TO_NUMBER(:E_VAL) THEN -1 ELSE 1 END
+ WHERE USER_ID = :USER_ID
+   AND MENU_ID = :MENU_ID
+		 ]]> 
+	 </query>
+	 <query id="favorites_remove" desc="즐겨찾기삭제" isNamed="true">
+		 <![CDATA[ 
+DELETE FROM TB_USER_BOOKMARK
+WHERE MENU_ID = :MENU_ID
+  AND USER_ID = :USER_ID
+		 ]]> 
+	 </query>
+	 <query id="favorites_organize_seq" desc="" isNamed="true">
+		 <![CDATA[ 
+/* 즐겨찾기 즐겨찾기 Seq 정리 favorites-query.favorites_organize_seq	김정진 */ 
+UPDATE TB_USER_BOOKMARK A
+   SET SEQ = (
+       SELECT SEQ
+         FROM
+            (
+                SELECT MENU_ID, USER_ID, ROWNUM * 10 AS SEQ
+                  FROM (
+                    SELECT MENU_ID, USER_ID, SEQ
+                      FROM TB_USER_BOOKMARK A
+                     WHERE USER_ID = :USER_ID
+                    ORDER BY SEQ
+                       )
+            ) FLATTEDSEQ
+        WHERE MENU_ID = A.MENU_ID
+          AND USER_ID = A.USER_ID
+    )
+ WHERE USER_ID = :USER_ID
+		 ]]> 
+	 </query>
+</queryMap>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Glue:GlueDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Glue="http://www.glueframework.com/activitydiagram/" id="32" location="20,20" size="100,100">
+  <child xsi:type="Glue:InitialState" id="263965" location="363,97" size="-1,-1" output="//@wire.1"/>
+  <child xsi:type="Glue:FinalState" id="263966" location="343,495" size="-1,-1" input="//@wire.0"/>
+  <child xsi:type="Glue:DinaActivity" id="263969" location="286,218" size="146,-1" input="//@wire.2" output="//@wire.3" name="사용자정보수신">
+    <property key="class" value="com.poscoict.glue.biz.dhtmlx.form.FormSearch"/>
+    <property key="dao" value="m90dao"/>
+    <property key="resultkey" value="RK_IF"/>
+    <property key="sqlkey" value="B90R0010.selectTbM90B90R0010"/>
+    <property key="size-is-zero" value="0"/>
+    <property key="description" value="1. Activity Definition&#xD;&#xA;   수신받은 IF GROUP ID로 검사대상 공급업체코드수신테이블에서 상태가 'D'인 대상이 존재하는지를 조회하는 Activity이다.&#xD;&#xA;&#xD;&#xA;2. Detail Description&#xD;&#xA;   1) 기준Table  :  검사대상 부재료코드수신(TB_M20_B20R3010)"/>
+  </child>
+  <child xsi:type="Glue:DinaActivity" id="263971" location="285,428" size="140,-1" input="//@wire.5" output="//@wire.0" name="처리완료">
+    <property key="class" value="com.poscoict.glue.biz.dhtmlx.form.FormUpdate"/>
+    <property key="dao" value="m90dao"/>
+    <property key="isAudit" value="true"/>
+    <property key="sqlkey" value="B90R0010.callbackupdate"/>
+    <property key="description" value="1. Activity Definition&#xD;&#xA;   수신받은 IF GROUP ID로 검사대상부재료코드테이블에 정상적으로 등록 후 정상등록 결과를 등록하는 Activity이다.&#xD;&#xA;&#xD;&#xA;2. Detail Description&#xD;&#xA;   1) 기준Table  : 부재료코드수신 (TB_M20_B20R3010)&#xD;&#xA;   2) 처리방법 :&#xD;&#xA;       - PI처리상태(XSTAT) =  'S'&#xD;&#xA;       - Call Back 처리상태(XSTAT_CALLBACK) = 'R'"/>
+  </child>
+  <child xsi:type="Glue:Activity" id="264225" location="281,151" size="152,-1" input="//@wire.1" output="//@wire.2" name="Log_RCV">
+    <property key="class" value="com.poscoict.glue.biz.dhtmlx.msg.LogReceiveMessage"/>
+    <property key="dao" value="m90dao"/>
+    <property key="tx-name" value="tx3"/>
+    <property key="description" value="1. Activity Definition&#xD;&#xA;   전문 수신정보를 테이블에 등록하는 Activity이다."/>
+  </child>
+  <child xsi:type="Glue:DinaActivity" id="264357" location="278,289" size="151,-1" input="//@wire.3" output="//@wire.4" name="사용자 정보 업뎃">
+    <property key="class" value="com.poscoict.glue.biz.dhtmlx.rowset.PosRowSetUpdate"/>
+    <property key="(resultkey)" value="value"/>
+    <property key="bind-result" value="RK_IF"/>
+    <property key="dao" value="mesdao"/>
+    <property key="sqlkey" value="B90R0010.upsertTbM90B90R0010"/>
+    <property key="description" value=""/>
+  </child>
+  <child xsi:type="Glue:Activity" id="264410" location="287,351" size="135,-1" input="//@wire.4" output="//@wire.5" name="APS 사용자정보 update">
+    <property key="class" value="com.poscoict.glue.biz.dhtmlx.PosProcedureInvoker"/>
+    <property key="dao" value="apsdao"/>
+    <property key="param-count" value="0"/>
+    <property key="procedure-id" value="PROC_APS_USER_UPDATE"/>
+    <property key="description" value="1. Activity Definition&#xD;&#xA;  - APS에서 제공하는 procedure을 호출하는 Activity이다.&#xD;&#xA;&#xD;&#xA;2. Detail Description&#xD;&#xA;  - APS와 원자재관리(M42)간에 원자재사전정보를 삭제하기 위해 APS에서 제공하는 procedure를 call 한다."/>
+  </child>
+  <property key="tx1" value="true"/>
+  <property key="tx2" value="true"/>
+  <property key="tx3" value="true"/>
+  <property key="description" value=""/>
+  <wire id="11865" guardcondition="success" firstRelativePoint="353,458" lastRelativePoint="353,494"/>
+  <wire id="12675" guardcondition="success" firstRelativePoint="364,111" lastRelativePoint="364,151"/>
+  <wire id="12682" guardcondition="success" firstRelativePoint="365,181" lastRelativePoint="365,218"/>
+  <wire id="12683" guardcondition="success" firstRelativePoint="367,248" lastRelativePoint="367,328"/>
+  <wire id="12684" guardcondition="success" firstRelativePoint="359,319" lastRelativePoint="369,428"/>
+  <wire id="12685" guardcondition="success" firstRelativePoint="359,381"/>
+</Glue:GlueDiagram>

@@ -1,0 +1,16 @@
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    /* IE10+ specific styles go here */
+    .menu_btn .content .back {
+        margin-top: -2px;
+    }
+    
+    .dhx_list_item:hover .menu_btn .content .front {
+        visibility: hidden;
+        backface-visibility: hidden;
+    }
+    
+    .dhx_list_item:hover .menu_btn .content .back {
+        visibility: visible;
+        backface-visibility: visible;
+    }
+}

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<queryMap desc="noticeWhswgt Page 쿼리파일"> 
+	 <query id="noticeWhswgt.select" desc="noticeWhswgt 조회" fetchSize="10" isNamed="true">
+		 <![CDATA[ 
+SELECT PRD_NM_GRP_CD,
+       PRD_NM_CD,
+       COIL_WGT
+  FROM (
+SELECT PRD_NM_GRP_CD,
+       PRD_NM_CD,
+       ROUND(SUM(COIL_WGT)/1000) COIL_WGT
+  FROM MESAPUSER.TB_M60_WHS_TOT
+ GROUP BY PRD_NM_GRP_CD, PRD_NM_CD
+ UNION ALL
+ SELECT '' AS PRD_NM_GRP_CD,
+        '' AS PRD_NM_CD,
+       ROUND(SUM(COIL_WGT)/1000) COIL_WGT
+  FROM MESAPUSER.TB_M60_WHS_TOT
+       )
+ ORDER BY PRD_NM_GRP_CD, PRD_NM_CD
+		 ]]> 
+	 </query>
+	 <query id="noticeWhswgt.update" desc="noticeWhswgt 정보 수정" isNamed="true">
+		 <![CDATA[ 
+UPDATE EMP
+            SET ENAME=:ENAME,            
+	    JOB=:JOB,
+	    MGR=:MGR,
+	    HIREDATE=:HIREDATE,
+	    SAL=:SAL,
+	    COMM=:COMM,
+	    DEPTNO=:DEPTNO
+            WHERE EMPNO=:EMPNO
+		 ]]> 
+	 </query>
+	 <query id="noticeWhswgt.delete" desc="noticeWhswgt 정보 삭제" isNamed="true">
+		 <![CDATA[ 
+DELETE FROM EMP
+            WHERE EMPNO=:EMPNO
+		 ]]> 
+	 </query>
+	 <query id="noticeWhswgt.insert" desc="noticeWhswgt 정보 추가" isNamed="true">
+		 <![CDATA[ 
+INSERT INTO EMP(EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)
+            VALUES(:EMPNO,:ENAME, :JOB, :MGR,:HIREDATE, :SAL,:COMM,:DEPTNO)
+		 ]]> 
+	 </query>
+</queryMap>

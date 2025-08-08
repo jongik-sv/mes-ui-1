@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service name="frequently-service" initial="분기">
+  <activity name="최근접속" class="com.poscoict.glue.biz.dhtmlx.form.FormSearch">
+    <transition name="success" value="end" />
+    <property name="resultkey" value="favoritesMenuResult" />
+    <property name="dao" value="m90dao" />
+    <property name="sqlkey" value="frequently_access" />
+  </activity>
+  <activity name="자주사용" class="com.poscoict.glue.biz.dhtmlx.form.FormSearch">
+    <transition name="success" value="end" />
+    <property name="resultkey" value="favoritesMenuResult" />
+    <property name="dao" value="m90dao" />
+    <property name="sqlkey" value="frequently_used" />
+  </activity>
+  <activity name="분기" class="com.posdata.glue.biz.activity.PosDefaultRouter">
+    <transition name="recent" value="최근접속" />
+    <transition name="freq" value="자주사용" />
+  </activity>
+</service>
+

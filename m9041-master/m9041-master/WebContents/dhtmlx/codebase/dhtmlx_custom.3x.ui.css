@@ -1,0 +1,23 @@
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	overflow: auto;
+}
+
+input#statusbar_prgId {
+	float: right;
+	text-align: right;
+	border: none;
+	padding-right: 5px;
+	font-family: Tahoma;
+	font-size: 12px;
+	margin-top: -2px;
+	background-color: #323130;
+	color: white;
+}
+
+input#statusbar_prgId:focus {
+	outline: none;
+}

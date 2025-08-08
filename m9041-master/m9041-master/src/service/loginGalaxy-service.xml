@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service name="loginGalaxy-service" initial="사용자정보가져오기">
+  <activity name="사용자 처리" class="com.posdata.glue.mes.activity.CheckUserInfo">
+    <transition name="success" value="end" />
+  </activity>
+  <activity name="갤럭시루트메뉴(권한)가져오기" class="com.posdata.glue.biz.activity.PosSearch">
+    <transition name="success" value="비밀번호 인증" />
+    <property name="resultkey" value="RK_ROOT_MENU" />
+    <property name="dao" value="m90dao" />
+    <property name="param-count" value="1" />
+    <property name="sqlkey" value="menu.galaxy.root" />
+    <property name="param0" value="USER_NO" />
+  </activity>
+  <activity name="사용자정보가져오기" class="com.posdata.glue.biz.activity.PosSearch">
+    <transition name="success" value="UserId가져오기" />
+    <transition name="success2" value="갤럭시루트메뉴(권한)가져오기" />
+    <property name="resultkey" value="USER_INFO" />
+    <property name="dao" value="m90dao" />
+    <property name="param-count" value="1" />
+    <property name="sqlkey" value="user.info" />
+    <property name="param0" value="USER_NO" />
+  </activity>
+  <activity name="UserId가져오기" class="com.poscoict.glue.m90.activity.GetUserId">
+    <transition name="success" value="SubService26" />
+  </activity>
+  <activity name="비밀번호 인증" class="com.posdata.glue.mes.activity.CheckAuth">
+    <transition name="success" value="사용자 처리" />
+    <property name="dao" value="m90dao" />
+  </activity>
+  <activity name="SubService26" class="com.posdata.glue.biz.activity.PosSubBizControlActivity">
+    <transition name="success" value="비밀번호 인증" />
+    <property name="new-transacion" value="false" />
+    <property name="ServiceName" value="securityGalaxy-service" />
+  </activity>
+</service>
+

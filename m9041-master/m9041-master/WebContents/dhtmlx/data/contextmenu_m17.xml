@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+	<item id="settings" img="settings.gif" text="그리드 옵션">
+	    <item id="copy_row" text="복사" img="copy.gif" imgdis="copy_dis.gif"/>
+	    <item id="collapse_row" text="접기" img="toolbarBtn_2_on.gif" imgdis="toolbarBtn_2_click.gif"/>
+	    <item id="expand_row" text="펼치기" img="toolbarBtn_3_on.gif" imgdis="toolbarBtn_3_click.gif"/>
+	    <item id="excel_grid" text="엑셀다운" img="toolbarBtn_10_on.gif" imgdis="toolbarBtn_10_on.gif"/>
+	</item>
+</menu>

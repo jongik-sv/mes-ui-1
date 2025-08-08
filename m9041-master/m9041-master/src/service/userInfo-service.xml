@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service name="userInfo-service" initial="분기">
+  <activity name="분기" class="com.posdata.glue.biz.activity.PosDefaultRouter">
+    <transition name="success" value="사용자정보조회" />
+  </activity>
+  <activity name="사용자정보조회" class="com.poscoict.glue.biz.dhtmlx.form.FormSearch">
+    <transition name="success" value="end" />
+    <property name="sqlkey" value="userInfo.user" />
+    <property name="dao" value="m90dao" />
+  </activity>
+</service>
+

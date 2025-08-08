@@ -1,0 +1,730 @@
+.dhxlayout_base_material div.dhxlayout_cont {
+	background-color: #323130;
+}
+
+.containerTableStyle {
+	padding-left: 10px;
+}
+
+.dhxlayout_base_material div.dhx_cell_layout {
+	position: absolute;
+	background-color: #323948;
+	margin: 0;
+	padding: 0;
+	cursor: default;
+	z-index: 0;
+	/* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04), 0 1px 4px rgba(0, 0, 0, 0.12); */
+	border-color: #323948;
+}
+
+.dhxlayout_base_material div.dhx_cell_layout div.dhx_cell_hdr {
+	/*line-height: 29px;
+	background-color: #555555;
+	font-size: 12pt;*/
+	/* 담당자 안내 Header 디자인을 위해 수정
+	TO-DO 추후 다른 곳에 영향이 없을 경우 주석 부분 제거 필요 */
+	line-height: 40px;
+	background-color: #122b4b;
+	font-size: 12pt;
+	font-weight: 800;
+}
+
+.dhxlayout_base_material div.dhx_cell_layout div.dhx_cell_hdr.dhx_cell_hdr_hidden {
+	border-top: #323130;
+	height: 0;
+	line-height: 0;
+	overflow: hidden;
+}
+
+.dhxlayout_base_material div.dhx_cell_layout div.dhx_cell_cont_layout {
+	position: absolute;
+	border-color: #323130;
+	border-style: none;
+	border-width: 0px 0px 0px 0px;
+	z-index: 0;
+	cursor: default;
+	margin: 0;
+	padding: 0;
+	padding-left: 1px;
+	color: #fff;
+}
+
+/* [[[[ dhxtabbar CSS Start */
+
+.dhxtabbar_base_material div.dhxtabbar_tabs {
+	background: #323130;
+	border-style: unset;
+	border-width: 1px;
+	bottom: auto;
+	/* box-shadow: 4px 4px 10px rgba(69, 65, 78, .06); */
+	color: #404040;
+	font-family: Roboto, Arial, Helvetica;
+	font-size: 14px;
+	height: 33px;
+	line-height: 32px;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	white-space: nowrap;
+	z-index: 2;
+	border-color: transparent;
+	min-width: 500px;
+}
+
+.dhxtabbar_base_material div.dhx_cell_tabbar {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	cursor: default;
+	z-index: 0;
+	min-width: 990px;
+}
+
+.dhxtabbar_base_material div.dhx_cell_tabbar div.dhx_cell_cont_tabbar {
+	position: absolute;
+	border-color: #323130;
+	border-style: solid;
+	overflow: hidden;
+	z-index: 0;
+}
+
+.dhxtabbar_base_material div.dhxtabbar_tabs div.dhxtabbar_tabs_base {
+	height: 33px;
+}
+
+.dhxtabbar_base_material div.dhxtabbar_tabs div.dhxtabbar_tabs_base div.dhxtabbar_tabs_cont_left, .dhxtabbar_base_material div.dhxtabbar_tabs div.dhxtabbar_tabs_base div.dhxtabbar_tabs_cont_right {
+	height: 33px;
+}
+
+.dhxtabbar_base_material div.dhxtabbar_tabs div.dhxtabbar_tabs_base div.dhxtabbar_tab div.dhxtabbar_tab_text {
+	position: relative;
+	height: 30px;
+	line-height: 42px;
+	background-color: black;
+	vertical-align: middle;
+	text-align: center;
+	padding: 0 16px;
+	overflow: hidden;
+	font: inherit;
+	text-transform: uppercase;
+}
+
+.dhxtabbar_base_material div.dhxtabbar_tabs div.dhxtabbar_tabs_base div.dhxtabbar_tab div.dhxtabbar_tab_close {
+	cursor: pointer;
+	right: 10px;
+	top: 8px;
+	transition: 0.3s ease;
+}
+
+.dhxtabbar_base_material div.dhxtabbar_tabs div.dhxtabbar_tabs_base div.dhxtabbar_tab div.dhxtabbar_tab_close1 {
+	position: absolute;
+	top: 14px;
+	right: 28px;
+	width: 14px;
+	height: 14px;
+	background-image: url("imgs/dhxtabbar_material/dhxtabbar_button_close.png");
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	z-index: 1;
+}
+
+.dhxtabbar_base_material div.dhxtabbar_tabs div.dhxtabbar_tabs_base div.dhxtabbar_tab div.dhxtabbar_tab_close:hover {
+	right: 10px;
+	transform: rotate(90deg);
+	transition: 0.3s ease;
+}
+
+.dhxtabbar_base_material div.dhxtabbar_tabs div.dhxtabbar_tabs_base div.dhxtabbar_tab {
+	position: relative;
+	height: 33px;
+	line-height: 42px;
+	background-color: black;
+	font: inherit;
+	margin-right: 0;
+	cursor: pointer;
+	z-index: 1;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	-o-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+}
+
+.dhxtabbar_base_material div.dhxtabbar_tabs div.dhxtabbar_tabs_base div.dhxtabbar_tab.dhxtabbar_tab_actv {
+	background-color: #fddf2f;
+	/* background-color: black;
+	border-bottom: 4px solid #fddf2f; */
+	box-shadow: -1px 0px 4px 0px rgba(228, 228, 228, 0.28);
+}
+
+.dhxtabbar_base_material div.dhxtabbar_tabs div.dhxtabbar_tabs_base div.dhxtabbar_tab.dhxtabbar_tab_actv div.dhxtabbar_tab_text {
+	color: #fddf2f;
+	font-weight: bold;
+	/* font-size: 20px; */
+}
+
+.dhxtabbar_base_material div.dhxtabbar_tabs div.dhxtabbar_tabs_base div.dhxtabbar_tab div.dhxtabbar_tab_text.dhxtabbar_tab_text_close {
+	padding-right: 25px;
+	border-left: 0.1px solid #3e3e3e;
+}
+
+.dhxtabbar_base_material div.dhxtabbar_tabs div.dhxtabbar_tabs_base div.dhxtabbar_tabs_cont_left div.dhxtabbar_tab {
+	float: left;
+	color: #fff;
+}
+
+.dhxtabbar_base_material div.dhxtabbar_tabs div.dhxtabbar_tabs_ar_left, .dhxtabbar_base_material div.dhxtabbar_tabs div.dhxtabbar_tabs_ar_right {
+	top: -5px;
+}
+
+/* dhxtabbar CSS End ]]]] */
+
+/* [[[[ dhx_list CSS Start */
+
+.dhx_list {
+	border-top: 0px solid #ccc;
+	border-right: 0px solid #ccc;
+	overflow-y: hidden;
+}
+
+.dhx_list:hover {
+	background-position: 50% 0%;
+}
+
+.dhx_list .dhx_list_default_item, .dhx_list .dhx_list_default_item_selected {
+	border-right: none;
+	border-bottom: 0px solid #eee;
+	/* border-left: 3px solid transparent; */
+	border-left: 1px solid transparent;
+}
+
+.dhx_list .dhx_list_default_item_selected {
+	background-color: hsla(0, 0%, 95%, 0);
+	color: #fff;
+	/* border-color: #0070ff; */
+	background-repeat: repeat-x;
+	border-left: 3px solid #fddf2f;
+}
+
+.dhx_list_item {
+	font-family: Roboto, Arial, Helvetica;
+	font-size: 14px;
+	color: #d0d0d0;
+	box-sizing: border-box;
+	line-height: normal;
+}
+
+/* dhx_list CSS End ]]]] */
+
+/* [[[[ dhxtreeview CSS Start */
+
+.dhxtreeview_material div.dhxtreeview_cont {
+	position: absolute;
+	overflow: auto;
+	background-color: #545454;
+	color: #fff;
+	/* box-shadow: 0 8px 16px 0 rgba(0,0,0,.28); */
+	overflow-x: hidden;
+	border-left: 1px solid #323948;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item {
+	position: relative;
+	white-space: nowrap;
+	cursor: default;
+	font-size: 14px;
+	font-family: Roboto, Arial, Helvetica;
+	color: #000;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text {
+	position: relative;
+	padding: 0;
+	margin: 0;
+	height: 32px;
+	line-height: 31px;
+	color: white;
+	vertical-align: middle;
+	border-left: 3px solid #23385a;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	cursor: default;
+	/* border-bottom-style: ridge; */
+	/* border-bottom-width: thin; */
+	border-bottom-color: #000;
+	background-color: #23385a;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text:hover {
+	/* background-color: hsla(0, 0%, 95%, 0); */
+	/* border-color: #fddf2f; */
+	/* border-left: 3px solid #fddf2f; */
+	/* border-bottom-style: ridge; */
+	/* border-bottom-color: #000; */
+	background-color: #23385a;
+	border-left: 3px solid #23385a;
+	color: #fddf2f;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_label {
+	width: calc(100% - 18px);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text div.dhxtreeview_item_label {
+	position: absolute;
+	top: 0;
+	/* padding: 0 10px 0 4px; */
+	height: 100%;
+	line-height: inherit;
+	font: inherit;
+	margin-left: -35px;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_kids_cont div.dhxtreeview_item_label {
+	margin-left: -45px;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text:hover div.dhxtreeview_item_label {
+	background-color: hsla(0, 0%, 95%, 0);
+	color: #fddf2f;
+	cursor: pointer;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected, .dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected:hover {
+	background-color: #23385a;
+	/* border-color: #fddf2f; */
+	border-color: #23385a;
+	border-bottom-color: black;
+	font-weight: 900;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected div.dhxtreeview_item_label, .dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected:hover div.dhxtreeview_item_label {
+	/* background-color: hsla(0, 0%, 95%, 0); */
+	background-color: #23385a;
+	color: #fddf2f;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_kids_cont div.dhxtreeview_item_text {
+	background-color: #545454;
+	color: white;
+	border-left: 3px solid #545454;
+	cursor: pointer;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_kids_cont div.dhxtreeview_item_text.dhxtreeview_item_text_selected div.dhxtreeview_item_label, .dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_kids_cont div.dhxtreeview_item_text.dhxtreeview_item_text_selected:hover div.dhxtreeview_item_label {
+	background-color: #545454;
+	color: #fddf2f;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_kids_cont div.dhxtreeview_item_text.dhxtreeview_item_text_selected, .dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_kids_cont div.dhxtreeview_item_text.dhxtreeview_item_text_selected:hover {
+	background-color: #545454;
+	border-color: #fddf2f;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text div.dhxtreeview_item_icon i.dhxtreeview_icon.dhxtreeview_icon_plus {
+	background-image: none;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text div.dhxtreeview_item_icon i.dhxtreeview_icon.dhxtreeview_icon_minus {
+	background-image: none;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text div.dhxtreeview_item_icon i.dhxtreeview_icon.dhxtreeview_icon_file {
+	background-image: none;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text div.dhxtreeview_item_icon i.dhxtreeview_icon.dhxtreeview_icon_folder_closed {
+	background-image: none;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text div.dhxtreeview_item_icon i.dhxtreeview_icon.dhxtreeview_icon_folder_opened {
+	background-image: none;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text div.dhxtreeview_item_icon i.dhxtreeview_icon.dhxtreeview_icon_loading {
+	background-image: none;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text div.dhxtreeview_item_icon i.dhxtreeview_icon.dhxtreeview_icon_chbx_0 {
+	background-image: none;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text div.dhxtreeview_item_icon i.dhxtreeview_icon.dhxtreeview_icon_chbx_1 {
+	background-image: none;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text div.dhxtreeview_item_icon i.dhxtreeview_icon.dhxtreeview_icon_chbx_dis_0 {
+	background-image: none;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text div.dhxtreeview_item_icon i.dhxtreeview_icon.dhxtreeview_icon_chbx_dis_1 {
+	background-image: none;
+}
+
+/* dhxtreeview CSS End ]]]] */
+
+/* [[[[ dhxWindow CSS Start */
+
+.dhxwins_vp_material div.dhxwin_active, .dhxwins_vp_material div.dhxwin_hdr, .dhxwin_active .dhxlayout_base_material div.dhx_cell_layout {
+	background-color: #122b4b;
+}
+
+.dhxwins_vp_material div.dhxwin_brd {
+	border-color: #122b4b;
+}
+
+.dhxwin_active .dhxlayout_base_material div.dhx_cell_layout {
+	background-color: #fff;
+}
+
+.dhxwins_vp_material div.dhxwin_hdr div.dhxwin_btns div.dhxwin_button, .dhxwins_vp_material div.dhxwin_hdr div.dhxwin_btns div.dhxwin_button_dis {
+	background-image: url(/dhtmlx/codebase/imgs/dhxwins_buttons.png);
+}
+
+.dhxwins_vp_material div.dhxwin_hdr div.dhxwin_icon {
+	background-image: url(/dhtmlx/codebase/imgs//dhxwins_icon.gif);
+}
+
+/* dhxWindow CSS End ]]]] */
+
+/* [[[[ toast message CSS Start */
+
+.dhtmlx_message_area {
+	position: fixed;
+	right: 10px;
+	width: 300px;
+	z-index: 1000;
+	padding: 0;
+}
+
+.dhtmlx-info {
+	color: #fff;
+	min-width: 120px;
+	background: #323948;
+    font-size: 14px;
+    font-family: Roboto, Arial, Helvetica;
+    font-weight: 500;
+    z-index: 10000;
+    margin: 0 5px 7px 5px;
+	box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.dhtmlx-info div {
+	padding: 16px 9px 16px 15px;
+	background-color: #323948;
+	height: 51px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	-webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+	transition: all .5s ease;
+}
+
+.dhtmlx-info.hidden {
+    box-shadow: none;
+    border-top: none;
+    border-bottom: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    overflow: hidden;
+}
+
+.dhtmlx-info.hidden div {
+    height: 0;
+    border-top: none;
+    border-bottom: none;
+    padding-bottom: 0;
+    padding-top: 0;
+    overflow: hidden;
+}
+
+.dhtmlx-error {
+	color: #fff;
+	min-width: 120px;
+	background-color: #e53935;
+	font-size: 14px;
+	font-family: Roboto, Arial, Helvetica;
+	font-weight: 500;
+	z-index: 10000;
+	margin: 0 5px 7px 5px;
+	box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+	-webkit-transition: all .5s ease;
+	-moz-transition: all .5s ease;
+	-o-transition: all .5s ease;
+	transition: all .5s ease;
+}
+
+.dhtmlx-error div {
+	padding: 16px 9px 16px 15px;
+	background-color: #e53935;
+	height: 51px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	-webkit-transition: all .5s ease;
+	-moz-transition: all .5s ease;
+	-o-transition: all .5s ease;
+	transition: all .5s ease;
+}
+
+.dhtmlx-info, .dhtmlx-error, .dhtmlx_popup_title, .dhtmlx_popup_button {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    -moz-user-select: -moz-none;
+    cursor: pointer;
+}
+
+/* toast message CSS End ]]]] */
+
+/* .dhxlayout_base_material div.dhxlayout_sep */
+
+
+.dhxtabbar_base_material div.dhx_cell_tabbar div.dhx_cell_progress_bar {
+	opacity: 0.4;
+}
+
+.dhtmlx-alert .dhtmlx_popup_title, .dhtmlx-confirm .dhtmlx_popup_title {
+    color: white;
+    background: #122b4b;
+}
+
+.dhtmlx_popup_button:first-child {
+    background: #122b4b;
+    color: white;
+    font-weight: normal;
+}
+
+
+/* [[[[ Spinner Progress CSS Start */
+.dhxtabbar_base_material div.dhxtabbar_tabs_top div.dhx_cell_tabbar div.dhx_cell_progress_img,
+.dhxtabbar_base_material div.dhxtabbar_tabs_top div.dhx_cell_tabbar div.dhx_cell_progress_svg {
+    border-top-width: 0;
+    border-left-width: 0;
+}
+
+.dhxacc_base_material div.dhx_cell_acc div.dhx_cell_progress_svg,
+.dhxtabbar_base_material div.dhx_cell_tabbar div.dhx_cell_progress_svg,
+.dhxsidebar_base_material div.dhxsidebar_cont div.dhx_cell_sidebar div.dhx_cell_progress_svg,
+.dhxcarousel_base_material div.dhxcarousel_cont div.dhxcarousel_area div.dhx_cell_carousel div.dhx_cell_progress_svg,
+.dhxwins_vp_material div.dhxwin_active div.dhx_cell_wins div.dhx_cell_progress_svg,
+.dhxwins_vp_material div.dhxwin_inactive div.dhx_cell_wins div.dhx_cell_progress_svg {
+    position: absolute;
+    /* 이미지 및 사이즈 변경 시 이미지 위치 변경 방법
+        px값에 .lds-spinner에 정의된 이미지 영역의 px 사이즈 값을 입력해준다. */
+    left: calc(50% - (120px / 2));
+    top: calc(50% - (120px / 2));
+    width: 100%;
+    height: 100%;
+    border: 0px solid #e4e4e4;
+    z-index: 2;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.dhxacc_base_material div.dhx_cell_acc div.dhx_cell_progress_img,
+.dhxlayout_base_material div.dhx_cell_layout div.dhx_cell_progress_img,
+.dhxtabbar_base_material div.dhx_cell_tabbar div.dhx_cell_progress_img,
+.dhxsidebar_base_material div.dhxsidebar_cont div.dhx_cell_sidebar div.dhx_cell_progress_img,
+.dhxcarousel_base_material div.dhxcarousel_cont div.dhxcarousel_area div.dhx_cell_carousel div.dhx_cell_progress_img,
+.dhxwins_vp_material div.dhxwin_active div.dhx_cell_wins div.dhx_cell_progress_img,
+.dhxwins_vp_material div.dhxwin_inactive div.dhx_cell_wins div.dhx_cell_progress_img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: 0px solid #e4e4e4;
+    background-image: url('imgs/dhxtabbar_material/Spinner-1s-120px.gif');
+    background-position: center center;
+    background-repeat: no-repeat;
+    z-index: 2;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+
+/* 
+	https://loading.io/spinner/custom/285265/
+
+	Config Info {
+		Color:			#28292f
+		Bar Count:		12
+		Bar Height:		12
+		Radius:			20
+		Corner:			12
+		Bar Width:		5
+		Color Scheme:	Bleach
+		Speed:			1
+		Size:			120
+		Backgorund:		
+		Transparent:	Yes
+		Download As:	GIF & SVG
+	}
+	
+	Using As {
+		IE 외 Browser에 사용 (Edge 포함)
+			SVG:	dhtmlx_*.*.*.js파일 내 dhtmlXCellObject.prototype.progressOn에 t2.innerHTML 변수에 SVG 정의
+		IE Browser에 사용 (Edge 제외)
+			GIF:	.dhx_cell_progress_img 내 background-image에 이미지 파일 정의
+	}
+*/
+.lds-spinner {
+	position: relative;
+	/* SVG Size*/
+    width: 120px !important;
+    height: 120px !important;
+    -webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+    transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+}
+
+.lds-spinner div {
+    left: 95px;
+    top: 48px;
+    position: absolute;
+    -webkit-animation: lds-spinner linear 1s infinite;
+    animation: lds-spinner linear 1s infinite;
+    background: #28292f;
+    width: 10px;
+    height: 24px;
+    border-radius: 20%;
+    -webkit-transform-origin: 5px 52px;
+    transform-origin: 5px 52px;
+}
+
+.lds-spinner div:nth-child(1) {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-animation-delay: -0.916666666666667s;
+    animation-delay: -0.916666666666667s;
+}
+
+.lds-spinner div:nth-child(2) {
+    -webkit-transform: rotate(30deg);
+    transform: rotate(30deg);
+    -webkit-animation-delay: -0.833333333333333s;
+    animation-delay: -0.833333333333333s;
+}
+
+.lds-spinner div:nth-child(3) {
+    -webkit-transform: rotate(60deg);
+    transform: rotate(60deg);
+    -webkit-animation-delay: -0.75s;
+    animation-delay: -0.75s;
+}
+
+.lds-spinner div:nth-child(4) {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    -webkit-animation-delay: -0.666666666666667s;
+    animation-delay: -0.666666666666667s;
+}
+
+.lds-spinner div:nth-child(5) {
+    -webkit-transform: rotate(120deg);
+    transform: rotate(120deg);
+    -webkit-animation-delay: -0.583333333333333s;
+    animation-delay: -0.583333333333333s;
+}
+
+.lds-spinner div:nth-child(6) {
+    -webkit-transform: rotate(150deg);
+    transform: rotate(150deg);
+    -webkit-animation-delay: -0.5s;
+    animation-delay: -0.5s;
+}
+
+.lds-spinner div:nth-child(7) {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+    -webkit-animation-delay: -0.416666666666667s;
+    animation-delay: -0.416666666666667s;
+}
+
+.lds-spinner div:nth-child(8) {
+    -webkit-transform: rotate(210deg);
+    transform: rotate(210deg);
+    -webkit-animation-delay: -0.333333333333333s;
+    animation-delay: -0.333333333333333s;
+}
+
+.lds-spinner div:nth-child(9) {
+    -webkit-transform: rotate(240deg);
+    transform: rotate(240deg);
+    -webkit-animation-delay: -0.25s;
+    animation-delay: -0.25s;
+}
+
+.lds-spinner div:nth-child(10) {
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg);
+    -webkit-animation-delay: -0.166666666666667s;
+    animation-delay: -0.166666666666667s;
+}
+
+.lds-spinner div:nth-child(11) {
+    -webkit-transform: rotate(300deg);
+    transform: rotate(300deg);
+    -webkit-animation-delay: -0.083333333333333s;
+    animation-delay: -0.083333333333333s;
+}
+
+.lds-spinner div:nth-child(12) {
+    -webkit-transform: rotate(330deg);
+    transform: rotate(330deg);
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+}
+
+@keyframes lds-spinner {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes lds-spinner {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+/* Spinner Progress CSS End ]]]] */

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service name="pdaApp-service" initial="분기">
+  <transaction-manager id="tx1" commit="true" />
+  <activity name="사용자 처리" class="com.posdata.glue.mes.activity.CheckUserInfo">
+    <transition name="success" value="end" />
+  </activity>
+  <activity name="단말기 정보 추가 및 갱신" class="com.poscoict.glue.biz.dhtmlx.form.FormUpdate">
+    <transition name="success" value="end" />
+    <property name="sqlkey" value="pda.device.infoMerge" />
+    <property name="dao" value="m90dao" />
+  </activity>
+  <activity name="비밀번호 인증" class="com.posdata.glue.mes.activity.CheckAuth">
+    <transition name="success" value="사용자 처리" />
+    <property name="dao" value="m90dao" />
+  </activity>
+  <activity name="사용자정보 가져오기" class="com.posdata.glue.biz.activity.PosSearch">
+    <transition name="success" value="비밀번호 인증" />
+    <property name="dao" value="m90dao" />
+    <property name="sqlkey" value="pda.user.info" />
+    <property name="param0" value="PLATFORM" />
+    <property name="resultkey" value="USER_INFO" />
+    <property name="param1" value="USER_NO" />
+    <property name="param-count" value="2" />
+  </activity>
+  <activity name="분기" class="com.posdata.glue.biz.activity.PosDefaultRouter">
+    <transition name="loginInfo" value="사용자정보 가져오기" />
+    <transition name="menuList" value="메뉴목록 가져오기" />
+    <transition name="favoriteAdd" value="즐겨찾기 추가" />
+    <transition name="favoriteRemove" value="즐겨찾기 삭제" />
+    <transition name="deviceInfo" value="단말기 정보 추가 및 갱신" />
+    <transition name="versionInfo" value="App 버전정보 가져오기" />
+  </activity>
+  <activity name="App 버전정보 가져오기" class="com.poscoict.glue.biz.dhtmlx.form.FormSearch">
+    <transition name="success" value="end" />
+    <property name="sqlkey" value="pda.app.version" />
+    <property name="dao" value="m90dao" />
+  </activity>
+  <activity name="메뉴목록 가져오기" class="com.poscoict.glue.biz.dhtmlx.form.FormSearch">
+    <transition name="success" value="end" />
+    <property name="sqlkey" value="pda.user.menulist" />
+    <property name="dao" value="m90dao" />
+  </activity>
+  <activity name="즐겨찾기 추가" class="com.poscoict.glue.biz.dhtmlx.form.FormInsert">
+    <transition name="success" value="end" />
+    <property name="sqlkey" value="pda.favorite.insert" />
+    <property name="dao" value="m90dao" />
+  </activity>
+  <activity name="즐겨찾기 삭제" class="com.poscoict.glue.biz.dhtmlx.form.FormDelete">
+    <transition name="success" value="end" />
+    <property name="sqlkey" value="pda.favorite.remove" />
+    <property name="dao" value="m90dao" />
+  </activity>
+</service>
+

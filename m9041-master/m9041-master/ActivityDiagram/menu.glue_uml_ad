@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Glue:GlueDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Glue="http://www.glueframework.com/activitydiagram/" id="1" location="20,20" size="100,100">
+  <child xsi:type="Glue:InitialState" id="5" location="444,54" size="-1,-1" output="//@wire.2"/>
+  <child xsi:type="Glue:FinalState" id="6" location="441,310" size="-1,-1" input="//@wire.3"/>
+  <child xsi:type="Glue:Activity" id="13" location="308,157" size="328,-1" input="//@wire.2" output="//@wire.3" name="로긴">
+    <property key="class" value="com.posdata.glue.mes.activity.PosSecurityLogin"/>
+    <property key="description" value=""/>
+  </child>
+  <wire id="8" guardcondition="success" firstRelativePoint="305,139" lastRelativePoint="305,241"/>
+  <wire id="9" guardcondition="success" firstRelativePoint="397,271" lastRelativePoint="453,423"/>
+  <wire id="13" guardcondition="success" firstRelativePoint="462,68" lastRelativePoint="462,157"/>
+  <wire id="14" guardcondition="success" firstRelativePoint="451,187" lastRelativePoint="451,309"/>
+</Glue:GlueDiagram>

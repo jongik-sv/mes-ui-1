@@ -1,0 +1,480 @@
+<rows>
+<userdata name="appMsg">20건의 Data가 조회되었습니다.</userdata>
+<row id= "xml-result_1" >
+<cell title='PLTCM'  ><![CDATA[1P]]></cell>
+<cell  ><![CDATA[]]></cell>
+<cell title='2CGL'  ><![CDATA[82]]></cell>
+<cell  ><![CDATA[V104631]]></cell>
+<cell  ><![CDATA[20.67]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[20.67]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell title='DUFERCO SA'  ><![CDATA[205432]]></cell>
+<cell title='CCLI'  ><![CDATA[4]]></cell>
+<cell  ><![CDATA[0.65]]></cell>
+<cell  ><![CDATA[1220]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[6BA4CA]]></cell>
+<cell  ><![CDATA[49Z24AG5211A]]></cell>
+</row>
+<row id= "xml-result_2" >
+<cell title='PLTCM'  ><![CDATA[1P]]></cell>
+<cell  ><![CDATA[]]></cell>
+<cell title='3CGL'  ><![CDATA[83]]></cell>
+<cell  ><![CDATA[V200640]]></cell>
+<cell  ><![CDATA[20.33]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[20.33]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell title='DAEWOO INTERNATIONAL'  ><![CDATA[108808]]></cell>
+<cell title='CCGI'  ><![CDATA[3]]></cell>
+<cell  ><![CDATA[0.6]]></cell>
+<cell  ><![CDATA[1250]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[6B14FA]]></cell>
+<cell  ><![CDATA[49R12AH4281D]]></cell>
+</row>
+<row id= "xml-result_3" >
+<cell title='PLTCM'  ><![CDATA[1P]]></cell>
+<cell  ><![CDATA[]]></cell>
+<cell title='2RCL'  ><![CDATA[72]]></cell>
+<cell  ><![CDATA[V201744]]></cell>
+<cell  ><![CDATA[20.38]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[20.38]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell title='주식회사 동진스틸'  ><![CDATA[110545]]></cell>
+<cell title='F H'  ><![CDATA[D]]></cell>
+<cell  ><![CDATA[1.9]]></cell>
+<cell  ><![CDATA[1070]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[AB7EDZ]]></cell>
+<cell  ><![CDATA[]]></cell>
+</row>
+<row id= "xml-result_4" >
+<cell title='PLTCM'  ><![CDATA[1P]]></cell>
+<cell  ><![CDATA[]]></cell>
+<cell title='5CGL'  ><![CDATA[85]]></cell>
+<cell  ><![CDATA[V203662]]></cell>
+<cell  ><![CDATA[16.62]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[16.62]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell title='UNION STEEL MEXICO'  ><![CDATA[200411]]></cell>
+<cell title='CCGI'  ><![CDATA[3]]></cell>
+<cell  ><![CDATA[0.45]]></cell>
+<cell  ><![CDATA[515]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[8F14FA]]></cell>
+<cell  ><![CDATA[4ZRA4EH0182A]]></cell>
+</row>
+<row id= "xml-result_5" >
+<cell title='PLTCM'  ><![CDATA[1P]]></cell>
+<cell  ><![CDATA[]]></cell>
+<cell title='3ECL'  ><![CDATA[33]]></cell>
+<cell  ><![CDATA[V300761]]></cell>
+<cell  ><![CDATA[16.06]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[16.06]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell title='덕일스틸㈜'  ><![CDATA[110039]]></cell>
+<cell title='CR'  ><![CDATA[C]]></cell>
+<cell  ><![CDATA[2.3]]></cell>
+<cell  ><![CDATA[1070]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[AB5FAA]]></cell>
+<cell  ><![CDATA[]]></cell>
+</row>
+<row id= "xml-result_6" >
+<cell title='PLTCM'  ><![CDATA[1P]]></cell>
+<cell  ><![CDATA[]]></cell>
+<cell title='4CGL'  ><![CDATA[84]]></cell>
+<cell  ><![CDATA[V400665]]></cell>
+<cell  ><![CDATA[22.01]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[22.01]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell title='DAEWOO INTERNATIONAL'  ><![CDATA[108808]]></cell>
+<cell title='CCLI'  ><![CDATA[4]]></cell>
+<cell  ><![CDATA[0.88]]></cell>
+<cell  ><![CDATA[1220]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[6BD4LA]]></cell>
+<cell  ><![CDATA[59F12AB5160A]]></cell>
+</row>
+<row id= "xml-result_7" >
+<cell title='PLTCM'  ><![CDATA[1P]]></cell>
+<cell  ><![CDATA[]]></cell>
+<cell title='5CGL'  ><![CDATA[85]]></cell>
+<cell  ><![CDATA[V400710]]></cell>
+<cell  ><![CDATA[21.68]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[21.68]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell title='UNION STEEL INDIA'  ><![CDATA[200454]]></cell>
+<cell title='GI'  ><![CDATA[G]]></cell>
+<cell  ><![CDATA[3]]></cell>
+<cell  ><![CDATA[1250]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[6B14MF]]></cell>
+<cell  ><![CDATA[]]></cell>
+</row>
+<row id= "xml-result_8" >
+<cell title='PLTCM'  ><![CDATA[1P]]></cell>
+<cell  ><![CDATA[]]></cell>
+<cell title='3CGL'  ><![CDATA[83]]></cell>
+<cell  ><![CDATA[V402468]]></cell>
+<cell  ><![CDATA[18.52]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[18.52]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell title='대한강재㈜'  ><![CDATA[110036]]></cell>
+<cell title='CCGI'  ><![CDATA[3]]></cell>
+<cell  ><![CDATA[0.8]]></cell>
+<cell  ><![CDATA[950]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[6B14GA]]></cell>
+<cell  ><![CDATA[4DH14AK0041D]]></cell>
+</row>
+<row id= "xml-result_9" >
+<cell title='PLTCM'  ><![CDATA[1P]]></cell>
+<cell  ><![CDATA[]]></cell>
+<cell title='5CGL'  ><![CDATA[85]]></cell>
+<cell  ><![CDATA[V402528]]></cell>
+<cell  ><![CDATA[21.71]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[21.71]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell title='석진철강㈜'  ><![CDATA[110063]]></cell>
+<cell title='GI'  ><![CDATA[G]]></cell>
+<cell  ><![CDATA[1.2]]></cell>
+<cell  ><![CDATA[1219]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[5B13GC]]></cell>
+<cell  ><![CDATA[]]></cell>
+</row>
+<row id= "xml-result_10" >
+<cell title='3ECL'  ><![CDATA[33]]></cell>
+<cell title='PLTCM'  ><![CDATA[1P]]></cell>
+<cell title='2CGL'  ><![CDATA[82]]></cell>
+<cell  ><![CDATA[UB03523]]></cell>
+<cell  ><![CDATA[22.04]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[22.04]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell title='SK네트웍스(주)'  ><![CDATA[100611]]></cell>
+<cell title='GIX'  ><![CDATA[V]]></cell>
+<cell  ><![CDATA[1.8]]></cell>
+<cell  ><![CDATA[1235]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[6BJ4Q2]]></cell>
+<cell  ><![CDATA[]]></cell>
+</row>
+<row id= "xml-result_11" >
+<cell title='3ECL'  ><![CDATA[33]]></cell>
+<cell title='PLTCM'  ><![CDATA[1P]]></cell>
+<cell title='5CGL'  ><![CDATA[85]]></cell>
+<cell  ><![CDATA[UC04415]]></cell>
+<cell  ><![CDATA[4.21]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[4.21]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell title='신성컨트롤'  ><![CDATA[107171]]></cell>
+<cell title='GI'  ><![CDATA[G]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[1219]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[5BD4GC]]></cell>
+<cell  ><![CDATA[]]></cell>
+</row>
+<row id= "xml-result_12" >
+<cell title='3ECL'  ><![CDATA[33]]></cell>
+<cell title='PLTCM'  ><![CDATA[1P]]></cell>
+<cell title='4ANN'  ><![CDATA[44]]></cell>
+<cell  ><![CDATA[V103213]]></cell>
+<cell  ><![CDATA[16.43]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[16.43]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell title='삼성물산(주)'  ><![CDATA[110739]]></cell>
+<cell title='CCEI'  ><![CDATA[2]]></cell>
+<cell  ><![CDATA[0.4]]></cell>
+<cell  ><![CDATA[833]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[5B2AEA]]></cell>
+<cell  ><![CDATA[FZHA7C0A243A]]></cell>
+</row>
+<row id= "xml-result_13" >
+<cell title='3ECL'  ><![CDATA[33]]></cell>
+<cell title='PLTCM'  ><![CDATA[1P]]></cell>
+<cell title='3ECL'  ><![CDATA[33]]></cell>
+<cell  ><![CDATA[V104732]]></cell>
+<cell  ><![CDATA[2.97]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[2.97]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell title='삼성물산(주)'  ><![CDATA[110739]]></cell>
+<cell title='EGI'  ><![CDATA[E]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[859]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[5B3CEG]]></cell>
+<cell  ><![CDATA[]]></cell>
+</row>
+<row id= "xml-result_14" >
+<cell title='3ECL'  ><![CDATA[33]]></cell>
+<cell title='PLTCM'  ><![CDATA[1P]]></cell>
+<cell title='4ANN'  ><![CDATA[44]]></cell>
+<cell  ><![CDATA[V200969]]></cell>
+<cell  ><![CDATA[22.41]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[22.41]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell title='주식회사 동진스틸'  ><![CDATA[110545]]></cell>
+<cell title='CR'  ><![CDATA[C]]></cell>
+<cell  ><![CDATA[1.6]]></cell>
+<cell  ><![CDATA[1219]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[5B1GAB]]></cell>
+<cell  ><![CDATA[]]></cell>
+</row>
+<row id= "xml-result_15" >
+<cell title='3ECL'  ><![CDATA[33]]></cell>
+<cell title='PLTCM'  ><![CDATA[1P]]></cell>
+<cell title='4ANN'  ><![CDATA[44]]></cell>
+<cell  ><![CDATA[V201347]]></cell>
+<cell  ><![CDATA[43.86]]></cell>
+<cell  ><![CDATA[2]]></cell>
+<cell  ><![CDATA[43.86]]></cell>
+<cell  ><![CDATA[2]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell title='동원파이프(주)'  ><![CDATA[111553]]></cell>
+<cell title='EGI'  ><![CDATA[E]]></cell>
+<cell  ><![CDATA[1.45]]></cell>
+<cell  ><![CDATA[1128]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[5B1JEX]]></cell>
+<cell  ><![CDATA[]]></cell>
+</row>
+<row id= "xml-result_16" >
+<cell title='3ECL'  ><![CDATA[33]]></cell>
+<cell title='PLTCM'  ><![CDATA[1P]]></cell>
+<cell title='4ANN'  ><![CDATA[44]]></cell>
+<cell  ><![CDATA[V201364]]></cell>
+<cell  ><![CDATA[22.11]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[22.11]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell title='동원파이프(주)'  ><![CDATA[111553]]></cell>
+<cell title='EGI'  ><![CDATA[E]]></cell>
+<cell  ><![CDATA[1.45]]></cell>
+<cell  ><![CDATA[1128]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[5B1JEX]]></cell>
+<cell  ><![CDATA[]]></cell>
+</row>
+<row id= "xml-result_17" >
+<cell title='3ECL'  ><![CDATA[33]]></cell>
+<cell title='PLTCM'  ><![CDATA[1P]]></cell>
+<cell title='4ANN'  ><![CDATA[44]]></cell>
+<cell  ><![CDATA[V301046]]></cell>
+<cell  ><![CDATA[17.73]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[17.73]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell title='지스틸(주)'  ><![CDATA[110579]]></cell>
+<cell title='EGI'  ><![CDATA[E]]></cell>
+<cell  ><![CDATA[0.7]]></cell>
+<cell  ><![CDATA[1135]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[5B3CEL]]></cell>
+<cell  ><![CDATA[]]></cell>
+</row>
+<row id= "xml-result_18" >
+<cell title='3ECL'  ><![CDATA[33]]></cell>
+<cell title='PLTCM'  ><![CDATA[1P]]></cell>
+<cell title='4ANN'  ><![CDATA[44]]></cell>
+<cell  ><![CDATA[V301047]]></cell>
+<cell  ><![CDATA[21.22]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[21.22]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell title='지스틸(주)'  ><![CDATA[110579]]></cell>
+<cell title='EGI'  ><![CDATA[E]]></cell>
+<cell  ><![CDATA[0.7]]></cell>
+<cell  ><![CDATA[1240]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[5B3CEL]]></cell>
+<cell  ><![CDATA[]]></cell>
+</row>
+<row id= "xml-result_19" >
+<cell title='3ECL'  ><![CDATA[33]]></cell>
+<cell title='PLTCM'  ><![CDATA[1P]]></cell>
+<cell title='4CGL'  ><![CDATA[84]]></cell>
+<cell  ><![CDATA[V301292]]></cell>
+<cell  ><![CDATA[22.62]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[22.62]]></cell>
+<cell  ><![CDATA[1]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell title='DUFERCO SA'  ><![CDATA[205432]]></cell>
+<cell title='G L'  ><![CDATA[L]]></cell>
+<cell  ><![CDATA[0.75]]></cell>
+<cell  ><![CDATA[1200]]></cell>
+<cell  ><![CDATA[0]]></cell>
+<cell  ><![CDATA[6BC1FN]]></cell>
+<cell  ><![CDATA[]]></cell>
+</row>
+<userdata name='column-info'>PROC_CD_TOOLTIP,PROC_CD,BF_PROC_CD_TOOLTIP,BF_PROC_CD,NXT_PROC_CD_TOOLTIP,NXT_PROC_CD,MO_NO,ALL_WGT,ALL_PIE,PROC_WGT,PROC_PIE,ENT_WGT,ENT_PIE,HND_WGT,HND_PIE,ENT_WDR_WGT,ENT_WDR_PIE,EXIT_WDR_WGT,EXIT_WDR_PIE,CUS_CD_TOOLTIP,CUS_CD,PRD_NM_CD_TOOLTIP,PRD_NM_CD,ORD_EXC_THK,ORD_EXC_WTH,ORD_EXC_LTH,CLS_CD,SUB_CLS_CD</userdata>
+<userdata name='blank-row-count'>18</userdata>
+</rows>

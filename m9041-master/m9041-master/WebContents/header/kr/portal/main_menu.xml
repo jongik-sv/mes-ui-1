@@ -1,0 +1,993 @@
+<tree  id="0" open="1"> 
+
+  <item text="**품질설계" id="C10">
+    <item text="**품질설계결과관리" id="C1040">
+		<item text="품질설계의뢰현황" id="C104000010">      
+			<userdata name="url"><![CDATA[http://c10.mesdev.dongkuk.com/C10/C104000010.jsp]]></userdata>
+		</item>
+		<item text="품질설계결과" id="C104000020">      
+			<userdata name="url"><![CDATA[http://c10.mesdev.dongkuk.com/C10/C104000020.jsp]]></userdata>
+		</item>
+		<item text="품질설계결과 -에러현황" id="C104000030">      
+			<userdata name="url"><![CDATA[http://c10.mesdev.dongkuk.com/C10/C104000030.jsp]]></userdata>
+		</item>
+		<item text="**재설계" id="C104000040">      
+			<userdata name="url"><![CDATA[http://c10.mesdev.dongkuk.com/C10/C104000040.jsp]]></userdata>
+		</item>
+		<item text="품질설계확정" id="C104000050">      
+			<userdata name="url"><![CDATA[http://c10.mesdev.dongkuk.com/C10/C104000050.jsp]]></userdata>
+		</item>
+    </item>
+    <item text="**제조가부검토" id="C1050">
+		<item text="**제조가부검토이력조회" id="C105000010">      
+			<userdata name="url"><![CDATA[http://c10.mesdev.dongkuk.com/C10/C105000010.jsp]]></userdata>
+		</item>
+		<item text="**제조가부수동검토" id="C105000020">      
+			<userdata name="url"><![CDATA[http://c10.mesdev.dongkuk.com/C10/C105000010.jsp]]></userdata>
+		</item>
+    </item>
+    <item text="**품질설계공통" id="C1060">
+		<item text="**칼라시편관리" id="C106000010">      
+			<userdata name="url"><![CDATA[http://c10.mesdev.dongkuk.com/C10/C106000010.jsp]]></userdata>
+		</item>
+		<item text="**품질설계시뮬레이션" id="C106000020">      
+			<userdata name="url"><![CDATA[http://c10.mesdev.dongkuk.com/C10/C106000020.jsp]]></userdata>
+		</item>
+		<item text="**품질기준개선이력관리" id="C106000030">      
+			<userdata name="url"><![CDATA[http://c10.mesdev.dongkuk.com/C10/C106000030.jsp]]></userdata>
+		</item>
+		<item text="**Material Code관리" id="C106000040">      
+			<userdata name="url"><![CDATA[http://c10.mesdev.dongkuk.com/C10/C106000040.jsp]]></userdata>
+		</item>
+    </item>
+  </item>
+
+
+  <item text="**생산관제" id="M17">
+    <item text="**공정별 작업Schedule 수신" id="M1710">
+    	<item text="공정 품명 별 반제품현황 " id="M171030010">      
+           <userdata name="url"><![CDATA[http://m17.mesdev.dongkuk.com/M17/M171030010.jsp]]></userdata>
+     	</item>
+		<item text="Line 수주 별 반제품현황" id="M171030020">      
+           <userdata name="url"><![CDATA[http://m17.mesdev.dongkuk.com/M17/M171030020.jsp]]></userdata>
+     	</item>
+		<item text="*조건 별 반제품현황 " id="M171030030">      
+          <userdata name="url"><![CDATA[http://m17.mesdev.dongkuk.com/M17/M171030030.jsp]]></userdata>
+     	</item>
+    </item>
+    <item text="작업순위조정확정" id="M1720">
+     	<item text="공정 별 투입계획 유지관리_PLTCM" id="M172010020">      
+           <userdata name="url"><![CDATA[http://m17.mesdev.dongkuk.com/M17/M172010020.jsp]]></userdata>
+     	</item>
+     	<item text="공정 별 투입계획 유지관리_ANN" id="M172010030">      
+           <userdata name="url"><![CDATA[http://m17.mesdev.dongkuk.com/M17/M172010030.jsp]]></userdata>
+     	</item>
+		<item text="공정 별 투입계획 유지관리_TM" id="M172010040">      
+           <userdata name="url"><![CDATA[http://m17.mesdev.dongkuk.com/M17/M172010040.jsp]]></userdata>
+     	</item>
+		<item text="공정 별 투입계획 유지관리_EGL" id="M172010050">      
+           <userdata name="url"><![CDATA[http://m17.mesdev.dongkuk.com/M17/M172010050.jsp]]></userdata>
+     	</item>
+		<item text="공정 별 투입계획 유지관리_CGL" id="M172010060">      
+           <userdata name="url"><![CDATA[http://m17.mesdev.dongkuk.com/M17/M172010060.jsp]]></userdata>
+     	</item>
+		<item text="공정 별 투입계획 유지관리_CCL" id="M172010070">      
+           <userdata name="url"><![CDATA[http://m17.mesdev.dongkuk.com/M17/M172010070.jsp]]></userdata>
+     	</item>
+     	<item text="작업지시이력" id="M172020010">      
+           <userdata name="url"><![CDATA[http://m17.mesdev.dongkuk.com/M17/M172020010.jsp]]></userdata>
+     	</item>
+    </item>
+    <item text="**진행감시" id="M1730">
+    	<item text="코일상세정보" id="M173010000">      
+           <userdata name="url"><![CDATA[http://m17.mesdev.dongkuk.com/M17/M173010000.jsp]]></userdata>
+     	</item>
+     	<item text="공정 별 진행현황" id="M173030010">      
+           <userdata name="url"><![CDATA[http://m17.mesdev.dongkuk.com/M17/M173030010.jsp]]></userdata>
+     	</item>
+		<item text="공정 별 일일 생산진행현황" id="M173030020">      
+           <userdata name="url"><![CDATA[http://m17.mesdev.dongkuk.com/M17/M173030020.jsp]]></userdata>
+     	</item>
+		<item text="**Material Balance " id="M173030030">      
+           <userdata name="url"><![CDATA[http://m17.mesdev.dongkuk.com/M17/M173030030.jsp]]></userdata>
+     	</item>
+    </item>
+    <item text="**단위업무" id="M1740">
+    	<item text="**I/F  중계 현황" id="M174020010">      
+           <userdata name="url"><![CDATA[http://m17.mesdev.dongkuk.com/M17/M174020010.jsp]]></userdata>
+     	</item>
+    </item>
+  </item> 
+  
+  
+  <item text="**품질판정" id="M20">
+		<item text="*원자재품질관리" id="M2010">
+			<item text="원자재 외관보류판정" id="M201010010">
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M201010010.jsp]]></userdata>
+			</item>
+			<item text="원자재 외관 판정결과조회" id="M201010020"> 
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M201010020.jsp]]></userdata>
+			</item>
+			<item text="원자재 Sample시험대상재결정" id="M201010030"> 
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M201010030.jsp]]></userdata>
+			</item>
+			<item text="원자재 시험결과조회(정보/Sample시험)" id="M201010040"> 
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M201010040.jsp]]></userdata>
+			</item>
+			<item text="원자재 성분보류 판정" id="M201010050"> 
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M201010050.jsp]]></userdata>
+			</item>
+			<item text="원자재 MTC 미등록 현황" id="M201010060"> 
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M201010060.jsp]]></userdata>
+			</item>
+			<item text="*원자재 Sample시험실적등록" id="M201010070"> 
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M201010070.jsp]]></userdata>
+			</item>
+		</item>
+		<item text="**시험관리" id="M2020">
+			<item text="냉연제품 시험실적등록(CR,PO,F/H)" id="M202010010">
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M202010010.jsp]]></userdata>
+			</item>
+			<item text="도금제품 시험실적등록(GI,GA,GL,EGI)" id="M202010020"> 
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M202010020.jsp]]></userdata>
+			</item>
+			<item text="냉연제품 재질시험 보류판정(CR,PO,F/H)" id="M202010030"> 
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M202010030.jsp]]></userdata>
+			</item>
+			<item text="도금제품 재질시험 보류판정(GI,GA,GL,EGI)" id="M202010040"> 
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M202010040.jsp]]></userdata>
+			</item>
+			<item text="재질시험실적 변경이력조회" id="M202010050"> 
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M202010050.jsp]]></userdata>
+			</item>
+			<item text="시편 모니터링" id="M202010060"> 
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M202010060.jsp]]></userdata>
+			</item>			
+			<item text="도금재 결함 보류재 조회(도금박리,오랜지필 등)" id="M202010070"> 
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M202010070.jsp]]></userdata>
+			</item>
+			<item text="*고객요구 Sample지정" id="M202010080"> 
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M202010080.jsp]]></userdata>
+			</item>	
+			<item text="*고객요구 Sample조회 및 지시" id="M202010085"> 
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M202010085.jsp]]></userdata>
+			</item>			
+			<item text="*PLTCM 분석시험 등록" id="M202010090"> 
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M202010090.jsp]]></userdata>
+			</item>
+			<item text="**ECL 분석시험 등록" id="M202010100"> 
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M202010100.jsp]]></userdata>
+			</item>
+			<item text="**TM 분석시험 등록" id="M202010110"> 
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M202010110.jsp]]></userdata>
+			</item>
+			<item text="**GI POT 분석시험 등록" id="M202010120"> 
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M202010120.jsp]]></userdata>
+			</item>
+			<item text="**GL Main POT 분석시험 등록" id="M202010130"> 
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M202010130.jsp]]></userdata>
+			</item>
+			<item text="**GL Premelt POT 분석시험 등록" id="M202010140"> 
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M202010140.jsp]]></userdata>
+			</item>
+			<item text="**CGL탈지재 분석시험 등록" id="M202010150"> 
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M202010150.jsp]]></userdata>
+			</item>
+			<item text="**EGL 분석시험 등록" id="M202010160"> 
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M202010160.jsp]]></userdata>
+			</item>
+			<item text="**CGI/EGI 피막 분석시험 등록" id="M202010170"> 
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M202010170.jsp]]></userdata>
+			</item>
+			<item text="**수질 분석시험 등록" id="M202010180"> 
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M202010180.jsp]]></userdata>
+			</item>
+			<item text="**열병합 수처리 분석시험 등록" id="M202010190"> 
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M202010190.jsp]]></userdata>
+			</item>
+			<item text="**방청유 분석시험 등록" id="M202010200"> 
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M202010200.jsp]]></userdata>
+			</item>
+		</item>
+		<item text="**제품판정" id="M2030">
+			<item text="**제품종합판정 보류판정처리" id="M203010010">
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M203010010.jsp]]></userdata>
+			</item>
+			<item text="**제품종합판정결과조회(제품 별)" id="M203010030">
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M203010030.jsp]]></userdata>
+			</item>
+			<item text="**부자재 판정 대상 및 결과조회" id="M203010040">
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M203010040.jsp]]></userdata>
+			</item>
+			<item text="**부자재판정 상세" id="M203010050">
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M203010050.jsp]]></userdata>
+			</item>
+			<item text="*외관검사 메시지 조회" id="M203010080">
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M203010080.jsp]]></userdata>
+			</item>
+		</item>
+		<item text="**품질개선" id="M2050">
+			<item text="**고객특성 공통 조회/등록" id="M205010010">
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M205010010.jsp]]></userdata>
+			</item>
+			<item text="**고객방문현황 조회/등록" id="M205010020">
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M205010020.jsp]]></userdata>
+			</item>
+			<item text="**고객방문상세정보 등록" id="M205010030">
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M205010030.jsp]]></userdata>
+			</item>
+			<item text="**고객방문상세현황 조회/등록" id="M205010040">
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M205010040.jsp]]></userdata>
+			</item>
+			<item text="**출하검사 현황 조회/등록" id="M205010060">
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M205010060.jsp]]></userdata>
+			</item>
+			<item text="**출하검사 상세등록" id="M205010070">
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M205010070.jsp]]></userdata>
+			</item>
+			<item text="**출하검사 상세조회" id="M205010080">
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M205010080.jsp]]></userdata>
+			</item>
+			<item text="**확인검사(제품) 현황 조회/등록" id="M205010090">
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M205010090.jsp]]></userdata>
+			</item>
+			<item text="**확인검사(제품) 상세등록" id="M205010100">
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M205010100.jsp]]></userdata>
+			</item>
+			<item text="**확인검사(반재품) 현황 조회/등록" id="M205010110">
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M205010110.jsp]]></userdata>
+			</item>
+			<item text="**확인검사(반재품) 상세등록" id="M205010120">
+				<userdata name="url"><![CDATA[http://m20.mesdev.dongkuk.com/M20/M205010120.jsp]]></userdata>
+			</item>
+		</item>
+	</item>
+
+ <item text="**구내운송" id="M26">
+    <item text="**기준관리" id="M2610">
+      <item text="차량제원정보 등록 및 조회" id="M261000001">
+        <userdata name="url"><![CDATA[http://m26.mesdev.dongkuk.com/M26/M261000001.jsp]]></userdata>
+      </item>
+      <item text="복수동 우선순위 정보 관리" id="M261000002"> 
+        <userdata name="url"><![CDATA[http://m26.mesdev.dongkuk.com/M26/M261000002.jsp]]></userdata>
+      </item>
+    </item>
+    <item text="**운송계획관리" id="M2620">
+      <item text="구내운송요구등록" id="M262000001"> 
+        <userdata name="url"><![CDATA[http://m26.mesdev.dongkuk.com/M26/M262000001.jsp]]></userdata>
+      </item>
+    </item>
+    <item text="**차량진행관리" id="M2630">
+      <item text="**옥외야드 상차등록" id="M263000001"> 
+        <userdata name="url"><![CDATA[http://m26.mesdev.dongkuk.com/M26/M263000001.jsp]]></userdata>
+      </item>
+      <item text="**차량 대기 장소 정보 관리" id="M263000004"> 
+        <userdata name="url"><![CDATA[http://m26.mesdev.dongkuk.com/M26/M263000004.jsp]]></userdata>
+      </item>
+      <item text="**차량진행현황" id="M263000005"> 
+        <userdata name="url"><![CDATA[http://m26.mesdev.dongkuk.com/M26/M263000005.jsp]]></userdata>
+      </item>
+      <item text="상차위치별 차량현황 조회 및 정보 관리" id="M263000006"> 
+        <userdata name="url"><![CDATA[http://m26.mesdev.dongkuk.com/M26/M263000006.jsp]]></userdata>
+      </item>
+      <item text="*반입동변경(하차도 변경)" id="M263000007"> 
+        <userdata name="url"><![CDATA[http://m26.mesdev.dongkuk.com/M26/M263000007.jsp]]></userdata>
+      </item>
+      <item text="입동대기순서 조정" id="M263000008"> 
+        <userdata name="url"><![CDATA[http://m26.mesdev.dongkuk.com/M26/M263000008.jsp]]></userdata>
+      </item>
+      <item text="**운송실적 등록" id="M263000009"> 
+        <userdata name="url"><![CDATA[http://m26.mesdev.dongkuk.com/M26/M263000009.jsp]]></userdata>
+      </item>
+      <item text="**입동대기 순서 조정 이력 조회" id="M263000010"> 
+        <userdata name="url"><![CDATA[http://m26.mesdev.dongkuk.com/M26/M263000010.jsp]]></userdata>
+      </item>
+    </item>
+    <item text="**운송현황관리" id="M2640">
+      <item text="일자별 운송 지시 실적 현황 조회" id="M264000001"> 
+        <userdata name="url"><![CDATA[http://m26.mesdev.dongkuk.com/M26/M264000001.jsp]]></userdata>
+      </item>
+      <item text="**차량별 실적 현황" id="M264000002"> 
+        <userdata name="url"><![CDATA[http://m26.mesdev.dongkuk.com/M26/M264000002.jsp]]></userdata>
+      </item>
+    </item>
+  </item>
+
+
+  <item text="**원자재관리" id="M42">
+    <item text="**원자재사전정보관리" id="M4210">
+      <item text="구매오더정보수신 조회" id="M421000001">
+        <userdata name="url"><![CDATA[http://m42.mesdev.dongkuk.com/M42/M421000001.jsp]]></userdata>
+      </item>
+      <item text="원자재 구매오더별 사전정보 조회" id="M421000002">
+        <userdata name="url"><![CDATA[http://m42.mesdev.dongkuk.com/M42/M421000002.jsp]]></userdata>
+      </item>
+      <item text="**원자재 B/L번호 상세조회" id="M421000003">
+        <userdata name="url"><![CDATA[http://m42.mesdev.dongkuk.com/M42/M421000003.jsp]]></userdata>
+      </item>
+      <item text="**원자재 B/L 및 통관 내역 조회" id="M421000004">
+        <userdata name="url"><![CDATA[http://m42.mesdev.dongkuk.com/M42/M421000004.jsp]]></userdata>
+      </item>
+      <item text="원자재 사전정보수신 조회" id="M421000005">
+        <userdata name="url"><![CDATA[http://m42.mesdev.dongkuk.com/M42/M421000005.jsp]]></userdata>
+      </item>
+      <item text="선박별 정보 조회 및 입항예정일 등록" id="M421000006">
+        <userdata name="url"><![CDATA[http://m42.mesdev.dongkuk.com/M42/M421000006.jsp]]></userdata>
+      </item>
+      <item text="**원자재 검수 실적 관리" id="M421000007">
+        <userdata name="url"><![CDATA[http://m42.mesdev.dongkuk.com/M42/M421000007.jsp]]></userdata>
+      </item>
+    </item>
+    <item text="**입고관리" id="M4220">
+      <item text="**원자재 선박별 품종별 미입고 현황" id="M422000001">
+        <userdata name="url"><![CDATA[http://m42.mesdev.dongkuk.com/M42/M422000001.jsp]]></userdata>
+      </item>
+      <item text="원자재 입고실적 조회" id="M422000002">
+        <userdata name="url"><![CDATA[http://m42.mesdev.dongkuk.com/M42/M422000002.jsp]]></userdata>
+      </item>
+      <item text="**원자재 정보입고 대상 및 결과조회" id="M422000003">
+        <userdata name="url"><![CDATA[http://m42.mesdev.dongkuk.com/M42/M422000003.jsp]]></userdata>
+      </item>
+      <item text="*원자재 입고 취소" id="M422000004">
+        <userdata name="url"><![CDATA[http://m42.mesdev.dongkuk.com/M42/M422000004.jsp]]></userdata>
+      </item>
+      <item text="**부산물 입고 관리" id="M422000005">
+        <userdata name="url"><![CDATA[http://m42.mesdev.dongkuk.com/M42/M422000005.jsp]]></userdata>
+      </item>
+      <item text="**원자재 입고 취소 정보 조회" id="M422000006">
+        <userdata name="url"><![CDATA[http://m42.mesdev.dongkuk.com/M42/M422000006.jsp]]></userdata>
+      </item>
+    </item>
+    <item text="**재고관리" id="M4230">
+      <item text="원자재 재고조회" id="M423000001">
+        <userdata name="url"><![CDATA[http://m42.mesdev.dongkuk.com/M42/M423000001.jsp]]></userdata>
+      </item>
+      <item text="원자재 상세정보 조회" id="M423000002">
+        <userdata name="url"><![CDATA[http://m42.mesdev.dongkuk.com/M42/M423000002.jsp]]></userdata>
+      </item>
+      <item text="원자재 장기체화 관리" id="M423000003">
+        <userdata name="url"><![CDATA[http://m42.mesdev.dongkuk.com/M42/M423000003.jsp]]></userdata>
+      </item>
+      <item text="원자재 길이 변경 등록" id="M423000004">
+        <userdata name="url"><![CDATA[http://m42.mesdev.dongkuk.com/M42/M423000004.jsp]]></userdata>
+      </item>
+      <item text="**Make별 CR-PLAN현황" id="M423000005">
+        <userdata name="url"><![CDATA[http://m42.mesdev.dongkuk.com/M42/M423000005.jsp]]></userdata>
+      </item>
+      <item text="**SPEC별 재고 현황" id="M423000006">
+        <userdata name="url"><![CDATA[http://m42.mesdev.dongkuk.com/M42/M423000006.jsp]]></userdata>
+      </item>
+      <item text="**원자재 장기체화 현황" id="M423000007">
+        <userdata name="url"><![CDATA[http://m42.mesdev.dongkuk.com/M42/M423000007.jsp]]></userdata>
+      </item>
+    </item>
+    <item text="**불출관리" id="M4240">
+      <item text="**원자재 불출/출고 실적 조회" id="M424000001">
+        <userdata name="url"><![CDATA[http://m42.mesdev.dongkuk.com/M42/M424000001.jsp]]></userdata>
+      </item>
+      <item text="**원자재 판매 관리" id="M424000004">
+        <userdata name="url"><![CDATA[http://m42.mesdev.dongkuk.com/M42/M424000004.jsp]]></userdata>
+      </item>
+      <item text="**부산물 출고 관리" id="M424000005">
+        <userdata name="url"><![CDATA[http://m42.mesdev.dongkuk.com/M42/M424000005.jsp]]></userdata>
+      </item>
+    </item>
+  </item>
+
+
+  <item text="**조업관리" id="M47">
+      <item text="**입측작업" id="M4710">
+          <item text="*PLTCM작업지시조회" id="M471010010">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M471010010.jsp]]>
+              </userdata>
+          </item>
+          <item text="**ECL작업지시조회" id="M471010020">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M471010020.jsp]]>
+              </userdata>
+          </item>
+          <item text="**소둔Batch확인" id="M471010030">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M471010030.jsp]]>
+              </userdata>
+          </item>
+          <item text="**TM작업지시조회" id="M471010040">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M471010040.jsp]]>
+              </userdata>
+          </item>
+          <item text="**EGL작업지시조회" id="M471010050">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M471010050.jsp]]>
+              </userdata>
+          </item>
+          <item text="*CGL작업지시조회" id="M471010060">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M471010060.jsp]]>
+              </userdata>
+          </item>
+          <item text="**CCL작업지시조회" id="M471010070">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M471010070.jsp]]>
+              </userdata>
+          </item>
+          <item text="**SHL작업지시조회" id="M471010080">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M471010080.jsp]]>
+              </userdata>
+          </item>
+          <item text="**정전작업지시조회" id="M471010090">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M471010090.jsp]]>
+              </userdata>
+          </item>
+          <item text="**MO작업지시" id="M471010100">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M471010100.jsp]]>
+              </userdata>
+          </item>
+          <item text="**입측분할실적BU (PLTCM)" id="M471020010">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M471020010.jsp]]>
+              </userdata>
+          </item>
+          <item text="**입측분할실적BU" id="M471020020">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M471020020.jsp]]>
+              </userdata>
+          </item>
+          <item text="**PLTCM작업지시서" id="M471090010">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M471090010.jsp]]>
+              </userdata>
+          </item>
+          <item text="**CGL작업지시서" id="M471090020">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M471090020.jsp]]>
+              </userdata>
+          </item>
+          <item text="**CCL작업지시서" id="M471090030">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M471090030.jsp]]>
+              </userdata>
+          </item>
+          <item text="**EGL작업지시서" id="M471090040">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M471090040.jsp]]>
+              </userdata>
+          </item>
+          <item text="**ECL작업지시서" id="M471090050">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M471090050.jsp]]>
+              </userdata>
+          </item>
+          <item text="**TM작업지시서" id="M471090060">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M471090060.jsp]]>
+              </userdata>
+          </item>
+          <item text="**RCL작업지시서" id="M471090070">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M471090070.jsp]]>
+              </userdata>
+          </item>
+          <item text="**SHL작업지시서" id="M471090080">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M471090080.jsp]]>
+              </userdata>
+          </item>
+          <item text="**R/S작업지시서" id="M471090090">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M471090090.jsp]]>
+              </userdata>
+          </item>
+          <item text="**H/S작업지시서" id="M471090100">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M471090100.jsp]]>
+              </userdata>
+          </item>
+      </item>
+      <item text="**출측작업" id="M4720">
+          <item text="*검사실적등록" id="M472020010">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M472020010.jsp]]>
+              </userdata>
+          </item>
+          <item text="**검사실적조회/수정" id="M472020011">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M472020011.jsp]]>
+              </userdata>
+          </item>
+          <item text="**검사사항입력" id="M472020012	">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M472020012.jsp]]>
+              </userdata>
+          </item>
+          <item text="**Tag발행현황조회" id="M472020030">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M472020030.jsp]]>
+              </userdata>
+          </item>
+          <item text="**포장실적" id="M472020010">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M472020010.jsp]]>
+              </userdata>
+          </item>
+          <item text="**포장실적조회" id="M472020020">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M472020020.jsp]]>
+              </userdata>
+          </item>
+      </item>
+      <item text="**조업공통" id="M4730">
+          <item text="PLTCM작업실적Main" id="M473010010">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473010010.jsp]]>
+              </userdata>
+          </item>
+          <item text="**ECL작업실적Main" id="M473010020">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473010020.jsp]]>
+              </userdata>
+          </item>
+          <item text="**TM작업실적" id="M473010030">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473010030.jsp]]>
+              </userdata>
+          </item>
+          <item text="**소둔작업실적Main" id="M473010040">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473010040.jsp]]>
+              </userdata>
+          </item>
+          <item text="**EGL작업실적Main" id="M473010050">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473010050.jsp]]>
+              </userdata>
+          </item>
+          <item text="2CGL작업실적Main" id="M473010060">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473010060.jsp]]>
+              </userdata>
+          </item>
+          <item text="3CGL작업실적Main" id="M473010061">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473010061.jsp]]>
+              </userdata>
+          </item>
+          <item text="4CGL작업실적Main" id="M473010062">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473010062.jsp]]>
+              </userdata>
+          </item>
+          <item text="5CGL작업실적Main" id="M473010063">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473010063.jsp]]>
+              </userdata>
+          </item>
+          <item text="**CCL작업실적Main" id="M473010070">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473010070.jsp]]>
+              </userdata>
+          </item>
+          <item text="**SHL작업실적" id="M473010080">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473010080.jsp]]>
+              </userdata>
+          </item>
+          <item text="**R/S작업실적" id="M473010090">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473010090.jsp]]>
+              </userdata>
+          </item>
+          <item text="**RCL작업실적" id="M473010100">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473010100.jsp]]>
+              </userdata>
+          </item>
+          <item text="**검사실적수정" id="M473020010">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473020010.jsp]]>
+              </userdata>
+          </item>
+          <item text="**Tracking상태조회 및 BU (PLTCM)" id="M473030010">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473030010.jsp]]>
+              </userdata>
+          </item>
+          <item text="**Tracking상태조회 및 BU (ECL)" id="M473030020">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473030020.jsp]]>
+              </userdata>
+          </item>
+          <item text="**Tracking상태조회 및 BU (TM)" id="M473030030">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473030030.jsp]]>
+              </userdata>
+          </item>
+          <item text="**Tracking상태조회 및 BU (EGL)" id="M473030040">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473030040.jsp]]>
+              </userdata>
+          </item>
+          <item text="**Tracking상태조회 및 BU (CGL)" id="M473030050">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473030050.jsp]]>
+              </userdata>
+          </item>
+          <item text="**Tracking상태조회 및 BU (CCL)" id="M473030060">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473030060.jsp]]>
+              </userdata>
+          </item>
+          <item text="**휴지실적" id="M473040010">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473040010.jsp]]>
+              </userdata>
+          </item>
+          <item text="**휴지실적조회" id="M473040020">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473040020.jsp]]>
+              </userdata>
+          </item>
+          <item text="**조교대실적등록" id="M473050010">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473050010.jsp]]>
+              </userdata>
+          </item>
+          <item text="**조별실적관리종합" id="M473050020">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473050020.jsp]]>
+              </userdata>
+          </item>
+          <item text="**SMS발송대상자관리및발송" id="M473060010">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473060010.jsp]]>
+              </userdata>
+          </item>
+          <item text="**SMS발송내역조회" id="M473060020">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473060020.jsp]]>
+              </userdata>
+          </item>
+          <item text="**코일이력정보조회" id="M473070010">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473070010.jsp]]>
+              </userdata>
+          </item>
+          <item text="**공정별입측소재코일조회" id="M473070020">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473070020.jsp]]>
+              </userdata>
+          </item>
+          <item text="**공정별재처리발생코일 조회" id="M473070030">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M473070030.jsp]]>
+              </userdata>
+          </item>
+      </item>
+      <item text="**순환품관리" id="M4740">
+          <item text="*ROLL등록" id="M474020010">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M474020010.jsp]]>
+              </userdata>
+          </item>
+          <item text="*ROLL관리" id="M474020020">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M474020020.jsp]]>
+              </userdata>
+          </item>
+          <item text="**ROLL작업실적등록" id="M474020020pop01">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M474020020pop01.jsp]]>
+              </userdata>
+          </item>
+          <item text="**ROLL압연실적조회" id="M474020030">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M474020030.jsp]]>
+              </userdata>
+          </item>
+          <item text="**ROLL작업실적조회" id="M474020040">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M474020040.jsp]]>
+              </userdata>
+          </item>
+          <item text="**ROLL연삭실적조회" id="M474020050">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M474020050.jsp]]>
+              </userdata>
+          </item>
+          <item text="**ROLL작업자별실적조회" id="M474020060">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M474020060.jsp]]>
+              </userdata>
+          </item>
+          <item text="**ROLL교체실적조회" id="M474020070">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M474020070.jsp]]>
+              </userdata>
+          </item>
+          <item text="**ROLL폐기현황조회" id="M474020080">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M474020080.jsp]]>
+              </userdata>
+          </item>
+          <item text="**ROLL발주예상조회" id="M474020090">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M474020090.jsp]]>
+              </userdata>
+          </item>
+          <item text="**ROLL월별정보조회" id="M474020100">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M474020100.jsp]]>
+              </userdata>
+          </item>
+          <item text="**Chock등록" id="M474030010">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M474030010.jsp]]>
+              </userdata>
+          </item>
+          <item text="**Chock작업실적등록" id="M474030020">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M474030020.jsp]]>
+              </userdata>
+          </item>
+          <item text="**Chock작업실적조회" id="M474030030">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M474030030.jsp]]>
+              </userdata>
+          </item>
+          <item text="**Chock압연이력조회" id="M474030040">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M474030040.jsp]]>
+              </userdata>
+          </item>
+          <item text="*Chock폐기현황조회" id="M474030050">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M474030050.jsp]]>
+              </userdata>
+          </item>
+          <item text="*Bearing등록" id="M474040010">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M474040010.jsp]]>
+              </userdata>
+          </item>
+          <item text="*Bearing폐기현황조회" id="M474040020">
+              <userdata name="url">
+                  <![CDATA[http://m47.mesdev.dongkuk.com/M47/M474040020.jsp]]>
+              </userdata>
+          </item>
+      </item>
+  </item>
+
+  <item text="**출하관제" id="M60">
+    <item text="**출고지시/상차편성관리" id="M6010"> 
+      <item text="**출하 차량 진행 정보조회" id="M601000010"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M601000010.jsp]]></userdata>
+      </item>
+      <item text="*수출 배선정보 및 출하 진행 현황" id="M601000001">
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M601000001.jsp]]></userdata>
+      </item>
+      <item text="**수출 선적지시 정보 수신 등록 및 조회" id="M601000002"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M601000002.jsp]]></userdata>
+      </item>
+      <item text="*내수 출고지시 정보 수신 등록 및 조회" id="M601000003"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M601000003.jsp]]></userdata>
+      </item>
+      <item text="**상차LOT편성 등록" id="M601000005"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M601000005.jsp]]></userdata>
+      </item>
+      <item text="**상차LOT편성 확정 및 조회" id="M601000006"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M601000006.jsp]]></userdata>
+      </item>
+      <item text="출고 차량배정 등록" id="M601000007"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M601000007.jsp]]></userdata>
+      </item>
+      <item text="**배차편성 정보수신 등록 및 조회" id="M601000008"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M601000008.jsp]]></userdata>
+      </item>
+      <item text="출고차량 배차편성 등록" id="M601000009"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M601000009.jsp]]></userdata>
+      </item>
+      <item text="차량 입/출문 등록" id="M601000012"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M601000012.jsp]]></userdata>
+      </item>
+      <item text="**위탁 임가공 대상재선정 등록" id="M601000013"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M601000013.jsp]]></userdata>
+      </item>
+    </item>
+    <item text="**입고관리" id="M6020">
+      <item text="**제품 입고 반납실적 조회" id="M602000001"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M602000001.jsp]]></userdata>
+      </item>
+      <item text="위탁 임가공 입고취소" id="M602000002"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M602000002.jsp]]></userdata>
+      </item>
+      <item text="위탁임가공 반입정보 수신 등록 및 조회" id="M602000003"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M602000003.jsp]]></userdata>
+      </item>
+      <item text="위탁 임가공 제품입고차량 배차편성 등록" id="M602000004"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M602000004.jsp]]></userdata>
+      </item>
+      <item text="반입차량 배차편성" id="M602000005"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M602000005.jsp]]></userdata>
+      </item>
+      <item text="**반입지시 정보수신 등록 및 조회" id="M602000006"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M602000006.jsp]]></userdata>
+      </item>
+      <item text="**제품반품실적조회 및 실 중량 등록" id="M602000007"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M602000007.jsp]]></userdata>
+      </item>
+    </item>
+    <item text="**재고관리" id="M6030">
+      <item text="**재고정보 조회" id="M603000001"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M603000001.jsp]]></userdata>
+      </item>
+      <item text="**목전정보 조회" id="M603000002"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M603000002.jsp]]></userdata>
+      </item>
+      <item text="반납요구 등록" id="M603000003"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M603000003.jsp]]></userdata>
+      </item>
+      <item text="**반납확정 등록" id="M603000004"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M603000004.jsp]]></userdata>
+      </item>
+      <item text="**반납실적 조회" id="M603000005"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M603000005.jsp]]></userdata>
+      </item>
+      <item text="**기간별 장기재고 현황" id="M603000006"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M603000006.jsp]]></userdata>
+      </item>
+      <item text="**원인별 장기재고 현황" id="M603000007"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M603000007.jsp]]></userdata>
+      </item>
+      <item text="**여재원인 별 제품재고정보 조회" id="M603000008"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M603000008.jsp]]></userdata>
+      </item>
+      <item text="**여재원인 품종 별 제품재고 현황" id="M603000009"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M603000009.jsp]]></userdata>
+      </item>
+      <item text="**장기재고 발생원인 등록" id="M603000010"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M603000010.jsp]]></userdata>
+      </item>
+      <item text="**제품번호상세조회" id="M603000011"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M603000011.jsp]]></userdata>
+      </item>
+    </item>
+    <item text="**출고관리" id="M6040">
+      <item text="**경매편성제품상세조회" id="M604000001"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M604000001.jsp]]></userdata>
+      </item>
+      <item text="**출고실적조회" id="M604000002"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M604000002.jsp]]></userdata>
+      </item>
+      <item text="**물류기지입고 등록" id="M604000003"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M604000003.jsp]]></userdata>
+      </item>
+      <item text="**물류기지 적재위치 변경 등록" id="M604000004"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M604000004.jsp]]></userdata>
+      </item>
+      <item text="**물류기지 제품 입고/출고 실적 조회" id="M604000005"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M604000005.jsp]]></userdata>
+      </item>
+      <item text="**물류기지 출고실적 등록" id="M604000006"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M604000006.jsp]]></userdata>
+      </item>
+      <item text="**물류기지 배차 편성" id="M604000007"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M604000007.jsp]]></userdata>
+      </item>
+    </item>
+    <item text="**통계분석" id="M6050">
+      <item text="**반납원인 별 현황" id="M605000001"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M605000001.jsp]]></userdata>
+      </item>
+      <item text="**입고 및 반납 현황" id="M605000002"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M605000002.jsp]]></userdata>
+      </item>
+      <item text="**출고 및 반품 현황" id="M605000003"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M605000003.jsp]]></userdata>
+      </item>
+      <item text="**물류기지 수불실적 현황" id="M605000004"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M605000004.jsp]]></userdata>
+      </item>
+      <item text="**제품재고현황" id="M605000005"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M605000005.jsp]]></userdata>
+      </item>
+      <item text="**권역별 출고 현황" id="M605000006"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M605000006.jsp]]></userdata>
+      </item>
+      <item text="**창고 별 제품출고 현황" id="M605000007"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M605000007.jsp]]></userdata>
+      </item>
+      <item text="**주문번호 별 제품정보조회" id="M605000008"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M605000008.jsp]]></userdata>
+      </item>
+      <item text="**목적지 별 제품정보 조회" id="M605000009"> 
+        <userdata name="url"><![CDATA[http://m60.mesdev.dongkuk.com/M60/M605000009.jsp]]></userdata>
+      </item>
+    </item>
+  </item>
+
+
+  <item text="**야드관리" id="M77">
+    <item text="**입고진행" id="M7710">
+      <item text="**원자재입고" id="M771000002">
+        <userdata name="url"><![CDATA[http://m77.mesdev.dongkuk.com/M77/M771000002.jsp]]></userdata>
+      </item>
+      <item text="**제품입고" id="M771000001"> 
+        <userdata name="url"><![CDATA[http://m77.mesdev.dongkuk.com/M77/M771000001.jsp]]></userdata>
+      </item>
+    </item>
+    <item text="**야드맵관리" id="M7720">
+      <item text="**야드종합상황도" id="M772000010"> 
+        <userdata name="url"><![CDATA[http://m77.mesdev.dongkuk.com/M77/M772000010.jsp]]></userdata>
+      </item>
+      <item text="**창고/동별 적치현황조회" id="M772000011"> 
+        <userdata name="url"><![CDATA[http://m77.mesdev.dongkuk.com/M77/M772000011.jsp]]></userdata>
+      </item>
+      <item text="**HIGH BAY 적치현황관리" id="M772000012"> 
+        <userdata name="url"><![CDATA[http://m77.mesdev.dongkuk.com/M77/M772000012.jsp]]></userdata>
+      </item>
+      <item text="**HIGH BAY 번지별적치현황관리" id="M772000013"> 
+        <userdata name="url"><![CDATA[http://m77.mesdev.dongkuk.com/M77/M772000013.jsp]]></userdata>
+      </item>      
+      <item text="**FLAT YARD 열별정보조회" id="M772000015"> 
+        <userdata name="url"><![CDATA[http://m77.mesdev.dongkuk.com/M77/M772000015.jsp]]></userdata>
+      </item>      
+      <item text="**FLAT YARD 열별유형SETUP정보관리" id="M772000018"> 
+        <userdata name="url"><![CDATA[http://m77.mesdev.dongkuk.com/M77/M772000018.jsp]]></userdata>
+      </item>      
+      <item text="적치위치변경및MAP삭제/등록" id="M772000030"> 
+        <userdata name="url"><![CDATA[http://m77.mesdev.dongkuk.com/M77/M772000030.jsp]]></userdata>
+      </item>      
+      <item text="**야드실사관리" id="M772000016"> 
+        <userdata name="url"><![CDATA[http://m77.mesdev.dongkuk.com/M77/M772000016.jsp]]></userdata>
+      </item>      
+      <item text="야드검색기준설정" id="M772000017"> 
+        <userdata name="url"><![CDATA[http://m77.mesdev.dongkuk.com/M77/M772000017.jsp]]></userdata>
+      </item>      
+      <item text="이적대상등록" id="M772000021"> 
+        <userdata name="url"><![CDATA[http://m77.mesdev.dongkuk.com/M77/M772000021.jsp]]></userdata>
+      </item>
+      <item text="**이적대상취소및실적B/U" id="M772000022"> 
+        <userdata name="url"><![CDATA[http://m77.mesdev.dongkuk.com/M77/M772000022.jsp]]></userdata>
+      </item>
+      <item text="이송대상등록" id="M772000020"> 
+        <userdata name="url"><![CDATA[http://m77.mesdev.dongkuk.com/M77/M772000020.jsp]]></userdata>
+      </item>
+    </item>
+    <item text="**물류진행" id="M7730">
+      <item text="**보급요구조회" id="M773000010"> 
+        <userdata name="url"><![CDATA[http://m77.mesdev.dongkuk.com/M77/M773000010.jsp]]></userdata>
+      </item>
+      <item text="*보급/분기/REJECT실적처리" id="M773000020"> 
+        <userdata name="url"><![CDATA[http://m77.mesdev.dongkuk.com/M77/M773000020.jsp]]></userdata>
+      </item>
+      <item text="**반납실적처리" id="M773000040"> 
+        <userdata name="url"><![CDATA[http://m77.mesdev.dongkuk.com/M77/M773000040.jsp]]></userdata>
+      </item>
+      <item text="**작업실적정보조회" id="M773000030"> 
+        <userdata name="url"><![CDATA[http://m77.mesdev.dongkuk.com/M77/M773000030.jsp]]></userdata>
+      </item>
+    </item>
+    <item text="**운반기기관리" id="M7740">
+      <item text="**PDA작업처리및현황" id="M774000010"> 
+        <userdata name="url"><![CDATA[http://m77.mesdev.dongkuk.com/M77/M774000010.jsp]]></userdata>
+      </item>
+      <item text="**운반기기(CTC) 정보 조회" id="M774000011"> 
+        <userdata name="url"><![CDATA[http://m77.mesdev.dongkuk.com/M77/M774000011.jsp]]>
+        </userdata>   
+      </item>
+    </item>
+    <item text="**Schedule관리" id="M7750">
+      <item text="작업대기현항" id="M775000010"> 
+        <userdata name="url"><![CDATA[http://m77.mesdev.dongkuk.com/M77/M775000010.jsp]]></userdata>
+      </item>
+      <item text="작업대기상태관리" id="M775000011"> 
+        <userdata name="url"><![CDATA[http://m77.mesdev.dongkuk.com/M77/M775000011.jsp]]></userdata>
+      </item>
+    </item>
+  </item>
+
+</tree> 

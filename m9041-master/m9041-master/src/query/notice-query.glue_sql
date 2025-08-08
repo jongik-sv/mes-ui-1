@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<queryMap desc="notice"> 
+	 <query id="notice_select" desc="emp_select" fetchSize="10" isNamed="true">
+		 <![CDATA[ 
+SELECT 
+        ID,
+        TITLE,
+        CONTENTS,
+        WRITER,
+        TO_CHAR(CREATION_TIMESTAMP,'yyyy-mm-dd') AS CREATE_DATE,
+        TO_CHAR(START_DATE,'yyyy-mm-dd') AS START_DATE,
+        TO_CHAR(END_DATE,'yyyy-mm-dd') AS END_DATE
+FROM     
+    M90APUSER.TB_M00_BULLETIN
+WHERE
+START_DATE <= SYSDATE
+AND END_DATE >=  TRUNC(SYSDATE)
+ORDER BY START_DATE DESC
+		 ]]> 
+		 <orderby><![CDATA[EMPLOYEE_ID ]]></orderby> 
+	 </query>
+	 <query id="notice_insert" desc="emp_insert" isNamed="true">
+		 <![CDATA[ 
+INSERT INTO TB_M00_BULLETIN
+        (ID, 
+         TITLE,
+         CONTENTS,
+         WRITER,
+         HIT,
+         CREATED_OBJECT_TYPE,
+         CREATED_OBJECT_ID,
+         CREATED_PROGRAM_ID,
+         CREATION_TIMESTAMP,
+         LAST_UPDATED_OBJECT_TYPE,
+         LAST_UPDATED_OBJECT_ID,
+         LAST_UPDATE_PROGRAM_ID,
+         LAST_UPDATE_TIMESTAMP
+         )
+VALUES(
+	     SQ_M00_BULLETIN.NEXTVAL, 
+         :TITLE,
+         :CONTENTS,
+         :WRITER,
+         '1',
+         '0',
+         '1234',
+         '1234',
+         SYSDATE,
+         '0',
+         '1234',
+         '1234',
+         SYSDATE)
+		 ]]> 
+	 </query>
+	 <query id="notice_update" desc="emp_update" fetchSize="10" isNamed="true">
+		 <![CDATA[ 
+UPDATE TB_M00_BULLETIN
+SET    TITLE = :TITLE,
+       CONTENTS = :CONTENTS,
+       WRITER = :WRITER,
+       LAST_UPDATE_TIMESTAMP = SYSDATE
+WHERE  ID = :ID
+		 ]]> 
+	 </query>
+	 <query id="notice_delete" desc="emp_delete" isNamed="true">
+		 <![CDATA[ 
+DELETE FROM TB_M00_BULLETIN
+WHERE ID = :ID
+		 ]]> 
+	 </query>
+	 <query id="notice_check" desc="" fetchSize="10" isNamed="true">
+		 <![CDATA[ 
+SELECT CD_V
+  FROM M00APUSER.TB_M00_CODES020 CD
+      ,M00APUSER.TB_M00_CODES030 CD_V
+ WHERE CD.CD_TP_ID = CD_V.CD_TP_ID
+   AND CD_TP = 'NOTICE_USER'
+   AND CD_V.CD_V = :USER_NO
+		 ]]> 
+	 </query>
+	 <query id="notice_bkUserCheck" desc="" fetchSize="10" isNamed="true">
+		 <![CDATA[ 
+SELECT USER_NO AS BK_USER_NO
+  FROM M90APUSER.TB_SEC_USER@USMEAN 
+ WHERE USER_NO = :USER_NO
+		 ]]> 
+	 </query>
+	 <query id="notice_serVCheck" desc="" fetchSize="10" isNamed="true">
+		 <![CDATA[ 
+SELECT CD_V
+  FROM M00APUSER.TB_M00_CODES020 CD
+      ,M00APUSER.TB_M00_CODES030 CD_V
+ WHERE CD.CD_TP_ID = CD_V.CD_TP_ID
+   AND CD_TP = 'MES_VER'
+		 ]]> 
+	 </query>
+	 <query id="notice_selectDeployHistory" desc="" isNamed="true">
+		 <![CDATA[ 
+SELECT DPL_NO as id, NOTICE_PUB_TITLE, NOTICE_PUB_CONTENT, DPL_DH
+   FROM (
+    SELECT DPL_NO, NOTICE_PUB_TITLE, NOTICE_PUB_CONTENT, TO_CHAR(DPL_DH,'YYYY/MM/DD HH24:MI:SS') AS DPL_DH
+      FROM M90APUSER.TB_DEPLOY_HISTORY
+     WHERE PRG_STS = 'C'
+    ORDER BY DPL_DH DESC
+        )
+  WHERE ROWNUM < 4
+		 ]]> 
+	 </query>
+</queryMap>

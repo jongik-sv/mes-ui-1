@@ -1,0 +1,302 @@
+.dhxlayout_base_material div.dhxlayout_cont {
+    background-color:transparent;
+}
+
+.containerTableStyle {
+    padding-left: 10px;
+}
+
+.dhxlayout_base_material div.dhx_cell_layout {
+    position: absolute;
+    /* background-color: #323948; */
+    margin: 0;
+    padding: 0;
+    cursor: default;
+    z-index: 0;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04), 0 1px 4px rgba(0, 0, 0, 0.12); */
+    border-color: #323948;
+}
+
+.dhxlayout_base_material div.dhx_cell_layout div.dhx_cell_hdr {
+    line-height: 29px;
+    background-color: #555555;
+    font-size: 12pt;
+}
+
+.dhxlayout_base_material div.dhx_cell_layout div.dhx_cell_hdr.dhx_cell_hdr_hidden {
+    border-top: #323130;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+
+.dhxlayout_base_material div.dhx_cell_layout div.dhx_cell_cont_layout {
+    position: absolute;
+    border-color: #323130;
+    border-style: none;
+    border-width: 0px 0px 0px 0px;
+    z-index: 0;
+    cursor: default;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+
+.dhx_toolbar_material {
+    background-color: #172e57;
+}
+
+.dhx_toolbar_material div.dhx_toolbar_btn div.dhxtoolbar_text {
+    margin: 0px;
+}
+
+/* Tabbar CSS */
+
+.dhxtabbar_base_material div.dhxtabbar_tabs {
+    background: #323130;
+    border-style: unset;
+    border-width: 1px;
+    bottom: auto;
+    /* box-shadow: 4px 4px 10px rgba(69, 65, 78, .06); */
+    color: #404040;
+    font-family: Roboto, Arial, Helvetica;
+    font-size: 14px;
+    height: 33px;
+    line-height: 32px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+    z-index: 2;
+    border-color: transparent;
+}
+
+.dhxtabbar_base_material div.dhx_cell_tabbar {
+    position: absolute;
+    background-color: #e4e4e4;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    cursor: default;
+    z-index: 0;
+}
+
+.dhxtabbar_base_material div.dhx_cell_tabbar div.dhx_cell_cont_tabbar {
+    position: absolute;
+    border-color: #323130;
+    border-style: solid;
+    overflow: hidden;
+    z-index: 0;
+}
+
+/*
+.dhxtabbar_base_material div.dhxtabbar_tabs div.dhxtabbar_tabs_base div.dhxtabbar_tab{
+    background-color: black;
+}
+*/
+
+.dhxtabbar_base_material div.dhxtabbar_tabs div.dhxtabbar_tabs_base div.dhxtabbar_tab div.dhxtabbar_tab_text {
+    position: relative;
+    height: 30px;
+    line-height: 42px;
+    background-color: black;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0 16px;
+    overflow: hidden;
+    font: inherit;
+    text-transform: uppercase;
+}
+
+.dhxtabbar_base_material div.dhxtabbar_tabs div.dhxtabbar_tabs_base div.dhxtabbar_tab div.dhxtabbar_tab_close {
+    cursor: pointer;
+    right: 10px;
+    top: 8px;
+    transition: 0.3s ease;
+}
+
+.dhxtabbar_base_material div.dhxtabbar_tabs div.dhxtabbar_tabs_base div.dhxtabbar_tab div.dhxtabbar_tab_close:hover {
+    right: 10px;
+    transform: rotate(90deg);
+    transition: 0.3s ease;
+}
+
+/*
+.dhxtabbar_base_material div.dhxtabbar_tabs div.dhxtabbar_tabs_base div.dhxtabbar_tab.dhxtabbar_tab_actv {
+    background-color: #ffff;
+    border-bottom: 4px solid #fddf2f;
+    color: black;
+    box-shadow: -2px -3px 4px 0px rgba(228, 228, 228, 0.28);
+}
+*/
+
+.dhxtabbar_base_material div.dhxtabbar_tabs div.dhxtabbar_tabs_base div.dhxtabbar_tab {
+    position: relative;
+    height: 42px;
+    line-height: 42px;
+    background-color: black;
+    font: inherit;
+    margin-right: 0;
+    cursor: pointer;
+    z-index: 1;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.dhxtabbar_base_material div.dhxtabbar_tabs div.dhxtabbar_tabs_base div.dhxtabbar_tab.dhxtabbar_tab_actv {
+    background-color: #FDDF2F;
+    /* background-color: black;
+    border-bottom: 4px solid #fddf2f; */
+    box-shadow: -2px 0px 4px 0px rgba(228, 228, 228, 0.28);
+}
+
+.dhxtabbar_base_material div.dhxtabbar_tabs div.dhxtabbar_tabs_base div.dhxtabbar_tab.dhxtabbar_tab_actv div.dhxtabbar_tab_text {
+    color: #FDDF2F;
+    font-weight: bold;
+    /* font-size: 20px; */
+}
+
+.dhxtabbar_base_material div.dhxtabbar_tabs div.dhxtabbar_tabs_base div.dhxtabbar_tab div.dhxtabbar_tab_text.dhxtabbar_tab_text_close {
+    padding-right: 25px;
+}
+
+.dhxtabbar_base_material div.dhxtabbar_tabs div.dhxtabbar_tabs_base div.dhxtabbar_tabs_cont_left div.dhxtabbar_tab {
+    float: left;
+    color: #fff;
+}
+
+.dhx_list {
+    border-top: 0px solid #ccc;
+    border-right: 0px solid #ccc;
+}
+
+.dhx_list:hover {
+    background-position: 50% 0%;
+}
+
+.dhx_list .dhx_list_default_item, .dhx_list .dhx_list_default_item_selected {
+    border-right: none;
+    border-bottom: 0px solid #eee;
+    /* border-left: 3px solid transparent; */
+    border-left: 1px solid transparent;
+}
+
+.dhx_list .dhx_list_default_item_selected {
+    background-color: hsla(0, 0%, 95%, 0);
+    color: #fff;
+    /* border-color: #fddf2f; */
+    background-repeat: repeat-x;
+    border-left: 3px solid #fddf2f;
+}
+
+.dhx_list_item {
+    font-family: Roboto, Arial, Helvetica;
+    font-size: 14px;
+    color: #d0d0d0;
+    box-sizing: border-box;
+    line-height: normal;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont {
+    position: absolute;
+    overflow: auto;
+    background-color: #f3f4f7;
+    color: #fff;
+    /* box-shadow: 0 8px 16px 0 rgba(0,0,0,.28); */
+    overflow-x: hidden;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item {
+    position: relative;
+    white-space: nowrap;
+    cursor: default;
+    font-size: 14px;
+    font-family: Roboto, Arial, Helvetica;
+    color: #000;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    height: 32px;
+    line-height: 31px;
+    color: inherit;
+    vertical-align: middle;
+    border-left: 3px solid #2b2a2a;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    cursor: default;
+    /* border-bottom-style: ridge; */
+    /* border-bottom-width: thin; */
+    border-bottom-color: #000;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text:hover {
+    background-color: hsla(0, 0%, 95%, 0);
+    /* border-color: #fddf2f; */
+    border-left: 3px solid #fddf2f;
+    /* border-bottom-style: ridge; */
+    /* border-bottom-color: #000; */
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text div.dhxtreeview_item_label {
+    position: absolute;
+    top: 0;
+    /* padding: 0 10px 0 4px; */
+    height: 100%;
+    line-height: inherit;
+    font: inherit;
+    margin-left: -27px;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text:hover div.dhxtreeview_item_label {
+    background-color: hsla(0, 0%, 95%, 0);
+    /* color: white; */
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected, .dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected:hover {
+    background-color: #37465d;
+    border-color: #fddf2f;
+    /* border-color: #39c; */
+    border-bottom-color: black;
+    font-weight: 900;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected div.dhxtreeview_item_label, .dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected:hover div.dhxtreeview_item_label {
+    background-color: hsla(0, 0%, 95%, 0);
+    color: #FDDF2F;
+}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_kids_cont {
+    position: relative;
+    -webkit-transition: opacity .1s;
+    -moz-transition: opacity .1s;
+    -ms-transition: opacity .1s;
+    -o-transition: opacity .1s;
+    transition: opacity .1s;
+    background-color: #1c1c1c;
+    color: black;
+}
+
+.dhxlayout_base_material div.dhxlayout_sep.dhxlayout_sep_resize_h {
+    background-color: white;
+}
+
+.dhxlayout_base_material div.dhxlayout_sep {
+ 
+    background-color: white;
+}

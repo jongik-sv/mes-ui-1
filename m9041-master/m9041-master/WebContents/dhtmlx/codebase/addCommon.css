@@ -1,0 +1,63 @@
+/* [[[[ scrollbar CSS Start */
+
+.scrollbar_5::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
+	/* border: 1px blue solid; */
+}
+
+.scrollbar_5::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	/* -webkit-box-shadow: inset 0 0 6px rgba(236, 230, 230, 0); */
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.1);
+	/* background-color: rgb(210, 210, 210); */
+	background-color: rgb(229, 229, 229);
+	height: 5px;
+	/* border: 1px yellow solid; */
+	border: 1px rgb(210, 210, 210) solid;
+}
+
+.scrollbar_5::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+	/* background-color: #323130; */
+	height: 5px;
+	/* border: 1px red solid; */
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+
+.scrollbar_12::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+	/* border: 1px blue solid; */
+}
+.scrollbar_12::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.1);
+	/* background-color: rgb(210, 210, 210); */
+	background-color: rgb(229, 229, 229);
+	height: 12px;
+	/* border: 1px yellow solid; */
+	border: 1px rgb(210, 210, 210) solid;
+}
+.scrollbar_12::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	border-radius: 10px;
+	/* background-color: #F5F5F5; */
+	background-color: #ffffff;
+	height: 12px;
+	/* border: 1px red solid; */
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+.scrollbar_invisible::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
+	/* IE scroll hidden */
+	-ms-overflow-style: none;
+}
+
+/* scrollbar CSS End ]]]] */

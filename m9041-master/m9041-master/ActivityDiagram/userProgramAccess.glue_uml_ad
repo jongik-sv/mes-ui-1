@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Glue:GlueDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Glue="http://www.glueframework.com/activitydiagram/" id="11" location="20,20" size="100,100">
+  <child xsi:type="Glue:InitialState" id="213670" location="491,73" size="50,-1" output="//@wire.1"/>
+  <child xsi:type="Glue:FinalState" id="213672" location="485,326" size="-1,-1" input="//@wire.0"/>
+  <child xsi:type="Glue:InsertActivity" id="213721" location="427,237" size="141,-1" input="//@wire.2" output="//@wire.0" name="화면접속정보입력">
+    <property key="class" value="com.posdata.glue.biz.activity.PosInsert"/>
+    <property key="dao" value="m90dao"/>
+    <property key="sqlkey" value="userAccess_insert"/>
+    <property key="description" value=""/>
+  </child>
+  <child xsi:type="Glue:RouterActivity" id="213722" location="433,126" size="119,-1" input="//@wire.1" output="//@wire.2" name="분기">
+    <property key="class" value="com.posdata.glue.biz.activity.PosDefaultRouter"/>
+    <property key="description" value=""/>
+  </child>
+  <property key="tx1" value="true"/>
+  <property key="description" value=""/>
+  <wire id="11025" guardcondition="success" firstRelativePoint="495,267" lastRelativePoint="495,325"/>
+  <wire id="11029" guardcondition="success" firstRelativePoint="504,91" lastRelativePoint="504,129"/>
+  <wire id="11030" guardcondition="insert" firstRelativePoint="495,156" lastRelativePoint="495,237"/>
+</Glue:GlueDiagram>

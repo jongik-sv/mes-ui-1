@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service name="menuInfo-service" initial="분기">
+  <activity name="사용자접근가능화면 목록 조회(히든메뉴제외)" class="com.poscoict.glue.biz.dhtmlx.form.FormSearch">
+    <transition name="success" value="end" />
+    <property name="sqlkey" value="menuInfo.programs.visible" />
+    <property name="dao" value="m90dao" />
+  </activity>
+  <activity name="사용자접근가능화면 목록 조회(히든메뉴만)" class="com.poscoict.glue.biz.dhtmlx.form.FormSearch">
+    <transition name="success" value="end" />
+    <property name="sqlkey" value="menuInfo.programs.invisible" />
+    <property name="dao" value="m90dao" />
+  </activity>
+  <activity name="분기" class="com.posdata.glue.biz.activity.PosDefaultRouter">
+    <transition name="visible" value="사용자접근가능화면 목록 조회(히든메뉴제외)" />
+    <transition name="invisible" value="사용자접근가능화면 목록 조회(히든메뉴만)" />
+    <transition name="allmenu" value="전체 메뉴 조회" />
+  </activity>
+  <activity name="전체 메뉴 조회" class="com.poscoict.glue.biz.dhtmlx.form.FormSearch">
+    <transition name="success" value="end" />
+    <property name="sqlkey" value="menuInfo.programs.allmenu" />
+    <property name="dao" value="m90dao" />
+  </activity>
+</service>
+

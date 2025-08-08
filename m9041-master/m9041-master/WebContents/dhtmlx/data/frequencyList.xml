@@ -1,0 +1,23 @@
+<data>
+    <item id="1">
+        <serviceName><![CDATA[코일이력정보]]></serviceName>
+        <serviceId><![CDATA[M172021101]]></serviceId>
+        <recentAccess><![CDATA[2019/05/13 14:34:11]]></recentAccess>
+    </item>
+    <item id="2">
+        <serviceName><![CDATA[공정별 진행현황]]></serviceName>
+        <serviceId><![CDATA[M172145541]]></serviceId>
+        <recentAccess><![CDATA[2019/05/13 14:34:11]]></recentAccess>
+    </item>
+	<item id="3">
+        <serviceName><![CDATA[CCL작업지시조회]]></serviceName>
+        <serviceId><![CDATA[M172145541]]></serviceId>
+        <recentAccess><![CDATA[2019/05/13 14:34:11]]></recentAccess>
+    </item>
+	<item id="4">
+        <serviceName><![CDATA[야드맵현황]]></serviceName>
+        <serviceId><![CDATA[M172145541]]></serviceId>
+        <recentAccess><![CDATA[2019/05/13 14:34:11]]></recentAccess>
+    </item>
+
+</data>

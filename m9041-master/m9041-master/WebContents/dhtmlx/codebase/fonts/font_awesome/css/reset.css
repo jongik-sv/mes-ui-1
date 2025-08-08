@@ -1,0 +1,32 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*태그의 기본스타일 무효화 처리*/
+*{
+	margin:0; padding:0;}
+body{
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size:14px; line-height:20px;
+	color:#121212;}
+ul{
+	list-style:none;}
+a{
+	text-decoration:none;}
+img{
+	vertical-align:top;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

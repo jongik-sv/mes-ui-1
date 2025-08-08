@@ -1,0 +1,52 @@
+:root {
+	--popup-width: 900px;
+	--popup-height: 507px;
+	--popup-margin-left: 25px;
+	--popup-margin-top: 20px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+*,::after,::before {
+	box-sizing: border-box;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+	-webkit-tap-highlight-color: transparent;
+}
+
+body {
+	margin: 0;
+	font-family: '본고딕', sans-serif;
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 20px;
+	color: #121212;
+	text-align: left;
+	background-color: #fff;
+}
+
+.domainNotifyPanel .guide1 {
+	width: var(--popup-width);
+	height: var(--popup-height);
+	margin-left: var(--popup-margin-left);
+	margin-top: var(--popup-margin-top);
+	background-image: url(./imgs/domainNotify_1.png);
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+}
+
+.domainNotifyPanel .guide2 {
+	width: var(--popup-width);
+	height: var(--popup-height);
+	margin-left: var(--popup-margin-left);
+	margin-top: var(--popup-margin-top);
+	margin-bottom: var(--popup-margin-top);
+	background-image: url(./imgs/domainNotify_2.png);
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+}

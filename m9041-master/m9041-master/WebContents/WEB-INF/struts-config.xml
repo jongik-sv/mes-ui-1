@@ -1,0 +1,133 @@
+<?xml version = '1.0' encoding = 'EUC-KR'?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<action-mappings>
+		<action path="/login" type="com.poscoict.glue.web.control.clearSessionAction">
+			<forward name="success" path="/portal.jsp" redirect="true" />
+			<forward name="failure" path="/login.jsp" />
+		</action>
+		<action path="/loginGalaxy" type="com.poscoict.glue.web.control.clearSessionAction">
+			<forward name="success" path="/portalGalaxy.jsp" />
+			<forward name="failure" path="/loginGalaxy.jsp" />
+		</action>
+		<action path="/loginPda" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/loginPda.jsp" />
+			<forward name="failure" path="/loginPda.jsp" />
+		</action>
+		<action path="/loginPdaApp" type="com.poscoict.glue.web.control.clearSessionAction">
+			<forward name="success" path="/securityPdaApp_success.jsp" />
+			<forward name="failure" path="/securityPdaApp_failure.jsp" />
+		</action>
+		<action path="/logout"
+			type="com.posdata.glue.web.security.LogoutStrustsAction">
+			<forward name="success" path="/login.jsp" redirect="true" />
+			<forward name="failure" path="/login.jsp" redirect="true" />
+		</action>
+		<action path="/logoutPdaApp"
+			type="com.posdata.glue.web.security.LogoutStrustsAction">
+			<forward name="success" path="/logoutPdaApp_success.jsp" />
+			<forward name="failure" path="/logoutPdaApp_failure.jsp" />
+		</action>
+		<action path="/menu" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/menuMaker.jsp" />
+			<forward name="failure" path="/login.jsp" />
+		</action>
+		<action path="/menuJson" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/menuMakerJson.jsp" />
+		</action>
+		<action path="/favoritesMenuJson" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/_favoriteMenuInfoJson.jsp" />
+		</action>
+		<action path="/menuInfo" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/menuInfo.jsp" />
+			<forward name="failure" path="/fail.jsp" />
+		</action>
+		<action path="/json" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/_json.jsp" />
+			<forward name="failure" path="/fail.jsp" />
+		</action>
+		<action path="/jsonPdaApp" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/_jsonPdaApp.jsp" />
+			<forward name="failure" path="/_jsonPdaApp.jsp" />
+		</action>
+		<action path="/excelExportM902100010" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/_excelExportM902100010.jsp" />
+		</action>
+		<action path="/basicGridMergeData" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/_gridMergeData.jsp" />
+			<forward name="failure" path="/_gridMergeData.jsp" />
+		</action>
+		<action path="/notice" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/notice.jsp" />
+		</action>
+		<action path="/noticeDetail" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/noticeDetail.jsp" />
+		</action>
+		<action path="/noticeWhswgt" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/noticeWhswgt.jsp" />
+		</action>
+		<action path="/noticePopup" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/noticePopup.jsp" />
+		</action>
+		<action path="/basicGridData" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/_gridBasicData.jsp" />
+		</action>
+		<action path="/basicGridDataJson" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/_gridBasicDataStdJson.jsp" />
+		</action>
+		<action path="/basicGridDataAndIcon" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/_gridDataAndIcon.jsp" />
+		</action>
+		<action path="/basicFormData" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/_formBasicData.jsp" />
+		</action>
+		<action path="/handleDataProcess" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/_dataProcess.jsp" />
+		</action>
+		<action path="/handlePlainDataProcess" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/_plainDataProcess.jsp" />
+			<forward name="failure" path="/_plainDataProcess.jsp" />
+		</action>
+		<action path="/newHandlePlainDataProcess" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/_initPasswordDataProcess.jsp" />
+			<forward name="failure" path="/_initPasswordDataProcess.jsp" />
+		</action>
+		<action path="/passwordHandleDataProcess" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/_passwordDataProcess.jsp" />
+		</action>
+		<action path="/checkUpdatePassword" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/_checkUpdatePassword.jsp" />
+		</action>
+		<action path="/favoritesMenu" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/_favoritesMaker.jsp" />
+		</action>
+		<action path="/favoritesTreeHandle" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/_dataProcess.jsp" />
+			<forward name="failure" path="/_dataProcess.jsp" />
+		</action>
+		<action path="/jsonRowBasicData" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/_jsonRowBasicData.jsp" />
+			<forward name="failure" path="/_jsonRowBasicData.jsp" />
+		</action>
+		<action path="/comboBasicData" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/_comboBasicData.jsp" />
+			<forward name="failure" path="/_comboBasicData.jsp" />
+		</action>
+		<action path="/m9021AjaxData" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/_m9021AjaxData.jsp" />
+			<forward name="failure" path="/_m9021AjaxData.jsp" />
+		</action>
+		<action path="/jsonLovPdaApp" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/_lovBasicData.jsp" />
+		</action>
+		<action path="/jsonPdaAppDataProcess" type="com.poscoict.glue.web.control.PosLoggingStrutsAction">
+			<forward name="success" path="/_jsonPdaAppDataProcess.jsp" />
+			<forward name="failure" path="/_jsonPdaAppDataProcess.jsp" />
+		</action>
+		<action path="/jsonBase64ImgForCors" type="com.posdata.glue.web.control.PosStrutsAction">
+			<forward name="success" path="/_getBase64ImgForCors.jsp" />
+			<forward name="failure" path="/_getBase64ImgForCors.jsp" />
+		</action>
+	</action-mappings>
+</struts-config>

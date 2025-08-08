@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service name="menu-service" initial="로긴">
+  <activity name="로긴" class="com.posdata.glue.mes.activity.PosSecurityLogin">
+    <transition name="success" value="end" />
+  </activity>
+</service>
+

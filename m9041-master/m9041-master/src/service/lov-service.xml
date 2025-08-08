@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service name="lov-service" initial="PDA App Json LOV조회">
+  <activity name="PDA App Json LOV조회" class="com.unionsteel.mes.m90.activity.common.M90LovCustom">
+    <transition name="success" value="end" />
+    <property name="dao" value="masterdao" />
+  </activity>
+</service>
+

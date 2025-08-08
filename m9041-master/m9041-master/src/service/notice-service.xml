@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service name="notice-service" initial="Event_Router">
+  <activity name="noticeFind" class="com.poscoict.glue.biz.dhtmlx.form.FormSearch">
+    <transition name="success" value="end" />
+    <property name="sqlkey" value="notice_select" />
+    <property name="dao" value="m90dao" />
+  </activity>
+  <activity name="디플로이이력조회" class="com.poscoict.glue.biz.dhtmlx.form.FormSearch">
+    <transition name="success" value="end" />
+    <property name="dao" value="m90dao" />
+    <property name="sqlkey" value="notice_selectDeployHistory" />
+  </activity>
+  <activity name="Event_Router" class="com.posdata.glue.biz.activity.PosDefaultRouter">
+    <transition name="find" value="noticeFind" />
+    <transition name="check" value="등록 권한 체크" />
+    <transition name="success" value="end" />
+    <transition name="bkUser" value="백업계 사용자 체크" />
+    <transition name="verChk" value="서버버전체크" />
+    <transition name="findDeploy" value="디플로이이력조회" />
+  </activity>
+  <activity name="서버버전체크" class="com.poscoict.glue.biz.dhtmlx.form.FormSearch">
+    <transition name="success" value="end" />
+    <property name="sqlkey" value="notice_serVCheck" />
+    <property name="dao" value="m90dao" />
+  </activity>
+  <activity name="백업계 사용자 체크" class="com.poscoict.glue.biz.dhtmlx.form.FormSearch">
+    <transition name="success" value="end" />
+    <property name="sqlkey" value="notice_bkUserCheck" />
+    <property name="dao" value="m90dao" />
+  </activity>
+  <transaction-manager id="tx1" commit="true" />
+  <activity name="등록 권한 체크" class="com.poscoict.glue.biz.dhtmlx.form.FormSearch">
+    <transition name="success" value="end" />
+    <property name="sqlkey" value="notice_check" />
+    <property name="dao" value="m90dao" />
+  </activity>
+</service>
+

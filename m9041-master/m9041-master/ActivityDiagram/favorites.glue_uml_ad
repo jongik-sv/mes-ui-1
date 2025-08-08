@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Glue:GlueDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Glue="http://www.glueframework.com/activitydiagram/" id="3" location="20,20" size="100,100">
+  <child xsi:type="Glue:InitialState" id="5" location="508,136" size="-1,-1" output="//@wire.0"/>
+  <child xsi:type="Glue:FinalState" id="6" location="569,712" size="-1,-1" input="//@wire.3 //@wire.4 //@wire.9 //@wire.11 //@wire.13 //@wire.14"/>
+  <child xsi:type="Glue:RouterActivity" id="7" location="149,217" size="1008,-1" input="//@wire.0" output="//@wire.6 //@wire.10 //@wire.5 //@wire.2 //@wire.12" name="Event_Router">
+    <property key="class" value="com.posdata.glue.biz.activity.PosDefaultRouter"/>
+    <property key="description" value=""/>
+  </child>
+  <child xsi:type="Glue:Activity" id="3907" location="573,397" size="153,-1" input="//@wire.2" output="//@wire.3" name="favoritesTreeSave">
+    <property key="class" value="com.poscoict.glue.biz.dhtmlx.PosTreeSave"/>
+    <property key="dao" value="m90dao"/>
+    <property key="delete_sql" value="favorites_delete"/>
+    <property key="insert_sql" value="favorites_insert"/>
+    <property key="description" value=""/>
+  </child>
+  <child xsi:type="Glue:SearchActivity" id="4020" location="741,388" size="212,-1" input="//@wire.5" output="//@wire.4" name="favoritesFind">
+    <property key="class" value="com.posdata.glue.biz.activity.PosSearch"/>
+    <property key="dao" value="m90dao"/>
+    <property key="resultkey" value="favoritesMenuResult"/>
+    <property key="sqlkey" value="favorites_select"/>
+    <property key="param-count" value="1"/>
+    <property key="param0" value="USER_ID"/>
+    <property key="description" value=""/>
+  </child>
+  <child xsi:type="Glue:SearchActivity" id="277617" location="205,382" size="212,-1" input="//@wire.6" output="//@wire.7 //@wire.16" name="UI DB 간 Seq 일치 여부 조회">
+    <property key="class" value="com.poscoict.glue.biz.dhtmlx.form.FormSearch"/>
+    <property key="dao" value="m90dao"/>
+    <property key="if-size-zero" value="error"/>
+    <property key="sqlkey" value="favorites_afterDrag_select"/>
+    <property key="description" value="1. Activity Definition&#xD;&#xA;   - 이 Activity는 즐겨찾기 Seq 변경 전 UI와 DB간 Seq 일치 여부를 조회하는 Activity이다.&#xD;&#xA;&#xD;&#xA;2. Detail Description&#xD;&#xA;     - 화면에서 Drag &amp; Drop으로 변경할 대상의 UI와 DB간 Seq 일치 여부를 조회한다.&#xD;&#xA;&#x9;조회 결과가 없으면 일치하지 않은 경우이며, Error 메시지 반환한다.&#xD;&#xA;&#xD;&#xA;3. Reference&#xD;&#xA;"/>
+  </child>
+  <child xsi:type="Glue:Activity" id="277618" location="52,459" size="128,-1" input="//@wire.7" output="//@wire.9" name="Error Message">
+    <property key="class" value="com.unionsteel.mes.m90.common.SetUIMessage"/>
+    <property key="msg" value="정보가 일치하지 않아 재조회 되었습니다.\n다시 시도하세요."/>
+    <property key="msgKey" value="errMsg"/>
+    <property key="description" value="1. Activity Definition&#xD;&#xA;   - 이 Activity는 즐겨찾기 Seq 변경 전 UI와 DB간 Seq 일치 여부를 조회하는 Activity이다.&#xD;&#xA;&#xD;&#xA;2. Detail Description&#xD;&#xA;     - 화면에서 Drag &amp; Drop으로 변경할 대상의 UI와 DB간 Seq 일치 여부를 조회한다.&#xD;&#xA;&#x9;조회 결과가 없으면 일치하지 않은 경우이며, Error 메시지 반환한다.&#xD;&#xA;&#xD;&#xA;3. Reference&#xD;&#xA;"/>
+  </child>
+  <child xsi:type="Glue:DinaActivity" id="277984" location="232,448" size="156,-1" input="//@wire.16" output="//@wire.8" name="Seq 변경">
+    <property key="class" value="com.poscoict.glue.biz.dhtmlx.form.FormUpdate"/>
+    <property key="dao" value="m90dao"/>
+    <property key="sqlkey" value="favorites_afterDrag_update"/>
+    <property key="description" value="1. Activity Definition&#xD;&#xA;   - 이 Activity는 즐겨찾기 Seq를 업데이트하는 Activity이다.&#xD;&#xA;&#xD;&#xA;2. Detail Description&#xD;&#xA;     - 화면에서 Drag &amp; Drop으로 변경된 Seq를 업데이트한다.&#xD;&#xA;&#xD;&#xA;3. Reference&#xD;&#xA;"/>
+  </child>
+  <child xsi:type="Glue:SearchActivity" id="277985" location="993,382" size="157,-1" input="//@wire.10" output="//@wire.11 //@wire.14" name="즐겨찾기추가">
+    <property key="class" value="com.poscoict.glue.biz.dhtmlx.form.FormInsert"/>
+    <property key="dao" value="m90dao"/>
+    <property key="sqlkey" value="favorites_insert"/>
+    <property key="description" value="1. Activity Definition&#xD;&#xA;   - 이 Activity는 즐겨찾기 추가시 실행되는 Activity이다.&#xD;&#xA;&#xD;&#xA;2. Detail Description&#xD;&#xA;     - 즐겨찾기를 추가하고 오류가 발생하면 무시한다.&#xD;&#xA;&#xD;&#xA;3. Reference&#xD;&#xA;"/>
+  </child>
+  <child xsi:type="Glue:DinaActivity" id="277988" location="425,386" size="132,-1" input="//@wire.12" output="//@wire.15" name="즐겨찾기삭제">
+    <property key="class" value="com.poscoict.glue.biz.dhtmlx.form.FormDelete"/>
+    <property key="dao" value="m90dao"/>
+    <property key="sqlkey" value="favorites_remove"/>
+    <property key="description" value=""/>
+  </child>
+  <child xsi:type="Glue:DinaActivity" id="278028" location="366,609" size="124,-1" input="//@wire.15 //@wire.8" output="//@wire.13" name="스퀀스 정리">
+    <property key="class" value="com.poscoict.glue.biz.dhtmlx.form.FormUpdate"/>
+    <property key="dao" value="m90dao"/>
+    <property key="sqlkey" value="favorites_organize_seq"/>
+    <property key="description" value=""/>
+  </child>
+  <property key="tx1" value="true"/>
+  <property key="tx2" value="true"/>
+  <property key="description" value=""/>
+  <wire id="4" guardcondition="success" firstRelativePoint="536,155" lastRelativePoint="536,216"/>
+  <wire id="7" guardcondition="success" firstRelativePoint="411,246" lastRelativePoint="411,386"/>
+  <wire id="840" guardcondition="save" firstRelativePoint="636,247" lastRelativePoint="636,393"/>
+  <wire id="854" guardcondition="success" firstRelativePoint="510,351" lastRelativePoint="510,574"/>
+  <wire id="858" guardcondition="success" firstRelativePoint="703,410" lastRelativePoint="510,584">
+    <bendpoint weight="0.5" firstDimension="4,170" secondDimension="202,-20"/>
+  </wire>
+  <wire id="857" guardcondition="find" firstRelativePoint="849,247" lastRelativePoint="849,388"/>
+  <wire id="12618" guardcondition="dragFind" firstRelativePoint="307,247" lastRelativePoint="307,382"/>
+  <wire id="12619" guardcondition="error" firstRelativePoint="203,429" lastRelativePoint="113,492">
+    <bendpoint weight="0.5" firstDimension="-196,-1" secondDimension="-1,-78"/>
+  </wire>
+  <wire id="12624" guardcondition="success" firstRelativePoint="309,535" lastRelativePoint="445,630"/>
+  <wire id="12625" guardcondition="success" firstRelativePoint="114,522" lastRelativePoint="490,584">
+    <bendpoint weight="0.5" firstDimension="0,78" secondDimension="-387,0"/>
+  </wire>
+  <wire id="12626" guardcondition="add" firstRelativePoint="1065,247" lastRelativePoint="1065,382"/>
+  <wire id="12627" guardcondition="success" firstRelativePoint="927,411" lastRelativePoint="510,584">
+    <bendpoint weight="0.5" firstDimension="-6,178" secondDimension="426,-11"/>
+  </wire>
+  <wire id="12628" guardcondition="remove" firstRelativePoint="476,247" lastRelativePoint="476,421"/>
+  <wire id="12629" guardcondition="success" firstRelativePoint="540,660" lastRelativePoint="579,711"/>
+  <wire id="12630" guardcondition="failure" firstRelativePoint="878,411" lastRelativePoint="510,584">
+    <bendpoint weight="0.5" firstDimension="-27,167" secondDimension="377,-22"/>
+  </wire>
+  <wire id="12631" guardcondition="success" firstRelativePoint="440,416" lastRelativePoint="440,627"/>
+  <wire id="12632" guardcondition="success" firstRelativePoint="305,412" lastRelativePoint="305,448"/>
+</Glue:GlueDiagram>

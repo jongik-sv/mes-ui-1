@@ -1,0 +1,184 @@
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+ 
+
+<rows>
+<userdata name="appMsg">13건의 Data가 조회되었습니다.</userdata>
+<row id= "xml-result_1" >
+<cell  ><![CDATA[B230028]]></cell>
+<cell  ><![CDATA[4]]></cell>
+<cell  ><![CDATA[G]]></cell>
+<cell  ><![CDATA[G2]]></cell>
+<cell  ><![CDATA[2.5]]></cell>
+<cell  ><![CDATA[1288]]></cell>
+<cell  ><![CDATA[1061]]></cell>
+<cell  ><![CDATA[26820]]></cell>
+<cell  ><![CDATA[762]]></cell>
+<cell  ><![CDATA[]]></cell>
+<cell  ><![CDATA[V201507]]></cell>
+</row>
+<row id= "xml-result_2" >
+<cell  ><![CDATA[B2G1P4S]]></cell>
+<cell  ><![CDATA[4]]></cell>
+<cell  ><![CDATA[G]]></cell>
+<cell  ><![CDATA[G2]]></cell>
+<cell  ><![CDATA[0.655]]></cell>
+<cell  ><![CDATA[1280]]></cell>
+<cell  ><![CDATA[1974]]></cell>
+<cell  ><![CDATA[12810]]></cell>
+<cell  ><![CDATA[508]]></cell>
+<cell  ><![CDATA[B230028]]></cell>
+<cell  ><![CDATA[V201507]]></cell>
+</row>
+<row id= "xml-result_3" >
+<cell  ><![CDATA[B2G1P4T]]></cell>
+<cell  ><![CDATA[4]]></cell>
+<cell  ><![CDATA[G]]></cell>
+<cell  ><![CDATA[G2]]></cell>
+<cell  ><![CDATA[0.655]]></cell>
+<cell  ><![CDATA[1280]]></cell>
+<cell  ><![CDATA[2049]]></cell>
+<cell  ><![CDATA[13280]]></cell>
+<cell  ><![CDATA[508]]></cell>
+<cell  ><![CDATA[B230028]]></cell>
+<cell  ><![CDATA[V201507]]></cell>
+</row>
+<row id= "xml-result_4" >
+<cell  ><![CDATA[B2K330H]]></cell>
+<cell  ><![CDATA[4]]></cell>
+<cell  ><![CDATA[G]]></cell>
+<cell  ><![CDATA[G2]]></cell>
+<cell  ><![CDATA[0.648]]></cell>
+<cell  ><![CDATA[1278]]></cell>
+<cell  ><![CDATA[1974]]></cell>
+<cell  ><![CDATA[12810]]></cell>
+<cell  ><![CDATA[508]]></cell>
+<cell  ><![CDATA[B2K330H]]></cell>
+<cell  ><![CDATA[V201507]]></cell>
+</row>
+<row id= "xml-result_5" >
+<cell  ><![CDATA[B2K330J]]></cell>
+<cell  ><![CDATA[4]]></cell>
+<cell  ><![CDATA[G]]></cell>
+<cell  ><![CDATA[G2]]></cell>
+<cell  ><![CDATA[0.648]]></cell>
+<cell  ><![CDATA[1278]]></cell>
+<cell  ><![CDATA[2049]]></cell>
+<cell  ><![CDATA[13280]]></cell>
+<cell  ><![CDATA[508]]></cell>
+<cell  ><![CDATA[B2K330J]]></cell>
+<cell  ><![CDATA[V201507]]></cell>
+</row>
+<row id= "xml-result_6" >
+<cell  ><![CDATA[B2R5101]]></cell>
+<cell  ><![CDATA[4]]></cell>
+<cell  ><![CDATA[G]]></cell>
+<cell  ><![CDATA[G2]]></cell>
+<cell  ><![CDATA[0.648]]></cell>
+<cell  ><![CDATA[1278]]></cell>
+<cell  ><![CDATA[1974]]></cell>
+<cell  ><![CDATA[12810]]></cell>
+<cell  ><![CDATA[508]]></cell>
+<cell  ><![CDATA[B2K330H]]></cell>
+<cell  ><![CDATA[V201507]]></cell>
+</row>
+<row id= "xml-result_7" >
+<cell  ><![CDATA[B2R5102]]></cell>
+<cell  ><![CDATA[4]]></cell>
+<cell  ><![CDATA[G]]></cell>
+<cell  ><![CDATA[G2]]></cell>
+<cell  ><![CDATA[0.648]]></cell>
+<cell  ><![CDATA[1278]]></cell>
+<cell  ><![CDATA[2049]]></cell>
+<cell  ><![CDATA[13280]]></cell>
+<cell  ><![CDATA[508]]></cell>
+<cell  ><![CDATA[B2K330J]]></cell>
+<cell  ><![CDATA[V201507]]></cell>
+</row>
+<row id= "xml-result_8" >
+<cell  ><![CDATA[B2T913R]]></cell>
+<cell  ><![CDATA[4]]></cell>
+<cell  ><![CDATA[G]]></cell>
+<cell  ><![CDATA[G2]]></cell>
+<cell  ><![CDATA[0.65]]></cell>
+<cell  ><![CDATA[1278]]></cell>
+<cell  ><![CDATA[1957]]></cell>
+<cell  ><![CDATA[12710]]></cell>
+<cell  ><![CDATA[508]]></cell>
+<cell  ><![CDATA[B2R5101]]></cell>
+<cell  ><![CDATA[V201507]]></cell>
+</row>
+<row id= "xml-result_9" >
+<cell  ><![CDATA[B2T913S]]></cell>
+<cell  ><![CDATA[4]]></cell>
+<cell  ><![CDATA[G]]></cell>
+<cell  ><![CDATA[G2]]></cell>
+<cell  ><![CDATA[0.65]]></cell>
+<cell  ><![CDATA[1278]]></cell>
+<cell  ><![CDATA[2028]]></cell>
+<cell  ><![CDATA[13170]]></cell>
+<cell  ><![CDATA[508]]></cell>
+<cell  ><![CDATA[B2R5102]]></cell>
+<cell  ><![CDATA[V201507]]></cell>
+</row>
+<row id= "xml-result_10" >
+<cell  ><![CDATA[B2U720V]]></cell>
+<cell  ><![CDATA[4]]></cell>
+<cell  ><![CDATA[Z]]></cell>
+<cell  ><![CDATA[Z1]]></cell>
+<cell  ><![CDATA[0.64]]></cell>
+<cell  ><![CDATA[1275]]></cell>
+<cell  ><![CDATA[1977]]></cell>
+<cell  ><![CDATA[12780]]></cell>
+<cell  ><![CDATA[508]]></cell>
+<cell  ><![CDATA[B2T913S]]></cell>
+<cell  ><![CDATA[V201507]]></cell>
+</row>
+<row id= "xml-result_11" >
+<cell  ><![CDATA[B2U720W]]></cell>
+<cell  ><![CDATA[4]]></cell>
+<cell  ><![CDATA[Z]]></cell>
+<cell  ><![CDATA[Z1]]></cell>
+<cell  ><![CDATA[0.64]]></cell>
+<cell  ><![CDATA[1275]]></cell>
+<cell  ><![CDATA[55]]></cell>
+<cell  ><![CDATA[360]]></cell>
+<cell  ><![CDATA[508]]></cell>
+<cell  ><![CDATA[B2T913S]]></cell>
+<cell  ><![CDATA[V201507]]></cell>
+</row>
+<row id= "xml-result_12" >
+<cell  ><![CDATA[B2U720X]]></cell>
+<cell  ><![CDATA[4]]></cell>
+<cell  ><![CDATA[Z]]></cell>
+<cell  ><![CDATA[Z1]]></cell>
+<cell  ><![CDATA[0.647]]></cell>
+<cell  ><![CDATA[1275]]></cell>
+<cell  ><![CDATA[1878]]></cell>
+<cell  ><![CDATA[12140]]></cell>
+<cell  ><![CDATA[508]]></cell>
+<cell  ><![CDATA[B2T913R]]></cell>
+<cell  ><![CDATA[V201507]]></cell>
+</row>
+<row id= "xml-result_13" >
+<cell  ><![CDATA[B2U720Y]]></cell>
+<cell  ><![CDATA[4]]></cell>
+<cell  ><![CDATA[Z]]></cell>
+<cell  ><![CDATA[Z1]]></cell>
+<cell  ><![CDATA[0.647]]></cell>
+<cell  ><![CDATA[1275]]></cell>
+<cell  ><![CDATA[80]]></cell>
+<cell  ><![CDATA[520]]></cell>
+<cell  ><![CDATA[508]]></cell>
+<cell  ><![CDATA[B2T913R]]></cell>
+<cell  ><![CDATA[V201507]]></cell>
+</row>
+<userdata name='column-info'>COIL_ID,RCD_STS_TP,PRG_CD,WK_PRG_STS,COIL_THK,COIL_WTH,COIL_LTH,COIL_WGT,COIL_IDIA,PCOIL_ID,MO_NO</userdata>
+<userdata name='blank-row-count'>7</userdata>
+</rows>

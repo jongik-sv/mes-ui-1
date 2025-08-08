@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Glue:GlueDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Glue="http://www.glueframework.com/activitydiagram/" id="3" location="20,20" size="100,100">
+  <child xsi:type="Glue:InitialState" id="5" location="803,134" size="-1,-1" output="//@wire.0"/>
+  <child xsi:type="Glue:FinalState" id="6" location="727,712" size="-1,-1" input="//@wire.2 //@wire.6 //@wire.9 //@wire.10 //@wire.12 //@wire.14"/>
+  <child xsi:type="Glue:RouterActivity" id="7" location="294,217" size="1050,-1" input="//@wire.0" output="//@wire.4 //@wire.3 //@wire.7 //@wire.8 //@wire.11 //@wire.13" name="분기">
+    <property key="class" value="com.posdata.glue.biz.activity.PosDefaultRouter"/>
+    <property key="description" value=""/>
+  </child>
+  <child xsi:type="Glue:SearchActivity" id="4020" location="488,389" size="158,-1" input="//@wire.3" output="//@wire.2" name="메뉴목록 가져오기">
+    <property key="class" value="com.poscoict.glue.biz.dhtmlx.form.FormSearch"/>
+    <property key="dao" value="m90dao"/>
+    <property key="sqlkey" value="pda.user.menulist"/>
+    <property key="description" value=""/>
+  </child>
+  <child xsi:type="Glue:SearchActivity" id="278040" location="319,389" size="157,-1" input="//@wire.4" output="//@wire.5" name="사용자정보 가져오기">
+    <property key="class" value="com.posdata.glue.biz.activity.PosSearch"/>
+    <property key="dao" value="m90dao"/>
+    <property key="param-count" value="2"/>
+    <property key="resultkey" value="USER_INFO"/>
+    <property key="sqlkey" value="pda.user.info"/>
+    <property key="param0" value="PLATFORM"/>
+    <property key="param1" value="USER_NO"/>
+    <property key="description" value=""/>
+  </child>
+  <child xsi:type="Glue:Activity" id="278041" location="319,577" size="158,-1" input="//@wire.15" output="//@wire.6" name="사용자 처리">
+    <property key="class" value="com.posdata.glue.mes.activity.CheckUserInfo"/>
+    <property key="description" value=""/>
+  </child>
+  <child xsi:type="Glue:SearchActivity" id="278064" location="827,389" size="157,-1" input="//@wire.7" output="//@wire.9" name="즐겨찾기 추가">
+    <property key="class" value="com.poscoict.glue.biz.dhtmlx.form.FormInsert"/>
+    <property key="dao" value="m90dao"/>
+    <property key="sqlkey" value="pda.favorite.insert"/>
+    <property key="description" value="1. Activity Definition&#xD;&#xA;   - 이 Activity는 즐겨찾기 추가시 실행되는 Activity이다.&#xD;&#xA;&#xD;&#xA;2. Detail Description&#xD;&#xA;     - 즐겨찾기를 추가하고 오류가 발생하면 무시한다.&#xD;&#xA;&#xD;&#xA;3. Reference&#xD;&#xA;"/>
+  </child>
+  <child xsi:type="Glue:SearchActivity" id="278066" location="996,389" size="157,-1" input="//@wire.8" output="//@wire.10" name="즐겨찾기 삭제">
+    <property key="class" value="com.poscoict.glue.biz.dhtmlx.form.FormDelete"/>
+    <property key="dao" value="m90dao"/>
+    <property key="sqlkey" value="pda.favorite.remove"/>
+    <property key="description" value="1. Activity Definition&#xD;&#xA;   - 이 Activity는 즐겨찾기 추가시 실행되는 Activity이다.&#xD;&#xA;&#xD;&#xA;2. Detail Description&#xD;&#xA;     - 즐겨찾기를 추가하고 오류가 발생하면 무시한다.&#xD;&#xA;&#xD;&#xA;3. Reference&#xD;&#xA;"/>
+  </child>
+  <child xsi:type="Glue:SearchActivity" id="278069" location="659,389" size="157,-1" input="//@wire.11" output="//@wire.12" name="단말기 정보 추가 및 갱신">
+    <property key="class" value="com.poscoict.glue.biz.dhtmlx.form.FormUpdate"/>
+    <property key="dao" value="m90dao"/>
+    <property key="sqlkey" value="pda.device.infoMerge"/>
+    <property key="description" value="1. Activity Definition&#xD;&#xA;   - 이 Activity는 즐겨찾기 추가시 실행되는 Activity이다.&#xD;&#xA;&#xD;&#xA;2. Detail Description&#xD;&#xA;     - 즐겨찾기를 추가하고 오류가 발생하면 무시한다.&#xD;&#xA;&#xD;&#xA;3. Reference&#xD;&#xA;"/>
+  </child>
+  <child xsi:type="Glue:SearchActivity" id="278076" location="1165,389" size="157,-1" input="//@wire.13" output="//@wire.14" name="App 버전정보 가져오기">
+    <property key="class" value="com.poscoict.glue.biz.dhtmlx.form.FormSearch"/>
+    <property key="dao" value="m90dao"/>
+    <property key="sqlkey" value="pda.app.version"/>
+    <property key="description" value="1. Activity Definition&#xD;&#xA;   - 이 Activity는 즐겨찾기 추가시 실행되는 Activity이다.&#xD;&#xA;&#xD;&#xA;2. Detail Description&#xD;&#xA;     - 즐겨찾기를 추가하고 오류가 발생하면 무시한다.&#xD;&#xA;&#xD;&#xA;3. Reference&#xD;&#xA;"/>
+  </child>
+  <child xsi:type="Glue:Activity" id="316872" location="319,486" size="159,-1" input="//@wire.5" output="//@wire.15" name="비밀번호 인증">
+    <property key="class" value="com.posdata.glue.mes.activity.CheckAuth"/>
+    <property key="dao" value="m90dao"/>
+    <property key="description" value=""/>
+  </child>
+  <property key="tx1" value="true"/>
+  <property key="description" value=""/>
+  <wire id="4" guardcondition="success" firstRelativePoint="536,155" lastRelativePoint="536,216"/>
+  <wire id="7" guardcondition="success" firstRelativePoint="411,246" lastRelativePoint="411,386"/>
+  <wire id="858" guardcondition="success" firstRelativePoint="567,419" lastRelativePoint="726,718">
+    <bendpoint weight="0.5" firstDimension="0,266" secondDimension="-170,-52"/>
+  </wire>
+  <wire id="857" guardcondition="menuList" firstRelativePoint="567,247" lastRelativePoint="567,389"/>
+  <wire id="12678" guardcondition="loginInfo" firstRelativePoint="397,247" lastRelativePoint="397,389"/>
+  <wire id="12679" guardcondition="success" firstRelativePoint="398,419" lastRelativePoint="398,504"/>
+  <wire id="12680" guardcondition="success" firstRelativePoint="398,607" lastRelativePoint="726,720">
+    <bendpoint weight="0.5" firstDimension="0,79" secondDimension="-339,-51"/>
+  </wire>
+  <wire id="12681" guardcondition="favoriteAdd" firstRelativePoint="905,247" lastRelativePoint="905,389"/>
+  <wire id="12682" guardcondition="favoriteRemove" firstRelativePoint="1073,247" lastRelativePoint="1073,389"/>
+  <wire id="12683" guardcondition="success" firstRelativePoint="908,419" lastRelativePoint="746,719">
+    <bendpoint weight="0.5" firstDimension="3,268" secondDimension="171,-50"/>
+  </wire>
+  <wire id="12684" guardcondition="success" firstRelativePoint="1075,419" lastRelativePoint="746,720">
+    <bendpoint weight="0.5" firstDimension="1,269" secondDimension="338,-49"/>
+  </wire>
+  <wire id="12685" guardcondition="deviceInfo" firstRelativePoint="736,247" lastRelativePoint="736,389"/>
+  <wire id="12686" guardcondition="success" firstRelativePoint="744,419" lastRelativePoint="744,711"/>
+  <wire id="12725" guardcondition="versionInfo" firstRelativePoint="1241,247" lastRelativePoint="1241,389"/>
+  <wire id="12726" guardcondition="success" firstRelativePoint="1243,419" lastRelativePoint="746,720">
+    <bendpoint weight="0.5" firstDimension="0,264" secondDimension="506,-54"/>
+  </wire>
+  <wire id="13946" guardcondition="success" firstRelativePoint="398,516" lastRelativePoint="398,528"/>
+</Glue:GlueDiagram>

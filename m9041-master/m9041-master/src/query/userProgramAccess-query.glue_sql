@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<queryMap desc="userAccess"> 
+	 <query id="userAccess_insert" desc="userAccess" isNamed="true">
+		 <![CDATA[ 
+INSERT INTO TB_M90_TEST
+        (PGM_ID
+         )
+VALUES(
+         :PGM_ID)
+		 ]]> 
+	 </query>
+</queryMap>

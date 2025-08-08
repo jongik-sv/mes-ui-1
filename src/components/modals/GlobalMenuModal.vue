@@ -9,59 +9,96 @@
     @hide="closeModal"
   >
     <template #header>
-      <h2 class="modal-title">전체 메뉴</h2>
+      <h2 class="modal-title">모든 서비스</h2>
     </template>
 
     <div class="modal-content">
       <!-- 검색 및 토글 영역 -->
       <div class="modal-header-section">
         <div class="search-section">
-          <MenuSearchBar
+          <InputText
             v-model="searchQuery"
-            placeholder="메뉴 검색..."
-            @search="handleSearch"
+            placeholder="검색할 화면명을 입력하세요"
+            class="search-input"
+            @input="handleSearch"
+          />
+          <Button
+            v-if="searchQuery"
+            icon="pi pi-times"
+            text
+            rounded
+            size="small"
+            class="search-clear-button"
+            @click="clearSearch"
+            title="검색조건 초기화"
           />
         </div>
         <div class="toggle-section">
-          <MenuToggleButtons
-            v-model="viewMode"
-            @update:modelValue="handleViewModeChange"
-          />
+          <div class="toggle-group">
+            <label class="toggle-item">
+              <span class="toggle-label">전체 보기</span>
+              <ToggleButton
+                v-model="showAllMenus"
+                onLabel=""
+                offLabel=""
+                class="toggle-switch"
+                @change="handleToggleChange"
+              />
+            </label>
+            <label class="toggle-item">
+              <span class="toggle-label">항목찾기</span>
+              <ToggleButton
+                v-model="showColumnSearch"
+                onLabel=""
+                offLabel=""
+                class="toggle-switch"
+                @change="handleToggleChange"
+              />
+            </label>
+            <label class="toggle-item">
+              <span class="toggle-label">즐겨찾기</span>
+              <ToggleButton
+                v-model="showFavorites"
+                onLabel=""
+                offLabel=""
+                class="toggle-switch"
+                @change="handleToggleChange"
+              />
+            </label>
+          </div>
         </div>
       </div>
 
-      <!-- 카테고리 탭 영역 -->
-      <div class="category-tabs-section" v-if="categories.length > 1">
-        <div class="category-tabs">
-          <button
-            class="category-tab"
-            :class="{ active: selectedCategory === null }"
-            @click="handleCategorySelect(null)"
-          >
-            전체
-          </button>
-          <button
-            v-for="category in categories"
-            :key="category.id"
-            class="category-tab"
-            :class="{ active: selectedCategory === category.id }"
-            @click="handleCategorySelect(category.id)"
-          >
-            {{ category.name }}
-            <span class="category-count">({{ category.count }})</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- 메인 콘텐츠 영역 -->
+      <!-- 메인 콘텐츠 영역 (좌측 카테고리 + 우측 트리) -->
       <div class="modal-body">
-        <!-- 메뉴 그룹 그리드 -->
-        <div class="menu-groups-grid">
+        <!-- 좌측 카테고리 사이드바 -->
+        <div class="category-sidebar">
+          <div class="category-list">
+            <button
+              v-for="category in categories"
+              :key="category.id"
+              class="category-button"
+              :class="{ active: selectedCategory === category.id }"
+              @click="handleCategorySelect(category.id)"
+            >
+              {{ category.name }}
+            </button>
+          </div>
+        </div>
+
+        <!-- 우측 메뉴 트리 영역 -->
+        <div class="menu-tree-area">
+          <div v-if="filteredMenuItems.length === 0" class="empty-view">
+            <div class="empty-content">
+              <i class="pi pi-search empty-icon"></i>
+              <div class="empty-title">일치하는 검색 결과가 존재하지 않습니다</div>
+            </div>
+          </div>
           <MenuTree
+            v-else
             :items="filteredMenuItems"
             :search-query="searchQuery"
-            :view-mode="viewMode"
-            :selected-category="selectedCategory"
+            :search-mode="searchMode"
             :expanded-nodes="expandedNodes"
             :favorites="favorites"
             @node-expand="handleNodeExpand"
@@ -78,11 +115,12 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import Dialog from 'primevue/dialog'
-import MenuSearchBar from './components/MenuSearchBar.vue'
-import MenuToggleButtons from './components/MenuToggleButtons.vue'
-import MenuCategoryList from './components/MenuCategoryList.vue'
+import InputText from 'primevue/inputtext'
+import Button from 'primevue/button'
+import ToggleButton from 'primevue/togglebutton'
 import MenuTree from './components/MenuTree.vue'
-import type { MenuItem, Category, ViewMode } from '@/types/menu'
+import type { MenuItem, MenuCategory } from '@/types/menu'
+import { menuCategories } from '@/data/sampleMenuData'
 
 interface Props {
   /** 모달 표시 여부 */
@@ -107,10 +145,17 @@ const emit = defineEmits<Emits>()
 // 반응형 상태
 const isVisible = ref(props.visible)
 const searchQuery = ref('')
-const viewMode = ref<ViewMode>('all')
-const selectedCategory = ref<string | null>(null)
+const selectedCategory = ref<string>('all')
 const expandedNodes = ref<Set<string>>(new Set())
 const favorites = ref<Set<string>>(new Set())
+
+// JSP 기반 토글 상태
+const showAllMenus = ref(false)      // 전체보기 (권한 없는 메뉴도 표시)
+const showColumnSearch = ref(false)  // 항목찾기 (컬럼 검색 모드)
+const showFavorites = ref(false)     // 즐겨찾기만 표시
+
+// 검색 모드 (텍스트 검색 vs 컬럼 검색)
+const searchMode = computed(() => showColumnSearch.value ? 'column' : 'text')
 
 // Props 변경 감지
 watch(() => props.visible, (newValue) => {
@@ -123,153 +168,186 @@ watch(isVisible, (newValue) => {
   }
 })
 
-// 카테고리 목록 계산
-const categories = computed<Category[]>(() => {
-  const categoryMap = new Map<string, Category>()
-  
-  const processItems = (items: MenuItem[]) => {
-    items.forEach(item => {
-      if (item.category && !categoryMap.has(item.category)) {
-        // 카테고리명을 한글로 변환 (실제로는 i18n을 사용해야 함)
-        const categoryName = getCategoryName(item.category)
-        categoryMap.set(item.category, {
-          id: item.category,
-          name: categoryName,
-          count: 0
-        })
-      }
-      
-      if (item.children) {
-        processItems(item.children)
-      }
-    })
-  }
-  
-  processItems(props.menuItems)
-  
-  // 각 카테고리의 메뉴 개수 계산
-  categoryMap.forEach((category, categoryId) => {
-    category.count = countMenusInCategory(props.menuItems, categoryId)
-  })
-  
-  return Array.from(categoryMap.values()).sort((a, b) => a.name.localeCompare(b.name))
+// 카테고리 목록 (JSP 구조 기반)
+const categories = computed<MenuCategory[]>(() => {
+  return menuCategories
 })
 
 // 필터링된 메뉴 아이템
 const filteredMenuItems = computed<MenuItem[]>(() => {
   let filtered = [...props.menuItems]
   
-  // 검색 필터
-  if (searchQuery.value.trim()) {
-    filtered = filterBySearch(filtered, searchQuery.value.trim())
-  }
-  
-  // 카테고리 필터
-  if (selectedCategory.value) {
+  // 카테고리 필터 (전체메뉴가 아닌 경우)
+  if (selectedCategory.value !== 'all') {
     filtered = filterByCategory(filtered, selectedCategory.value)
   }
   
-  // 뷰 모드 필터
-  if (viewMode.value === 'favorites') {
+  // 권한 필터 (전체보기가 꺼져있는 경우)
+  if (!showAllMenus.value) {
+    filtered = filterByAuth(filtered)
+  }
+  
+  // 즐겨찾기 필터
+  if (showFavorites.value) {
     filtered = filterByFavorites(filtered)
+  }
+  
+  // 검색 필터
+  if (searchQuery.value.trim()) {
+    if (searchMode.value === 'column') {
+      filtered = filterByColumnSearch(filtered, searchQuery.value.trim())
+    } else {
+      filtered = filterByTextSearch(filtered, searchQuery.value.trim())
+    }
   }
   
   return filtered
 })
 
-// 유틸리티 함수들
-const getCategoryName = (categoryId: string): string => {
-  const categoryNames: Record<string, string> = {
-    'production': '생산관리',
-    'quality': '품질관리',
-    'material': '자재관리',
-    'sales': '영업관리',
-    'hr': '인사관리',
-    'finance': '재무관리',
-    'maintenance': '설비관리'
-  }
-  return categoryNames[categoryId] || categoryId
+// JSP 기반 필터링 함수들
+const filterByCategory = (items: MenuItem[], categoryCode: string): MenuItem[] => {
+  return items.filter(item => item.categoryCode === categoryCode)
 }
 
-const countMenusInCategory = (items: MenuItem[], categoryId: string): number => {
-  let count = 0
-  items.forEach(item => {
-    if (item.category === categoryId) {
-      count++
-    }
-    if (item.children) {
-      count += countMenusInCategory(item.children, categoryId)
-    }
-  })
-  return count
-}
-
-const filterBySearch = (items: MenuItem[], query: string): MenuItem[] => {
+const filterByAuth = (items: MenuItem[]): MenuItem[] => {
   const filtered: MenuItem[] = []
   
-  items.forEach(item => {
-    const matchesTitle = item.title.toLowerCase().includes(query.toLowerCase())
-    const filteredChildren = item.children ? filterBySearch(item.children, query) : []
-    
-    if (matchesTitle || filteredChildren.length > 0) {
-      filtered.push({
-        ...item,
-        children: filteredChildren.length > 0 ? filteredChildren : item.children
-      })
-    }
-  })
-  
-  return filtered
-}
-
-const filterByCategory = (items: MenuItem[], categoryId: string): MenuItem[] => {
-  const filtered: MenuItem[] = []
-  
-  items.forEach(item => {
-    if (item.category === categoryId) {
-      filtered.push(item)
-    } else if (item.children) {
-      const filteredChildren = filterByCategory(item.children, categoryId)
-      if (filteredChildren.length > 0) {
-        filtered.push({
-          ...item,
-          children: filteredChildren
-        })
+  const processItems = (items: MenuItem[]): MenuItem[] => {
+    return items.filter(item => {
+      if (!item.isAuth) return false
+      
+      if (item.items && item.items.length > 0) {
+        const filteredChildren = processItems(item.items)
+        return filteredChildren.length > 0
       }
-    }
-  })
+      
+      return true
+    }).map(item => ({
+      ...item,
+      items: item.items ? processItems(item.items) : undefined
+    }))
+  }
   
-  return filtered
+  return processItems(items)
 }
 
 const filterByFavorites = (items: MenuItem[]): MenuItem[] => {
   const filtered: MenuItem[] = []
   
-  items.forEach(item => {
-    const isFavorite = favorites.value.has(item.id)
-    const filteredChildren = item.children ? filterByFavorites(item.children) : []
+  const processItems = (items: MenuItem[]): MenuItem[] => {
+    const result: MenuItem[] = []
     
-    if (isFavorite || filteredChildren.length > 0) {
-      filtered.push({
-        ...item,
-        children: filteredChildren.length > 0 ? filteredChildren : item.children
-      })
-    }
-  })
+    items.forEach(item => {
+      const isFavorite = item.bookmarked || favorites.value.has(item.id)
+      let filteredChildren: MenuItem[] = []
+      
+      if (item.items && item.items.length > 0) {
+        filteredChildren = processItems(item.items)
+      }
+      
+      if (isFavorite || filteredChildren.length > 0) {
+        result.push({
+          ...item,
+          items: filteredChildren.length > 0 ? filteredChildren : item.items
+        })
+      }
+    })
+    
+    return result
+  }
   
-  return filtered
+  return processItems(items)
+}
+
+const filterByTextSearch = (items: MenuItem[], query: string): MenuItem[] => {
+  const keyword = query.toUpperCase().replace(/ /g, '')
+  
+  const processItems = (items: MenuItem[]): MenuItem[] => {
+    const result: MenuItem[] = []
+    
+    items.forEach(item => {
+      const matchesText = item.text.toUpperCase().replace(/ /g, '').includes(keyword)
+      const matchesId = item.id.toUpperCase().replace(/ /g, '').includes(keyword)
+      let filteredChildren: MenuItem[] = []
+      
+      if (item.items && item.items.length > 0) {
+        filteredChildren = processItems(item.items)
+      }
+      
+      if (matchesText || matchesId || filteredChildren.length > 0) {
+        result.push({
+          ...item,
+          items: filteredChildren.length > 0 ? filteredChildren : item.items
+        })
+      }
+    })
+    
+    return result
+  }
+  
+  return processItems(items)
+}
+
+const filterByColumnSearch = (items: MenuItem[], query: string): MenuItem[] => {
+  const keyword = query.toUpperCase().replace(/ /g, '')
+  
+  const processItems = (items: MenuItem[]): MenuItem[] => {
+    const result: MenuItem[] = []
+    
+    items.forEach(item => {
+      let matchesColumn = false
+      
+      // 컬럼 정보가 있는 경우 컬럼 검색 수행
+      if (item.column) {
+        const { form, grid } = item.column
+        
+        if (form?.id && form.id.some(id => id.toUpperCase().replace(/ /g, '').includes(keyword))) {
+          matchesColumn = true
+        }
+        if (form?.name && form.name.some(name => name.toUpperCase().replace(/ /g, '').includes(keyword))) {
+          matchesColumn = true
+        }
+        if (grid?.id && grid.id.some(id => id.toUpperCase().replace(/ /g, '').includes(keyword))) {
+          matchesColumn = true
+        }
+        if (grid?.name && grid.name.some(name => name.toUpperCase().replace(/ /g, '').includes(keyword))) {
+          matchesColumn = true
+        }
+      }
+      
+      let filteredChildren: MenuItem[] = []
+      if (item.items && item.items.length > 0) {
+        filteredChildren = processItems(item.items)
+      }
+      
+      if (matchesColumn || filteredChildren.length > 0) {
+        result.push({
+          ...item,
+          items: filteredChildren.length > 0 ? filteredChildren : item.items
+        })
+      }
+    })
+    
+    return result
+  }
+  
+  return processItems(items)
 }
 
 // 이벤트 핸들러들
-const handleSearch = (query: string) => {
-  searchQuery.value = query
+const handleSearch = () => {
+  // 검색은 reactive하게 처리됨 (computed에서 자동 처리)
 }
 
-const handleViewModeChange = (mode: ViewMode) => {
-  viewMode.value = mode
+const clearSearch = () => {
+  searchQuery.value = ''
 }
 
-const handleCategorySelect = (categoryId: string | null) => {
+const handleToggleChange = () => {
+  // 토글 변경은 reactive하게 처리됨 (computed에서 자동 처리)
+}
+
+const handleCategorySelect = (categoryId: string) => {
   selectedCategory.value = categoryId
 }
 
@@ -354,7 +432,6 @@ watch(favorites, () => {
 defineExpose({
   closeModal,
   searchQuery,
-  viewMode,
   selectedCategory,
   expandedNodes,
   favorites,
@@ -365,19 +442,19 @@ defineExpose({
 <style lang="scss" scoped>
 .global-menu-modal {
   :deep(.p-dialog) {
-    width: 80vw !important;
-    height: 80vh !important;
+    width: 90vw !important;
+    height: 90vh !important;
     max-width: none !important;
     max-height: none !important;
-    min-width: 80vw !important;
-    min-height: 80vh !important;
+    min-width: 90vw !important;
+    min-height: 90vh !important;
     background: var(--bg-primary);
     border: 1px solid var(--surface-2);
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-xl);
     position: fixed !important;
-    top: 10vh !important;
-    left: 10vw !important;
+    top: 5vh !important;
+    left: 5vw !important;
     transform: none !important;
   }
 
@@ -401,7 +478,7 @@ defineExpose({
 
   :deep(.p-dialog-content) {
     padding: 0;
-    height: calc(80vh - 80px); // 헤더 높이를 제외한 높이
+    height: calc(90vh - 80px); // 헤더 높이를 제외한 높이
   }
 
   .modal-content {
@@ -421,11 +498,52 @@ defineExpose({
     align-items: center;
 
     .search-section {
-      min-width: 0; // flex 아이템이 축소될 수 있도록
+      position: relative;
+      min-width: 0;
+
+      .search-input {
+        width: 100%;
+        padding-right: 2.5rem;
+      }
+
+      .search-clear-button {
+        position: absolute;
+        right: 0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+      }
     }
 
     .toggle-section {
       flex-shrink: 0;
+
+      .toggle-group {
+        display: flex;
+        gap: var(--space-4);
+        align-items: center;
+
+        .toggle-item {
+          display: flex;
+          align-items: center;
+          gap: var(--space-2);
+          cursor: pointer;
+
+          .toggle-label {
+            font-size: var(--text-sm);
+            color: var(--text-secondary);
+            white-space: nowrap;
+          }
+
+          .toggle-switch {
+            :deep(.p-togglebutton) {
+              width: 3rem;
+              height: 1.5rem;
+              border-radius: 0.75rem;
+            }
+          }
+        }
+      }
     }
   }
 
@@ -483,13 +601,80 @@ defineExpose({
   .modal-body {
     flex: 1;
     min-height: 0;
+    display: grid;
+    grid-template-columns: 200px 1fr;
     background: var(--bg-primary);
     overflow: hidden;
 
-    .menu-groups-grid {
-      height: 100%;
+    // 좌측 카테고리 사이드바
+    .category-sidebar {
+      background: var(--bg-secondary);
+      border-right: 1px solid var(--surface-2);
+      overflow-y: auto;
+
+      .category-list {
+        display: flex;
+        flex-direction: column;
+
+        .category-button {
+          display: block;
+          width: 100%;
+          padding: var(--space-3) var(--space-4);
+          background: transparent;
+          border: none;
+          text-align: left;
+          color: var(--text-secondary);
+          font-size: var(--text-sm);
+          font-weight: 500;
+          cursor: pointer;
+          transition: var(--transition-normal);
+          border-bottom: 1px solid var(--surface-2);
+
+          &:hover {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+          }
+
+          &.active {
+            background: var(--primary);
+            color: white;
+          }
+
+          &:first-child {
+            border-top: none;
+          }
+        }
+      }
+    }
+
+    // 우측 메뉴 트리 영역
+    .menu-tree-area {
+      background: var(--bg-primary);
       overflow-y: auto;
       padding: var(--space-4);
+
+      .empty-view {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 300px;
+
+        .empty-content {
+          text-align: center;
+          color: var(--text-secondary);
+
+          .empty-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-4);
+            opacity: 0.5;
+          }
+
+          .empty-title {
+            font-size: var(--text-lg);
+            font-weight: 500;
+          }
+        }
+      }
 
       // 스크롤바 스타일링
       scrollbar-width: thin;

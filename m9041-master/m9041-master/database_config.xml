@@ -1,0 +1,3 @@
+<databases>
+<database class="oracle.jdbc.driver.OracleDriver" ip="210.1.1.139" odbc="oracle" password="M90APUSER" port="23" selected="true" sid="UBMADD" user="M90APUSER"/>
+</databases>

@@ -1,0 +1,20 @@
+[
+	{ id: "M17", type: "folder", text: "생산관제", item: [
+  		{ id: "M1730", type: "folder", text: "진행모니터링", item: [
+  			  { id: "M173001", type: "file", text: "작업생산현황",url:"http://m17.mesdev.unionsteel.co.kr/M17/M173020030.jsp?pageID=M173020030"},
+  			  { id: "M173002", type: "file", text: "코일이력정보",url:"http://m17.mesdev.unionsteel.co.kr/M17/M173020030.jsp?pageID=M173020030"},
+  			  { id: "M173003", type: "file", text: "코일공정순서이력정보",url:"http://m17.mesdev.unionsteel.co.kr/M17/M173020030.jsp?pageID=M173020030"},
+  			  { id: "M173004", type: "file", text: "작업지시실적이력정보",url:"http://m17.mesdev.unionsteel.co.kr/M17/M173020030.jsp?pageID=M173020030"},
+  			  { id: "M173005", type: "file", text: "검사이력정보",url:"http://m17.mesdev.unionsteel.co.kr/M17/M173020030.jsp?pageID=M173020030"},
+  			  { id: "M173006", type: "file", text: "공정별 진행현황",url:"http://m17.mesdev.unionsteel.co.kr/M17/M173020030.jsp?pageID=M173020030"},
+  			  { id: "M173007", type: "file", text: "공정별 일일 생산진행현황",url:"http://m17.mesdev.unionsteel.co.kr/M17/M173020030.jsp?pageID=M173020030"},
+  			  { id: "M173008", type: "file", text: "일일생산실적",url:"http://m17.mesdev.unionsteel.co.kr/M17/M173020030.jsp?pageID=M173020030"},
+  			  { id: "M173009", type: "file", text: "원자재투입현황",url:"http://m17.mesdev.unionsteel.co.kr/M17/M173020030.jsp?pageID=M173020030"},
+  			  { id: "M1730010", type: "file", text: "금일생산현황",url:"http://m17.mesdev.unionsteel.co.kr/M17/M173020030.jsp?pageID=M173020030"},
+  			  { id: "M1730011", type: "file", text: "수율관리",url:"http://m17.mesdev.unionsteel.co.kr/M17/M173020030.jsp?pageID=M173020030"},
+  			  { id: "M1730012", type: "file", text: "UNIONSTEEL",url:"http://m17.mesdev.unionsteel.co.kr/M17/M173020030.jsp?pageID=M173020030"}
+  	    ]
+  	  }
+    ]
+  }
+]

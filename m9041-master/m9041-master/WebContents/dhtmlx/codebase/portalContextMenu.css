@@ -1,0 +1,39 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+.menu {
+	color: white;
+	/* position: relative;
+	display: block; */
+}
+
+.menu-options {
+	list-style: none;
+	padding: 10px 0;
+	margin: 0;
+}
+
+.menu-option {
+	font-weight: 500;
+	font-size: 14px;
+	padding: 10px 20px 10px 20px;
+	cursor: pointer;
+}
+
+.menu-option:hover {
+	background: rgba(0, 0, 0, 0.2);
+	color: #fddf2f;
+}
+
+.disabled {
+	pointer-events: none;
+	/* background-color: #eee; */
+	color: #555;
+	opacity: 1;
+}
+
+.b_seperator {
+	border-bottom: 1px solid #575d6b;
+}

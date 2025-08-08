@@ -1,0 +1,7 @@
+<toolbar>
+<!--
+ 	<item id="selectItemUp" type="button"  img="fas fa-arrow-up"  imgdis="UP" />
+	<item id="selectItemDown" type="button"  img="fas fa-arrow-down"  imgdis="DOWN" />
+	-->
+	<item id="remove" type="button"  img="./dhtmlx/codebase/imgs/csh_dhx_skyblue/trash.png"  imgdis="REMOVE"/>
+</toolbar>

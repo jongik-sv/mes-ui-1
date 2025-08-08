@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Glue:GlueDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Glue="http://www.glueframework.com/activitydiagram/" id="0" location="20,20" size="100,100">
+  <child xsi:type="Glue:InitialState" id="0" location="410,25" size="-1,-1" output="//@wire.0"/>
+  <child xsi:type="Glue:FinalState" id="1" location="407,466" size="-1,-1" input="//@wire.7"/>
+  <child xsi:type="Glue:SearchActivity" id="3" location="319,94" size="207,-1" input="//@wire.0" output="//@wire.3 //@wire.5" name="사용자정보가져오기">
+    <property key="class" value="com.posdata.glue.biz.activity.PosSearch"/>
+    <property key="dao" value="m90dao"/>
+    <property key="param-count" value="1"/>
+    <property key="resultkey" value="USER_INFO"/>
+    <property key="sqlkey" value="user.info"/>
+    <property key="param0" value="USER_NO"/>
+    <property key="description" value=""/>
+  </child>
+  <child xsi:type="Glue:Activity" id="4" location="314,312" size="208,-1" input="//@wire.1 //@wire.4" output="//@wire.2" name="비밀번호 인증">
+    <property key="class" value="com.posdata.glue.mes.activity.CheckAuth"/>
+    <property key="dao" value="m90dao"/>
+    <property key="description" value=""/>
+  </child>
+  <child xsi:type="Glue:SearchActivity" id="9" location="147,203" size="202,-1" input="//@wire.5" output="//@wire.1" name="갤럭시루트메뉴(권한)가져오기">
+    <property key="class" value="com.posdata.glue.biz.activity.PosSearch"/>
+    <property key="dao" value="m90dao"/>
+    <property key="param-count" value="1"/>
+    <property key="resultkey" value="RK_ROOT_MENU"/>
+    <property key="sqlkey" value="menu.galaxy.root"/>
+    <property key="param0" value="USER_NO"/>
+    <property key="description" value=""/>
+  </child>
+  <child xsi:type="Glue:SubServiceActivity" id="26" location="400,235" size="190,-1" input="//@wire.6" output="//@wire.4" name="SubService26">
+    <property key="class" value="com.posdata.glue.biz.activity.PosSubBizControlActivity"/>
+    <property key="new-transacion" value="false"/>
+    <property key="ServiceName" value="securityGalaxy-service"/>
+    <property key="description" value=""/>
+  </child>
+  <child xsi:type="Glue:Activity" id="27" location="397,170" size="195,-1" input="//@wire.3" output="//@wire.6" name="UserId가져오기">
+    <property key="class" value="com.poscoict.glue.m90.activity.GetUserId"/>
+    <property key="description" value=""/>
+  </child>
+  <child xsi:type="Glue:Activity" id="316871" location="314,386" size="208,-1" input="//@wire.2" output="//@wire.7" name="사용자 처리">
+    <property key="class" value="com.posdata.glue.mes.activity.CheckUserInfo"/>
+    <property key="description" value=""/>
+  </child>
+  <wire id="0" guardcondition="success" firstRelativePoint="422,44" lastRelativePoint="422,94"/>
+  <wire id="7" guardcondition="success" firstRelativePoint="414,201" lastRelativePoint="414,253"/>
+  <wire id="21" guardcondition="success" firstRelativePoint="417,342" lastRelativePoint="417,386"/>
+  <wire id="23" guardcondition="success" firstRelativePoint="442,124" lastRelativePoint="442,170"/>
+  <wire id="24" guardcondition="success" firstRelativePoint="438,265" lastRelativePoint="438,312"/>
+  <wire id="25" guardcondition="success2" firstRelativePoint="334,124" lastRelativePoint="334,203"/>
+  <wire id="26" guardcondition="success" firstRelativePoint="442,200" lastRelativePoint="442,235"/>
+  <wire id="13945" guardcondition="success" firstRelativePoint="421,416" lastRelativePoint="421,464"/>
+</Glue:GlueDiagram>

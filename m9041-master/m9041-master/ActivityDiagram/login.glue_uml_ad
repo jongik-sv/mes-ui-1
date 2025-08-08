@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Glue:GlueDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Glue="http://www.glueframework.com/activitydiagram/" id="0" location="20,20" size="100,100">
+  <child xsi:type="Glue:InitialState" id="0" location="410,25" size="-1,-1" output="//@wire.0"/>
+  <child xsi:type="Glue:FinalState" id="1" location="409,421" size="-1,-1" input="//@wire.3"/>
+  <child xsi:type="Glue:SearchActivity" id="3" location="319,94" size="207,-1" input="//@wire.0" output="//@wire.1" name="사용자정보가져오기">
+    <property key="class" value="com.posdata.glue.biz.activity.PosSearch"/>
+    <property key="dao" value="m90dao"/>
+    <property key="param-count" value="1"/>
+    <property key="resultkey" value="USER_INFO"/>
+    <property key="sqlkey" value="user.info"/>
+    <property key="param0" value="USER_NO"/>
+    <property key="description" value=""/>
+  </child>
+  <child xsi:type="Glue:Activity" id="4" location="318,176" size="208,-1" input="//@wire.1" output="//@wire.2" name="비밀번호 인증">
+    <property key="class" value="com.posdata.glue.mes.activity.CheckAuth"/>
+    <property key="dao" value="m90dao"/>
+    <property key="description" value=""/>
+  </child>
+  <child xsi:type="Glue:SearchActivity" id="9" location="319,258" size="202,-1" input="//@wire.2" output="//@wire.4" name="루트메뉴(권한)가져오기">
+    <property key="class" value="com.posdata.glue.biz.activity.PosSearch"/>
+    <property key="dao" value="m90dao"/>
+    <property key="param-count" value="1"/>
+    <property key="resultkey" value="RK_ROOT_MENU"/>
+    <property key="sqlkey" value="menu.root"/>
+    <property key="param0" value="USER_NO"/>
+    <property key="description" value=""/>
+  </child>
+  <child xsi:type="Glue:Activity" id="316551" location="316,339" size="208,-1" input="//@wire.4" output="//@wire.3" name="사용자 처리">
+    <property key="class" value="com.posdata.glue.mes.activity.CheckUserInfo"/>
+    <property key="description" value=""/>
+  </child>
+  <wire id="0" guardcondition="success" firstRelativePoint="422,44" lastRelativePoint="422,94"/>
+  <wire id="1" guardcondition="success" firstRelativePoint="421,124" lastRelativePoint="421,176"/>
+  <wire id="7" guardcondition="success" firstRelativePoint="420,206" lastRelativePoint="420,272"/>
+  <wire id="21" guardcondition="success" firstRelativePoint="419,369" lastRelativePoint="419,420"/>
+  <wire id="13942" guardcondition="success" firstRelativePoint="420,288" lastRelativePoint="420,339"/>
+</Glue:GlueDiagram>

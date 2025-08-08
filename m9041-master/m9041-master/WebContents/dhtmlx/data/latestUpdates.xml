@@ -1,0 +1,15 @@
+<data>
+    <item id="1">
+        <title><![CDATA[[출하관제]코일이력정보에 새로운 기능을 추가했습니다]]></title>
+        <date><![CDATA[2019/05/13 14:34:11]]></date>
+		<content><![CDATA[무한정 조회할 수 있는 성능개선과 항목 여러개를 추가했습니다.
+		코일이름,성분,중량,외형 항목을 추가했습니다.]]></content>
+    </item>
+	<item id="2">
+        <title><![CDATA[[품질설계]CCL BOM 상세조회 화면을 추가 했습니다.]]></title>
+        <date><![CDATA[2019/05/12 14:10:11]]></date>
+		<content><![CDATA[CCL BOM을 쉽게 조회하고 분석할 수 있는 화면을 추가했습니다.]]></content>
+    </item>
+   
+	
+</data>

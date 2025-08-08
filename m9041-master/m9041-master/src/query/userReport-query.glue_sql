@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<queryMap desc="userReport"> 
+	 <query id="userReport.insert" desc="메시시 저장" isNamed="true">
+		 <![CDATA[ 
+INSERT INTO TB_UI_MSG_RPT(RPT_DH,USER_NO,PAGE_ID,STATUS,UI_MSG,MSG_ISS_DH,COMMENTS)
+VALUES(SYSDATE, NVL(:ObjectId,:USER_NO), :PAGE_ID, '1', :UI_MSG, TO_DATE(:MSG_ISS_DH,'YYYY-MM-DD HH24:MI:SS'), :COMMENTS) 
+		 ]]> 
+	 </query>
+</queryMap>

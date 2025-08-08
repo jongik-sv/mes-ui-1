@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Glue:GlueDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Glue="http://www.glueframework.com/activitydiagram/" id="6" location="20,20" size="100,100">
+  <child xsi:type="Glue:InitialState" id="278042" location="440,98" size="-1,-1" output="//@wire.0"/>
+  <child xsi:type="Glue:RouterActivity" id="278043" location="357,164" size="185,-1" input="//@wire.0" output="//@wire.2 //@wire.1" name="분기">
+    <property key="class" value="com.posdata.glue.biz.activity.PosDefaultRouter"/>
+    <property key="description" value=""/>
+  </child>
+  <child xsi:type="Glue:DinaActivity" id="278044" location="283,283" size="124,-1" input="//@wire.1" output="//@wire.4" name="자주사용">
+    <property key="class" value="com.poscoict.glue.biz.dhtmlx.form.FormSearch"/>
+    <property key="dao" value="m90dao"/>
+    <property key="resultkey" value="favoritesMenuResult"/>
+    <property key="sqlkey" value="frequently_used"/>
+    <property key="description" value=""/>
+  </child>
+  <child xsi:type="Glue:FinalState" id="278045" location="441,417" size="-1,-1" input="//@wire.3 //@wire.4"/>
+  <child xsi:type="Glue:DinaActivity" id="278046" location="504,290" size="130,-1" input="//@wire.2" output="//@wire.3" name="최근접속">
+    <property key="class" value="com.poscoict.glue.biz.dhtmlx.form.FormSearch"/>
+    <property key="dao" value="m90dao"/>
+    <property key="resultkey" value="favoritesMenuResult"/>
+    <property key="sqlkey" value="frequently_access"/>
+    <property key="description" value=""/>
+  </child>
+  <wire id="12633" guardcondition="success" firstRelativePoint="449,118" lastRelativePoint="449,164"/>
+  <wire id="12634" guardcondition="freq" firstRelativePoint="374,194" lastRelativePoint="374,283"/>
+  <wire id="12635" guardcondition="recent" firstRelativePoint="507,194" lastRelativePoint="519,290"/>
+  <wire id="12636" guardcondition="success" firstRelativePoint="519,320" lastRelativePoint="451,416"/>
+  <wire id="12637" guardcondition="success" firstRelativePoint="392,313" lastRelativePoint="451,416"/>
+</Glue:GlueDiagram>

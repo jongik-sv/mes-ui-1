@@ -1,0 +1,389 @@
+html, body {
+    background-color: #212529;
+    color: #575962;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 1rem;
+    height: 100%;
+    margin: 0;
+    opacity: 0.5%;
+    overflow: hidden;
+    padding: 0;
+    width: 100%;
+}
+
+.nav_header_layout {
+    background-color: #122b4b;
+    color: #fff;
+    /* box-shadow: 0 8px 16px 0 rgba(0,0,0,.28); */
+    width: 100%;
+    height: 38px;
+    min-width: 750px;
+    background-image: url('imgs/header_img.png');
+    background-repeat: no-repeat;
+    background-color: #393F4F;
+}
+
+.nav_header_logo {
+    position: absolute;
+    /* 이미지 변경 시 이미지 위치 변경 방법
+        px값에 변경된 이미지의 px 사이즈 값을 입력해준다. */
+    /*left: calc(50% - (211px / 2));*/
+    left: calc(50% - (141px / 2));
+    /*width: 211px;*/
+    width: 141px;
+    /*height: 25px;*/
+    height: 24px;
+    /*margin: 6px;*/
+    margin: 7px;
+    cursor: pointer;
+    /*background-image: url(imgs/logo-busan.svg);*/
+    background-image: url(imgs/cm_logo_eng_white.svg);
+    background-repeat: no-repeat;
+}
+
+.nav_header_all_menu {
+    float: left;
+}
+
+.nav_header_user_info {
+    display: table;
+    float: right;
+    font-size: 14px;
+    margin: 4px 0px;
+}
+
+.nav_header_manager_info {
+    display: inline-block;
+    float: right;
+}
+
+.nav_header_remote_support {
+    display: inline-block;
+    float: right;
+}
+
+.nav_header_user_info:hover {
+    cursor: pointer;
+    color: #FDDF2F;
+}
+
+.nav_header_user_info .user_image {
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    margin-left: 3px;
+    border: 0.5px solid rgba(142, 142, 142, .3);
+    border-radius: 50%;
+}
+
+.nav_header_user_info .user_name, .nav_header_user_info .user_dept {
+    font-weight: bold;
+    display: table-cell;
+    vertical-align: middle;
+    padding-right: 5px;
+}
+
+.nav_header_user_info .user_name_suffix {
+    font-size: 8pt;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.toggle_all_menu_icon {
+    width: 24px;
+    height: 24px;
+    margin: 7px;
+    cursor: pointer;
+    background-image: url(imgs/apps.svg);
+    background-repeat: no-repeat;
+}
+
+.manager_info_icon {
+    width: 24px;
+    height: 24px;
+    margin: 7px 9px;
+    cursor: pointer;
+    background-image: url(imgs/customer-service.svg);
+    background-repeat: no-repeat;
+}
+
+.remote_support_icon {
+    width: 24px;
+    height: 24px;
+    margin: 7px 9px 7px 0px;
+    cursor: pointer;
+    background-image: url(imgs/remote-support.svg);
+    background-repeat: no-repeat;
+}
+
+.toggle_all_menu_icon:hover {
+    animation-direction: alternate;
+    -webkit-animation-direction: alternate;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    animation-name: waving_15;
+    -webkit-animation-name: waving_15;
+}
+
+.manager_info_icon:hover {
+    animation-direction: alternate;
+    -webkit-animation-direction: alternate;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    animation-name: waving_8;
+    -webkit-animation-name: waving_15;
+}
+
+.remote_support_icon:hover {
+    animation-direction: alternate;
+    -webkit-animation-direction: alternate;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    animation-name: waving_8;
+    -webkit-animation-name: waving_15;
+}
+
+@keyframes waving_8 {
+    0% {
+        transform: rotate(8deg);
+        -webkit-transform: rotate(8deg);
+    }
+    25% {
+        transform: rotate(-8deg);
+        -webkit-transform: rotate(-8deg);
+    }
+    50% {
+        transform: rotate(8deg);
+        -webkit-transform: rotate(8deg);
+    }
+    100% {
+        transform: rotate(-8deg);
+        -webkit-transform: rotate(-8deg);
+    }
+}
+
+@keyframes waving_15 {
+    0% {
+        transform: rotate(15deg);
+        -webkit-transform: rotate(15deg);
+    }
+    25% {
+        transform: rotate(-15deg);
+        -webkit-transform: rotate(-15deg);
+    }
+    50% {
+        transform: rotate(15deg);
+        -webkit-transform: rotate(15deg);
+    }
+    100% {
+        transform: rotate(-15deg);
+        -webkit-transform: rotate(-15deg);
+    }
+}
+
+/* text */
+
+.line {
+    position: relative;
+    top: 50%;
+    width: 15.6em;
+    margin: 0 auto;
+    border-right: 2px solid #ff6f61;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);
+    display: block;
+}
+
+/* animattion */
+
+.welcome-message-anim {
+    animation: typeMsg 4s steps(40) 1s 1 normal both, cursorAnim 500ms steps(40) infinite normal;
+}
+
+@keyframes typeMsg {
+    from {
+        width: 0em;
+    }
+    to {
+        width: 10.6em;
+    }
+}
+
+/* 사이드바 */
+.menu_btn {
+    -webkit-perspective: 1700px;
+    -moz-perspective: 1700px;
+    perspective: 1700px;
+    -webkit-perspective-origin: 0 50%;
+    -moz-perspective-origin: 0 50%;
+    perspective-origin: 0 50%;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+}
+
+.figure_2 {
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    width: 28px;
+    height: 28px;
+}
+
+.figure_2 .front {
+    overflow: hidden;
+}
+
+.figure_2 .front img {
+    -webkit-transition: -webkit-transform 0.4s;
+    -moz-transition: -moz-transform 0.4s;
+    transition: transform 0.4s;
+}
+
+.figure_2:hover .front img, .figure_2.cs-hover .front img {
+    -webkit-transform: translateX(100%); /*0으로 해봤음 100 이어야함*/
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%);
+    /*font-weight: 600;*/
+}
+
+.figcaption_2 {
+    /*height: 100%;*/
+    /*width: 50%;*/
+    opacity: 0;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: rotateY(-90deg); /*0으로 해봤음*/
+    -moz-transform: rotateY(-90deg); /*0으로 해봤음*/
+    transform: rotateY(-90deg); /*0으로 해봤음*/
+    -webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
+    -moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
+    transition: transform 0.4s, opacity 0.1s 0.3s;
+    margin-left: -6px;
+    /* -webkit-margin-end: -8px; */
+    margin-top: -28px;
+    /*font-weight: 600;*/
+}
+
+.figure_2:hover .figcaption_2, .figure_2.cs-hover .figcaption_2 {
+    opacity: 1;
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+    -webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
+    -moz-transition: -moz-transform 0.4s, opacity 0.1s;
+    transition: transform 0.4s, opacity 0.1s;
+    /*font-weight: 600;*/
+}
+
+.figcaption_2 img {
+    margin-left: 5px;
+    position: absolute;
+}
+
+
+
+/*
+.dhx_list_item:hover .menu_btn .content {
+    transform: rotateY(.5turn);
+    -webkit-transform: rotateY(.5turn);
+}
+*/
+#nav_all_menu {
+    position: absolute;
+    top: 33px;
+    left: 25px;
+    width: calc(100% - 50px);
+    height: calc(100% - 60px);
+    z-index: -999;
+}
+
+#nav_user_info {
+    position: absolute;
+    right: 0;
+    float: right;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, .12);
+    display: none;
+    width: 320px;
+    /* height: 158px; */
+    height: calc(100% - 50px);
+    z-index: -999;
+}
+
+#nav_manager_info {
+    position: absolute;
+    right: 0;
+    float: right;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, .12);
+    display: none;
+    width: 320px;
+    /* height: 158px; */
+    height: calc(100% - 50px);
+    z-index: -999;
+}
+
+#nav_user_info div.dhx_cell_layout {
+    background-color: #fff;
+}
+
+#nav_context_menu {
+    position: absolute;
+    top: 73px;
+    width: 180px;
+    /* 1. 항목 추가 시 변경 방법
+           context 항목 개수 만큼 38px에 곱함
+       2. Line 추가 시 변경 방법
+           Line 개수 만큼 1px에 곱함
+       3. 20px은 상,하단 여백값
+       4. 5px은 화면 확대시 Scrollbar 생성을 방지하기 위함 */
+    height: calc((38px * 7) + (1px * 2) + 20px + 5px);
+    box-shadow: 0 4px 5px 3px rgba(0, 0, 0, 0.2);
+    z-index: -999;
+}
+
+#nav_manager_info div.dhx_cell_layout {
+    background-color: #fff;
+}
+
+/* [[[[ scrollbar CSS */
+
+/*
+추후 uiTreeMenu의 가로 Scrollbar 디자인 변경 시 사용
+ dhxtreeview_material div.dhxtreeview_cont에 scrollbar-style class 추가 시 디자인 적용
+.scrollbar-style::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    background-color: #323130;
+    height: 5px;
+}
+.scrollbar-style::-webkit-scrollbar {
+    width: 12px;
+    background-color: #323130;
+    height: 5px;
+}
+.scrollbar-style::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(236, 230, 230, 0);
+    background-color: rgb(210, 210, 210);
+    height: 5px;
+}
+*/
+
+/* scrollbar CSS ]]]] */
+
+.deploy_noti_red {
+	color: #aa0000;
+}

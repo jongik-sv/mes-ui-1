@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value = "%d %-5p - [%t]%C||%m%n"/>
+                <!--value="%p - %C{1}.%M(%L) | %m%n"/>-->
+        </layout>
+    </appender>   
+    
+    <!-- 분단위 -->
+	 <appender name="FILEAPPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+	   <param name="datePattern" value="yyyy-MM-dd-HH-mm"/>
+	   <param name="file" value="../../../LOG/log4j/M9041/m9041.log"/>
+	   <layout class="org.apache.log4j.PatternLayout">
+	     <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss, SSS}] %-6p [%t] - %C{1}.%M(%L) | %m%n"/>
+	   </layout>
+	 </appender> 
+   
+	<logger name="org.apache">
+        <level value="warn"/>
+    </logger>
+
+    <logger name="org.springframework">
+        <level value="warn"/>
+    </logger>
+
+    <logger name="com.posdata">
+        <level value="debug"/>
+    </logger>
+
+    <logger name="org.acegisecurity">
+        <level value="warn"/>
+    </logger>
+    
+    <logger name="com.dkunc">
+        <level value="debug"/>
+    </logger>
+    
+    <logger name="com.poscoict">
+        <level value="debug"/>
+    </logger>
+    
+    
+    
+   <logger name="com.poscoict.glue.biz.dhtmlx.msg.FixedLengthMessageLayout">
+       <level value="info"/>
+   </logger>
+   <logger name="com.poscoict.glue.biz.dhtmlx.msg.DelimiterMessageLayout">
+       <level value="info"/>
+   </logger>
+   <logger name="com.posdata.glue.msg.PosMESMessageImpl">
+       <level value="info"/>
+   </logger>
+	
+    <root>
+        <level value="info"/>
+        <appender-ref ref="FILEAPPENDER"/>
+    </root>
+</log4j:configuration>

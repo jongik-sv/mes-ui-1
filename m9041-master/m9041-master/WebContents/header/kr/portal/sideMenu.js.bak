@@ -1,0 +1,12 @@
+var json_side_menu = [
+	{"id":"C10","text":"품질설계","img":"./dhtmlx/codebase/imgs/vector-curve.png"},
+	{"id":"M20","text":"품질판정","img":"./dhtmlx/codebase/imgs/microscope.png"},
+	{"id":"M17","text":"생산관제","img":"./dhtmlx/codebase/imgs/monitor-dashboard.png"},
+	{"id":"M47","text":"조업관리","img":"./dhtmlx/codebase/imgs/factory.png"},
+	{"id":"M42","text":"원재료","img":"./dhtmlx/codebase/imgs/ferry.png"},
+	{"id":"M30","text":"부재료","img":"./dhtmlx/codebase/imgs/barrel.png"},
+	{"id":"M26","text":"구내운송","img":"./dhtmlx/codebase/imgs/forklift.png"},
+	{"id":"M77","text":"야드관리","img":"./dhtmlx/codebase/imgs/gantry-crane.png"},
+	{"id":"M60","text":"출하관제","img":"./dhtmlx/codebase/imgs/truck.png"},
+	{"id":"Favorite","text":"즐겨찾기","img":"./dhtmlx/codebase/imgs/star.png"},
+]

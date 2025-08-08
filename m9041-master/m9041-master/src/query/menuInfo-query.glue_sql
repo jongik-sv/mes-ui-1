@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<queryMap desc="MenuInfo"> 
+	 <query id="menuInfo.programs.visible" desc="" isNamed="true">
+		 <![CDATA[ 
+WITH AUTHED_MENU AS 
+(
+    SELECT J.CHAIN_NAME ,
+           J.CHAIN_ID ,
+           J.TASK_NAME ,
+           J.TASK_ID ,
+           H.PROGRAM_NAME ,
+           H.PROGRAM_ID ,
+           H.HOST_URL ,
+           H.PROGRAM_URL ,
+           H.PAGE_ID ,
+           CASE WHEN C.DISPLAY_FLAG IN ('1','Y') THEN '1' ELSE NULL END AS DISPLAY_FLAG ,
+           CASE WHEN G.PROMPT_DISPLAY_FLAG IN ('1','Y') THEN '1' ELSE NULL END AS PROMPT_DISPLAY_FLAG ,
+           COUNT(*) OVER (PARTITION BY H.PAGE_ID) AS MULTI_ROLE_CNT ,
+           H.OPEN_TYPE ,
+           H.BUTTON_FLAG ,
+           J.SEQ AS PRMGRAM_SEQ,
+           A.USER_ID,
+           F.MENU_ID,
+           D.SEQ AS CHAIN_SEQ
+      FROM TB_SEC_USER A,
+           TB_USER_MENU_MAPPING B,
+           TB_MENU C,
+           TB_CHAIN D,
+           TB_MENU_PRG_MAPPING E,
+           TB_MENU F,
+           TB_MENU_PRG_MAPPING G,
+           TB_PROGRAM H,
+           TB_PAGE J   
+     WHERE A.USER_ID = B.USER_ID
+       AND B.MENU_ID = C.MENU_ID
+       AND E.MENU_ID = C.MENU_ID
+       AND E.SUB_MENU_ID = F.MENU_ID
+       AND H.PAGE_ID = J.PAGE_ID
+       AND J.CHAIN_ID = D.CHAIN_ID
+       AND F.MENU_ID = G.MENU_ID
+       AND G.PROGRAM_ID = H.PROGRAM_ID
+       AND 1=1
+       AND A.USER_NO=:USER_NO
+       AND SYSDATE BETWEEN C.START_ACTIVE_DATE AND C.END_ACTIVE_DATE
+       AND SYSDATE BETWEEN B.START_ACTIVE_DATE AND B.END_ACTIVE_DATE
+       AND C.MENU_TYPE = 'C'
+       --AND C.MENU_KEY NOT LIKE'%#MOBILE%'
+       --AND (C.DISPLAY_FLAG != '1' OR G.PROMPT_DISPLAY_FLAG != '1') 
+       --AND C.DISPLAY_FLAG IN ('1','Y')
+       --AND G.PROMPT_DISPLAY_FLAG IN ('1','Y')
+),OMIT_BUTTON_DUP AS (
+SELECT *
+  FROM AUTHED_MENU A
+ WHERE (PAGE_ID, LENGTH(NVL(BUTTON_FLAG, '1'))) IN 
+            (
+            SELECT PAGE_ID,
+                   MAX(LENGTH(NVL(BUTTON_FLAG, '1')))
+              FROM AUTHED_MENU
+             WHERE PAGE_ID = A.PAGE_ID
+             GROUP BY PAGE_ID) 
+)
+
+,OMIT_DUP_PAGE AS (
+SELECT CHAIN_NAME ,
+       CHAIN_ID ,
+       TASK_NAME ,
+       TASK_ID ,
+       PROGRAM_NAME ,
+       MAX(PROGRAM_ID) AS PROGRAM_ID  ,
+       HOST_URL ,
+       PROGRAM_URL ,
+       PAGE_ID,
+       MAX(DISPLAY_FLAG) AS DISPLAY_FLAG ,
+       MAX(PROMPT_DISPLAY_FLAG) AS PROMPT_DISPLAY_FLAG ,
+       OPEN_TYPE ,
+       BUTTON_FLAG ,
+       PRMGRAM_SEQ,
+       USER_ID,
+       MAX(MENU_ID) AS MENU_ID ,
+       CHAIN_SEQ
+  FROM OMIT_BUTTON_DUP A
+GROUP BY CHAIN_NAME ,
+       CHAIN_ID ,
+       TASK_NAME ,
+       TASK_ID ,
+       PROGRAM_NAME ,
+       HOST_URL ,
+       PROGRAM_URL ,
+       PAGE_ID,
+       OPEN_TYPE ,
+       BUTTON_FLAG ,
+       PRMGRAM_SEQ,
+       USER_ID,
+       CHAIN_SEQ
+), DISTINCTED_PAGE AS (
+SELECT DISTINCT OUP.*
+  FROM OMIT_DUP_PAGE OUP
+)
+SELECT DISTINCT 
+       A.CHAIN_NAME ,
+       A.CHAIN_ID ,
+       A.TASK_NAME ,
+       A.TASK_ID ,
+       A.PAGE_NAME AS PROGRAM_NAME ,
+       B.PROGRAM_ID ,
+       B.HOST_URL ,
+       B.PROGRAM_URL ,
+       A.PAGE_ID,
+       B.DISPLAY_FLAG ,
+       B.PROMPT_DISPLAY_FLAG ,
+       B.OPEN_TYPE ,
+       B.BUTTON_FLAG ,
+       B.PRMGRAM_SEQ,
+       CASE
+         WHEN B.CHAIN_ID IS NULL THEN 'N'
+         ELSE 'Y'
+       END AS IS_AUTH,
+       CASE
+         WHEN C.MENU_ID IS NULL THEN 'N'
+         ELSE 'Y'
+       END AS BOOKMARKED
+       ,B.CHAIN_SEQ
+  FROM TB_PAGE A LEFT OUTER JOIN DISTINCTED_PAGE B ON A.PAGE_ID = B.PAGE_ID
+       LEFT OUTER JOIN TB_USER_BOOKMARK C ON B.PROGRAM_ID = C.MENU_ID AND B.USER_ID = C.USER_ID
+ WHERE NVL(PAGE_TYPE, 'NORMAL') = 'NORMAL'
+   AND B.CHAIN_ID IS NOT NULL
+ ORDER BY CHAIN_ID,
+          TASK_ID,
+          PRMGRAM_SEQ 
+		 ]]> 
+	 </query>
+	 <query id="menuInfo.programs.invisible" desc="" isNamed="true">
+		 <![CDATA[ 
+WITH AUTHED_MENU AS 
+(
+    SELECT J.CHAIN_NAME ,
+           J.CHAIN_ID ,
+           J.TASK_NAME ,
+           J.TASK_ID ,
+           H.PROGRAM_NAME ,
+           H.PROGRAM_ID ,
+           H.HOST_URL ,
+           H.PROGRAM_URL ,
+           H.PAGE_ID ,
+           CASE WHEN C.DISPLAY_FLAG IN ('1','Y') THEN '1' ELSE NULL END AS DISPLAY_FLAG ,
+           CASE WHEN G.PROMPT_DISPLAY_FLAG IN ('1','Y') THEN '1' ELSE NULL END AS PROMPT_DISPLAY_FLAG ,
+           COUNT(*) OVER (PARTITION BY H.PAGE_ID) AS MULTI_ROLE_CNT ,
+           H.OPEN_TYPE ,
+           H.BUTTON_FLAG ,
+           J.SEQ AS PRMGRAM_SEQ,
+           A.USER_ID,
+           F.MENU_ID,
+           D.SEQ AS CHAIN_SEQ
+      FROM TB_SEC_USER A,
+           TB_USER_MENU_MAPPING B,
+           TB_MENU C,
+           TB_CHAIN D,
+           TB_MENU_PRG_MAPPING E,
+           TB_MENU F,
+           TB_MENU_PRG_MAPPING G,
+           TB_PROGRAM H,
+           TB_PAGE J   
+     WHERE A.USER_ID = B.USER_ID
+       AND B.MENU_ID = C.MENU_ID
+       AND E.MENU_ID = C.MENU_ID
+       AND E.SUB_MENU_ID = F.MENU_ID
+       AND H.PAGE_ID = J.PAGE_ID
+       AND J.CHAIN_ID = D.CHAIN_ID
+       AND F.MENU_ID = G.MENU_ID
+       AND G.PROGRAM_ID = H.PROGRAM_ID
+       AND 1=1
+       AND A.USER_NO=:USER_NO
+       AND SYSDATE BETWEEN C.START_ACTIVE_DATE AND C.END_ACTIVE_DATE
+       AND SYSDATE BETWEEN B.START_ACTIVE_DATE AND B.END_ACTIVE_DATE
+       AND C.MENU_TYPE = 'C'
+       --AND C.MENU_KEY NOT LIKE'%#MOBILE%'
+       --AND (C.DISPLAY_FLAG != '1' OR G.PROMPT_DISPLAY_FLAG != '1') 
+       --AND C.DISPLAY_FLAG IN ('1','Y')
+       --AND G.PROMPT_DISPLAY_FLAG IN ('1','Y')
+),OMIT_BUTTON_DUP AS (
+SELECT *
+  FROM AUTHED_MENU A
+ WHERE (PAGE_ID, LENGTH(NVL(BUTTON_FLAG, '1'))) IN 
+            (
+            SELECT PAGE_ID,
+                   MAX(LENGTH(NVL(BUTTON_FLAG, '1')))
+              FROM AUTHED_MENU
+             WHERE PAGE_ID = A.PAGE_ID
+             GROUP BY PAGE_ID) 
+)
+
+,OMIT_DUP_PAGE AS (
+SELECT CHAIN_NAME ,
+       CHAIN_ID ,
+       TASK_NAME ,
+       TASK_ID ,
+       PROGRAM_NAME ,
+       MAX(PROGRAM_ID) AS PROGRAM_ID  ,
+       HOST_URL ,
+       PROGRAM_URL ,
+       PAGE_ID,
+       MAX(DISPLAY_FLAG) AS DISPLAY_FLAG ,
+       MAX(PROMPT_DISPLAY_FLAG) AS PROMPT_DISPLAY_FLAG ,
+       OPEN_TYPE ,
+       BUTTON_FLAG ,
+       PRMGRAM_SEQ,
+       USER_ID,
+       MAX(MENU_ID) AS MENU_ID ,
+       CHAIN_SEQ
+  FROM OMIT_BUTTON_DUP A
+GROUP BY CHAIN_NAME ,
+       CHAIN_ID ,
+       TASK_NAME ,
+       TASK_ID ,
+       PROGRAM_NAME ,
+       HOST_URL ,
+       PROGRAM_URL ,
+       PAGE_ID,
+       OPEN_TYPE ,
+       BUTTON_FLAG ,
+       PRMGRAM_SEQ,
+       USER_ID,
+       CHAIN_SEQ
+), DISTINCTED_PAGE AS (
+SELECT DISTINCT OUP.*
+  FROM OMIT_DUP_PAGE OUP
+)
+SELECT DISTINCT 
+       A.CHAIN_NAME ,
+       A.CHAIN_ID ,
+       A.TASK_NAME ,
+       A.TASK_ID ,
+       A.PAGE_NAME AS PROGRAM_NAME ,
+       B.PROGRAM_ID ,
+       B.HOST_URL ,
+       B.PROGRAM_URL ,
+       A.PAGE_ID,
+       B.DISPLAY_FLAG ,
+       B.PROMPT_DISPLAY_FLAG ,
+       B.OPEN_TYPE ,
+       B.BUTTON_FLAG ,
+       B.PRMGRAM_SEQ,
+       CASE
+         WHEN B.CHAIN_ID IS NULL THEN 'N'
+         ELSE 'Y'
+       END AS IS_AUTH,
+       CASE
+         WHEN C.MENU_ID IS NULL THEN 'N'
+         ELSE 'Y'
+       END AS BOOKMARKED
+       ,B.CHAIN_SEQ
+  FROM TB_PAGE A LEFT OUTER JOIN DISTINCTED_PAGE B ON A.PAGE_ID = B.PAGE_ID
+       LEFT OUTER JOIN TB_USER_BOOKMARK C ON B.PROGRAM_ID = C.MENU_ID AND B.USER_ID = C.USER_ID
+ WHERE NVL(PAGE_TYPE, 'NORMAL') != 'NORMAL'
+   AND B.CHAIN_ID IS NOT NULL
+ ORDER BY CHAIN_ID,
+          TASK_ID,
+          PRMGRAM_SEQ 
+		 ]]> 
+	 </query>
+	 <query id="menuInfo.programs.allmenu" desc="" isNamed="true">
+		 <![CDATA[ 
+WITH AUTHED_MENU AS 
+(
+    SELECT J.CHAIN_NAME ,
+           J.CHAIN_ID ,
+           J.TASK_NAME ,
+           J.TASK_ID ,
+           H.PROGRAM_NAME ,
+           H.PROGRAM_ID ,
+           H.HOST_URL ,
+           H.PROGRAM_URL ,
+           H.PAGE_ID,
+           C.DISPLAY_FLAG ,
+           G.PROMPT_DISPLAY_FLAG ,
+           COUNT(*) OVER (PARTITION BY H.PAGE_ID) AS MULTI_ROLE_CNT ,
+           H.OPEN_TYPE ,
+           H.BUTTON_FLAG ,
+           J.SEQ AS PRMGRAM_SEQ,
+           A.USER_ID,
+           F.MENU_ID,
+           D.SEQ AS CHAIN_SEQ
+      FROM TB_SEC_USER A,
+           TB_USER_MENU_MAPPING B,
+           TB_MENU C,
+           TB_CHAIN D,
+           TB_MENU_PRG_MAPPING E,
+           TB_MENU F,
+           TB_MENU_PRG_MAPPING G,
+           TB_PROGRAM H,
+           TB_PAGE J   
+     WHERE A.USER_ID = B.USER_ID
+       AND B.MENU_ID = C.MENU_ID
+       AND E.MENU_ID = C.MENU_ID
+       AND E.SUB_MENU_ID = F.MENU_ID
+       AND H.PAGE_ID = J.PAGE_ID
+       AND J.CHAIN_ID = D.CHAIN_ID
+       AND F.MENU_ID = G.MENU_ID
+       AND G.PROGRAM_ID = H.PROGRAM_ID
+       AND 1=1
+       AND A.USER_NO=:USER_NO
+       AND SYSDATE BETWEEN C.START_ACTIVE_DATE AND C.END_ACTIVE_DATE
+       AND SYSDATE BETWEEN B.START_ACTIVE_DATE AND B.END_ACTIVE_DATE
+       AND C.MENU_TYPE = 'C'
+       --AND C.MENU_KEY NOT LIKE'%#MOBILE%'
+       --AND (C.DISPLAY_FLAG != '1' OR G.PROMPT_DISPLAY_FLAG != '1') 
+       --AND C.DISPLAY_FLAG IN ('1','Y')
+       --AND G.PROMPT_DISPLAY_FLAG IN ('1','Y')
+),OMIT_BUTTON_DUP AS (
+SELECT *
+  FROM AUTHED_MENU A
+ WHERE (PAGE_ID, LENGTH(NVL(BUTTON_FLAG, '1'))) IN 
+            (
+            SELECT PAGE_ID,
+                   MAX(LENGTH(NVL(BUTTON_FLAG, '1')))
+              FROM AUTHED_MENU
+             WHERE PAGE_ID = A.PAGE_ID
+             GROUP BY PAGE_ID) 
+)
+
+,OMIT_DUP_PAGE AS (
+SELECT CHAIN_NAME ,
+       CHAIN_ID ,
+       TASK_NAME ,
+       TASK_ID ,
+       PROGRAM_NAME ,
+       MAX(PROGRAM_ID) AS PROGRAM_ID  ,
+       HOST_URL ,
+       PROGRAM_URL ,
+       PAGE_ID,
+       MAX(DISPLAY_FLAG) AS DISPLAY_FLAG ,
+       MAX(PROMPT_DISPLAY_FLAG) AS PROMPT_DISPLAY_FLAG ,
+       OPEN_TYPE ,
+       BUTTON_FLAG ,
+       PRMGRAM_SEQ,
+       USER_ID,
+       MAX(MENU_ID) AS MENU_ID ,
+       CHAIN_SEQ
+  FROM OMIT_BUTTON_DUP A
+GROUP BY CHAIN_NAME ,
+       CHAIN_ID ,
+       TASK_NAME ,
+       TASK_ID ,
+       PROGRAM_NAME ,
+       HOST_URL ,
+       PROGRAM_URL ,
+       PAGE_ID,
+       OPEN_TYPE ,
+       BUTTON_FLAG ,
+       PRMGRAM_SEQ,
+       USER_ID,
+       CHAIN_SEQ
+), DISTINCTED_PAGE AS (
+SELECT DISTINCT OUP.*
+  FROM OMIT_DUP_PAGE OUP
+)
+SELECT DISTINCT 
+       A.CHAIN_NAME ,
+       A.CHAIN_ID ,
+       A.TASK_NAME ,
+       A.TASK_ID ,
+       A.PAGE_NAME AS PROGRAM_NAME ,
+       B.PROGRAM_ID ,
+       B.HOST_URL ,
+       B.PROGRAM_URL ,
+       A.PAGE_ID,
+       B.DISPLAY_FLAG ,
+       B.PROMPT_DISPLAY_FLAG ,
+       B.OPEN_TYPE ,
+       B.BUTTON_FLAG ,
+       B.PRMGRAM_SEQ,
+       CASE
+         WHEN B.CHAIN_ID IS NULL THEN 'N'
+         ELSE 'Y'
+       END AS IS_AUTH,
+       CASE
+         WHEN C.MENU_ID IS NULL THEN 'N'
+         ELSE 'Y'
+       END AS BOOKMARKED
+       ,B.CHAIN_SEQ
+  FROM TB_PAGE A LEFT OUTER JOIN DISTINCTED_PAGE B ON A.PAGE_ID = B.PAGE_ID
+       LEFT OUTER JOIN TB_USER_BOOKMARK C ON B.PROGRAM_ID = C.MENU_ID AND B.USER_ID = C.USER_ID
+ WHERE NVL(PAGE_TYPE, 'NORMAL') = 'NORMAL' 
+ ORDER BY CHAIN_ID,
+          TASK_ID,
+          PRMGRAM_SEQ
+		 ]]> 
+	 </query>
+</queryMap>

@@ -1,0 +1,5 @@
+<toolbar>
+	<item id="menuSearchText" type="buttonInput" value="" width="100%" title="input text here"  />
+<!--	<item id="find" type="button"   img="fas fa-search"  imgdis="찾기"  text=""/>-->
+	<item id="find" type="button"   img="./dhtmlx/codebase/imgs/csh_dhx_skyblue/search.png"  imgdis="찾기"/>
+</toolbar>

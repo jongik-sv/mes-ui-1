@@ -1,35 +1,77 @@
 /**
- * 메뉴 아이템 인터페이스
+ * 메뉴 아이템 인터페이스 (JSP 구조 기반)
  */
 export interface MenuItem {
   /** 고유 식별자 */
   id: string
-  /** 메뉴 제목 */
-  title: string
-  /** 메뉴 URL (선택사항) */
+  /** 메뉴 텍스트 (JSP의 text 필드) */
+  text: string
+  /** 메뉴 레벨 (1: 모듈, 2: 메뉴, 3: 페이지) */
+  level: number
+  /** 상위 메뉴 ID */
+  parentId?: string
+  /** 카테고리 코드 (C10, M20, etc.) */
+  categoryCode: string
+  /** 메뉴 URL (최종 페이지만) */
   url?: string
   /** 아이콘 이름 (선택사항) */
   icon?: string
-  /** 하위 메뉴 목록 */
+  /** 즐겨찾기 여부 (JSP의 bookmarked) */
+  bookmarked: boolean
+  /** 권한 여부 (JSP의 isAuth) */
+  isAuth: boolean
+  /** 하위 메뉴 존재 여부 (JSP의 hasItems) */
+  hasItems: boolean
+  /** 하위 메뉴 목록 (JSP의 items) */
+  items?: MenuItem[]
+  
+  /** 컬럼 검색용 데이터 */
+  column?: {
+    form?: {
+      id: string[]
+      name: string[]
+    }
+    grid?: {
+      id: string[]
+      name: string[]
+    }
+  }
+  
+  /** 메타데이터 (JSP의 userdata) */
+  userdata?: {
+    programId: string
+    bookmarked: 'Y' | 'N'
+  }
+  
+  // 호환성을 위한 추가 필드들
+  /** 메뉴 제목 (text와 동일, 호환성용) */
+  title?: string
+  /** 카테고리 (categoryCode와 동일, 호환성용) */
+  category?: string
+  /** 즐겨찾기 여부 (bookmarked와 동일, 호환성용) */
+  isFavorite?: boolean
+  /** 하위 메뉴 목록 (items와 동일, 호환성용) */
   children?: MenuItem[]
-  /** 즐겨찾기 여부 */
-  favorite: boolean
-  /** 카테고리 */
-  category: string
-  /** 메뉴 레벨 (1-5) */
-  level?: number
-  /** 정렬 순서 */
-  order?: number
-  /** 활성화 여부 */
-  enabled?: boolean
-  /** 권한 정보 */
-  permissions?: string[]
-  /** 메타데이터 */
-  metadata?: Record<string, any>
 }
 
 /**
- * 카테고리 인터페이스
+ * 메뉴 카테고리 인터페이스 (JSP 구조 기반)
+ */
+export interface MenuCategory {
+  /** 카테고리 ID */
+  id: string
+  /** 카테고리 이름 */
+  name: string
+  /** 카테고리 코드 */
+  code: string
+  /** 정렬 순서 */
+  order: number
+  /** 활성 상태 */
+  active: boolean
+}
+
+/**
+ * 카테고리 인터페이스 (호환성용)
  */
 export interface Category {
   /** 카테고리 ID */

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<queryMap desc="userInfo"> 
+	 <query id="userInfo.user" desc="" isNamed="true">
+		 <![CDATA[ 
+		/* userInfo.user */
+		with USER_INF as (	
+			select	A.USER_ID,
+					A.USER_NO,
+					A.USER_NAME,
+					A.ENCRYPTED_FOUNDATION_PASSWORD,
+					A.START_ACTIVE_DATE,
+					A.END_ACTIVE_DATE,
+					A.WORK_LOCATION,
+					lower(B.EMAIL) as EMAIL,
+					lower(substr(B.EMAIL, 1, instr(B.EMAIL, '@') - 1)) as NIRIS_ID,
+					C.CD_V as DEPT_CD,
+					C.CD_V_MEANING as DEPT_NM,
+					A.BLG_CMP_CD,
+					A.TRST_CMP_CD,
+					A.PLNT_CD,
+					/* 부서코드 or 소속업체코드가 있을 경우 그룹사 or 공장 내부 협력업체 */
+					/* 위탁임가공업체코드가 있을 경우 위탁임가공업체 */
+					/* 플랜트코드가 있을 경우 사외창고 */
+					(case
+						when (C.CD_V is not null or A.BLG_CMP_CD is not null) and A.TRST_CMP_CD is null and A.PLNT_CD is null
+						then 'false'
+						when C.CD_V is null and A.BLG_CMP_CD is null and A.TRST_CMP_CD is not null
+						then 'true'
+						else 'none'
+					end) IS_TRST_CMP,
+					(case
+						when (C.CD_V is not null or A.BLG_CMP_CD is not null) and A.TRST_CMP_CD is null and A.PLNT_CD is null
+						then 'false'
+						when C.CD_V is null and A.BLG_CMP_CD is null and A.PLNT_CD is not null
+						then 'true'
+						else 'none'
+					end) IS_PLNT
+			from	M90APUSER.TB_SEC_USER	  A,
+					M90APUSER.TB_M90_EMP_INF   B,
+					(select BB.*
+					 from	EAIAPUSER.TB_M90_B00R0010 BB
+					 where	(IF_GRP_ID, SEQ_NO) = (select	IF_GRP_ID, SEQ_NO
+												   from		EAIAPUSER.TB_M90_B00R0010 AA
+												   where	LAST_UPDATE_TIMESTAMP = (select	max(LAST_UPDATE_TIMESTAMP)
+																					 from	EAIAPUSER.TB_M90_B00R0010
+																					 where	CD_V = AA.CD_V)
+												   and	AA.CD_V = BB.CD_V
+												   and	rownum = 1)) C
+			where	A.USER_NO = :USER_NO
+			and		A.USER_NO = B.EMP_ID (+)
+			and		nvl(B.DEPT_CD, '@') = C.CD_V (+)
+			and		sysdate between A.START_ACTIVE_DATE and A.END_ACTIVE_DATE
+		),
+		EXT_CMP_CD as (
+			select	CD_V, CD_V_MEANING
+			from	M00APUSER.VI_M00_CODE_ACCESS
+			where	CD_TP in ('BLG_CMP_CD', 'TRST_PROC_CMP_CD', 'PLNT_TP')
+			and		CATEGORY_GROUP_NM = 'SZ0000'
+		)
+		select	/*USER_ID,*/
+				USER_NO,
+				USER_NAME,
+				/*
+				ENCRYPTED_FOUNDATION_PASSWORD,
+				START_ACTIVE_DATE,
+				END_ACTIVE_DATE,
+				WORK_LOCATION,*/
+				EMAIL,
+				NIRIS_ID,
+				/* 부서코드 우선순위 */
+				/*  1. 부서코드 */
+				/*  2. 소속업체코드 */
+				/*  3. 위탁임가공업체코드 */
+				/*  4. 플랜트코드 */
+				(case
+					when DEPT_CD is not null
+					then DEPT_CD
+					else (select	CD_V
+						  from		EXT_CMP_CD
+						  where		CD_V = (case
+												when DEPT_CD is null and TRST_CMP_CD is null and PLNT_CD is null
+												then BLG_CMP_CD
+												when DEPT_CD is null and TRST_CMP_CD is not null
+												then TRST_CMP_CD
+												when DEPT_CD is null and PLNT_CD is not null
+												then PLNT_CD
+												else null
+											end))
+				end) DEPT_CD,
+				(case
+					when DEPT_NM is not null
+					then DEPT_NM
+					else (select	CD_V_MEANING
+						  from		EXT_CMP_CD
+						  where		CD_V = (case
+												when DEPT_CD is null and TRST_CMP_CD is null and PLNT_CD is null
+												then BLG_CMP_CD
+												when DEPT_CD is null and TRST_CMP_CD is not null
+												then TRST_CMP_CD
+												when DEPT_CD is null and PLNT_CD is not null
+												then PLNT_CD
+												else null
+											end))
+				end) DEPT_NM,
+				BLG_CMP_CD,
+				TRST_CMP_CD,
+				PLNT_CD,
+				/*위탁임가공업체여부*/
+				IS_TRST_CMP,
+				/*사외창고여부*/
+				IS_PLNT
+		from	USER_INF
+		 ]]> 
+	 </query>
+</queryMap>

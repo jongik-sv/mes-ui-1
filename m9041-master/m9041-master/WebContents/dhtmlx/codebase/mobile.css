@@ -1,0 +1,34 @@
+@CHARSET "UTF-8";
+*{margin:0;padding:0; font-size:15px;} 
+body{*word-break:break-all; -ms-word-break:break-all; margin:0;}
+body,input,button,select{font-size:13px; font-family:"돋움",Dotum,"굴림", Gulim,AppleGothic,Sans-serif;color:#444;}
+table {width: 100%; border-collapse: collapse;}
+
+.container {width: 100%; } 
+.log {margin: 20px 0;}
+.content {width: 292px;  margin: 0 auto; #margin-left : 10px; _margin-left: 10px; margin-top: 20px;} 
+.content table { width: 292px; height: 168px;  background: url(/img/login_outbg.png) no-repeat;}
+
+#container {width: 100%; } 
+#log {margin: 20px 0;}
+
+#content {width: 292px;  margin: 0 auto; #margin-left : 10px; _margin-left: 10px; margin-top: 20px;} 
+#content table { width: 292px; height: 168px;  background:  url(/img/login_outbg.png)  no-repeat;}
+
+#login {margin:0 auto !important; width:292px;}
+#login-main {background: url(/img/login_outbg.png) no-repeat; width:292px; height:168px; margin: 0 auto; #margin-left : 10px; _margin-left: 10px; margin-top: 20px;}
+#login-main table {width: 292px; height: 168px} 
+#login-button {cursor:hand;cursor:pointer;font-size: 17px; background: transparent url(/img/login_btn.gif) no-repeat;  font-weight: bold; color: #FFFFFF; height: 64px; width:83px; text-align:center; padding-top: 7px; }
+#login-button2 {cursor:hand;cursor:pointer;font-size: 17px; background: transparent url(/img/login_btn2.gif) no-repeat;  font-weight: bold; color: #FFFFFF; height: 64px; width:83px; text-align:center; padding-top: 7px; }
+#login-button3 {cursor:hand;cursor:pointer;font-size: 17px; background: transparent url(/img/login_btn3.gif) no-repeat;  font-weight: bold; color: #FFFFFF; height: 64px; width:83px; text-align:center; padding-top: 7px; }
+
+#login-button a {font-size: 17px; font-weight: bold; color: #FFFFFF; }
+td.first-column  {padding-left: 20px;}
+td.first-column  div.first {margin-bottom: 7px;}
+td.first-column  input {padding: 5px 0 5px 5px; height: 28px; border: 1px solid #C4C4C4;}
+td.second-column {width: 105px;}
+
+#footer {width:100%; color: #000000; font-size:11px; font-family:Arial, Helvetica, sans-serif; text-align:center; margin-top: 5px}
+#pwinfo {width:100%; color: #4F4F4F; font-size:13px; font-weight: bold; font-family:Arial, Helvetica, sans-serif;margin-top: 5px; padding-left: 10px;}
+#pwchg {width:100%; color: #0033CC; font-size:13px; font-weight: bold; font-family:Arial, Helvetica, sans-serif;margin-top: 5px;}
+#pwset {width:95%; color: #3554A6; font-size:12px; font-weight: bold; font-family:Arial, Helvetica, sans-serif; margin-top: 5px; padding-left: 10px; }

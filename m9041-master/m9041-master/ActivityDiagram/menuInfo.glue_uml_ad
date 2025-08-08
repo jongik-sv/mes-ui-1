@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Glue:GlueDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Glue="http://www.glueframework.com/activitydiagram/" id="11" location="20,20" size="100,100">
+  <child xsi:type="Glue:InitialState" id="213746" location="370,65" size="-1,-1" output="//@wire.0"/>
+  <child xsi:type="Glue:FinalState" id="213747" location="382,383" size="-1,-1" input="//@wire.2 //@wire.4 //@wire.6"/>
+  <child xsi:type="Glue:RouterActivity" id="213748" location="301,152" size="639,-1" input="//@wire.0" output="//@wire.1 //@wire.3 //@wire.5" name="분기">
+    <property key="class" value="com.posdata.glue.biz.activity.PosDefaultRouter"/>
+    <property key="description" value=""/>
+  </child>
+  <child xsi:type="Glue:DinaActivity" id="213749" location="83,276" size="360,-1" input="//@wire.1" output="//@wire.2" name="사용자접근가능화면 목록 조회(히든메뉴제외)">
+    <property key="class" value="com.poscoict.glue.biz.dhtmlx.form.FormSearch"/>
+    <property key="dao" value="m90dao"/>
+    <property key="sqlkey" value="menuInfo.programs.visible"/>
+    <property key="description" value=""/>
+  </child>
+  <child xsi:type="Glue:DinaActivity" id="213750" location="462,275" size="334,-1" input="//@wire.3" output="//@wire.4" name="사용자접근가능화면 목록 조회(히든메뉴만)">
+    <property key="class" value="com.poscoict.glue.biz.dhtmlx.form.FormSearch"/>
+    <property key="dao" value="m90dao"/>
+    <property key="sqlkey" value="menuInfo.programs.invisible"/>
+    <property key="description" value=""/>
+  </child>
+  <child xsi:type="Glue:DinaActivity" id="213751" location="752,317" size="182,-1" input="//@wire.5" output="//@wire.6" name="전체 메뉴 조회">
+    <property key="class" value="com.poscoict.glue.biz.dhtmlx.form.FormSearch"/>
+    <property key="dao" value="m90dao"/>
+    <property key="sqlkey" value="menuInfo.programs.allmenu"/>
+    <property key="description" value=""/>
+  </child>
+  <wire id="11031" guardcondition="success" firstRelativePoint="380,84" lastRelativePoint="380,135"/>
+  <wire id="11032" guardcondition="visible" firstRelativePoint="360,152" lastRelativePoint="360,276"/>
+  <wire id="11033" guardcondition="success" firstRelativePoint="392,304" lastRelativePoint="392,382"/>
+  <wire id="11034" guardcondition="invisible" firstRelativePoint="621,182" lastRelativePoint="621,275"/>
+  <wire id="11035" guardcondition="success" firstRelativePoint="531,305" lastRelativePoint="392,382"/>
+  <wire id="11036" guardcondition="allmenu" firstRelativePoint="836,182" lastRelativePoint="836,317"/>
+  <wire id="11037" guardcondition="success" firstRelativePoint="762,302" lastRelativePoint="392,382"/>
+</Glue:GlueDiagram>

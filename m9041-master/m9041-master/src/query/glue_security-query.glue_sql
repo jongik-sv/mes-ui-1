@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<queryMap desc="Glue Default Security DB"> 
+	 <query id="glue_security.root.menu" desc="User Root Menu" >
+		 <![CDATA[ 
+/* glue_security.root.menu */
+		select c.menu_id,
+			   menu_key,
+			   menu_name,
+			   menu_type,
+			   display_name,
+			   display_flag,
+			   c.description
+		  from tb_sec_user			a,
+			   tb_user_menu_mapping	b,
+			   tb_menu				c
+		 where a.user_id = b.user_id
+		   and b.menu_id = c.menu_id
+		   and a.user_no = UPPER(?)
+		   and (a.WORK_LOCATION ='9999' or a.WORK_LOCATION = ?)
+		   and (b.WORK_LOCATION = '9999' or b.WORK_LOCATION = ?)
+		   and SYSDATE between c.start_active_date and c.end_active_date
+		   and SYSDATE between b.start_active_date and b.end_active_date
+		 order by B.SEQUENCE_NUMBER, B.CREATION_TIMESTAMP
+		 ]]> 
+	 </query>
+	 <query id="glue_security.root.galaxyMenu" desc="User Root Menu" >
+		 <![CDATA[ 
+/* glue_security.root.galaxyMenu */
+		select c.menu_id,
+			   menu_key,
+			   menu_name,
+			   menu_type,
+			   display_name,
+			   display_flag,
+			   c.description
+		  from tb_sec_user			a,
+			   tb_user_menu_mapping	b,
+			   tb_menu				c
+		 where a.user_id = b.user_id
+		   and b.menu_id = c.menu_id
+		   and a.user_no = UPPER(?)
+		   and (a.WORK_LOCATION ='9999' or a.WORK_LOCATION = ?)
+		   and (b.WORK_LOCATION = '9999' or b.WORK_LOCATION = ?)
+		   and SYSDATE between c.start_active_date and c.end_active_date
+		   and SYSDATE between b.start_active_date and b.end_active_date
+		   and c.MOBILE_TYPE = 'G'
+		 order by B.SEQUENCE_NUMBER, B.CREATION_TIMESTAMP
+		 ]]> 
+	 </query>
+	 <query id="glue_security.sub.menu" desc="menu_id sub_menu d" >
+		 <![CDATA[ 
+/* glue_security.sub.menu */
+		select menu_id,
+			   menu_key,
+			   menu_name,
+			   menu_type,
+			   display_name,
+			   display_flag,
+			   description
+		  from tb_menu				a,
+			   (select sub_menu_id,
+					   program_id,
+					   entry_sequence
+				  from TB_MENU_PRG_MAPPING
+				 where menu_id = ?)	b
+		 where a.menu_id = b.sub_menu_id
+		 order by b.entry_sequence
+		 ]]> 
+	 </query>
+	 <query id="glue_security.program.info" desc="" >
+		 <![CDATA[ 
+/* glue_security.program.info */
+		select PROGRAM_ID,
+			   PROGRAM_KEY,
+			   PROGRAM_NAME,
+			   PROGRAM_URL,
+			   PARAMETER,
+			   CONNECTION_TYPE,
+			   PERMIT_EVENT,
+			   PAGE_ID,
+			   SERVICE_NAME,
+			   BUTTON_FLAG,
+			   HOST_URL,
+			   OPEN_TYPE,
+			   DESCRIPTION pgrm_desc
+		  from tb_program
+		 where program_id = ?
+		 ]]> 
+	 </query>
+	 <query id="glue_security.menu.program" desc="" >
+		 <![CDATA[ 
+/* glue_security.menu.program */
+		select PROGRAM_ID,
+			   BUTTON_FLAG,
+			   PROMPT_DISPLAY_FLAG
+		  from TB_MENU_PRG_MAPPING
+		 where menu_id = ?
+		 ]]> 
+	 </query>
+	 <query id="glue_security.user.info" desc="session 정보에 Security_User_Info key값으로 사용자 정보를 넣을때 사용되는 쿼리, 비밀번호 변경 후 자동 로그인 처리 시 사용" >
+		 <![CDATA[ 
+/* glue_security.user.info */
+		select USER_ID,
+			   USER_NO,
+			   USER_NAME,
+			   ENCRYPTED_FOUNDATION_PASSWORD,
+			   ENCRYPTED_TEMPORARY_PASSWORD,
+			   START_ACTIVE_DATE,
+			   END_ACTIVE_DATE,
+			   TEMPORARY_EXPIRATION_DATE,
+			   PASSWORD_CHANGE_DATE,
+			   WORK_LOCATION
+		  from TB_SEC_USER
+		 where user_no = UPPER(?)
+		   and (WORK_LOCATION = '9999' OR WORK_LOCATION = ?)
+		 ]]> 
+	 </query>
+	 <query id="glue_security.fail.update" desc="비밀번호 오류 횟수 갱신" fetchSize="10" isNamed="true">
+		 <![CDATA[ 
+/* glue_security.fail.update - 비밀번호 오류 횟수 갱신 */
+		UPDATE TB_SEC_USER
+		   SET PASSWORD_FAIL_CNT = :PASSWORD_FAIL_CNT,
+			   LAST_UPDATED_OBJECT_ID = :USER_NO,
+			   LAST_UPDATE_PROGRAM_ID = :PROGRAM_ID,
+			   LAST_UPDATE_TIMESTAMP = SYSDATE
+		 WHERE USER_NO = :USER_NO
+		 ]]> 
+	 </query>
+	 <query id="glue_security.init.password" desc="임시 패스워드, 임시  패스워드 만료일 갱신" fetchSize="10" isNamed="true">
+		 <![CDATA[ 
+/* glue_security.init.password - 임시 패스워드, 임시  패스워드 만료일 갱신 */
+		UPDATE TB_SEC_USER
+		   SET ENCRYPTED_TEMPORARY_PASSWORD = :ENCRYPTED_TEMPORARY_PASSWORD,
+			   TEMPORARY_EXPIRATION_DATE = :TEMPORARY_EXPIRATION_DATE,
+			   LAST_UPDATED_OBJECT_ID = :USER_NO,
+			   LAST_UPDATE_PROGRAM_ID = :PROGRAM_ID,
+			   LAST_UPDATE_TIMESTAMP = SYSDATE
+		 WHERE USER_NO = :USER_NO
+		 ]]> 
+	 </query>
+	 <query id="glue_security.restore.expration" desc="임시 패스워드 만료일 초기화 처리" fetchSize="10" isNamed="true">
+		 <![CDATA[ 
+/* glue_security.restore.expration - 임시 패스워드 만료일 초기화 처리 */
+		UPDATE TB_SEC_USER
+		   SET TEMPORARY_EXPIRATION_DATE = :TEMPORARY_EXPIRATION_DATE,
+			   LAST_UPDATED_OBJECT_ID = :USER_NO,
+			   LAST_UPDATE_PROGRAM_ID = :PROGRAM_ID,
+			   LAST_UPDATE_TIMESTAMP = SYSDATE
+		 WHERE USER_NO = :USER_NO
+		 ]]> 
+	 </query>
+ 	<query id="glue_security.send.email" desc="임시 비밀번호 메일 발송 처리" fetchSize="100" isNamed="true">
+		 <![CDATA[ 
+{CALL /*+ glue_security.send.email - 임시 비밀번호 메일 발송 처리 */ M90APUSER.PROC_M90_SEND_EMAIL_INIT_PASS(
+			:fromEmail,
+			:toEmails,
+			null,
+			:subject,
+			:content,
+			:systemCode,
+			:createdBy
+		)}
+		 ]]> 
+	 </query>
+</queryMap>

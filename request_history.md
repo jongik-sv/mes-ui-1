@@ -111,4 +111,10 @@ ont-family: az_ea_font, "Segoe UI", wf_segoe-ui_normal, "Segoe WP", Tahoma, Aria
 ------class="p
 -dialog-header" 에 해당하는 컴포넌트에 margin: 10px을 부여해줘.
 
+------중간 업무
+ 그룹(접기, 펴기 가능한)은 있는데 대업무 그룹이 없어.  여기서 중간그룹은 품절설계공통, 품질설계결과관리, 생산가부검토 등이고 대업무 그룹은 품질설계, 품질판정, 생산관제 등이야.
+
+------[plugin
+:vite:css] [sass] unmatched "}".     ╷ 211 │ }     │ ^     ╵   src\components\modals\components\MenuTree.vue 211:1  root stylesheetC:/Project/mes-ui/src/components/modals/components/MenuTree.vue:438:0at Object.wrapException (C:\Project\mes-ui\node_modules\sass\sass.dart.js:2302:47)     at SpanScanner.error$3$length$position (C:\Project\mes-ui\node_modules\sass\sass.dart.js:84816:15)     at SpanScanner.error$2$length (C:\Project\mes-ui\node_modules\sass\sass.dart.js:84825:19)     at ScssParser0._stylesheet0$_statement$1$root (C:\Project\mes-ui\node_modules\sass\sass.dart.js:119611:12)     at StylesheetParser_parse__closure0.call$0 (C:\Project\mes-ui\node_modules\sass\sass.dart.js:122872:17)     at ScssParser0.statements$1 (C:\Project\mes-ui\node_modules\sass\sass.dart.js:115238:30)     at StylesheetParser_parse_closure0.call$0 (C:\Project\mes-ui\node_modules\sass\sass.dart.js:122858:23)     at ScssParser0.wrapSpanFormatException$1$1 (C:\Project\mes-ui\node_modules\sass\sass.dart.js:113913:25)     at ScssParser0.wrapSpanFormatException$1 (C:\Project\mes-ui\node_modules\sass\sass.dart.js:113966:19)     at ScssParser0.parse$0 (C:\Project\mes-ui\node_modules\sass\sass.dart.js:119576:19
+
 ------

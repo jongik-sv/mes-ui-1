@@ -12,7 +12,7 @@
     @hide="closeModal"
   >
     <template #header>
-      <h2 class="modal-title">전체 메뉴</h2>
+      <h2 class="modal-title" style="margin:10px">전체 메뉴</h2>
     </template>
 
     <div class="modal-content">

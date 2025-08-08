@@ -14,45 +14,63 @@
         :key="category.id"
         class="category-section"
       >
-        <!-- 카테고리별로 메뉴 그룹들 표시 -->
-        <div 
-          v-for="menuGroup in category.items" 
-          :key="menuGroup.id"
-          class="menu-group"
-        >
-          <!-- 메뉴 그룹 헤더 (접기/펼치기) -->
+        <!-- 대업무 그룹 헤더 (품질설계, 품질판정, 생산관제 등) -->
+        <div class="major-group">
           <div 
-            class="menu-group-header"
-            @click="toggleGroup(menuGroup.id)"
+            class="major-group-header"
+            @click="toggleGroup(category.id)"
           >
             <i 
-              :class="isGroupExpanded(menuGroup.id) ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+              :class="isGroupExpanded(category.id) ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
               class="expand-icon"
             />
-            <span class="group-title">{{ menuGroup.text }}</span>
-            <span class="group-count">({{ menuGroup.items?.length || 0 }})</span>
+            <span class="group-title">{{ category.text }}</span>
+            <span class="group-count">({{ getTotalMenuCount(category) }})</span>
           </div>
           
-          <!-- 메뉴 항목들 (4개씩 그리드) -->
-          <div 
-            v-if="isGroupExpanded(menuGroup.id) && menuGroup.items"
-            class="menu-items-grid"
-          >
-            <div
-              v-for="menuItem in menuGroup.items"
-              :key="menuItem.id"
-              class="menu-item"
-              @click="handleMenuClick(menuItem)"
+          <!-- 대업무 그룹이 펼쳐진 경우 중간 그룹들 표시 -->
+          <div v-if="isGroupExpanded(category.id)" class="middle-groups">
+            <!-- 카테고리별로 중간 메뉴 그룹들 표시 -->
+            <div 
+              v-for="menuGroup in category.items" 
+              :key="menuGroup.id"
+              class="menu-group"
             >
-              <span class="menu-text">{{ menuItem.text }}</span>
-              <span 
-                class="favorite-star"
-                :class="{ 'active': isFavorite(menuItem.id) }"
-                @click.stop="handleFavoriteToggle(menuItem.id)"
-                title="즐겨찾기"
+              <!-- 중간 그룹 헤더 (품질설계공통, 품질설계결과관리 등) -->
+              <div 
+                class="menu-group-header"
+                @click="toggleGroup(menuGroup.id)"
               >
-                {{ isFavorite(menuItem.id) ? '★' : '☆' }}
-              </span>
+                <i 
+                  :class="isGroupExpanded(menuGroup.id) ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+                  class="expand-icon"
+                />
+                <span class="group-title">{{ menuGroup.text }}</span>
+                <span class="group-count">({{ menuGroup.items?.length || 0 }})</span>
+              </div>
+              
+              <!-- 메뉴 항목들 (4개씩 그리드) -->
+              <div 
+                v-if="isGroupExpanded(menuGroup.id) && menuGroup.items"
+                class="menu-items-grid"
+              >
+                <div
+                  v-for="menuItem in menuGroup.items"
+                  :key="menuItem.id"
+                  class="menu-item"
+                  @click="handleMenuClick(menuItem)"
+                >
+                  <span class="menu-text">{{ menuItem.text }}</span>
+                  <span 
+                    class="favorite-star"
+                    :class="{ 'active': isFavorite(menuItem.id) }"
+                    @click.stop="handleFavoriteToggle(menuItem.id)"
+                    title="즐겨찾기"
+                  >
+                    {{ isFavorite(menuItem.id) ? '★' : '☆' }}
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -141,9 +159,25 @@ const toggleGroup = (groupId: string) => {
   }
 }
 
+// 대업무 그룹의 총 메뉴 개수 계산
+const getTotalMenuCount = (category: MenuItem): number => {
+  let count = 0
+  if (category.items) {
+    category.items.forEach(group => {
+      if (group.items) {
+        count += group.items.length
+      }
+    })
+  }
+  return count
+}
+
 // 컴포넌트 마운트 시 모든 그룹을 기본적으로 확장 상태로 설정
 onMounted(() => {
   props.items.forEach(category => {
+    // 대업무 그룹도 기본 확장
+    expandedGroups.value.add(category.id)
+    
     if (category.items) {
       category.items.forEach(group => {
         expandedGroups.value.add(group.id)
@@ -240,32 +274,34 @@ const handleFavoriteToggle = (nodeKey: string) => {
   padding: 4px;
   
   .category-section {
-    .menu-group {
-      margin-bottom: 2px;
+    // 대업무 그룹 (품질설계, 품질판정, 생산관제 등)
+    .major-group {
+      margin-bottom: 8px;
       
-      // 메뉴 그룹 헤더 (접기/펼치기)
-      .menu-group-header {
+      // 대업무 그룹 헤더
+      .major-group-header {
         display: flex;
         align-items: center;
-        gap: 6px;
-        padding: 6px 8px;
+        gap: 8px;
+        padding: 8px 12px;
         cursor: pointer;
-        background: var(--bg-secondary);
+        background: var(--primary);
         border: none;
-        font-size: 14px;
-        font-weight: 600;
+        font-size: 16px;
+        font-weight: 700;
         font-family: az_ea_font, "Segoe UI", wf_segoe-ui_normal, "Segoe WP", Tahoma, Arial, sans-serif;
-        color: var(--text-primary);
-        margin-bottom: 2px;
-        border-radius: var(--border-radius-sm);
+        color: white;
+        margin-bottom: 4px;
+        border-radius: var(--border-radius-md);
         
         &:hover {
-          background: var(--bg-tertiary);
+          background: var(--primary-dark, var(--primary));
+          opacity: 0.9;
         }
         
         .expand-icon {
-          font-size: 12px;
-          color: var(--text-secondary);
+          font-size: 14px;
+          color: white;
         }
         
         .group-title {
@@ -273,83 +309,129 @@ const handleFavoriteToggle = (nodeKey: string) => {
         }
         
         .group-count {
-          font-size: 12px;
-          color: var(--text-muted);
+          font-size: 14px;
+          color: rgba(255, 255, 255, 0.8);
         }
       }
       
-      // 메뉴 항목들 (4개씩 그리드)
-      .menu-items-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1px;
-        padding: 2px;
-        background: var(--bg-primary);
+      // 중간 그룹들 컨테이너
+      .middle-groups {
+        margin-left: 16px;
         
-        .menu-item {
-          position: relative;
-          padding: 6px 8px;
-          background: transparent;
-          border: none;
-          cursor: pointer;
-          font-size: 14px;
-          font-family: az_ea_font, "Segoe UI", wf_segoe-ui_normal, "Segoe WP", Tahoma, Arial, sans-serif;
-          color: var(--text-primary);
-          min-height: 35px;
-          max-width: 400px;
-          padding-left: 35px;
-          display: flex;
-          align-items: center;
-          -webkit-align-items: center;
-          float: left;
+        .menu-group {
+          margin-bottom: 2px;
           
-          &:hover {
-            background: var(--bg-tertiary);
-            border-radius: var(--border-radius-sm);
-          }
-          
-          .menu-text {
-            flex: 1;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            line-height: 1.2;
-          }
-          
-          .favorite-star {
-            color: #ccc;
-            font-size: 14px;
-            margin-left: 4px;
+          // 중간 그룹 헤더 (품질설계공통, 품질설계결과관리 등)
+          .menu-group-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 8px;
             cursor: pointer;
-            transition: var(--transition-normal);
-            flex-shrink: 0;
+            background: var(--bg-secondary);
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: az_ea_font, "Segoe UI", wf_segoe-ui_normal, "Segoe WP", Tahoma, Arial, sans-serif;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+            border-radius: var(--border-radius-sm);
             
             &:hover {
-              color: #ffd700;
-              transform: scale(1.1);
+              background: var(--bg-tertiary);
             }
             
-            &.active {
-              color: #ffd700;
+            .expand-icon {
+              font-size: 12px;
+              color: var(--text-secondary);
+            }
+            
+            .group-title {
+              flex: 1;
+            }
+            
+            .group-count {
+              font-size: 12px;
+              color: var(--text-muted);
+            }
+          }
+        }
+      }
+    }
+      
+        // 메뉴 항목들 (4개씩 그리드)
+        .menu-items-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1px;
+          padding: 2px;
+          background: var(--bg-primary);
+          
+          .menu-item {
+            position: relative;
+            padding: 6px 8px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-family: az_ea_font, "Segoe UI", wf_segoe-ui_normal, "Segoe WP", Tahoma, Arial, sans-serif;
+            color: var(--text-primary);
+            min-height: 35px;
+            max-width: 400px;
+            padding-left: 35px;
+            display: flex;
+            align-items: center;
+            -webkit-align-items: center;
+            float: left;
+            
+            &:hover {
+              background: var(--bg-tertiary);
+              border-radius: var(--border-radius-sm);
+            }
+            
+            .menu-text {
+              flex: 1;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              line-height: 1.2;
+            }
+            
+            .favorite-star {
+              color: #ccc;
+              font-size: 14px;
+              margin-left: 4px;
+              cursor: pointer;
+              transition: var(--transition-normal);
+              flex-shrink: 0;
               
               &:hover {
-                color: #ffed4e;
+                color: #ffd700;
+                transform: scale(1.1);
+              }
+              
+              &.active {
+                color: #ffd700;
+                
+                &:hover {
+                  color: #ffed4e;
+                }
               }
             }
           }
-        }
-        
-        // 반응형 그리드
-        @media (max-width: 1200px) {
-          grid-template-columns: repeat(3, 1fr);
-        }
-        
-        @media (max-width: 900px) {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        
-        @media (max-width: 600px) {
-          grid-template-columns: 1fr;
+          
+          // 반응형 그리드
+          @media (max-width: 1200px) {
+            grid-template-columns: repeat(3, 1fr);
+          }
+          
+          @media (max-width: 900px) {
+            grid-template-columns: repeat(2, 1fr);
+          }
+          
+          @media (max-width: 600px) {
+            grid-template-columns: 1fr;
+          }
         }
       }
     }

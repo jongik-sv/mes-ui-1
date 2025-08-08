@@ -292,9 +292,13 @@ const handleFavoriteToggle = (nodeKey: string) => {
           cursor: pointer;
           font-size: 14px;
           color: var(--text-primary);
-          min-height: 28px;
+          min-height: 35px;
+          max-width: 400px;
+          padding-left: 35px;
           display: flex;
           align-items: center;
+          -webkit-align-items: center;
+          float: left;
           
           &:hover {
             background: var(--bg-tertiary);

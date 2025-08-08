@@ -96,4 +96,7 @@ Task details:
 ------메뉴 아이템에     
  background: var(--bg-secondary);  border: 1px solid var(--surface-2); 스타일을 삭제하고, 메뉴 그룹헤더에 border: 1px solid var(--surface-2); 스타일 삭제해줘.
 
+------메뉴아이템 스타일에  
+   max-width: 400px;min-height: 35px;padding-left: 35px;align-items: center;-webkit-align-items: center;float: left; 스타일 추가해줘.
+
 ------

@@ -88,7 +88,13 @@
 
         <!-- 우측 메뉴 트리 영역 -->
         <div class="menu-tree-area">
-          <div v-if="filteredMenuItems.length === 0" class="empty-view">
+          <div v-if="isLoading" class="loading-view">
+            <div class="loading-content">
+              <i class="pi pi-spin pi-spinner loading-icon"></i>
+              <div class="loading-title">메뉴를 불러오는 중...</div>
+            </div>
+          </div>
+          <div v-else-if="filteredMenuItems.length === 0" class="empty-view">
             <div class="empty-content">
               <i class="pi pi-search empty-icon"></i>
               <div class="empty-title">일치하는 검색 결과가 존재하지 않습니다</div>
@@ -101,6 +107,7 @@
             :search-mode="searchMode"
             :expanded-nodes="expandedNodes"
             :favorites="favorites"
+            :loading="isLoading"
             @node-expand="handleNodeExpand"
             @node-collapse="handleNodeCollapse"
             @toggle-favorite="handleToggleFavorite"
@@ -120,7 +127,22 @@ import Button from 'primevue/button'
 import ToggleButton from 'primevue/togglebutton'
 import MenuTree from './components/MenuTree.vue'
 import type { MenuItem, MenuCategory } from '@/types/menu'
-import { menuCategories } from '@/data/sampleMenuData'
+
+// allmenu.json 파일에서 카테고리 정의 (JSP 구조 기반)
+const menuCategories: MenuCategory[] = [
+  { id: 'all', name: '전체메뉴', code: '', order: 0, active: true },
+  { id: 'C10', name: '품질설계', code: 'C10', order: 1, active: false },
+  { id: 'M20', name: '품질판정', code: 'M20', order: 2, active: false },
+  { id: 'M17', name: '생산관제', code: 'M17', order: 3, active: false },
+  { id: 'M47', name: '조업관리', code: 'M47', order: 4, active: false },
+  { id: 'M42', name: '원재료관리', code: 'M42', order: 5, active: false },
+  { id: 'M30', name: '부재료관리', code: 'M30', order: 6, active: false },
+  { id: 'M26', name: '구내운송', code: 'M26', order: 7, active: false },
+  { id: 'M77', name: '야드관리', code: 'M77', order: 8, active: false },
+  { id: 'M60', name: '출하관제', code: 'M60', order: 9, active: false },
+  { id: 'M80', name: '통합관제', code: 'M80', order: 10, active: false },
+  { id: 'M90', name: '공통관리', code: 'M90', order: 11, active: false }
+]
 
 interface Props {
   /** 모달 표시 여부 */
@@ -148,6 +170,8 @@ const searchQuery = ref('')
 const selectedCategory = ref<string>('all')
 const expandedNodes = ref<Set<string>>(new Set())
 const favorites = ref<Set<string>>(new Set())
+const allMenuData = ref<MenuItem[]>([])
+const isLoading = ref(false)
 
 // JSP 기반 토글 상태
 const showAllMenus = ref(false)      // 전체보기 (권한 없는 메뉴도 표시)
@@ -157,9 +181,104 @@ const showFavorites = ref(false)     // 즐겨찾기만 표시
 // 검색 모드 (텍스트 검색 vs 컬럼 검색)
 const searchMode = computed(() => showColumnSearch.value ? 'column' : 'text')
 
+// allmenu.json 데이터를 MenuItem 타입으로 변환
+interface AllMenuJsonItem {
+  id: string
+  text: string
+  visible: boolean
+  seq?: number
+  items?: AllMenuJsonItem[]
+  userdata?: {
+    isAuth: string
+    bookmarked: string
+    programId: string
+    url: string
+  }
+}
+
+const convertAllMenuJsonToMenuItem = (jsonData: Record<string, AllMenuJsonItem>): MenuItem[] => {
+  const result: MenuItem[] = []
+  
+  Object.values(jsonData).forEach(item => {
+    const menuItem: MenuItem = {
+      id: item.id,
+      text: item.text,
+      level: 1, // 최상위 레벨
+      categoryCode: item.id,
+      bookmarked: item.userdata?.bookmarked === 'Y' || false,
+      isAuth: item.userdata?.isAuth === 'Y' || true,
+      hasItems: !!(item.items && item.items.length > 0),
+      url: item.userdata?.url,
+      userdata: item.userdata ? {
+        programId: item.userdata.programId,
+        bookmarked: item.userdata.bookmarked
+      } : undefined
+    }
+    
+    if (item.items && item.items.length > 0) {
+      menuItem.items = convertSubItems(item.items, 2, item.id)
+    }
+    
+    result.push(menuItem)
+  })
+  
+  return result.sort((a, b) => {
+    const aSeq = jsonData[a.id]?.seq || 0
+    const bSeq = jsonData[b.id]?.seq || 0
+    return aSeq - bSeq
+  })
+}
+
+const convertSubItems = (items: AllMenuJsonItem[], level: number, categoryCode: string): MenuItem[] => {
+  return items.map(item => {
+    const menuItem: MenuItem = {
+      id: item.id,
+      text: item.text,
+      level: level,
+      categoryCode: categoryCode,
+      bookmarked: item.userdata?.bookmarked === 'Y' || false,
+      isAuth: item.userdata?.isAuth === 'Y' || true,
+      hasItems: !!(item.items && item.items.length > 0),
+      url: item.userdata?.url,
+      userdata: item.userdata ? {
+        programId: item.userdata.programId,
+        bookmarked: item.userdata.bookmarked
+      } : undefined
+    }
+    
+    if (item.items && item.items.length > 0) {
+      menuItem.items = convertSubItems(item.items, level + 1, categoryCode)
+    }
+    
+    return menuItem
+  })
+}
+
+// allmenu.json 파일 로드
+const loadAllMenuData = async () => {
+  try {
+    isLoading.value = true
+    const response = await fetch('/sample_data/allmenu.json')
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    const jsonData = await response.json()
+    allMenuData.value = convertAllMenuJsonToMenuItem(jsonData)
+  } catch (error) {
+    console.error('Failed to load allmenu.json:', error)
+    allMenuData.value = []
+  } finally {
+    isLoading.value = false
+  }
+}
+
 // Props 변경 감지
 watch(() => props.visible, (newValue) => {
   isVisible.value = newValue
+  // 모달이 열릴 때 allmenu.json 데이터 로드
+  if (newValue && allMenuData.value.length === 0) {
+    loadAllMenuData()
+  }
 })
 
 watch(isVisible, (newValue) => {
@@ -173,9 +292,9 @@ const categories = computed<MenuCategory[]>(() => {
   return menuCategories
 })
 
-// 필터링된 메뉴 아이템
+// 필터링된 메뉴 아이템 (allmenu.json 데이터 사용)
 const filteredMenuItems = computed<MenuItem[]>(() => {
-  let filtered = [...props.menuItems]
+  let filtered = [...allMenuData.value]
   
   // 카테고리 필터 (전체메뉴가 아닌 경우)
   if (selectedCategory.value !== 'all') {
@@ -652,6 +771,29 @@ defineExpose({
       background: var(--bg-primary);
       overflow-y: auto;
       padding: var(--space-4);
+
+      .loading-view {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 300px;
+
+        .loading-content {
+          text-align: center;
+          color: var(--text-secondary);
+
+          .loading-icon {
+            font-size: 2rem;
+            margin-bottom: var(--space-4);
+            color: var(--primary);
+          }
+
+          .loading-title {
+            font-size: var(--text-lg);
+            font-weight: 500;
+          }
+        }
+      }
 
       .empty-view {
         display: flex;

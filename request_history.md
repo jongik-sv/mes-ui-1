@@ -123,4 +123,7 @@ lugin:vite:css] [sass] unmatched "}".     ╷ 211 │   }     │   ^     ╵   
 ------전체 메뉴에 
 별모양 아이콘이 너무 작아. 조금 더 크게 해줘.
 
+------src/compo
+nents/modals/GlobalMenuModal.vue에서 왜 전체 메뉴창이 100% 높이가 되지 않는지 조사가 필요해. 개발자 도구에서 .p-dialog-content 를 찾아 다음 처럼 직접 적용하면 잘되는것을 확인했어. element.style {height: 100%;}이 설정이 :deep(.p-dialog-content) {flex: 1 !important;overflow: hidden !important;padding: 0 !important;height: 100%;max-height: 100% !important;min-height: 100% !important;}이것으로 설정을 한 것 같은데 실제 UI에서는 적용이 안되는데 왜 그럴까? 조사를 부탁해
+
 ------

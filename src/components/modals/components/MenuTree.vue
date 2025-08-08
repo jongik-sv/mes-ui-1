@@ -280,6 +280,7 @@ const handleFavoriteToggle = (nodeKey: string) => {
       
       // 대업무 그룹 헤더
       .major-group-header {
+        
         display: flex;
         align-items: center;
         gap: 8px;
@@ -328,7 +329,7 @@ const handleFavoriteToggle = (nodeKey: string) => {
             gap: 6px;
             padding: 6px 8px;
             cursor: pointer;
-            background: var(--bg-secondary);
+            // background: var(--bg-secondary);
             border: none;
             font-size: 14px;
             font-weight: 600;
@@ -374,7 +375,8 @@ const handleFavoriteToggle = (nodeKey: string) => {
               font-family: az_ea_font, "Segoe UI", wf_segoe-ui_normal, "Segoe WP", Tahoma, Arial, sans-serif;
               color: var(--text-primary);
               min-height: 35px;
-              max-width: 400px;
+              max-width: 300px;
+              min-width: 200px;
               padding-left: 35px;
               display: flex;
               align-items: center;

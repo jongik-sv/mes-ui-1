@@ -73,7 +73,7 @@
       </div>
 
       <!-- 메인 콘텐츠 영역 (좌측 카테고리 + 우측 트리) -->
-      <div class="modal-body">
+      <div class="modal-body" >
         <!-- 좌측 카테고리 사이드바 -->
         <div class="category-sidebar">
           <div class="category-list">
@@ -562,6 +562,7 @@ defineExpose({
 </script>
 
 <style lang="scss" scoped>
+
 .global-menu-modal {
   :deep(.p-dialog) {
     width: 80vw !important;
@@ -737,6 +738,7 @@ defineExpose({
 
       .category-tab {
         display: flex;
+        height: 100%;
         align-items: center;
         gap: var(--space-1);
         padding: var(--space-2) var(--space-4);
@@ -776,7 +778,7 @@ defineExpose({
     display: grid;
     grid-template-columns: 200px 1fr;
     background: var(--bg-primary);
-    overflow: hidden;
+    // overflow: hidden;
     height: 100%;
     width: 100%;
 

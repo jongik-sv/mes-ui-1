@@ -5,6 +5,9 @@
     :closable="true"
     :draggable="false"
     :resizable="false"
+    :maximizable="false"
+    :dismissableMask="false"
+    :style="{ width: '80vw', height: '80vh' }"
     class="global-menu-modal"
     @hide="closeModal"
   >
@@ -568,44 +571,87 @@ defineExpose({
     min-width: 80vw !important;
     min-height: 80vh !important;
     background: var(--bg-primary);
-    border: 1px solid var(--surface-2);
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-xl);
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
     position: fixed !important;
     top: 10vh !important;
     left: 10vw !important;
     transform: none !important;
     resize: none !important;
+    overflow: hidden !important;
+    
+    // JavaScript 크기 조정 방지
+    transition: none !important;
+    animation: none !important;
+  }
+
+  // 모든 PrimeVue Dialog 관련 클래스에 크기 고정 적용
+  :deep(.p-component),
+  :deep(.p-dialog-mask .p-dialog) {
+    width: 80vw !important;
+    height: 80vh !important;
+    max-width: 80vw !important;
+    max-height: 80vh !important;
+    min-width: 80vw !important;
+    min-height: 80vh !important;
+  }
+
+  // PrimeVue Dialog의 내부 요소들도 크기 고정
+  :deep(.p-dialog-header) {
+    flex-shrink: 0 !important;
+  }
+
+  :deep(.p-dialog-content) {
+    flex: 1 !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    height: calc(80vh - 80px) !important;
+    max-height: calc(80vh - 80px) !important;
+    min-height: calc(80vh - 80px) !important;
+  }
+
+  // 모든 자식 요소들의 크기 제한
+  :deep(.p-dialog-header),
+  :deep(.p-dialog-content),
+  :deep(.p-dialog-footer) {
+    box-sizing: border-box !important;
   }
 
   :deep(.p-dialog-mask) {
     background: rgba(15, 23, 42, 0.8);
     backdrop-filter: blur(4px);
-  }
-
-  :deep(.p-dialog-header) {
-    background: var(--bg-secondary);
-    border-bottom: 1px solid var(--surface-2);
-    padding: var(--space-4) var(--space-6);
-
-    .modal-title {
-      color: var(--text-primary);
-      font-size: var(--text-xl);
-      font-weight: 600;
-      margin: 0;
+    
+    // 마스크 내부의 모든 dialog 요소 크기 고정
+    .p-dialog {
+      width: 80vw !important;
+      height: 80vh !important;
+      max-width: 80vw !important;
+      max-height: 80vh !important;
+      min-width: 80vw !important;
+      min-height: 80vh !important;
     }
   }
 
-  :deep(.p-dialog-content) {
-    padding: 0;
-    height: calc(80vh - 80px); // 헤더 높이를 제외한 높이
+  // 전역적으로 모든 dialog 관련 요소 크기 고정
+  :deep(*[class*="p-dialog"]) {
+    width: 80vw !important;
+    height: 80vh !important;
+    max-width: 80vw !important;
+    max-height: 80vh !important;
+    min-width: 80vw !important;
+    min-height: 80vh !important;
   }
+
+  // 중복 제거됨 - 위에서 이미 정의됨
 
   .modal-content {
     display: flex;
     flex-direction: column;
     height: 100%;
     background: var(--bg-primary);
+    flex: 1;
+    min-height: 0;
   }
 
   .modal-header-section {
@@ -725,6 +771,7 @@ defineExpose({
     grid-template-columns: 200px 1fr;
     background: var(--bg-primary);
     overflow: hidden;
+    height: 100%;
 
     // 좌측 카테고리 사이드바
     .category-sidebar {
